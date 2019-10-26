@@ -1,6 +1,6 @@
 package projeto_lp2;
 
-public class Item {
+public class Item extends Validacao{
 
 	private String descricao;
 	private boolean status;
@@ -8,6 +8,9 @@ public class Item {
 	private String statusString;
 
 	public Item(String descricao) {
+		
+		super.validaString(descricao, "Item nao pode ser nulo ou vazio.");
+		
 		this.descricao = descricao;
 		this.status = false;
 		this.statusString = "PENDENTE";

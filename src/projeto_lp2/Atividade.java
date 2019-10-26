@@ -4,7 +4,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Atividade {
+public class Atividade extends Validacao {
 	
 	private String descricao;
 	private Period duracao;
@@ -14,6 +14,10 @@ public class Atividade {
 	private String id;
 	
 	public Atividade(String descricao, String risco, String descricaoRisco, int id) {
+		
+		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		super.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
 		
 		this.descricao = descricao;
 		this.risco = risco;
