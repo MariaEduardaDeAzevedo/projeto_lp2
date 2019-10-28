@@ -13,7 +13,7 @@ public class Atividade extends Validacao {
 	private String descricaoRisco;
 	private String id;
 	
-	public Atividade(String descricao, String risco, String descricaoRisco, int id) {
+	public Atividade(String descricao, String risco, String descricaoRisco, String id) {
 		
 		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
 		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
@@ -24,7 +24,7 @@ public class Atividade extends Validacao {
 		this.descricaoRisco = descricaoRisco;
 		this.duracao = Period.ofDays(8);
 		this.resultados = new ArrayList<Item>();
-		this.id = String.format("A%d", id);
+		this.id = id;
 		
 	}
 	

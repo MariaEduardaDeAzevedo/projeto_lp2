@@ -15,10 +15,11 @@ public class ControllerAtividades extends Validacao {
 		
 	}
 	
-	public String cadastrarAtividade(String descricao, String risco, String descricaoRisco, int id) {
+	public String cadastrarAtividade(String descricao, String risco, String descricaoRisco) {
 		
-		this.atividades.put("A" + id, new Atividade(descricao, risco, descricaoRisco, id));
-		return "A" + id;
+		String id = String.format("A%d", this.proximoId);
+		this.atividades.put(id, new Atividade(descricao, risco, descricaoRisco, id));
+		return id;
 		
 	}
 	
