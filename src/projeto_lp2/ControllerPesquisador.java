@@ -44,4 +44,11 @@ public class ControllerPesquisador extends Validacao {
 		return this.pesquisadores.get(email).toString();
 	}
 	
+	public boolean pesquisadorEhAtivo(String email) {
+		if(!pesquisadores.containsKey(email)) {
+			throw new IllegalArgumentException("Pesquisador nao encontrado.");
+		}
+		return this.pesquisadores.get(email).pesquisadorEhAtivo();
+	}
+	
 }

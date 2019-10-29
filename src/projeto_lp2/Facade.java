@@ -17,6 +17,29 @@ public class Facade {
 	//US1
 	
 	//US2
+	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String fotoURL) {
+		this.cPesquisador.cadastraPesquisador(nome, funcao, biografia, email, fotoURL);
+	}
+	
+	public void alteraPesquisador(String email, String atributo, String novoValor) {
+		this.cPesquisador.alteraPesquisador(email, atributo, novoValor);
+	}
+	
+	public void desativaPesquisador(String email) {
+		this.cPesquisador.desativaPesquisador(email);
+	}
+	
+	public void ativaPesquisador(String email) {
+		this.cPesquisador.ativaPesquisador(email);
+	}
+	
+	public void exibePesquisador(String email) {
+		this.cPesquisador.exibePesquisador(email);
+	}
+	
+	public void pesquisadorEhAtivo(String email) {
+		this.cPesquisador.pesquisadorEhAtivo(email);
+	}
 	
 	//US3
 	

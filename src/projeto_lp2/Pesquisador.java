@@ -94,5 +94,8 @@ public class Pesquisador extends Validacao {
 		return true;
 	}
 	
+	public boolean pesquisadorEhAtivo() {
+		return ativada;
+	}
 	
 }
