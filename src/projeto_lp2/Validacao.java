@@ -15,5 +15,17 @@ public class Validacao {
 		}
 		
 	}
+	
+	protected void validaValor(int valor, String mensagem) {
+		if (valor > 5 || valor < 1) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
+	
+	protected void validaTipo(String tipo, String mensagem) {
+		if (!tipo.equals("GERAL") || !tipo.equals("ESPECIFICO")) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
 
 }
