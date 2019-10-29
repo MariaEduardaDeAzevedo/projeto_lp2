@@ -1,5 +1,6 @@
 package projeto_lp2;
 
+
 public class Pesquisador extends Validacao {
 
 	private String funcao;
@@ -10,11 +11,13 @@ public class Pesquisador extends Validacao {
 	private boolean ativada;
 	
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
-		super.validaString(nome, "Campo NOME nao pode ser nulo ou vazio.");
-		super.validaString(funcao, "Campo FUNCAO nao pode ser nulo ou vazio.");
-		super.validaString(biografia, "Campo BIOGRAFIA nao pode ser nulo ou vazio.");
-		super.validaString(email, "Campo EMAIL nao pode ser nulo ou vazio.");
-		super.validaString(fotoURL, "Campo FOTO nao pode ser nulo ou vazio.");
+		super.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
+		super.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
+		super.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
+		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		super.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
+		super.verificaEmail(email);
+		super.verificaURL(foto);
 		this.funcao = funcao;
 		this.nome = nome;
 		this.biografia = biografia;
@@ -37,32 +40,54 @@ public class Pesquisador extends Validacao {
 	     this.ativada = false;
 	 }
 	 
-	 public void alteraPesquisador(String atributo, String novoValor) {
-		 switch(atributo.trim().toLowerCase()) {
-			case "nome":
-				super.validaString(novoValor, "Campo NOME nao pode ser nulo ou vazio.");
-				this.nome = novoValor;
-				break;
-			case "funcao":
-				super.validaString(novoValor, "Campo FUNCAO nao pode ser nulo ou vazio.");
-				this.funcao = novoValor;
-				break;
-			case "biografia":
-				super.validaString(novoValor, "Campo BIOGRAFIA nao pode ser nulo ou vazio.");
-				this.biografia = novoValor;
-				break;
-			case "email":
-				super.validaString(novoValor, "Campo EMAIL nao pode ser nulo ou vazio.");
-				this.email = novoValor;
-				break;
-			case "foto":
-				super.validaString(novoValor, "Campo FOTO nao pode ser nulo ou vazio.");
-				this.fotoURL = novoValor;
-				break;
-		 }
-	 }
+	public void alteraPesquisador(String atributo, String novoValor) {
+		super.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
+		//atributo.trim().toLowerCase();
+		if(atributo.equals("nome")) {
+			super.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
+			this.nome = novoValor;
+		} else if(atributo.equals("funcao")) {
+			super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
+			this.funcao = novoValor;
+		} else if(atributo.equals("biografia")) {
+			super.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
+			this.biografia = novoValor;
+		} else if(atributo.equals("email")) {
+			super.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+			super.verificaEmail(novoValor);
+			this.email = novoValor;
+		} else if(atributo.equals("foto")) {
+			super.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
+			super.verificaURL(novoValor);
+			this.fotoURL = novoValor;
+		} else {
+			throw new IllegalArgumentException("Atributo invalido.");
+			
+		}
+		
+	}
 
 	
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setFotoURL(String fotoURL) {
+		this.fotoURL = fotoURL;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email, this.fotoURL);

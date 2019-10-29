@@ -62,12 +62,12 @@ public class Facade {
         this.cPesquisador.ativaPesquisador(email);
     }
 
-    public void exibePesquisador(String email) {
-        this.cPesquisador.exibePesquisador(email);
+    public String exibePesquisador(String email) {
+       return this.cPesquisador.exibePesquisador(email);
     }
 
-    public void pesquisadorEhAtivo(String email) {
-        this.cPesquisador.pesquisadorEhAtivo(email);
+    public boolean pesquisadorEhAtivo(String email) {
+        return this.cPesquisador.pesquisadorEhAtivo(email);
     }
 
     //US3
