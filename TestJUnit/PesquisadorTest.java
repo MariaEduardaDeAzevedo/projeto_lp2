@@ -23,7 +23,7 @@ public class PesquisadorTest {
     }
 
     void criaPesquisadorNomeNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             Pesquisador pesquisadorTeste1 = new Pesquisador(null, "estudante", "estudante de Computação", "arthur@example.com", "https://formation");
         });
     }
@@ -35,7 +35,7 @@ public class PesquisadorTest {
     }
 
     void criaPesquisadorFuncaoNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             Pesquisador pesquisadorTeste1 = new Pesquisador("Arthur", null, "estudante de Computação", "arthur@example.com", "https://formation");
         });
     }
@@ -47,7 +47,7 @@ public class PesquisadorTest {
     }
 
     void criaPesquisadorBiografiaNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             Pesquisador pesquisadorTeste1 = new Pesquisador("Arthur", "estudante", null, "arthur@example.com", "https://formation");
         });
     }
@@ -59,7 +59,7 @@ public class PesquisadorTest {
     }
 
     void criaPesquisadorEmailNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             Pesquisador pesquisadorTeste1 = new Pesquisador("Arthur", "estudante", "estudante de Computação", null, "https://formation");
         });
     }
@@ -71,7 +71,7 @@ public class PesquisadorTest {
     }
 
     void criaPesquisadorFotoNull(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             Pesquisador pesquisadorTeste1 = new Pesquisador("Arthur", "estudante", "estudante de Computação", "arthur@example.com", null);
         });
     }
@@ -86,5 +86,17 @@ public class PesquisadorTest {
         pesquisadorTeste.inativaPesquisador();
         pesquisadorTeste.ativaPesquisador();
         //assertTrue(pesquisadorTeste.isAtivada());
+    }
+
+    void inativaPesquisadorAtivado(){
+        pesquisadorTeste.inativaPesquisador();
+        //assertFalse(pesquisadorTeste.isAtivada());
+    }
+
+    void inativaPesquisadorInativado() {
+        pesquisadorTeste.inativaPesquisador();
+        assertThrows(IllegalArgumentException.class, () -> {
+            pesquisadorTeste.inativaPesquisador();
+        });
     }
 }
