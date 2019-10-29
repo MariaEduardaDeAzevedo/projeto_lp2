@@ -61,7 +61,7 @@ public class Pesquisador extends Validacao {
 				this.email = novoValor;
 				break;
 			case "FOTO":
-				super.validaString(novoValor, "Campo foto nao pode ser nulo ou vazio.");
+				super.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
 				super.verificaURL(novoValor);
 				this.fotoURL = novoValor;
 				break;

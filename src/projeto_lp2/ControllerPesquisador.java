@@ -31,8 +31,12 @@ public class ControllerPesquisador extends Validacao {
 	
 	public void alteraPesquisador(String email, String atributo, String novoValor) {
 		if(existePesquisador(email)) {
-			this.pesquisadores.get(email).alteraPesquisador(atributo, novoValor);	
-		}
+			this.pesquisadores.get(email).alteraPesquisador(atributo, novoValor);
+			if(atributo.equals("EMAIL")) {
+				this.pesquisadores.put(novoValor, this.pesquisadores.get(email));
+				this.pesquisadores.remove(email);
+			}
+		} 	
 	}		
 				
 			 
