@@ -43,10 +43,8 @@ public class ControllerPesquisador extends Validacao {
 	
 	public String exibePesquisador(String email) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
-		String result = "";
 		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
-		result = this.pesquisadores.get(email).toString();			
-		return result;
+		return this.pesquisadores.get(email).toString(); 
 	}
 	
 	public boolean pesquisadorEhAtivo(String email) {
