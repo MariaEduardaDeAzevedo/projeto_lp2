@@ -18,6 +18,13 @@ public class Atividade extends Validacao {
 		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
 		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
 		super.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		
+		List valores = new ArrayList<String>();
+		valores.add("BAIXO");
+		valores.add("MEDIO");
+		valores.add("ALTO");
+		
+		super.validaValoresPermitidos(valores, risco, "Valor invalido do nivel do risco.");
 
 		this.descricao = descricao;
 		this.risco = risco;

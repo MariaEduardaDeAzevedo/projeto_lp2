@@ -20,9 +20,9 @@ public class Facade {
         return this.cPesquisa.cadastraPesquisa(descricao, campoDeInteresse);
     }
 
-    public void alteraPesquisa(String código, String conteúdoASerAlterado, String novoConteúdo) {
+    public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
 
-        this.cPesquisa.alteraPesquisa(código, conteúdoASerAlterado, novoConteúdo);
+        this.cPesquisa.alteraPesquisa(codigo, conteudoASerAlterado, novoConteudo);
     }
 
     public void encerraPesquisa(String codigo, String motivo) {

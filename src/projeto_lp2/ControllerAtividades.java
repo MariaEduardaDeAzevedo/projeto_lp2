@@ -18,6 +18,7 @@ public class ControllerAtividades extends Validacao {
 	public String cadastrarAtividade(String descricao, String risco, String descricaoRisco) {
 		
 		String id = String.format("A%d", this.proximoId);
+		this.proximoId ++;
 		this.atividades.put(id, new Atividade(descricao, risco, descricaoRisco, id));
 		return id;
 		
@@ -26,6 +27,7 @@ public class ControllerAtividades extends Validacao {
 	public String exibirAtividade(String id) {
 		
 		super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 		
 		return this.atividades.get(id).toString();
 		
@@ -34,6 +36,7 @@ public class ControllerAtividades extends Validacao {
 	public void cadastrarItem(String id, String descricao) {
 		
 		super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 		
 		this.atividades.get(id).cadastrarItem(descricao);
 		
@@ -42,6 +45,7 @@ public class ControllerAtividades extends Validacao {
 	public void apagaAtividade(String id) {
 		
 		super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 		
 		this.atividades.remove(id);
 		
@@ -50,6 +54,7 @@ public class ControllerAtividades extends Validacao {
 	public int contaItensPendentes(String id) {
 		
 		super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 		
 		return this.atividades.get(id).contaItensPendentes();
 		
@@ -58,6 +63,7 @@ public class ControllerAtividades extends Validacao {
 	public int contaItensRealizados(String id) {
 		
 		super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 		
 		return this.atividades.get(id).contaItensRealizados();
 		
