@@ -31,8 +31,9 @@ public class ControllerPesquisas extends Validacao{
         }
         String codigo = (campoDeInteresse.substring(0, 3) + "1").toUpperCase();
         if (pesquisas.containsKey(codigo)){
+            int numero = 1;
             while (true){
-                int numero = 2;
+                numero += 1;
                 codigo = (campoDeInteresse.substring(0, 3) + numero).toUpperCase();
                 if (!pesquisas.containsKey(codigo)){
                     break;
