@@ -22,50 +22,36 @@ public class ControllerPesquisador extends Validacao {
 		this.pesquisadores.put(email, new Pesquisador(nome, funcao, biografia, email, fotoURL));
 	}
 	
-	private boolean existePesquisador(String email) {
-		if(!pesquisadores.containsKey(email)) {
-			throw new IllegalArgumentException("Pesquisador nao encontrado");
-		}
-		return true;
-	}
-	
 	public void alteraPesquisador(String email, String atributo, String novoValor) {
-		if(existePesquisador(email)) {
-			this.pesquisadores.get(email).alteraPesquisador(atributo, novoValor);
-			if(atributo.equals("EMAIL")) {
-				this.pesquisadores.put(novoValor, this.pesquisadores.get(email));
-				this.pesquisadores.remove(email);
-			}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
+		this.pesquisadores.get(email).alteraPesquisador(atributo, novoValor);
+		if(atributo.equals("EMAIL")) {
+			this.pesquisadores.put(novoValor, this.pesquisadores.get(email));
+			this.pesquisadores.remove(email);
 		} 	
 	}		
-				
 			 
 	public void desativaPesquisador(String email) {
-		if(existePesquisador(email)) {
-			this.pesquisadores.get(email).inativaPesquisador();
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
+		this.pesquisadores.get(email).inativaPesquisador();
 	}
 	
 	public void ativaPesquisador(String email) {
-		if(existePesquisador(email)) {
-			this.pesquisadores.get(email).ativaPesquisador();
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
+		this.pesquisadores.get(email).ativaPesquisador();
 	}
 	
 	public String exibePesquisador(String email) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		String result = "";
-		if(existePesquisador(email)) {
-			result = this.pesquisadores.get(email).toString();			
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
+		result = this.pesquisadores.get(email).toString();			
 		return result;
 	}
 	
 	public boolean pesquisadorEhAtivo(String email) {
 		super.validaString(email, "Email nao pode ser vazio ou nulo.");
-		if(!pesquisadores.containsKey(email)) {
-			throw new IllegalArgumentException("Pesquisador nao encontrado");
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
 		return this.pesquisadores.get(email).pesquisadorEhAtivo();
 	}
 	
