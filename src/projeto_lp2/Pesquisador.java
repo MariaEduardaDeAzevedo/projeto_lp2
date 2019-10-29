@@ -40,58 +40,39 @@ public class Pesquisador extends Validacao {
 	     this.ativada = false;
 	 }
 	 
-	public void alteraPesquisador(String atributo, String novoValor) {
-		super.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
-		//atributo.trim().toLowerCase();
-		if(atributo.equals("nome")) {
-			super.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
-			this.nome = novoValor;
-		} else if(atributo.equals("funcao")) {
-			super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
-			this.funcao = novoValor;
-		} else if(atributo.equals("biografia")) {
-			super.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
-			this.biografia = novoValor;
-		} else if(atributo.equals("email")) {
-			super.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
-			super.verificaEmail(novoValor);
-			this.email = novoValor;
-		} else if(atributo.equals("foto")) {
-			super.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
-			super.verificaURL(novoValor);
-			this.fotoURL = novoValor;
-		} else {
-			throw new IllegalArgumentException("Atributo invalido.");
-			
-		}
-		
-	}
-
-	
-	public void setFuncao(String funcao) {
-		this.funcao = funcao;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setBiografia(String biografia) {
-		this.biografia = biografia;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setFotoURL(String fotoURL) {
-		this.fotoURL = fotoURL;
-	}
+	 public void alteraPesquisador(String atributo, String novoValor) {
+		 super.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
+		 switch(atributo.trim()) {
+			case "NOME":
+				super.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
+				this.nome = novoValor;
+				break;
+			case "FUNCAO":
+				super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
+				this.funcao = novoValor;
+				break;
+			case "BIOGRAFIA":
+				super.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
+				this.biografia = novoValor;
+				break;
+			case "EMAIL":
+				super.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+				super.verificaEmail(novoValor);
+				this.email = novoValor;
+				break;
+			case "FOTO":
+				super.validaString(novoValor, "Campo foto nao pode ser nulo ou vazio.");
+				super.verificaURL(novoValor);
+				this.fotoURL = novoValor;
+				break;
+			default:
+				throw new IllegalArgumentException("Atributo invalido.");
+		 }
+	 }
 
 	@Override
 	public String toString() {
 		return String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email, this.fotoURL);
-		//return this.nome + "(" + this.funcao + ") - " + this.biografia + " - " + this.fotoURL;
 	}
 	
 

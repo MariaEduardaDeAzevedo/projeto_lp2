@@ -27,14 +27,9 @@ public class ControllerPesquisador extends Validacao {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
 		this.pesquisadores.get(email).alteraPesquisador(atributo, novoValor);	
-		
 	}		
 				
 			 
-		
-		
-	
-	
 	public void desativaPesquisador(String email) {
 		if(!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
