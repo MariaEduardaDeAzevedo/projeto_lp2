@@ -5,12 +5,16 @@ public class Facade {
     private ControllerAtividades cAtividade;
     private ControllerPesquisador cPesquisador;
     private ControllerPesquisas cPesquisa;
+    private ControllerObjetivos cObjetivo;
+    private ControllerProblemas cProblema;
 
     public Facade() {
 
         this.cAtividade = new ControllerAtividades();
         this.cPesquisa = new ControllerPesquisas();
         this.cPesquisador = new ControllerPesquisador();
+        this.cObjetivo = new ControllerObjetivos();
+        this.cProblema = new ControllerProblemas();
 
     }
 
@@ -71,6 +75,29 @@ public class Facade {
     }
 
     //US3
+    public void cadastraProblema(String descricao, int viabilidade) {
+    	cProblema.cadastraProblema(descricao, viabilidade);
+    }
+    
+    public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade) {
+    	cObjetivo.cadastraObjetivo(tipo, descricao, aderencia, viabilidade);
+    }
+    
+    public void apagarProblema(String codigo) throws Exception {
+    	cProblema.apagarProblema(codigo);
+    }
+    
+    public void apagarObjetivo(String codigo) throws Exception {
+    	cObjetivo.apagarObjetivo(codigo);
+    }
+    
+    public String exibeProblema(String codigo) throws Exception {
+    	return cProblema.exibeProblema(codigo);
+    }
+    
+    public String exibeObjetivo(String codigo) throws Exception {
+    	return cObjetivo.exibeObjetivo(codigo);
+    }
 
     //US4
     public void cadastraAtividade(String descricao, String risco, String descricaoRisco) {

@@ -25,7 +25,7 @@ public class Validacao {
 	}
 	
 	protected void validaTipo(String tipo, String mensagem) {
-		if (!tipo.equals("GERAL") || !tipo.equals("ESPECIFICO")) {
+		if (!tipo.equals("GERAL") && !tipo.equals("ESPECIFICO")) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
@@ -49,7 +49,7 @@ public class Validacao {
 	}
 
 	/**
-	 * Avalia se existe o objeto acessado. Utilize os métodos de colecoes contains,
+	 * Avalia se existe o objeto acessado. Utilize os mï¿½todos de colecoes contains,
 	 * conteinsKey para poder gerar um boolean referente a existencia do objeto
 	 * 
 	 * @param bool     Boolean com valor referente a existencia de um objeto no
