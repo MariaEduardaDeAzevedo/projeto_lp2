@@ -55,33 +55,25 @@ public class ControllerPesquisas extends Validacao{
 
     public void encerraPesquisa(String codigo, String motivo) {
         super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-        if (!pesquisas.containsKey(codigo)){
-            throw new IllegalArgumentException("Pesquisa nao encontrada.");
-        }
+        super.hasValor(pesquisas.containsKey(codigo),"Pesquisa nao encontrada.");
         pesquisas.get(codigo).encerraPesquisa();
     }
 
     public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
         super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-        if (!pesquisas.containsKey(codigo)){
-            throw new IllegalArgumentException("Pesquisa nao encontrada.");
-        }
+        super.hasValor(pesquisas.containsKey(codigo),"Pesquisa nao encontrada.");
         pesquisas.get(codigo).alteraPesquisa(conteudoASerAlterado, novoConteudo);
     }
 
     public String exibePesquisa(String codigo) {
         super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-        if (!pesquisas.containsKey(codigo)){
-            throw new IllegalArgumentException("Pesquisa nao encontrada.");
-        }
+        super.hasValor(pesquisas.containsKey(codigo),"Pesquisa nao encontrada.");
         return pesquisas.get(codigo).toString();
     }
 
     public boolean pesquisaEhAtiva(String codigo) {
         super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-        if (!pesquisas.containsKey(codigo)){
-            throw new IllegalArgumentException("Pesquisa nao encontrada.");
-        }
+        super.hasValor(pesquisas.containsKey(codigo),"Pesquisa nao encontrada.");
         return pesquisas.get(codigo).isAtivada();
     }
 }
