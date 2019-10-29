@@ -29,12 +29,17 @@ public class ControllerPesquisas extends Validacao{
                 throw new IllegalArgumentException("Formato do campo de interesse invalido.");
             }
         }
-        String codigo;
-        if (pesquisas.containsKey((campoDeInteresse.substring(0, 3) + "1").toUpperCase())){
-            codigo = (campoDeInteresse.substring(0, 3) + "2").toUpperCase();
+        String codigo = (campoDeInteresse.substring(0, 3) + "1").toUpperCase();
+        if (pesquisas.containsKey(codigo)){
+            while (true){
+                int numero = 2;
+                codigo = (campoDeInteresse.substring(0, 3) + numero).toUpperCase();
+                if (!pesquisas.containsKey(codigo)){
+                    break;
+                }
+            }
             pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
         } else {
-            codigo = (campoDeInteresse.substring(0, 3) + "1").toUpperCase();
             pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
         }
         return codigo;

@@ -23,21 +23,21 @@ public class Pesquisa extends Validacao {
     }
 
     public void ativaPesquisa() {
-        if (ativada == true) {
+        if (isAtivada()) {
             throw new IllegalArgumentException("Pesquisa ja ativada.");
         }
         this.ativada = true;
     }
 
     public void encerraPesquisa() {
-        if (ativada == false) {
+        if (!isAtivada()) {
             throw new IllegalArgumentException("Pesquisa desativada.");
         }
         this.ativada = false;
     }
 
     public void alteraPesquisa(String conteudoASerAlterado, String novoConteudo) {
-        if (this.ativada == false) {
+        if (!isAtivada()) {
             throw new IllegalArgumentException("Pesquisa desativada.");
         }
         if (conteudoASerAlterado.equals("DESCRICAO")) {
