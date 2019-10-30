@@ -12,6 +12,17 @@
 - Ambas as classes que adicionei herdam da classe Validacao, em virtude do uso constante dos casos de lançamento de exceções.
 
 ## US2
+#### Codificado:
+- Classe Pesquisador
+- Classe ControllerPesquisador
+- Métodos necessários para implementar os métodos da Facade US2.
+- Métodos de verificação de e-mail e URL na classe Validação.
+#### Falta:
+- Documentar ControllerPesquisador
+- Adicionar os testes de unidade
+#### Comentário:
+- O código atende à todas as especificações, obtendo êxito nos testes de aceitação.
+- Todas as classes adicionadas herdam da classe validacao devido à necessidade de se verificar entradas para lançar exceções constantemente.
 
 ## US3
 #### Codificado:
