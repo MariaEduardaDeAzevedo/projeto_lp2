@@ -4,51 +4,107 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que representa uma atividade de pesquisa
+ * 
+ * @author Maria Eduarda Eduarda de Azevedo Silva - 119110210
+ *
+ */
 public class Atividade extends Validacao {
 
+	/**
+	 * Descricao da atividade
+	 */
 	private String descricao;
+
+	/**
+	 * Tempo de duracao da atividade em dias
+	 */
 	private Period duracao;
-	private List<Item> resultados;
+
+	/**
+	 * Lista de itens que compoem uma atividade
+	 */
+	private List<Item> itens;
+
+	/**
+	 * Nivel de risco da atividade
+	 */
 	private String risco;
+
+	/**
+	 * Descricao do risco da atividade
+	 */
 	private String descricaoRisco;
+
+	/**
+	 * ID que identifica unicamente uma atividade
+	 */
 	private String id;
 
+	/**
+	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
+	 * sua descricao e um ID
+	 * 
+	 * @param descricao      String que indica a descricao da atividade
+	 * @param risco          String que indica o nivel do risco da atividade,
+	 *                       podendo ser ALTO, MEDIO ou BAIXO
+	 * @param descricaoRisco String que indica a descricao do risco
+	 * @param id             String no formato An, no qual n e um numero inteiro,
+	 *                       que identifica um objeto Atividade
+	 */
 	public Atividade(String descricao, String risco, String descricaoRisco, String id) {
 
 		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
 		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
 		super.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
-		
+
 		List valores = new ArrayList<String>();
 		valores.add("BAIXO");
 		valores.add("MEDIO");
 		valores.add("ALTO");
-		
+
 		super.validaValoresPermitidos(valores, risco, "Valor invalido do nivel do risco.");
 
 		this.descricao = descricao;
 		this.risco = risco;
 		this.descricaoRisco = descricaoRisco;
 		this.duracao = Period.ofDays(8);
-		this.resultados = new ArrayList<Item>();
+		this.itens = new ArrayList<Item>();
 		this.id = id;
 
 	}
 
+	/**
+	 * Cria um objeto Item e o adiciona na lista de itens
+	 *
+	 * @param descricao String que indica a descricao de um item a ser cadastrado na
+	 *                  atividade
+	 */
 	public void cadastrarItem(String descricao) {
 
-		this.resultados.add(new Item(descricao));
+		super.validaString(descricao, "Item nao pode ser nulo ou vazio.");
+		this.itens.add(new Item(descricao));
 
 	}
 
 	@Override
+	/**
+	 * Cria e retorna uma representacao em String de um objeto Atividade. A
+	 * representacao em String de um objeto Atividade segue o seguinte modelo:
+	 * "Descricao da atividade (RISCO - descricao do risco)" seguido de uma listagem
+	 * de seus itens
+	 * 
+	 * @return String com representacao textual de um objeto Atividade
+	 * 
+	 */
 	public String toString() {
 
 		String listagem = String.format("%s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
 
-		for (int i = 0; i < this.resultados.size(); i++) {
+		for (int i = 0; i < this.itens.size(); i++) {
 
-			listagem += " | " + this.resultados.get(i).toString();
+			listagem += " | " + this.itens.get(i).toString();
 
 		}
 
@@ -57,6 +113,12 @@ public class Atividade extends Validacao {
 	}
 
 	@Override
+	/**
+	 * Gera e retorna uma representacao em inteiro de um objeto Atividade, partindo
+	 * de seu ID
+	 * 
+	 * @return int com representacao em inteiro de um objeto Atividade
+	 */
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -65,6 +127,13 @@ public class Atividade extends Validacao {
 	}
 
 	@Override
+	/**
+	 * Compara dois objetos e retorna um boolean referente a sua equidade Dois
+	 * objetos Atividade sao tidos como iguais quando tem o mesmo id
+	 * 
+	 * @return boolean referente a equidade dos objetos
+	 * 
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -81,11 +150,17 @@ public class Atividade extends Validacao {
 		return true;
 	}
 
+	/**
+	 * Itera pelos itens do objeto Atividade e retorna a quantidade de itens que
+	 * estao pendentes
+	 * 
+	 * @return inteiro com a quantidade de itens pendentes
+	 */
 	public int contaItensPendentes() {
 
 		int contador = 0;
 
-		for (Item i : this.resultados) {
+		for (Item i : this.itens) {
 
 			if (!i.getStatus()) {
 
@@ -99,11 +174,17 @@ public class Atividade extends Validacao {
 
 	}
 
+	/**
+	 * Itera pelos itens do objeto Atividade e retorna a quantidade de itens que ja
+	 * foram realizados
+	 * 
+	 * @return inteiro com quantidade de itens que ja foram realizados
+	 */
 	public int contaItensRealizados() {
 
 		int contador = 0;
 
-		for (Item i : this.resultados) {
+		for (Item i : this.itens) {
 
 			if (i.getStatus()) {
 
