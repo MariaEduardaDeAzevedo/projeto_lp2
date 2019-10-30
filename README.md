@@ -41,12 +41,14 @@
 - Classe Atividade
 - Classe ControllerAtividades
 - Métodos necessários para implementar os métodos da Facade da US4
+- Métodos da US4 na Facade
 - Iniciada Classe Validacao
 #### Falta:
 - ~~Tratar erros~~
 - ~~Adequar EasyAccepts~~
-- Documentar
+- ~~Documentar~~
 #### Comentário:
 - ~~Ainda irei revisar o código e adequar melhor à especificação. Codifiquei uma primeira versão para o que foi pedido na primeira parte do projeto~~
 - **Adicionei uma Classe Validacao e proponho que a gente faça dela uma classe mãe e todas as classes do nosso sistema herdem dela, já que os casos de lançamento de exceções são comuns para todas as classes.** 
 - ~~Adequei parte dos EasyAccepts. Ficaram dois erros que não consegui identificar de onde vieram e desconfio de um problema nos testes da US4.~~
+- Talvez ainda altere a implementação de alguns detalhes.
