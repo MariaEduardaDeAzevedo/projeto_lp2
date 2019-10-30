@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/projeto_lp2/PesquisadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/projeto_lp2/PesquisadorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Atividade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Atividade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerAtividades.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerAtividades.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Facade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Validacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Validacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto_lp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projeto_lp2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto_lp2/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_lp2/ControllerPesquisas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto_lp2/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_lp2/Pesquisa.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="178" />
+    <option name="myElementSize" value="163" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -117,7 +109,8 @@
       <option name="presentableId" value="Default" />
       <updated>1572348044473</updated>
       <workItem from="1572365805401" duration="496000" />
-      <workItem from="1572377882934" duration="4922000" />
+      <workItem from="1572377882934" duration="6648000" />
+      <workItem from="1572389253687" duration="2647000" />
     </task>
     <servers />
   </component>
