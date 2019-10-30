@@ -61,8 +61,8 @@ public class Validacao {
 	}
 
 	/**
-	 * Avalia se existe o objeto acessado. Utilize os m�todos de colecoes contains,
-	 * conteinsKey para poder gerar um boolean referente a existencia do objeto
+	 * Avalia se existe o objeto acessado. Utilize os metodos de colecoes contains,
+	 * containsKey para poder gerar um boolean referente a existencia do objeto
 	 * 
 	 * @param bool     Boolean com valor referente a existencia de um objeto no
 	 *                 sistema

@@ -1,6 +1,8 @@
 package projeto_lp2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ControllerAtividades extends Validacao {
@@ -20,6 +22,11 @@ public class ControllerAtividades extends Validacao {
 		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
 		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
 		super.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		List valores = new ArrayList<String>();
+		valores.add("ALTO");
+		valores.add("MEDIO");
+		valores.add("BAIXO");
+		super.validaValoresPermitidos(valores, risco, "Valor invalido do nivel do risco.");
 		
 		String id = String.format("A%d", this.proximoId);
 		this.proximoId ++;
