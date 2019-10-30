@@ -36,7 +36,17 @@ class ProblemaTest {
 		});
 
 	}
+	
+	
+	void testProblemaDescricaoNull() {
 
+		assertThrows(NullPointerException.class, () -> {
+			Problema problema = new Problema(null, 5);
+		});
+
+	}
+
+	
 	@Test
 	void testProblemaViabilidadeInvalidaMenor() {
 
@@ -53,6 +63,14 @@ class ProblemaTest {
 			Problema problema = new Problema("A problematica da supremacia quantica", 6);
 		});
 
+	}
+	
+	@Test
+	void testToString() {
+		
+		Problema problema = new Problema("A problematica de discursos de odio destinado a minorias no Twitter", 5);
+		assertEquals("A problematica de discursos de odio destinado a minorias no Twitter - 5", problema.toString());
+		
 	}
 
 }
