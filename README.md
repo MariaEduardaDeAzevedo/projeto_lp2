@@ -14,6 +14,14 @@
 ## US2
 
 ## US3
+#### Codificado:
+- Classe Objetivo e ControllerObjetivos
+-Classe Problema e ControllerProblemas
+- Métodos necessários para implementar os métodos da Facade da US3
+#### Falta:
+- Adicionar os testes de unidade
+#### Comentário:
+- O codigo atende à todas as especificações e os testes de aceitação não apontam nenhum erro neste.
 
 ## US4
 #### Codificado:
