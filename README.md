@@ -32,9 +32,10 @@
 - Métodos necessários para implementar os métodos da Facade da US4
 - Iniciada Classe Validacao
 #### Falta:
-- Tratar erros
-- Adequar EasyAccepts
+- ~~Tratar erros~~
+- ~~Adequar EasyAccepts~~
+- Documentar
 #### Comentário:
 - ~~Ainda irei revisar o código e adequar melhor à especificação. Codifiquei uma primeira versão para o que foi pedido na primeira parte do projeto~~
-- Adicionei uma Classe Validacao e proponho que a gente faça dela uma classe mãe e todas as classes do nosso sistema herdem dela, já que os casos de lançamento de exceções são comuns para todas as classes. 
-- Adequei parte dos EasyAccepts. Ficaram dois erros que não consegui identificar de onde vieram e desconfio de um problema nos testes da US4.
+- **Adicionei uma Classe Validacao e proponho que a gente faça dela uma classe mãe e todas as classes do nosso sistema herdem dela, já que os casos de lançamento de exceções são comuns para todas as classes.** 
+- ~~Adequei parte dos EasyAccepts. Ficaram dois erros que não consegui identificar de onde vieram e desconfio de um problema nos testes da US4.~~
