@@ -25,12 +25,20 @@ public class Validacao {
 
 	}
 
+	/**
+	 * Metodo que verifica a validacao do e-mail.
+	 * @param email E-mail do pesquisador
+	 */
 	protected void verificaEmail(String email) {
 		if (email.startsWith("@") || email.endsWith("@") || email.indexOf("@") == -1) {
 			throw new IllegalArgumentException("Formato de email invalido.");
 		}
 	}
 
+	/**
+	 * Metodo que verifica a validacao da URL da foto do pesquisador.
+	 * @param url
+	 */
 	protected void verificaURL(String url) {
 		if (url.length() < 8 || (!url.substring(0, 7).equals("http://") && !url.substring(0, 8).equals("https://"))) {
 			throw new IllegalArgumentException("Formato de foto invalido.");

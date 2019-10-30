@@ -18,7 +18,6 @@
 - Métodos necessários para implementar os métodos da Facade US2.
 - Métodos de verificação de e-mail e URL na classe Validação.
 #### Falta:
-- Documentar ControllerPesquisador
 - Adicionar os testes de unidade
 #### Comentário:
 - O código atende à todas as especificações, obtendo êxito nos testes de aceitação.
