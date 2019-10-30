@@ -17,6 +17,10 @@ public class ControllerAtividades extends Validacao {
 	
 	public String cadastrarAtividade(String descricao, String risco, String descricaoRisco) {
 		
+		super.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		super.validaString(risco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		super.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		
 		String id = String.format("A%d", this.proximoId);
 		this.proximoId ++;
 		this.atividades.put(id, new Atividade(descricao, risco, descricaoRisco, id));
