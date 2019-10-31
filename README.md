@@ -6,10 +6,10 @@
 - Classe ControllerPesquisas
 - Métodos necessários para implementar os métodos da Facade da US1
 #### Falta:
-- Adicionar os testes de unidade
+
 #### Comentário:
 - Até o momento, o código atende às especificações pedidas na US1, passando nos testes do EasyAccept propostos até o momento.
-- Ambas as classes que adicionei herdam da classe Validacao, em virtude do uso constante dos casos de lançamento de exceções.
+- Ambas as classes adicionadas herdam da classe Validacao, em virtude do uso constante dos casos de lançamento de exceções.
 
 ## US2
 #### Codificado:
