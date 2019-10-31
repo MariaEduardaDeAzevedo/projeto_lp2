@@ -10,19 +10,11 @@ class ProblemaTest {
 
 	private Problema problemaComum;
 
-	@BeforeEach
-	void testInit() {
-
-		this.problemaComum = new Problema(
-				"O problema do ainda baixo numero de profissionais mulheres atuando na area de TI", 5);
-
-	}
-
 	@Test
 	void testProblemaComum() {
 
 		Problema problema = new Problema("A problematica de casos de homofobia em servicos de motorista por aplicativo",
-				5);
+				5, "P1");
 		assertEquals("A problematica de casos de homofobia em servicos de motorista por aplicativo - 5",
 				problema.toString());
 
@@ -32,7 +24,7 @@ class ProblemaTest {
 	void testProblemaDescricaoVazia() {
 
 		assertThrows(IllegalArgumentException.class, () -> {
-			Problema problema = new Problema("", 5);
+			Problema problema = new Problema("", 5, "P1");
 		});
 
 	}
@@ -41,7 +33,7 @@ class ProblemaTest {
 	void testProblemaDescricaoNull() {
 
 		assertThrows(NullPointerException.class, () -> {
-			Problema problema = new Problema(null, 5);
+			Problema problema = new Problema(null, 5, "P1");
 		});
 
 	}
@@ -51,7 +43,7 @@ class ProblemaTest {
 	void testProblemaViabilidadeInvalidaMenor() {
 
 		assertThrows(IllegalArgumentException.class, () -> {
-			Problema problema = new Problema("A problematica da supremacia quantica", 0);
+			Problema problema = new Problema("A problematica da supremacia quantica", 0, "P1");
 		});
 
 	}
@@ -60,7 +52,7 @@ class ProblemaTest {
 	void testProblemaViabilidadeInvalidaMaior() {
 
 		assertThrows(IllegalArgumentException.class, () -> {
-			Problema problema = new Problema("A problematica da supremacia quantica", 6);
+			Problema problema = new Problema("A problematica da supremacia quantica", 6, "P1");
 		});
 
 	}
@@ -68,7 +60,7 @@ class ProblemaTest {
 	@Test
 	void testToString() {
 		
-		Problema problema = new Problema("A problematica de discursos de odio destinado a minorias no Twitter", 5);
+		Problema problema = new Problema("A problematica de discursos de odio destinado a minorias no Twitter", 5, "P1");
 		assertEquals("A problematica de discursos de odio destinado a minorias no Twitter - 5", problema.toString());
 		
 	}
