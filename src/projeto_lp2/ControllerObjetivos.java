@@ -64,7 +64,7 @@ public class ControllerObjetivos extends Validacao {
 		if (!objetivos.containsKey(idObjetivo)) {
 			throw new Exception("Objetivo nao encontrado");
 		}
-		return idObjetivo + " - " + objetivos.get(idObjetivo).toString();
+		return objetivos.get(idObjetivo).toString();
 	}
 	
 	/**

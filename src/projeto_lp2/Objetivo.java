@@ -63,7 +63,7 @@ public class Objetivo extends Validacao {
 	@Override
 	public String toString() {
 		int valor = aderencia + viabilidade;
-		return tipo + " - " + descricao + " - " + valor;
+		return id + " - " + tipo + " - " + descricao + " - " + valor;
 	}
 
 	/**

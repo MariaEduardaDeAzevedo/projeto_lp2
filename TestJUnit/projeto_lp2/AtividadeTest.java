@@ -113,22 +113,57 @@ class AtividadeTest {
 
 	@Test
 	void testContaItensPendentes() {
-		fail("Not yet implemented");
+		assertEquals(0, atividadeBase1.contaItensPendentes());
+		assertEquals(1, atividadeBase2.contaItensPendentes());
+		assertEquals(2, atividadeBase3.contaItensPendentes());
 	}
 
 	@Test
 	void testContaItensRealizados() {
-		fail("Not yet implemented");
+		assertEquals(0, atividadeBase1.contaItensRealizados());
+		assertEquals(0, atividadeBase2.contaItensRealizados());
+		assertEquals(0, atividadeBase3.contaItensRealizados());
 	}
 	
 	@Test
 	void testEqualsObject() {
-		fail("Not yet implemented");
+		assertFalse(atividadeBase1.equals(atividadeBase2));
+		assertFalse(atividadeBase1.equals(atividadeBase3));
+		assertFalse(atividadeBase3.equals(atividadeBase2));
+		assertTrue(atividadeBase1.equals(atividadeBase1));
+		assertTrue(atividadeBase2.equals(atividadeBase2));
+		assertTrue(atividadeBase3.equals(atividadeBase3));
+		Atividade atividadeBase1clone = new Atividade("Cultivo de espécies de plantas por hidroponia", "BAIXO", "Não há risco de haver nenhum tipo de prejuízo com este experimento", "A1");
+		Atividade mesmoId1 = new Atividade("Buscar uma resposta do por quê Joy Division tem o melhor disco do post punk", "ALTO", "Pessoas podem se ofender com o propósito da pesquisa", "A1");
+		Atividade atividadeBase2clone = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		Atividade mesmoId2 = new Atividade("Pesquisar o significado da letra da primeira música do disco Kid A", "MEDIO", "Pode ser difícil de entender o que significa cada palavra", "A2");
+		Atividade atividadeBase3clone = new Atividade("Busca de uma forma de unificar a teoria da relatividade geral ao princípio da incerteza como forma de buscar as condições iniciais do universo através da utilização de um acelerador de partículas", "ALTO", "Qualquer erro matemático nos cálculos pode ocasionar uma falha no acelerador de partículas, o que pode causar danos irreversíveis ao local do experimento", "A3");
+		Atividade mesmoId3 = new Atividade("Pesquisar o percentual de pessoas que viram 2001 e entenderam o final", "BAIXO", "Muitas pessoas não entenderam o final", "A3");
+		assertTrue(atividadeBase1.equals(atividadeBase1clone));
+		assertTrue(atividadeBase1.equals(mesmoId1));
+		assertTrue(atividadeBase2.equals(atividadeBase2clone));
+		assertTrue(atividadeBase2.equals(mesmoId2));
+		assertTrue(atividadeBase3.equals(atividadeBase3clone));
+		assertTrue(atividadeBase3.equals(mesmoId3));
 	}
 	
 	@Test
 	void testHashCode() {
-		fail("Not yet implemented");
+		assertEquals(atividadeBase1.hashCode(), atividadeBase1.hashCode());
+		assertEquals(atividadeBase2.hashCode(), atividadeBase2.hashCode());
+		assertEquals(atividadeBase3.hashCode(), atividadeBase3.hashCode());
+		Atividade atividadeBase1clone = new Atividade("Cultivo de espécies de plantas por hidroponia", "BAIXO", "Não há risco de haver nenhum tipo de prejuízo com este experimento", "A1");
+		Atividade mesmoId1 = new Atividade("Buscar uma resposta do por quê Joy Division tem o melhor disco do post punk", "ALTO", "Pessoas podem se ofender com o propósito da pesquisa", "A1");
+		Atividade atividadeBase2clone = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		Atividade mesmoId2 = new Atividade("Pesquisar o significado da letra da primeira música do disco Kid A", "MEDIO", "Pode ser difícil de entender o que significa cada palavra", "A2");
+		Atividade atividadeBase3clone = new Atividade("Busca de uma forma de unificar a teoria da relatividade geral ao princípio da incerteza como forma de buscar as condições iniciais do universo através da utilização de um acelerador de partículas", "ALTO", "Qualquer erro matemático nos cálculos pode ocasionar uma falha no acelerador de partículas, o que pode causar danos irreversíveis ao local do experimento", "A3");
+		Atividade mesmoId3 = new Atividade("Pesquisar o percentual de pessoas que viram 2001 e entenderam o final", "BAIXO", "Muitas pessoas não entenderam o final", "A3");
+		assertEquals(atividadeBase1.hashCode(), atividadeBase1clone.hashCode());
+		assertEquals(atividadeBase1.hashCode(), mesmoId1.hashCode());
+		assertEquals(atividadeBase2.hashCode(), atividadeBase2clone.hashCode());
+		assertEquals(atividadeBase2.hashCode(), mesmoId2.hashCode());
+		assertEquals(atividadeBase3.hashCode(), atividadeBase3clone.hashCode());
+		assertEquals(atividadeBase3.hashCode(), mesmoId3.hashCode());
 	}
 
 }
