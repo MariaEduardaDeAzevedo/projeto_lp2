@@ -22,7 +22,8 @@ public class ControllerPesquisas extends Validacao {
 
     /**
      * Cadastra uma pesquisa no sistema a partir dos parametros.
-     * @param descricao descricao da pesquisa que se deseja adicionar.
+     *
+     * @param descricao        descricao da pesquisa que se deseja adicionar.
      * @param campoDeInteresse campo de interesse da pesquisa que se deseja adicionar.
      * @return String, caso o cadastro da pesquisa seja concluído, representando o codigo da pesquisa.
      */
@@ -52,15 +53,14 @@ public class ControllerPesquisas extends Validacao {
                     break;
                 }
             }
-            pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
-        } else {
-            pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
         }
+        pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
         return codigo;
     }
 
     /**
      * Altera o status de uma pesquisa cadastrada para ativa.
+     *
      * @param codigo codigo da pesquisa que se deseja alterar o status.
      */
     public void ativaPesquisa(String codigo) {
@@ -72,6 +72,7 @@ public class ControllerPesquisas extends Validacao {
 
     /**
      * Altera o status de uma pesquisa cadastrada para inativa.
+     *
      * @param codigo codigo da pesquisa que se deseja alterar o status.
      * @param motivo motivo pelo qual a pesquisa está sendo desativada.
      */
@@ -83,9 +84,10 @@ public class ControllerPesquisas extends Validacao {
 
     /**
      * Altera a descricao ou campo de interesse de uma pesquisa cadastrada.
-     * @param codigo codigo da pesquisa que se deseja alterar.
+     *
+     * @param codigo               codigo da pesquisa que se deseja alterar.
      * @param conteudoASerAlterado conteudo da pesquisa que se deseja alterar.
-     * @param novoConteudo conteudo que devera substituir o anteriormente cadastrado na pesquisa.
+     * @param novoConteudo         conteudo que devera substituir o anteriormente cadastrado na pesquisa.
      */
     public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
         super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
@@ -95,6 +97,7 @@ public class ControllerPesquisas extends Validacao {
 
     /**
      * Exibe a representacao de uma pesquisa cadastrada.
+     *
      * @param codigo codigo da pesquisa que se deseja exibir.
      * @return String contendo a representacao da pesquisa.
      */
@@ -106,6 +109,7 @@ public class ControllerPesquisas extends Validacao {
 
     /**
      * Retorna o status atual da pesquisa cadastrada.
+     *
      * @param codigo codigo da pesquisa que se deseja verificar o status.
      * @return boolean representando se a pesquisa esta ativa ou nao.
      */
