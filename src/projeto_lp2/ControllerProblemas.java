@@ -41,7 +41,7 @@ public class ControllerProblemas extends Validacao {
 		super.validaValor(viabilidade, "Valor invalido de viabilidade.");
 		String idProblema = "P" + idNumber;
 		idNumber++;
-		Problema novoProblema = new Problema(descricao, viabilidade);
+		Problema novoProblema = new Problema(descricao, viabilidade, idProblema);
 		problemas.put(idProblema, novoProblema);
 	}
 	

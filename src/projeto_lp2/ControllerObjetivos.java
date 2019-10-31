@@ -48,7 +48,7 @@ public class ControllerObjetivos extends Validacao {
 		super.validaValor(viabilidade, "Valor invalido de viabilidade.");
 		String idObjetivo = "O" + idNumber;
 		idNumber++;
-		objetivos.put(idObjetivo, new Objetivo(tipo, descricao, aderencia, viabilidade));
+		objetivos.put(idObjetivo, new Objetivo(tipo, descricao, aderencia, viabilidade, idObjetivo));
 	}
 	
 	/**
