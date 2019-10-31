@@ -18,11 +18,6 @@ public class Atividade extends Validacao {
 	private String descricao;
 
 	/**
-	 * Tempo de duracao da atividade em dias
-	 */
-	private Period duracao;
-
-	/**
 	 * Lista de itens que compoem uma atividade
 	 */
 	private List<Item> itens;
@@ -69,7 +64,6 @@ public class Atividade extends Validacao {
 		this.descricao = descricao;
 		this.risco = risco;
 		this.descricaoRisco = descricaoRisco;
-		this.duracao = Period.ofDays(8);
 		this.itens = new ArrayList<Item>();
 		this.id = id;
 
