@@ -1,5 +1,7 @@
 package projeto_lp2;
 
+import java.util.Objects;
+
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
  */
@@ -96,5 +98,27 @@ public class Pesquisa extends Validacao {
      */
     public boolean isAtivada() {
         return ativada;
+    }
+
+    /**
+     * Compara se duas pesquisas sao iguais.
+     * @param o pesquisa com qual se deseja comparar.
+     * @return boolean confirmando se as pesquisas sao iguais ou nao.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pesquisa pesquisa = (Pesquisa) o;
+        return Objects.equals(codigo, pesquisa.codigo);
+    }
+
+    /**
+     * Gera um codigo unico da Pesquisa a partir do seu atributo Codigo.
+     * @return int representando o codigo unico da pesquisa.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
     }
 }
