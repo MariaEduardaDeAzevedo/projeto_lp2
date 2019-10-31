@@ -28,8 +28,9 @@
 - Classe Objetivo e ControllerObjetivos.
 -Classe Problema e ControllerProblemas.
 - Métodos necessários para implementar os métodos da Facade da US3.
+-Testes de unidade da US4.
 #### Falta:
-- Adicionar os testes de unidade.
+
 #### Comentário:
 - O codigo atende à todas as especificações e os testes de aceitação não apontam nenhum erro neste.
 - Todas as classes adicionadas herdam da classe Validacao devido à necessidade de se verificar entradas para lançar exceções constantemente.
