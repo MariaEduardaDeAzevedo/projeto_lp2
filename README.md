@@ -1,6 +1,8 @@
 # PROJETO LP2
 
-## US1
+## Parte 1
+
+### US1
 #### Codificado:
 - Classe Pesquisa
 - Classe ControllerPesquisas
@@ -11,7 +13,7 @@
 - Até o momento, o código atende às especificações pedidas na US1, passando nos testes do EasyAccept propostos até o momento.
 - Ambas as classes adicionadas herdam da classe Validacao, em virtude do uso constante dos casos de lançamento de exceções.
 
-## US2
+### US2
 #### Codificado:
 - Classe Pesquisador
 - Classe ControllerPesquisador
@@ -24,7 +26,7 @@
 - O código atende à todas as especificações, obtendo êxito nos testes de aceitação.
 - Todas as classes adicionadas herdam da classe validacao devido à necessidade de se verificar entradas para lançar exceções constantemente.
 
-## US3
+### US3
 #### Codificado:
 - Classe Objetivo e ControllerObjetivos.
 -Classe Problema e ControllerProblemas.
@@ -36,7 +38,7 @@
 - O codigo atende à todas as especificações e os testes de aceitação não apontam nenhum erro neste.
 - Todas as classes adicionadas herdam da classe Validacao devido à necessidade de se verificar entradas para lançar exceções constantemente.
 
-## US4
+### US4
 #### Codificado:
 - Classe Item
 - Classe Atividade
@@ -53,3 +55,7 @@
 - **Adicionei uma Classe Validacao e proponho que a gente faça dela uma classe mãe e todas as classes do nosso sistema herdem dela, já que os casos de lançamento de exceções são comuns para todas as classes.** 
 - ~~Adequei parte dos EasyAccepts. Ficaram dois erros que não consegui identificar de onde vieram e desconfio de um problema nos testes da US4.~~
 - Talvez ainda altere a implementação de alguns detalhes.
+
+## Parte 2
+### US5
+- Iniciei alterações para a parte 2. Como sujerido pelo monitor, dividi a parta src em mais de um pacote, para organizar melhor as classes. Iniciei também algumas alterações para minha US e adicionei os EasyAccepts da parte 2.
