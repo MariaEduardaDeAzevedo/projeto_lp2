@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import base.Problema;
+
 class ProblemaTest {
 
 	private Problema problemaComum;

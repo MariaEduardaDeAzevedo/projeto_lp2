@@ -1,9 +1,11 @@
-package projeto_lp2;
+package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import base.Atividade;
 
 /**
  * Entidade controladora de objetos Atividade e Item

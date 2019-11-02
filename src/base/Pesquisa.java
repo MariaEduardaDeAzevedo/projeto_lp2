@@ -1,6 +1,8 @@
-package projeto_lp2;
+package base;
 
 import java.util.Objects;
+
+import controller.Validacao;
 
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
@@ -26,7 +28,11 @@ public class Pesquisa extends Validacao {
      * Armazena o status da pesquisa.
      */
     private boolean ativada;
-
+    
+    private Problema problema;
+    
+    private Objetivo objetivo;
+    
     /**
      * Constroi o objeto Pesquisa a partir dos parametros.
      * @param codigo codigo da pesquisa.
@@ -121,4 +127,17 @@ public class Pesquisa extends Validacao {
     public int hashCode() {
         return Objects.hash(codigo);
     }
+    
+    public void setProblema(Problema problema) {
+    	
+    	this.problema = problema;
+    	
+    }
+    
+    public void setObjetivo(Objetivo objetivo) {
+    	
+    	this.objetivo = objetivo;
+    	
+    }
+    
 }

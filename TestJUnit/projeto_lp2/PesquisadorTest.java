@@ -3,6 +3,9 @@ package projeto_lp2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import base.Pesquisa;
+import base.Pesquisador;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PesquisadorTest {

@@ -1,7 +1,9 @@
-package projeto_lp2;
+package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import base.Pesquisador;
 
 /**
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador. 

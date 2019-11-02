@@ -1,4 +1,6 @@
-package projeto_lp2;
+package base;
+
+import controller.Validacao;
 
 /**
  * Representação de um problema de um problema de uma pesquisa.

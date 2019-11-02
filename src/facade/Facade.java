@@ -1,4 +1,10 @@
-package projeto_lp2;
+package facade;
+
+import controller.ControllerAtividades;
+import controller.ControllerObjetivos;
+import controller.ControllerPesquisador;
+import controller.ControllerPesquisas;
+import controller.ControllerProblemas;
 
 public class Facade {
 
@@ -134,6 +140,30 @@ public class Facade {
 
         return this.cAtividade.contaItensRealizados(id);
 
+    }
+    
+    public boolean associaProblema(String idPesquisa, String idProblema) {
+    	
+    	return this.cPesquisa.associaProblema(idPesquisa, idProblema);
+    	
+    }
+    
+    public boolean desassociaProblema(String idPesquisa, String idProblema) {
+    	
+    	return this.cPesquisa.desassociaProblema(idPesquisa, idProblema);
+    	
+    }
+    
+    public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
+    	
+    	return this.cPesquisa.associaObjetivo(idPesquisa, idObjetivo);
+    	
+    }
+    
+    public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
+    	
+    	return this.cPesquisa.desassociaObjetivo(idPesquisa, idObjetivo);
+    	
     }
 
 }

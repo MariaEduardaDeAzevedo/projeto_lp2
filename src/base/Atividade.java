@@ -1,8 +1,10 @@
-package projeto_lp2;
+package base;
 
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+
+import controller.Validacao;
 
 /**
  * Classe que representa uma atividade de pesquisa

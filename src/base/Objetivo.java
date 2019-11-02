@@ -1,4 +1,6 @@
-package projeto_lp2;
+package base;
+
+import controller.Validacao;
 
 /**
  * Representação de um objetivo de uma pesquisa. Um objetivo define a finalidade de uma pesquisa e pode ser de dois tipos: geral ou específico.

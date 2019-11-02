@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import base.Item;
+
 class ItemTest {
 	private Item itemBase1;
 	private Item itemBase2;

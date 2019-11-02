@@ -1,7 +1,9 @@
-package projeto_lp2;
+package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import base.Problema;
 
 /**
  * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operações relacionadas
@@ -73,5 +75,13 @@ public class ControllerProblemas extends Validacao {
 			throw new Exception("Problema nao encontrado");
 		}
 		problemas.remove(idProblema);
+	}
+	
+	public Problema getProblema(String id) {
+		
+		super.hasValor(this.problemas.containsKey(id), "Problema nao encontrado.");
+		
+		return this.problemas.get(id);
+		
 	}
 }

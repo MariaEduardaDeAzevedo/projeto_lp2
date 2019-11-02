@@ -1,6 +1,8 @@
-package projeto_lp2;
+package controller;
 
 import java.util.List;
+
+import excecoes.ActivationException;
 
 public class Validacao {
 
@@ -91,6 +93,16 @@ public class Validacao {
 
 		}
 
+	}
+
+	public void validaStatus(boolean status, String mensagem) {
+		
+		if (!status) {
+			
+			throw new ActivationException(mensagem);
+			
+		}
+		
 	}
 
 }

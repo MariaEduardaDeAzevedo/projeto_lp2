@@ -1,7 +1,10 @@
-package projeto_lp2;
+package controller;
 
 import java.util.Map;
 import java.util.TreeMap;
+
+import base.Pesquisa;
+import base.Problema;
 
 /**
  * Classe Controller responsavel pelos metodos referentes as pesquisas do sistema.
@@ -12,12 +15,15 @@ public class ControllerPesquisas extends Validacao {
      * Armazena um mapa de pesquisas a partir dos seus codigos.
      */
     private Map<String, Pesquisa> pesquisas;
+	
+    private Conector conector;
 
     /**
      * Constroi o objeto ControllerPesquisas e inicializa seus atributos.
      */
     public ControllerPesquisas() {
         this.pesquisas = new TreeMap<String, Pesquisa>();
+        this.conector = new Conector();
     }
 
     /**
@@ -118,4 +124,41 @@ public class ControllerPesquisas extends Validacao {
         super.hasValor(pesquisas.containsKey(codigo), "Pesquisa nao encontrada.");
         return pesquisas.get(codigo).isAtivada();
     }
+   
+    
+    public boolean associaProblema(String idPesquisa, String idProblema) {
+    	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	this.pesquisas.get(idPesquisa).setProblema(this.conector.getProblema(idProblema));
+    	return true;
+    	
+    }
+    
+    public boolean desassociaProblema(String idPesquisa, String idProblema) {
+    	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	this.pesquisas.get(idPesquisa).setProblema(null);
+    	return true;
+    	
+    }
+   
+    public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
+    	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	this.pesquisas.get(idPesquisa).setObjetivo(this.conector.getObjetivo(idObjetivo));
+    	return true;
+    	
+    }
+    
+    public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
+    	super.validaString(idPesquisa, "Nulo ou vazio.");
+    	super.validaString(idObjetivo, "Nulo ou vazio.");
+    	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
+    	
+    	
+    	
+    	this.pesquisas.get(idPesquisa).setObjetivo(null);
+    	
+    	return true;
+    	
+    }
+    
 }

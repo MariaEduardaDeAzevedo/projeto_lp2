@@ -1,4 +1,6 @@
-package projeto_lp2;
+package base;
+
+import controller.Validacao;
 
 /**
  * Representacao de um pesquisador, que contem funcao, nome, biografia, email e url da foto.

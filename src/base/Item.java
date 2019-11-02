@@ -1,4 +1,6 @@
-package projeto_lp2;
+package base;
+
+import controller.Validacao;
 
 /**
  * Classe que representa um item de uma atividade de pesquisa

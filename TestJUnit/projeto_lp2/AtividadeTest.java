@@ -3,6 +3,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import base.Atividade;
+
 class AtividadeTest {
 	private Atividade atividadeBase1;
 	private Atividade atividadeBase2;

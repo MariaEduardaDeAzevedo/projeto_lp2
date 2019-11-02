@@ -1,6 +1,8 @@
-package projeto_lp2;
+package controller;
 import java.util.HashMap;
 import java.util.Map;
+
+import base.Objetivo;
 
 /**
  * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contém os métodos utilizados pela fachada
@@ -79,6 +81,12 @@ public class ControllerObjetivos extends Validacao {
 			throw new Exception("Objetivo nao encontrado");
 		}
 		objetivos.remove(idObjetivo);
+	}
+
+	public Objetivo getObjetivo(String id) {
+		
+		return this.objetivos.get(id);
+	
 	}
 	
 }
