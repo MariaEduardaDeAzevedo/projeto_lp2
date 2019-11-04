@@ -79,7 +79,7 @@ public class ControllerProblemas extends Validacao {
 	
 	public Problema getProblema(String id) {
 		
-		super.hasValor(this.problemas.containsKey(id), "Problema nao encontrado.");
+		// super.hasValor(this.problemas.containsKey(id), "Problema nao encontrado.");
 		
 		return this.problemas.get(id);
 		

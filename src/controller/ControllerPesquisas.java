@@ -126,15 +126,33 @@ public class ControllerPesquisas extends Validacao {
     }
    
     
-    public boolean associaProblema(String idPesquisa, String idProblema) {
+    public String associaProblema(String idPesquisa, String idProblema) {
+    	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+    	super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
     	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
+    	
+    	try {
+    		
+    		super.isProblemaAssociado(this.conector.getProblema(idProblema), this.pesquisas.get(idPesquisa), "Pesquisa ja associada a um problema.");
+    		
+    	} catch (IllegalArgumentException e) {
+    		
+    		return "false";
+    		
+    	}
+    	
     	this.pesquisas.get(idPesquisa).setProblema(this.conector.getProblema(idProblema));
-    	return true;
+    	
+    	return "sucesso";
     	
     }
     
     public boolean desassociaProblema(String idPesquisa, String idProblema) {
+    	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+    	super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
     	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+    	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
     	this.pesquisas.get(idPesquisa).setProblema(null);
     	return true;
     	
