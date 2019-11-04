@@ -59,3 +59,6 @@
 ## Parte 2
 ### US5
 - Iniciei alterações para a parte 2. Como sujerido pelo monitor, dividi a parta src em mais de um pacote, para organizar melhor as classes. Iniciei também algumas alterações para minha US e adicionei os EasyAccepts da parte 2.
+- Adicionei novos métodos em Validação
+- Criei novas Exceções
+- Adequei alguns testes do EasyAccept
