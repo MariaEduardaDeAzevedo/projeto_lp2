@@ -157,6 +157,25 @@ public class Pesquisador extends Validacao {
 		return ativada;
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getFuncao() {
+		return funcao;
+	}
+	
+	public String getBiografia() {
+		return biografia;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getFoto() {
+		return fotoURL;
+	}
 }
 
 

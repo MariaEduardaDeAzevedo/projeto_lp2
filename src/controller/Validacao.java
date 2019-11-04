@@ -104,5 +104,23 @@ public class Validacao {
 		}
 		
 	}
+	
+	protected void validaData(String data, String mensagem) {
+		if (data.length() != 10) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
+	
+	protected void validaSemestreAluno(int semestre, String mensagem) {
+		if (semestre < 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
+	
+	protected void validaIeaAluno(double iea, String mensagem) {
+		if (iea > 10 || iea < 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
 
 }
