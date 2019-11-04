@@ -142,7 +142,7 @@ public class Facade {
 
     }
     
-    public boolean associaProblema(String idPesquisa, String idProblema) {
+    public String associaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cPesquisa.associaProblema(idPesquisa, idProblema);
     	

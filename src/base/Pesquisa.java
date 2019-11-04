@@ -139,5 +139,11 @@ public class Pesquisa extends Validacao {
     	this.objetivo = objetivo;
     	
     }
+
+	public Problema getProblema() {
+		
+		return this.problema;
+	
+	}
     
 }

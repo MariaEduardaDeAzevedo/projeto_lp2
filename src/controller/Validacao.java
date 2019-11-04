@@ -2,7 +2,10 @@ package controller;
 
 import java.util.List;
 
+import base.Pesquisa;
+import base.Problema;
 import excecoes.ActivationException;
+import excecoes.AssociationException;
 
 public class Validacao {
 
@@ -121,6 +124,20 @@ public class Validacao {
 		if (iea > 10 || iea < 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
+	}
+
+	public void isProblemaAssociado(Problema problema, Pesquisa pesquisa, String mensagem) {
+		
+		if (pesquisa.getProblema() != null && pesquisa.getProblema().equals(problema)) {
+			
+			throw new IllegalArgumentException();
+			
+		} else if (pesquisa.getProblema() != null && ! (pesquisa.getProblema().equals(problema))) {
+			
+			throw new AssociationException(mensagem);
+			
+		}
+		
 	}
 
 }
