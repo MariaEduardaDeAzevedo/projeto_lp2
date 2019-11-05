@@ -1,5 +1,8 @@
 package base;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import controller.Validacao;
@@ -29,6 +32,8 @@ public class Pesquisa extends Validacao {
      */
     private boolean ativada;
     
+    private Map<String, Pesquisador> pesquisadoresAssociados;
+    
     private Problema problema;
     
     private Objetivo objetivo;
@@ -47,6 +52,7 @@ public class Pesquisa extends Validacao {
         this.descricao = descricao;
         this.campoDeInteresse = campoDeInteresse;
         this.ativada = true;
+        this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
     }
 
     /**
@@ -144,6 +150,10 @@ public class Pesquisa extends Validacao {
 		
 		return this.problema;
 	
+	}
+	
+	public void associaPesquisador(Pesquisador associado) {
+		pesquisadoresAssociados.put(associado.getEmail(), associado);
 	}
     
 }

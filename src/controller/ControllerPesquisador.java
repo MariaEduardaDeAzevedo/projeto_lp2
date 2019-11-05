@@ -1,9 +1,10 @@
 package controller;
-
+import excecoes.FuncaoInvalidaException;
 import java.util.HashMap;
 import java.util.Map;
-
 import base.Pesquisador;
+import base.Aluno;
+import base.Professor;
 
 /**
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador. 
@@ -96,6 +97,42 @@ public class ControllerPesquisador extends Validacao {
 		super.validaString(email, "Email nao pode ser vazio ou nulo.");
 		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
 		return this.pesquisadores.get(email).pesquisadorEhAtivo();
+	}
+	
+	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		super.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
+		super.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
+		super.validaString(data, "Campo data nao pode ser nulo ou vazio.");
+		super.validaData(data, "Atributo data com formato invalido.");
+		if (!pesquisadores.containsKey(email)) {
+			throw new NullPointerException("Pesquisadora nao encontrada.");
+		}
+		if (!pesquisadores.get(email).getFuncao().equals("professor")) {
+			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
+		}
+		Pesquisador naoEspecializado = pesquisadores.get(email);
+		Professor especializado = new Professor(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), formacao, unidade, data);
+		pesquisadores.remove(email);
+		pesquisadores.put(email, especializado);
+	}
+	
+	public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
+		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		super.validaString(String.valueOf(semestre), "Campo semestre nao pode ser nulo ou vazio.");
+		super.validaString(String.valueOf(iea), "Campo IEA nao pode ser nulo ou vazio.");
+		super.validaIeaAluno(iea, "Atributo IEA com formato invalido.");
+		super.validaSemestreAluno(semestre, "Atributo semestre com formato invalido.");
+		if (!pesquisadores.containsKey(email)) {
+			throw new NullPointerException("Pesquisadora nao encontrada.");
+		}
+		if (!pesquisadores.get(email).equals("aluno")) {
+			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
+		}
+		Pesquisador naoEspecializado = pesquisadores.get(email);
+		Aluno especializado = new Aluno(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), semestre, iea);
+		pesquisadores.remove(email);
+		pesquisadores.put(email, especializado);
 	}
 	
 }

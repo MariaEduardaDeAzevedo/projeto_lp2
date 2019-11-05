@@ -1,4 +1,5 @@
 package base;
+import excecoes.FuncaoInvalidaException;
 
 public class Aluno extends Pesquisador {
 	private int semestre;
@@ -6,6 +7,9 @@ public class Aluno extends Pesquisador {
 	
 	public Aluno(String nome, String funcao, String biografia, String email, String foto, int semestre, double iea) {
 		super(nome, funcao, biografia, email, foto);
+		if (!funcao.equals("aluno")) {
+			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
+		}
 		super.validaSemestreAluno(semestre, "Atributo semestre com formato invalido.");
 		super.validaIeaAluno(iea, "Atributo IEA com formato invalido.");
 		this.semestre = semestre;
