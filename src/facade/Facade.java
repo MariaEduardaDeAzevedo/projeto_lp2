@@ -140,30 +140,8 @@ public class Facade {
 
     }
     
-    //US5
-    public String associaProblema(String idPesquisa, String idProblema) {
-    	
-    	return this.cPesquisa.associaProblema(idPesquisa, idProblema);
-    	
-    }
+    //US5 ADICIONAR METODOS
     
-    public String desassociaProblema(String idPesquisa, String idProblema) {
-    	
-    	return this.cPesquisa.desassociaProblema(idPesquisa, idProblema);
-    	
-    }
-    
-    public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
-    	
-    	return this.cPesquisa.associaObjetivo(idPesquisa, idObjetivo);
-    	
-    }
-    
-    public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
-    	
-    	return this.cPesquisa.desassociaObjetivo(idPesquisa, idObjetivo);
-    	
-    }
     
     //US6
     public void associaPesquisador(String idPesquisa, String emailPesquisador) {
