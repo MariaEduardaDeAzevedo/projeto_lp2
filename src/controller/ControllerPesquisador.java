@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import base.Pesquisador;
@@ -97,5 +98,8 @@ public class ControllerPesquisador extends Validacao {
 		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
 		return this.pesquisadores.get(email).pesquisadorEhAtivo();
 	}
-	
+
+    public List<Pesquisador> getPesquisadores() {
+		return (List<Pesquisador>) pesquisadores.values();
+    }
 }

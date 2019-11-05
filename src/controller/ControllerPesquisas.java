@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,7 +16,7 @@ public class ControllerPesquisas extends Validacao {
      * Armazena um mapa de pesquisas a partir dos seus codigos.
      */
     private Map<String, Pesquisa> pesquisas;
-	
+
     private Conector conector;
 
     /**
@@ -124,30 +125,30 @@ public class ControllerPesquisas extends Validacao {
         super.hasValor(pesquisas.containsKey(codigo), "Pesquisa nao encontrada.");
         return pesquisas.get(codigo).isAtivada();
     }
-   
-    
+
+
     public String associaProblema(String idPesquisa, String idProblema) {
     	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
     	super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
     	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
     	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
-    	
+
     	try {
-    		
+
     		super.isProblemaAssociado(this.conector.getProblema(idProblema), this.pesquisas.get(idPesquisa), "Pesquisa ja associada a um problema.");
-    		
+
     	} catch (IllegalArgumentException e) {
-    		
+
     		return "false";
-    		
+
     	}
-    	
+
     	this.pesquisas.get(idPesquisa).setProblema(this.conector.getProblema(idProblema));
-    	
+
     	return "sucesso";
-    	
+
     }
-    
+
     public boolean desassociaProblema(String idPesquisa, String idProblema) {
     	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
     	super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
@@ -155,28 +156,31 @@ public class ControllerPesquisas extends Validacao {
     	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
     	this.pesquisas.get(idPesquisa).setProblema(null);
     	return true;
-    	
+
     }
-   
+
     public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
     	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
     	this.pesquisas.get(idPesquisa).setObjetivo(this.conector.getObjetivo(idObjetivo));
     	return true;
-    	
+
     }
-    
+
     public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
     	super.validaString(idPesquisa, "Nulo ou vazio.");
     	super.validaString(idObjetivo, "Nulo ou vazio.");
     	super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
     	super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
-    	
-    	
-    	
+
+
+
     	this.pesquisas.get(idPesquisa).setObjetivo(null);
-    	
+
     	return true;
-    	
+
     }
-    
+
+    public List<Pesquisa> getPesquisas() {
+        return (List<Pesquisa>) pesquisas.values();
+    }
 }

@@ -145,5 +145,18 @@ public class Pesquisa extends Validacao {
 		return this.problema;
 	
 	}
-    
+
+    public String buscaTermoDescricao(String termo) {
+        if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
+
+    public String buscaTermoCampoDeInteresse(String termo) {
+        if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
 }

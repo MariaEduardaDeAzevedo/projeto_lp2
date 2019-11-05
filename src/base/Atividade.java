@@ -194,4 +194,17 @@ public class Atividade extends Validacao {
 
 	}
 
+    public String buscaTermoDescricao(String termo) {
+		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+			return this.id + ": " + this.descricao;
+		}
+		return null;
+    }
+
+	public String buscaTermoDescricaoDoRisco(String termo) {
+		if (this.descricaoRisco.toLowerCase().contains(termo.toLowerCase())) {
+			return this.id + ": " + this.descricaoRisco;
+		}
+		return null;
+	}
 }

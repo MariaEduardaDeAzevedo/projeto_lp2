@@ -144,4 +144,7 @@ public class ControllerAtividades extends Validacao {
 
 	}
 
+    public List<Atividade> getAtividades() {
+		return (List<Atividade>) this.atividades.values();
+    }
 }

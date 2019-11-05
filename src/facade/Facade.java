@@ -1,10 +1,6 @@
 package facade;
 
-import controller.ControllerAtividades;
-import controller.ControllerObjetivos;
-import controller.ControllerPesquisador;
-import controller.ControllerPesquisas;
-import controller.ControllerProblemas;
+import controller.*;
 
 public class Facade {
 
@@ -164,6 +160,19 @@ public class Facade {
     	
     	return this.cPesquisa.desassociaObjetivo(idPesquisa, idObjetivo);
     	
+    }
+
+    //US8
+    public String busca(String termo){
+        return this.cBuscas.busca(termo);
+    }
+
+    public String busca(String termo, int numeroDoResultado){
+
+    }
+
+    public int contaResultadosBusca(String termo){
+
     }
 
 }
