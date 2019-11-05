@@ -104,4 +104,11 @@ public class Objetivo extends Validacao {
 			return false;
 		return true;
 	}
+
+    public String buscaTermo(String termo) {
+		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+			return this.id + ": " + this.descricao;
+		}
+		return null;
+    }
 }

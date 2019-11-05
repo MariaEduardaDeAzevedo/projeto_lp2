@@ -1,6 +1,7 @@
 package controller;
 import excecoes.FuncaoInvalidaException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import base.Pesquisador;
 import base.Aluno;
@@ -98,6 +99,7 @@ public class ControllerPesquisador extends Validacao {
 		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisador nao encontrado");
 		return this.pesquisadores.get(email).pesquisadorEhAtivo();
 	}
+<<<<<<< HEAD
 	
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
@@ -135,4 +137,10 @@ public class ControllerPesquisador extends Validacao {
 		pesquisadores.put(email, especializado);
 	}
 	
+=======
+
+    public List<Pesquisador> getPesquisadores() {
+		return (List<Pesquisador>) pesquisadores.values();
+    }
+>>>>>>> f4d0f2dde7dcff93d46f9c4f19c6b957a0802450
 }

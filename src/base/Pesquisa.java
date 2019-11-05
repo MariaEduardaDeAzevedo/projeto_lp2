@@ -151,9 +151,26 @@ public class Pesquisa extends Validacao {
 		return this.problema;
 	
 	}
+<<<<<<< HEAD
 	
 	public void associaPesquisador(Pesquisador associado) {
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 	}
     
+=======
+
+    public String buscaTermoDescricao(String termo) {
+        if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
+
+    public String buscaTermoCampoDeInteresse(String termo) {
+        if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
+>>>>>>> f4d0f2dde7dcff93d46f9c4f19c6b957a0802450
 }

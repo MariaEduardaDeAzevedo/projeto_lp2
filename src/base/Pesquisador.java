@@ -176,6 +176,13 @@ public class Pesquisador extends Validacao {
 	public String getFoto() {
 		return fotoURL;
 	}
+
+    public String buscaTermo(String termo) {
+		if (biografia.toLowerCase().contains(termo.toLowerCase())){
+			return this.email + ": " + this.biografia;
+		}
+		return null;
+    }
 }
 
 

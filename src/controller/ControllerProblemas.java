@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import base.Problema;
@@ -84,4 +85,8 @@ public class ControllerProblemas extends Validacao {
 		return this.problemas.get(id);
 		
 	}
+
+    public List<Problema> getProblemas() {
+		return (List<Problema>) this.problemas.values();
+    }
 }

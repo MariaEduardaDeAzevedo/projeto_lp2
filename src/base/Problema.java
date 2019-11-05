@@ -81,5 +81,11 @@ public class Problema extends Validacao {
 	public String toString() {
 		return descricao + " - " + viabilidade;
 	}
-	
+
+    public String buscaTermo(String termo) {
+		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+			return this.id + ": " + this.descricao;
+		}
+		return null;
+    }
 }
