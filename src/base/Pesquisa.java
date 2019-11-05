@@ -1,5 +1,8 @@
 package base;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import controller.Validacao;
@@ -29,6 +32,8 @@ public class Pesquisa extends Validacao {
      */
     private boolean ativada;
     
+    private Map<String, Pesquisador> pesquisadoresAssociados;
+    
     private Problema problema;
     
     private Objetivo objetivo;
@@ -47,6 +52,7 @@ public class Pesquisa extends Validacao {
         this.descricao = descricao;
         this.campoDeInteresse = campoDeInteresse;
         this.ativada = true;
+        this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
     }
 
     /**
@@ -145,5 +151,26 @@ public class Pesquisa extends Validacao {
 		return this.problema;
 	
 	}
+<<<<<<< HEAD
+	
+	public void associaPesquisador(Pesquisador associado) {
+		pesquisadoresAssociados.put(associado.getEmail(), associado);
+	}
     
+=======
+
+    public String buscaTermoDescricao(String termo) {
+        if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
+
+    public String buscaTermoCampoDeInteresse(String termo) {
+        if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
+            return this.codigo + ": " + this.descricao;
+        }
+        return null;
+    }
+>>>>>>> f4d0f2dde7dcff93d46f9c4f19c6b957a0802450
 }

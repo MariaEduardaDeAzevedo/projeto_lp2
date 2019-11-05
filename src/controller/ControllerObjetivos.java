@@ -1,5 +1,6 @@
 package controller;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import base.Objetivo;
@@ -88,5 +89,8 @@ public class ControllerObjetivos extends Validacao {
 		return this.objetivos.get(id);
 	
 	}
-	
+
+    public List<Objetivo> getObjetivos() {
+		return (List<Objetivo>) this.objetivos.values();
+    }
 }

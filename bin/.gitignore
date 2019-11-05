@@ -1,6 +1,10 @@
-/base/
 /controller/
+<<<<<<< HEAD
 /easyaccept.jar
 /excecoes/
 /facade/
 /projeto_lp2/
+=======
+/excecoes/
+/base/
+>>>>>>> 44b53e743c1b7ff73f9dd448ab00ce6217d6cda8
