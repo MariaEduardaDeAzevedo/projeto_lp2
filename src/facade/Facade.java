@@ -142,13 +142,14 @@ public class Facade {
 
     }
     
+    //US5
     public String associaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cPesquisa.associaProblema(idPesquisa, idProblema);
     	
     }
     
-    public boolean desassociaProblema(String idPesquisa, String idProblema) {
+    public String desassociaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cPesquisa.desassociaProblema(idPesquisa, idProblema);
     	

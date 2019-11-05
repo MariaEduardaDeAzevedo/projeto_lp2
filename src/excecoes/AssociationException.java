@@ -8,4 +8,10 @@ public class AssociationException extends RuntimeException{
 		
 	}
 	
+	public AssociationException() {
+		
+		super("");
+		
+	}
+	
 }

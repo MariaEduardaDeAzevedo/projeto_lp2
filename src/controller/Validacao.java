@@ -1,6 +1,8 @@
 package controller;
 
+import java.time.Period;
 import java.util.List;
+import java.util.Map;
 
 import base.Pesquisa;
 import base.Problema;
@@ -126,16 +128,24 @@ public class Validacao {
 		}
 	}
 
-	public void isProblemaAssociado(Problema problema, Pesquisa pesquisa, String mensagem) {
+	public void hasProblemaAssociado(String idProblema, String idPesquisa, Map<String, String> mapa, boolean operacao) {
 		
-		if (pesquisa.getProblema() != null && pesquisa.getProblema().equals(problema)) {
+		if(mapa.containsKey(idPesquisa)) {
 			
-			throw new IllegalArgumentException();
+			if(mapa.get(idPesquisa).equals(idProblema) && operacao) {
+				
+				throw new IllegalArgumentException();
+				
+			} else if (operacao) {
+					
+				throw new AssociationException("Pesquisa ja associada a um problema.");
 			
-		} else if (pesquisa.getProblema() != null && ! (pesquisa.getProblema().equals(problema))) {
+			}
 			
-			throw new AssociationException(mensagem);
+		} else if (!operacao) {
 			
+			throw new NullPointerException(); 
+					
 		}
 		
 	}
