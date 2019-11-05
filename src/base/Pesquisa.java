@@ -159,6 +159,11 @@ public class Pesquisa extends Validacao {
 		}
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 	}
+	
+	public void desassociaPesquisador(String emailPesquisador) {
+		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		pesquisadoresAssociados.remove(emailPesquisador);
+	}
 
     public String buscaTermoDescricao(String termo) {
         if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {

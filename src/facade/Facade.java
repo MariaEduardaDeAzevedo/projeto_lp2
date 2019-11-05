@@ -9,6 +9,7 @@ public class Facade {
     private ControllerPesquisas cPesquisa;
     private ControllerObjetivos cObjetivo;
     private ControllerProblemas cProblema;
+    private Conector cGeral;
 
     public Facade() {
 
@@ -17,6 +18,7 @@ public class Facade {
         this.cPesquisador = new ControllerPesquisador();
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
+        this.cGeral = new Conector();
 
     }
 
@@ -161,6 +163,23 @@ public class Facade {
     	
     	return this.cPesquisa.desassociaObjetivo(idPesquisa, idObjetivo);
     	
+    }
+    
+    //US6
+    public void associaPesquisador(String idPesquisa, String emailPesquisador) {
+    	cGeral.associaPesquisador(cPesquisador, cPesquisa, idPesquisa, emailPesquisador);
+    }
+    
+    public void desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+    	cGeral.desassociaPesquisador(cPesquisa, idPesquisa, emailPesquisador);
+    }
+    
+    public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+    	cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+    }
+    
+    public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+    	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
     }
 
     //US8

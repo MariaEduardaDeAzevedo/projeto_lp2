@@ -231,4 +231,16 @@ public class ControllerPesquisas extends Validacao {
     	}
     	pesquisas.get(idPesquisa).associaPesquisador(associado);
     }
+    
+    public void desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+    	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio." );
+    	super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+    	if (!pesquisas.containsKey(idPesquisa)) {
+    		throw new NullPointerException("Pesquisa nao encontrada.");
+    	}
+    	if (!pesquisas.get(idPesquisa).isAtivada()) {
+    		throw new ActivationException("Pesquisa desativada.");
+    	}
+    	pesquisas.get(idPesquisa).desassociaPesquisador(emailPesquisador);
+    }
 }
