@@ -62,3 +62,12 @@
 - Adicionei novos métodos em Validação
 - Criei novas Exceções
 - Adequei alguns testes do EasyAccept
+
+### US5
+#### Codificado:
+- Subclasses de Pesquisador: Professor e Aluno.
+- Métodos no controller de Pesquisador que permitem especializar um pesquisador para Professor ou Aluno
+#### Falta:
+- Adicionar o resto das funcionalidades pedidas pela especificação: associar/desassociar um Pesquisador a uma Pesquisa, listar pesquisadores por tipo, adicionar métodos que permitem alterar atributos de Pesquisador e exibir Pesquisador.
+- Testes de unidade.
+- Adequar as implementações na Facade para serem testadas usando os testes de aceitação.
