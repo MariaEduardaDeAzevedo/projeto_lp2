@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import controller.Validacao;
+import excecoes.ActivationException;
 
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
@@ -153,6 +154,9 @@ public class Pesquisa extends Validacao {
 	}
 	
 	public void associaPesquisador(Pesquisador associado) {
+		if (!ativada) {
+			throw new ActivationException("Pesquisa desativada.");
+		}
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 	}
 

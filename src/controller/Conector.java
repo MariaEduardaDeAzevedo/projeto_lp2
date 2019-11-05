@@ -1,10 +1,11 @@
 package controller;
 
 import base.*;
+import excecoes.ActivationException;
 
 import java.util.List;
 
-public class Conector {
+public class Conector extends Validacao {
 	
 	private ControllerProblemas cProblema;
 	private ControllerObjetivos cObjetivo;
@@ -52,5 +53,18 @@ public class Conector {
 
 	public List<Atividade> getAtividades() {
 		return this.cAtividades.getAtividades();
+	}
+	
+	public void associaPesquisador(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, String idPesquisa, String emailPesquisador) {
+		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		if (!cPesquisas.containsPesquisa(idPesquisa)) {
+			throw new NullPointerException("Pesquisa nao encontrada.");
+		}
+		if (!cPesquisas.pesquisaEhAtiva(idPesquisa)) {
+			throw new ActivationException("Pesquisa desativada.");
+		}
+		Pesquisador associado = cPesquisador.getPesquisador(emailPesquisador);
+		cPesquisas.associaPesquisador(idPesquisa, associado);
 	}
 }

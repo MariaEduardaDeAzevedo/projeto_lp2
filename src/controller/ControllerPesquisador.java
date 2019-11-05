@@ -140,4 +140,9 @@ public class ControllerPesquisador extends Validacao {
     public List<Pesquisador> getPesquisadores() {
 		return (List<Pesquisador>) pesquisadores.values();
     }
+    
+    public Pesquisador getPesquisador(String idPesquisador) {
+    	super.validaString(idPesquisador, "email do pesquisador não pode ser nulo ou vazio");
+    	return pesquisadores.get(idPesquisador);
+    }
 }
