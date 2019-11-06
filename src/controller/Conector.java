@@ -33,13 +33,14 @@ public class Conector extends Validacao {
 		cPesquisas.desassociaPesquisador(idPesquisa, emailPesquisador);
 	}
 
-<<<<<<< HEAD
+	/**
 	public String associaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
 		
 		Problema problema = cProblema.getProblema(idProblema);
 		return cPesquisa.associaProblema(idPesquisa, idProblema, problema);
 		
 	}
+	**/
 	
 	public String desassociaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
 		
@@ -60,7 +61,6 @@ public class Conector extends Validacao {
 	
 	}
 	
-=======
     public String busca(ControllerPesquisas cPesquisa, ControllerPesquisador cPesquisador, ControllerProblemas cProblema, ControllerObjetivos cObjetivo, ControllerAtividades cAtividade, ControllerBuscas cBuscas, String termo) {
 
 			Collection<Pesquisa> pesquisas =  cPesquisa.getPesquisas();
@@ -78,5 +78,12 @@ public class Conector extends Validacao {
 			Collection<Atividade> atividades = cAtividade.getAtividades();
 		return cBuscas.busca(termo, pesquisas, pesquisadores, problemas, objetivos, atividades);
 	}
->>>>>>> 97359b7dd3ac3183ed628b112659092484b7679d
+
+	public boolean associaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade,
+			String codigoPesquisa, String codigoAtividade) {
+		
+		Atividade atividade = cAtividade.getAtividade(codigoAtividade);
+		return cPesquisa.associaAtividade(codigoPesquisa, codigoAtividade, atividade);
+		
+	}
 }

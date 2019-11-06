@@ -1,6 +1,7 @@
 package controller;
 import java.util.*;
 
+import base.Atividade;
 import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
@@ -21,6 +22,10 @@ public class ControllerPesquisas extends Validacao {
     private Map<String, String> problemasAssociados;
 
 	private Map<String, String> objetivosAssociados;
+	
+	private Map<String, String> atividadesAssociadas;
+
+	
 
     /**
      * Constroi o objeto ControllerPesquisas e inicializa seus atributos.
@@ -30,6 +35,8 @@ public class ControllerPesquisas extends Validacao {
         this.conector = new Conector();
         this.problemasAssociados = new HashMap<String, String>();
         this.objetivosAssociados = new HashMap<String, String>();
+        this.atividadesAssociadas = new HashMap<String, String>();
+
     }
 
     /**
@@ -168,7 +175,7 @@ public class ControllerPesquisas extends Validacao {
 		return this.pesquisas.get(idPesquisa);
 		
 	}
-
+/**
 	public String associaProblema(String idPesquisa, String idProblema, Problema problema) {
 		
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -193,6 +200,7 @@ public class ControllerPesquisas extends Validacao {
 		return "sucesso";
 		
 	}
+	**/
 
 	public String desassociaProblema(String idPesquisa, String idProblema) {
 	
@@ -241,6 +249,24 @@ public class ControllerPesquisas extends Validacao {
 		this.pesquisas.get(idPesquisa).setObjetivo(null);
 		return "sucesso";
 		
+	}
+
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade, Atividade atividade) {
+		super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		if (!pesquisas.containsKey(codigoPesquisa)) {
+    		throw new NullPointerException("Pesquisa nao encontrada.");
+    	}
+    	if (!pesquisas.get(codigoPesquisa).isAtivada()) {
+    		throw new ActivationException("Pesquisa desativada.");
+    	}
+		
+		if(atividadesAssociadas.containsKey(codigoAtividade)) {
+			return false;
+		}
+		this.pesquisas.get(codigoPesquisa).setAtividade(atividade);
+		this.atividadesAssociadas.put(codigoPesquisa, codigoAtividade);
+		return true;
 	}
 
 }

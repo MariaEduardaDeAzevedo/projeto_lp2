@@ -3,6 +3,7 @@ package controller;
 import java.util.*;
 
 import base.Atividade;
+import base.Problema;
 
 /**
  * Entidade controladora de objetos Atividade e Item
@@ -143,5 +144,14 @@ public class ControllerAtividades extends Validacao {
 
     public Collection<Atividade> getAtividades() {
 		return this.atividades.values();
+    }
+
+	public Atividade getAtividade(String id) {		
+		return this.atividades.get(id);
+		
+	}
+	
+	public boolean containsAtividade(String id) {
+    	return atividades.containsKey(id);
     }
 }

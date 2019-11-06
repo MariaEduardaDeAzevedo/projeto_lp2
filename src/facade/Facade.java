@@ -143,12 +143,13 @@ public class Facade {
     }
     
     //US5 
-    
+   /** 
     public String associaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
     	
     }
+    **/
     
     public String desassociaProblema(String idPesquisa, String idProblema) {
     	
@@ -186,14 +187,17 @@ public class Facade {
     	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
     }
 
+    //US7
+    public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
+    	return this.cGeral.associaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
+    }
     //US8
     public String busca(String termo){
-<<<<<<< HEAD
         //return this.cBuscas.busca(termo);
         return "oi";
     }
 
-    public String busca(String termo, int numeroDoResultado){
+    public String busca1(String termo, int numeroDoResultado){
     	
     	return "oi";
     	
@@ -201,17 +205,15 @@ public class Facade {
 
     public int contaResultadosBusca(String termo){
     	return 0;
-=======
-        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
+        //return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-return null;
+    	return null;
     }
 
-    public int contaResultadosBusca(String termo){
-return 1;
->>>>>>> 97359b7dd3ac3183ed628b112659092484b7679d
+    public int contaResultadosBusca1(String termo){
+    	return 1;
     }
 
 }

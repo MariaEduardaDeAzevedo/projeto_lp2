@@ -3,6 +3,7 @@ package base;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import controller.Validacao;
 
@@ -38,6 +39,7 @@ public class Atividade extends Validacao {
 	 * ID que identifica unicamente uma atividade
 	 */
 	private String id;
+
 
 	/**
 	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
@@ -206,5 +208,9 @@ public class Atividade extends Validacao {
 			return this.id + ": " + this.descricaoRisco;
 		}
 		return null;
+	}
+
+	public String getId() {
+		return this.id;
 	}
 }

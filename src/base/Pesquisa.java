@@ -39,6 +39,9 @@ public class Pesquisa extends Validacao {
     
     private Objetivo objetivo;
     
+    private Atividade atividade;
+
+    
     /**
      * Constroi o objeto Pesquisa a partir dos parametros.
      * @param codigo codigo da pesquisa.
@@ -178,4 +181,9 @@ public class Pesquisa extends Validacao {
         }
         return null;
     }
+
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
 }
