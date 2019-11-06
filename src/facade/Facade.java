@@ -191,6 +191,10 @@ public class Facade {
     public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
     	return this.cGeral.associaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
     }
+    
+    public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
+    	return this.cGeral.desassociaAtividade(cPesquisa, codigoPesquisa, codigoAtividade);
+    }
     //US8
     public String busca(String termo){
         //return this.cBuscas.busca(termo);

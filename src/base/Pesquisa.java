@@ -189,7 +189,15 @@ public class Pesquisa extends Validacao {
 		if(atividadesAssociadas.containsKey(atividade.getId())) {
 			return false;
 		}
-		atividadesAssociadas.put(atividade.getId(), atividade);
+		this.atividadesAssociadas.put(atividade.getId(), atividade);
+		return true;
+	}
+
+	public boolean desassociaAtividade(String codigoAtividade) {
+		if(atividadesAssociadas.containsKey(codigoAtividade)) {
+			return false;
+		}
+		this.atividadesAssociadas.remove(codigoAtividade);
 		return true;
 	}
 }

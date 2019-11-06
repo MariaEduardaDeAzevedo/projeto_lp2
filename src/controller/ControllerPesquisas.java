@@ -256,4 +256,10 @@ public class ControllerPesquisas extends Validacao {
 		return this.pesquisas.get(codigoPesquisa).associaAtividade(atividade);
 	}
 
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
+		super.validaStatus(this.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+		return pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
+	}
+
 }
