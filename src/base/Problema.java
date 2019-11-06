@@ -35,6 +35,7 @@ public class Problema extends Validacao {
 		super.validaString(id, "id nao pode ser nulo ou vazio");
 		this.descricao = descricao;
 		this.viabilidade = viabilidade;
+		this.id = id;
 	}
 	
 	/**

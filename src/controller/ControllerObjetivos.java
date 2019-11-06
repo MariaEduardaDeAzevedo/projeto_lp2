@@ -1,6 +1,6 @@
 package controller;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import base.Objetivo;
@@ -90,7 +90,7 @@ public class ControllerObjetivos extends Validacao {
 	
 	}
 
-    public List<Objetivo> getObjetivos() {
-		return (List<Objetivo>) this.objetivos.values();
+    public Collection<Objetivo> getObjetivos() {
+		return this.objetivos.values();
     }
 }

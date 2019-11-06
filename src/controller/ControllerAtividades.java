@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import base.Atividade;
 
@@ -144,7 +141,7 @@ public class ControllerAtividades extends Validacao {
 
 	}
 
-    public List<Atividade> getAtividades() {
-		return (List<Atividade>) this.atividades.values();
+    public Collection<Atividade> getAtividades() {
+		return this.atividades.values();
     }
 }

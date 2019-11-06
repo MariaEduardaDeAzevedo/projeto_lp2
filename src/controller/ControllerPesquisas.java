@@ -1,17 +1,10 @@
 package controller;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
-import base.Problema;
 import excecoes.ActivationException;
-import excecoes.AssociationException;
 
 /**
  * Classe Controller responsavel pelos metodos referentes as pesquisas do sistema.
@@ -140,8 +133,8 @@ public class ControllerPesquisas extends Validacao {
 
     //ADICIONAR METODOS DA US5
 
-    public List<Pesquisa> getPesquisas() {
-        return (List<Pesquisa>) pesquisas.values();
+    public Collection<Pesquisa> getPesquisas() {
+        return pesquisas.values();
     }
     
     public boolean containsPesquisa(String idPesquisa) {
