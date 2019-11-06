@@ -132,17 +132,17 @@ public class Validacao {
 		}
 	}
 
-	public void hasProblemaAssociado(String idProblema, String idPesquisa, Map<String, String> mapa, boolean operacao) {
+	protected void hasAssociado(String id1, String id2, Map<String, String> mapa, boolean operacao, String mensagem) {
 		
-		if(mapa.containsKey(idPesquisa)) {
+		if(mapa.containsKey(id1)) {
 			
-			if(mapa.get(idPesquisa).equals(idProblema) && operacao) {
+			if(mapa.get(id1).equals(id2) && operacao) {
 				
 				throw new IllegalArgumentException();
 				
 			} else if (operacao) {
 					
-				throw new AssociationException("Pesquisa ja associada a um problema.");
+				throw new AssociationException(mensagem);
 			
 			}
 			

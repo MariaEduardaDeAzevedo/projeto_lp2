@@ -30,4 +30,31 @@ public class Conector extends Validacao {
 		}
 		cPesquisas.desassociaPesquisador(idPesquisa, emailPesquisador);
 	}
+
+	public String associaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
+		
+		Problema problema = cProblema.getProblema(idProblema);
+		return cPesquisa.associaProblema(idPesquisa, idProblema, problema);
+		
+	}
+	
+	public String desassociaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
+		
+		return cPesquisa.desassociaProblema(idPesquisa, idProblema);
+		
+	}
+
+	public String associaObjetivo(ControllerPesquisas cPesquisa, ControllerObjetivos cObjetivo, String idPesquisa, String idObjetivo) {
+		
+		Objetivo objetivo = cObjetivo.getObjetivo(idObjetivo);
+		return cPesquisa.associaObjetivo(idPesquisa, idObjetivo, objetivo );
+	
+	}
+
+	public String desassociaObjetivo(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
+		
+		return cPesquisa.desassociaObjetivo(idPesquisa, idProblema);
+	
+	}
+	
 }

@@ -140,7 +140,31 @@ public class Facade {
 
     }
     
-    //US5 ADICIONAR METODOS
+    //US5 
+    
+    public String associaProblema(String idPesquisa, String idProblema) {
+    	
+    	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
+    	
+    }
+    
+    public String desassociaProblema(String idPesquisa, String idProblema) {
+    	
+    	return this.cGeral.desassociaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
+    	
+    }
+    
+    public String associaObjetivo(String idPesquisa, String idObjetivo) {
+    	
+    	return this.cGeral.associaObjetivo(cPesquisa, cObjetivo, idPesquisa, idObjetivo);
+    	
+    }
+    
+    public String desassociaObjetivo(String idPesquisa, String idProblema) {
+    	
+    	return this.cGeral.desassociaObjetivo(cPesquisa, cProblema, idPesquisa, idProblema);
+    	
+    }
     
     
     //US6
@@ -162,15 +186,18 @@ public class Facade {
 
     //US8
     public String busca(String termo){
-        return this.cBuscas.busca(termo);
+        //return this.cBuscas.busca(termo);
+        return "oi";
     }
 
     public String busca(String termo, int numeroDoResultado){
-
+    	
+    	return "oi";
+    	
     }
 
     public int contaResultadosBusca(String termo){
-
+    	return 0;
     }
 
 }
