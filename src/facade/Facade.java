@@ -188,11 +188,11 @@ public class Facade {
 
     //US8
     public String busca(String termo){
-<<<<<<< HEAD
         //return this.cBuscas.busca(termo);
         return "oi";
     }
-
+    
+    /**
     public String busca(String termo, int numeroDoResultado){
     	
     	return "oi";
@@ -200,18 +200,17 @@ public class Facade {
     }
 
     public int contaResultadosBusca(String termo){
-    	return 0;
-=======
+    	
         return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-return null;
+		return null;
     }
 
     public int contaResultadosBusca(String termo){
-return 1;
->>>>>>> 97359b7dd3ac3183ed628b112659092484b7679d
-    }
+    	return 1;
 
+    }
+*/
 }

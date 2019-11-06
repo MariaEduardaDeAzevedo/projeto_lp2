@@ -4,6 +4,7 @@ import java.util.*;
 import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
+import base.Problema;
 import excecoes.ActivationException;
 
 /**
@@ -178,7 +179,7 @@ public class ControllerPesquisas extends Validacao {
 		
 		try {
 			
-			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true, "Problema ja associado a uma pesquisa.");
+			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true, "Pesquisa ja associada a um problema.");
 			
 		} catch (IllegalArgumentException e) {
 			
@@ -186,9 +187,8 @@ public class ControllerPesquisas extends Validacao {
 			
 		}
 		
-		
 		this.pesquisas.get(idPesquisa).setProblema(problema);
-		this.problemasAssociados.put(idPesquisa, idProblema);
+		this.problemasAssociados.put(idProblema, idPesquisa);
 		
 		return "sucesso";
 		
@@ -197,13 +197,13 @@ public class ControllerPesquisas extends Validacao {
 	public String desassociaProblema(String idPesquisa, String idProblema) {
 	
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		super.validaString(idPesquisa, "Campo idProblema nao pode ser nulo ou vazio.");
+		super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
 		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 		
 		try {
 			
-			super.hasAssociado(idPesquisa, idProblema, this.problemasAssociados, false, "");
+			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, false, "");
 			
 		} catch (NullPointerException e) {
 			
@@ -211,7 +211,7 @@ public class ControllerPesquisas extends Validacao {
 			
 		}
 		
-		this.problemasAssociados.remove(idPesquisa);
+		this.problemasAssociados.remove(idProblema);
 		this.pesquisas.get(idPesquisa).setProblema(null);
 		return "sucesso";
 	
@@ -221,13 +221,24 @@ public class ControllerPesquisas extends Validacao {
 		
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
-		super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
+		
+		try {
+			
+			super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, true, "Objetivo ja associado a uma pesquisa.");
+			
+		} catch (IllegalArgumentException e) {
+			
+			return "false";
+			
+		}
+		
 		this.pesquisas.get(idPesquisa).setObjetivo(objetivo);
 		this.objetivosAssociados.put(idPesquisa, idObjetivo);
 		
-		
 		return "sucesso";
+		
 	}
 
 	public String desassociaObjetivo(String idPesquisa, String idObjetivo) {
@@ -236,6 +247,16 @@ public class ControllerPesquisas extends Validacao {
 		super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 		super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
+		
+		try {
+			
+			super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, false, "");
+			
+		} catch (NullPointerException e) {
+			
+			return "false";
+			
+		}
 		
 		this.objetivosAssociados.remove(idPesquisa);
 		this.pesquisas.get(idPesquisa).setObjetivo(null);
