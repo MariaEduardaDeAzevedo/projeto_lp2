@@ -1,7 +1,8 @@
 package controller;
 import excecoes.FuncaoInvalidaException;
+
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import base.Pesquisador;
 import base.Aluno;
@@ -137,8 +138,8 @@ public class ControllerPesquisador extends Validacao {
 	}
 	
 
-    public List<Pesquisador> getPesquisadores() {
-		return (List<Pesquisador>) pesquisadores.values();
+    public Collection<Pesquisador> getPesquisadores() {
+		return pesquisadores.values();
     }
     
     public Pesquisador getPesquisador(String idPesquisador) {

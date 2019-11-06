@@ -10,6 +10,7 @@ public class Facade {
     private ControllerObjetivos cObjetivo;
     private ControllerProblemas cProblema;
     private Conector cGeral;
+    private ControllerBuscas cBuscas;
 
     public Facade() {
 
@@ -19,6 +20,7 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
+        this.cBuscas = new ControllerBuscas(cGeral);
 
     }
 
@@ -162,15 +164,15 @@ public class Facade {
 
     //US8
     public String busca(String termo){
-        return this.cBuscas.busca(termo);
+        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-
+return null;
     }
 
     public int contaResultadosBusca(String termo){
-
+return 1;
     }
 
 }

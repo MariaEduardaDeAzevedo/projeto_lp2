@@ -3,6 +3,8 @@ package controller;
 import base.*;
 import excecoes.ActivationException;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Conector extends Validacao {
@@ -29,5 +31,23 @@ public class Conector extends Validacao {
 			throw new ActivationException("Pesquisa desativada.");
 		}
 		cPesquisas.desassociaPesquisador(idPesquisa, emailPesquisador);
+	}
+
+    public String busca(ControllerPesquisas cPesquisa, ControllerPesquisador cPesquisador, ControllerProblemas cProblema, ControllerObjetivos cObjetivo, ControllerAtividades cAtividade, ControllerBuscas cBuscas, String termo) {
+
+			Collection<Pesquisa> pesquisas =  cPesquisa.getPesquisas();
+
+
+			Collection<Pesquisador> pesquisadores = cPesquisador.getPesquisadores();
+
+
+			Collection<Problema> problemas = cProblema.getProblemas();
+
+
+			Collection<Objetivo> objetivos = cObjetivo.getObjetivos();
+
+
+			Collection<Atividade> atividades = cAtividade.getAtividades();
+		return cBuscas.busca(termo, pesquisas, pesquisadores, problemas, objetivos, atividades);
 	}
 }
