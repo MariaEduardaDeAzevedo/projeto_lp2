@@ -92,7 +92,12 @@ public class Conector extends Validacao {
 	public boolean desassociaAtividade(ControllerPesquisas cPesquisa, String codigoPesquisa, String codigoAtividade) {
 		super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-		
+		if (cPesquisa.containsPesquisa(codigoPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa nao encontrada.");
+		}
+		if (!cPesquisa.pesquisaEhAtiva(codigoPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
 		return cPesquisa.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
 }
