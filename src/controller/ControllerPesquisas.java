@@ -23,7 +23,7 @@ public class ControllerPesquisas extends Validacao {
 
 	private Map<String, String> objetivosAssociados;
 	
-	private Map<String, String> atividadesAssociadas;
+
 
 	
 
@@ -35,7 +35,6 @@ public class ControllerPesquisas extends Validacao {
         this.conector = new Conector();
         this.problemasAssociados = new HashMap<String, String>();
         this.objetivosAssociados = new HashMap<String, String>();
-        this.atividadesAssociadas = new HashMap<String, String>();
 
     }
 
@@ -251,22 +250,10 @@ public class ControllerPesquisas extends Validacao {
 		
 	}
 
-	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade, Atividade atividade) {
-		super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
-		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(codigoPesquisa)) {
-    		throw new NullPointerException("Pesquisa nao encontrada.");
-    	}
-    	if (!pesquisas.get(codigoPesquisa).isAtivada()) {
-    		throw new ActivationException("Pesquisa desativada.");
-    	}
-		
-		if(atividadesAssociadas.containsKey(codigoAtividade)) {
-			return false;
-		}
-		this.pesquisas.get(codigoPesquisa).setAtividade(atividade);
-		this.atividadesAssociadas.put(codigoPesquisa, codigoAtividade);
-		return true;
+	public boolean associaAtividade(String codigoPesquisa, Atividade atividade) {
+		super.validaStatus(this.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+		return this.pesquisas.get(codigoPesquisa).associaAtividade(atividade);
 	}
 
 }

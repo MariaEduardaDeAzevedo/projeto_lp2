@@ -35,11 +35,12 @@ public class Pesquisa extends Validacao {
     
     private Map<String, Pesquisador> pesquisadoresAssociados;
     
+    private Map<String, Atividade> atividadesAssociadas;
+    
     private Problema problema;
     
     private Objetivo objetivo;
     
-    private Atividade atividade;
 
     
     /**
@@ -57,6 +58,7 @@ public class Pesquisa extends Validacao {
         this.campoDeInteresse = campoDeInteresse;
         this.ativada = true;
         this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
+        this.atividadesAssociadas = new HashMap<String, Atividade>();
     }
 
     /**
@@ -182,8 +184,12 @@ public class Pesquisa extends Validacao {
         return null;
     }
 
-
-	public void setAtividade(Atividade atividade) {
-		this.atividade = atividade;
+	public boolean associaAtividade(Atividade atividade) {
+	
+		if(atividadesAssociadas.containsKey(atividade.getId())) {
+			return false;
+		}
+		atividadesAssociadas.put(atividade.getId(), atividade);
+		return true;
 	}
 }
