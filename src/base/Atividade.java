@@ -213,4 +213,8 @@ public class Atividade extends Validacao {
 	public String getId() {
 		return this.id;
 	}
+	
+	public void executaItem(int item, int duracao) {
+		this.itens.get(item - 1).realizar();
+	}
 }

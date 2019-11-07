@@ -154,4 +154,11 @@ public class ControllerAtividades extends Validacao {
 	public boolean containsAtividade(String id) {
     	return atividades.containsKey(id);
     }
+	
+	public void executaAtividade(String codigoAtividade, int item, int duracao) {
+        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+        super.validaDadosExecucaoAtividade(item, "Item nao pode ser nulo ou negativo.");
+        super.validaDadosExecucaoAtividade(duracao, "Duracao nao pode ser nula ou negativa.");
+        this.atividades.get(codigoAtividade).executaItem(item, duracao);
+	}
 }

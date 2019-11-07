@@ -44,7 +44,7 @@ public class Item extends Validacao {
 	 * Altera os atributos status e statusString, tornando um item pendente
 	 * realizado
 	 */
-	private void realizar() {
+	public void realizar() {
 
 		this.statusString = "REALIZADO";
 		this.status = true;

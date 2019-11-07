@@ -162,5 +162,11 @@ public class Validacao {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
+	
+	protected void validaDadosExecucaoAtividade(int item, String mensagem) {
+		if(item <= 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
 
 }

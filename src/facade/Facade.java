@@ -20,7 +20,7 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
-        this.cBuscas = new ControllerBuscas(cGeral);
+       /// this.cBuscas = new ControllerBuscas(cGeral);
 
     }
 
@@ -201,7 +201,7 @@ public class Facade {
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	//this.cGeral.executaAtividade(cPesquisa, codigoAtividade, item, duracao);
+    	this.cAtividade.executaAtividade(codigoAtividade, item, duracao);
     }
     //US8
     public String busca(String termo){
