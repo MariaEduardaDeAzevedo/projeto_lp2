@@ -197,31 +197,19 @@ public class Facade {
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	this.cGeral.executaAtividade(cPesquisa, codigoAtividade, item, duracao);
+    	//this.cGeral.executaAtividade(cPesquisa, codigoAtividade, item, duracao);
     }
     //US8
     public String busca(String termo){
-        //return this.cBuscas.busca(termo);
-        return "oi";
-    }
-
-    public String busca1(String termo, int numeroDoResultado){
-    	
-    	return "oi";
-    	
-    }
-
-    public int contaResultadosBusca(String termo){
-    	return 0;
-        //return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
+        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-    	return null;
+        return this.cGeral.busca(cBuscas, termo, numeroDoResultado);
     }
 
-    public int contaResultadosBusca1(String termo){
-    	return 1;
-    }
+    public int contaResultadosBusca(String termo){
 
+        return 1;
+    }
 }

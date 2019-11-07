@@ -153,6 +153,11 @@ public class Validacao {
 		}
 		
 	}
-	
+
+	protected void validaNumeroResultado(int numero, String mensagem){
+		if (numero < 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
 
 }

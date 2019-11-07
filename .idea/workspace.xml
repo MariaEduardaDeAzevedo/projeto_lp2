@@ -3,31 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Atividade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerAtividades.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerObjetivos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerPesquisas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/ControllerProblemas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Facade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Objetivo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Pesquisador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Problema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/projeto_lp2/Validacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/ControllerPesquisadorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/ControllerPesquisadorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/PesquisadorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/PesquisadorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/ProblemaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/projeto_lp2/ProblemaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Problema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Validacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Validacao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/facade/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Facade.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -143,7 +121,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572348044473</updated>
-      <workItem from="1572993937202" duration="4414000" />
+      <workItem from="1572993937202" duration="5061000" />
+      <workItem from="1573094221509" duration="1723000" />
     </task>
     <servers />
   </component>
@@ -155,7 +134,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
