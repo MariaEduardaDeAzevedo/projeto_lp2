@@ -6,6 +6,8 @@ import base.Pesquisa;
 import base.Pesquisador;
 import base.Problema;
 import comparators.OrdenaPesquisa;
+import comparators.OrdenaPesquisaObjetivo;
+import comparators.OrdenaPesquisaProblema;
 import excecoes.ActivationException;
 
 /**

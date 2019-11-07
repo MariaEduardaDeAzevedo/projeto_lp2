@@ -192,31 +192,4 @@ public class Facade {
     	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
     }
 
-    //US8
-    public String busca(String termo){
-        //return this.cBuscas.busca(termo);
-        return "oi";
-    }
-    
-    /**
-    public String busca(String termo, int numeroDoResultado){
-    	
-    	return "oi";
-    	
-    }
-
-    public int contaResultadosBusca(String termo){
-    	
-        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
-    }
-
-    public String busca(String termo, int numeroDoResultado){
-		return null;
-    }
-
-    public int contaResultadosBusca(String termo){
-    	return 1;
-
-    }
-*/
 }
