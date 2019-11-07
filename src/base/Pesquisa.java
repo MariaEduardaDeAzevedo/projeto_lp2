@@ -179,7 +179,7 @@ public class Pesquisa extends Validacao {
 
     public String buscaTermoCampoDeInteresse(String termo) {
         if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
-            return this.codigo + ": " + this.descricao;
+            return this.codigo + ": " + this.campoDeInteresse;
         }
         return null;
     }

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ControllerBuscas extends Validacao {
     private Conector conector;
-    private Map<String, List> buscasRealizadas;
+    private Map<String, List<String>> buscasRealizadas;
 
     public ControllerBuscas(Conector conector) {
         this.conector = conector;
@@ -25,28 +25,40 @@ public class ControllerBuscas extends Validacao {
                 lista_identidades.add(pesquisa.buscaTermoCampoDeInteresse(termo));
             }
         }
+        List<String> lista_pesquisadores = new ArrayList<String>();
         for (Pesquisador pesquisador : pesquisadores) {
             if (pesquisador.buscaTermo(termo) != null) {
-                lista_identidades.add(pesquisador.buscaTermo(termo));
+                lista_pesquisadores.add(pesquisador.buscaTermo(termo));
             }
         }
+        Collections.reverse(lista_pesquisadores);
+        List<String> lista_problemas = new ArrayList<String>();
         for (Problema problema : problemas) {
             if (problema.buscaTermo(termo) != null) {
-                lista_identidades.add(problema.buscaTermo(termo));
+                lista_problemas.add(problema.buscaTermo(termo));
             }
         }
+        Collections.reverse(lista_problemas);
+        List<String> lista_objetivos = new ArrayList<String>();
         for (Objetivo objetivo : objetivos) {
             if (objetivo.buscaTermo(termo) != null) {
-                lista_identidades.add(objetivo.buscaTermo(termo));
+                lista_objetivos.add(objetivo.buscaTermo(termo));
             }
         }
+        Collections.reverse(lista_objetivos);
+        List<String> lista_atividades = new ArrayList<String>();
         for (Atividade atividade : atividades) {
             if (atividade.buscaTermoDescricao(termo) != null) {
-                lista_identidades.add(atividade.buscaTermoDescricao(termo));
+                lista_atividades.add(atividade.buscaTermoDescricao(termo));
             } else if (atividade.buscaTermoDescricaoDoRisco(termo) != null) {
-                lista_identidades.add(atividade.buscaTermoDescricaoDoRisco(termo));
+                lista_atividades.add(atividade.buscaTermoDescricaoDoRisco(termo));
             }
         }
+        Collections.reverse(lista_atividades);
+        lista_identidades.addAll(lista_pesquisadores);
+        lista_identidades.addAll(lista_problemas);
+        lista_identidades.addAll(lista_objetivos);
+        lista_identidades.addAll(lista_atividades);
         super.hasValor(!(lista_identidades.size() == 0), "Nenhum resultado encontrado");
         String entidadesComTermo = "";
         for (int i = 0; i < lista_identidades.size(); i++) {
@@ -56,15 +68,15 @@ public class ControllerBuscas extends Validacao {
                 entidadesComTermo += lista_identidades.get(i) + " | ";
             }
         }
-        buscasRealizadas.put(termo, lista_identidades);
+        this.buscasRealizadas.put(termo, lista_identidades);
         return entidadesComTermo;
     }
 
     public String busca(String termo, int numeroDoResultado) {
-        super.validaString(termo, "Termo nao pode ser nulo ou vazio.");
+        super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
         super.validaNumeroResultado(numeroDoResultado, "Numero do resultado nao pode ser negativo");
-        String entidade = (String) buscasRealizadas.get(termo).get(numeroDoResultado);
-        super.hasValor(entidade == null, "Entidade nao encontrada.");
+        super.hasValor(!(numeroDoResultado - 1 > buscasRealizadas.get(termo).size()), "Entidade nao encontrada.");
+        String entidade = this.buscasRealizadas.get(termo).get(numeroDoResultado - 1);
         return entidade;
     }
 
