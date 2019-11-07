@@ -83,6 +83,10 @@ public class Conector extends Validacao {
         return cBuscas.busca(termo, numeroDoResultado);
     }
 
+    public int contaResultadosBusca(ControllerBuscas cBuscas, String termo) {
+        return cBuscas.contaResultadosBusca(termo);
+    }
+
     public boolean associaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade,
                                     String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
@@ -104,5 +108,4 @@ public class Conector extends Validacao {
         }
         return cPesquisa.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
-
 }

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Validacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Validacao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/facade/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Facade.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -123,6 +122,7 @@
       <updated>1572348044473</updated>
       <workItem from="1572993937202" duration="5061000" />
       <workItem from="1573094221509" duration="1723000" />
+      <workItem from="1573128190878" duration="783000" />
     </task>
     <servers />
   </component>

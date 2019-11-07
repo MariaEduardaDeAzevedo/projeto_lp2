@@ -47,9 +47,7 @@ public class ControllerBuscas extends Validacao {
                 lista_identidades.add(atividade.buscaTermoDescricaoDoRisco(termo));
             }
         }
-        if (lista_identidades.size() == 0){
-         throw new NullPointerException( "Nenhum resultado encontrado");
-        }
+        super.hasValor(!(lista_identidades.size() == 0), "Nenhum resultado encontrado");
         String entidadesComTermo = "";
         for (int i = 0; i < lista_identidades.size(); i++) {
             if (i == lista_identidades.size() - 1) {
@@ -65,8 +63,14 @@ public class ControllerBuscas extends Validacao {
     public String busca(String termo, int numeroDoResultado) {
         super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
         super.validaNumeroResultado(numeroDoResultado, "Numero do resultado nao pode ser negativo.");
-        String entidade = buscasRealizadas.get(termo).get(numeroDoResultado).toString();
+        String entidade = (String) buscasRealizadas.get(termo).get(numeroDoResultado);
         super.hasValor(entidade == null, "Entidade nao encontrada.");
         return entidade;
+    }
+
+    public int contaResultadosBusca(String termo) {
+        super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
+        super.hasValor(buscasRealizadas.containsKey(termo), "Nenhum resultado encontrado");
+        return buscasRealizadas.get(termo).size();
     }
 }
