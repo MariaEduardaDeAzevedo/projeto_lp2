@@ -20,7 +20,11 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
+<<<<<<< HEAD
         this.cBuscas = new ControllerBuscas();
+=======
+       /// this.cBuscas = new ControllerBuscas(cGeral);
+>>>>>>> 44ab354f27263acba67444bc84338354730e2509
 
     }
 
@@ -205,7 +209,14 @@ public class Facade {
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	//this.cGeral.executaAtividade(cPesquisa, codigoAtividade, item, duracao);
+    	this.cAtividade.executaAtividade(codigoAtividade, item, duracao);
+    }
+    public int cadastraResultado(String codigoAtividade, String resultado) {
+    	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
+    }
+    
+    public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+    	return this.cAtividade.removeResultado(codigoAtividade, numeroResultado);
     }
     //US8
     public String busca(String termo){
