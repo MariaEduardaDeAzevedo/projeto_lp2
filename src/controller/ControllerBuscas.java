@@ -61,8 +61,8 @@ public class ControllerBuscas extends Validacao {
     }
 
     public String busca(String termo, int numeroDoResultado) {
-        super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
-        super.validaNumeroResultado(numeroDoResultado, "Numero do resultado nao pode ser negativo.");
+        super.validaString(termo, "Termo nao pode ser nulo ou vazio.");
+        super.validaNumeroResultado(numeroDoResultado, "Numero do resultado nao pode ser negativo");
         String entidade = (String) buscasRealizadas.get(termo).get(numeroDoResultado);
         super.hasValor(entidade == null, "Entidade nao encontrada.");
         return entidade;

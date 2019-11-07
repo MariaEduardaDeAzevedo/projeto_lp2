@@ -12,7 +12,7 @@ expectError "Campo termo nao pode ser nulo ou vazio." busca termo=""
 
 #buscando um resultado esecifico da procura por um termo
 
-expect gaaraxrocklee@12LinkinPark: Interessado na computacao com areia e em lutar com o rock lee ao som de linkin park." busca termo="computacao" numeroDoResultado=3
+expect "gaaraxrocklee@12LinkinPark: Interessado na computacao com areia e em lutar com o rock lee ao som de linkin park." busca termo="computacao" numeroDoResultado=3
 expect "P6: O problema causado pela areia na segunda guerra mundial ninja de computacao." busca termo="computacao" numeroDoResultado=4
 expectError "Termo nao pode ser nulo ou vazio." busca termo="" numeroDoResultado=1
 expectError "Numero do resultado nao pode ser negativo" busca termo="computacao" numeroDoResultado=-6
