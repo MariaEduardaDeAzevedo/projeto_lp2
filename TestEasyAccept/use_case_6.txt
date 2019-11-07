@@ -1,8 +1,11 @@
 #Associando COM2 e matheusgr@computacao.ufcg.edu.br
 
 
-associaPesquisador idPesquisa="COM2" emailPesquisador="matheusgr@computacao.ufcg.edu.br"
-
+expect true associaPesquisador idPesquisa="COM2" emailPesquisador="matheusgr@computacao.ufcg.edu.br"
+expect false associaPesquisador idPesquisa="COM2" emailPesquisador="matheusgr@computacao.ufcg.edu.br"
+expect true associaPesquisador idPesquisa="COM1" emailPesquisador="eliane@computacao.ufcg.edu.br"
+expect true desassociaPesquisador idPesquisa="COM1" emailPesquisador="eliane@computacao.ufcg.edu.br"
+expect false desassociaPesquisador idPesquisa="COM1" emailPesquisador="eliane@computacao.ufcg.edu.br"
 
 #idPesquisa ou emailPesquisador vazios em associaPesquisador
 
@@ -75,8 +78,10 @@ cadastraEspecialidadeAluno email="hunterxhunter@1998" semestre=2 IEA=9.9999
 #Informacoes vazias em especializando alunos
 
 expectError "Campo email nao pode ser nulo ou vazio." cadastraEspecialidadeAluno email="" semestre=3 IEA=6.9
-expectError "Campo semestre nao pode ser nulo ou vazio." cadastraEspecialidadeAluno email="borutofathers@1997" semestre= IEA=6.9
-expectError "Campo IEA nao pode ser nulo ou vazio." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=3 IEA=
+expectError "Atributo semestre com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=-3 IEA=6.9
+expectError "Atributo semestre com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=0 IEA=6.9
+expectError "Atributo IEA com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=3 IEA=-7
+expectError "Atributo IEA com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=3 IEA=11
 
 
 #pesquisador inexistente
@@ -89,7 +94,7 @@ expectError "Pesquisadora nao encontrada." cadastraEspecialidadeAluno email="voi
 expectError "Atributo IEA com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=3 IEA=-2.0
 expectError "Atributo IEA com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=3 IEA=8000
 expectError "Atributo semestre com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=-1 IEA=8
-expectError "Atributo semestre com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=-4 IEA=9
+expectError "Atributo semestre com formato invalido." cadastraEspecialidadeAluno email="borutofathers@1997" semestre=0 IEA=9
 
 
 #Usando cadastraEspecialidadeAluno em externos e professores
