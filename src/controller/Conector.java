@@ -115,7 +115,7 @@ public class Conector extends Validacao {
                                     String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada.");
+        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada");
         Atividade atividade = cAtividade.getAtividade(codigoAtividade);
         return cPesquisa.associaAtividade(codigoPesquisa, atividade);
 

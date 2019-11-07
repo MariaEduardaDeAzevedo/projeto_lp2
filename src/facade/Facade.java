@@ -203,6 +203,13 @@ public class Facade {
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
     	this.cAtividade.executaAtividade(codigoAtividade, item, duracao);
     }
+    public int cadastraResultado(String codigoAtividade, String resultado) {
+    	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
+    }
+    
+    public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+    	return this.cAtividade.removeResultado(codigoAtividade, numeroResultado);
+    }
     //US8
     public String busca(String termo){
         return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);

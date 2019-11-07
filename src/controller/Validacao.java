@@ -163,7 +163,7 @@ public class Validacao {
 		}
 	}
 	
-	protected void validaDadosExecucaoAtividade(int item, String mensagem) {
+	protected void verificaNuloNegativo(int item, String mensagem) {
 		if(item <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
