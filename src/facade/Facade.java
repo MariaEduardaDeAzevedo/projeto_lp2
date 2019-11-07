@@ -214,6 +214,6 @@ public class Facade {
 
     public int contaResultadosBusca(String termo){
 
-        return 1;
+        return this.cGeral.contaResultadosBusca(cBuscas, termo);
     }
 }

@@ -63,7 +63,7 @@
 - Criei novas Exceções
 - Adequei alguns testes do EasyAccept
 
-### US5
+### US6
 #### Codificado:
 - Subclasses de Pesquisador: Professor e Aluno.
 - Métodos no controller de Pesquisador que permitem especializar um pesquisador para Professor ou Aluno
