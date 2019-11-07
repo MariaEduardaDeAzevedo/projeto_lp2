@@ -80,7 +80,7 @@ public class Problema extends Validacao {
 	 */
 	@Override
 	public String toString() {
-		return descricao + " - " + viabilidade;
+		return this.id + " - " + descricao + " - " + viabilidade;
 	}
 
     public String buscaTermo(String termo) {
@@ -89,4 +89,9 @@ public class Problema extends Validacao {
 		}
 		return null;
     }
+
+	public String getId() {
+		
+		return this.id;
+	}
 }

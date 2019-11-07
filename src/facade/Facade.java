@@ -168,6 +168,12 @@ public class Facade {
     	
     }
     
+    public String listaPesquisas(String ordem) {
+    	
+    	return this.cPesquisa.listar(ordem);
+    	
+    }
+    
     
     //US6
     public void associaPesquisador(String idPesquisa, String emailPesquisador) {

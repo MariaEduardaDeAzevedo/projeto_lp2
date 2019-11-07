@@ -178,4 +178,10 @@ public class Pesquisa extends Validacao {
         }
         return null;
     }
+
+	public Objetivo getObjetivo() {
+		
+		return this.objetivo;
+	
+	}
 }

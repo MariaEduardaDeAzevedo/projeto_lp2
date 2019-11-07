@@ -61,7 +61,7 @@ public class ControllerProblemas extends Validacao {
 		if (!problemas.containsKey(idProblema)) {
 			throw new Exception("Problema nao encontrado");
 		}
-		return idProblema + " - " + problemas.get(idProblema).toString();
+		return problemas.get(idProblema).toString();
 	}
 	
 	/**

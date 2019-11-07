@@ -5,6 +5,7 @@ import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
 import base.Problema;
+import comparators.OrdenaPesquisa;
 import excecoes.ActivationException;
 
 /**
@@ -190,7 +191,7 @@ public class ControllerPesquisas extends Validacao {
 		this.pesquisas.get(idPesquisa).setProblema(problema);
 		this.problemasAssociados.put(idProblema, idPesquisa);
 		
-		return "sucesso";
+		return "true";
 		
 	}
 
@@ -213,7 +214,7 @@ public class ControllerPesquisas extends Validacao {
 		
 		this.problemasAssociados.remove(idProblema);
 		this.pesquisas.get(idPesquisa).setProblema(null);
-		return "sucesso";
+		return "true";
 	
 	}
 
@@ -237,7 +238,7 @@ public class ControllerPesquisas extends Validacao {
 		this.pesquisas.get(idPesquisa).setObjetivo(objetivo);
 		this.objetivosAssociados.put(idPesquisa, idObjetivo);
 		
-		return "sucesso";
+		return "true";
 		
 	}
 
@@ -260,7 +261,143 @@ public class ControllerPesquisas extends Validacao {
 		
 		this.objetivosAssociados.remove(idPesquisa);
 		this.pesquisas.get(idPesquisa).setObjetivo(null);
-		return "sucesso";
+		return "true";
+		
+	}
+
+	public String listar(String ordem) {
+		
+		List<String> valores = new ArrayList<String>();
+		valores.add("PESQUISA");
+		valores.add("PROBLEMA");
+		valores.add("OBJETIVOS");
+		super.validaValoresPermitidos(valores , ordem, "Valor invalido da ordem");
+		
+		String lista = "";
+		
+		if (ordem.equals("PESQUISA")) {
+			
+			return this.ordenaPesquisa();
+			
+		} else if (ordem.equals("PROBLEMA")) {
+			
+			return this.ordenaProblema();
+			
+		} 			
+		
+		return this.ordenaObjetivo();
+	
+	
+	}
+
+	private String ordenaObjetivo() {
+
+		List<Pesquisa> comObjetivo = new ArrayList<Pesquisa>();
+		List<Pesquisa> semObjetivo = new ArrayList<Pesquisa>();
+	
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			if (p.getObjetivo() == null) {
+				
+				semObjetivo.add(p);
+				
+			} else {
+				
+				comObjetivo.add(p);
+				
+			}
+			
+		}
+		
+		Comparator<Pesquisa> comparadorObjetivo = new OrdenaPesquisaObjetivo();
+		Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisa();
+		Collections.sort(comObjetivo, comparadorObjetivo);
+		Collections.sort(semObjetivo, comparadorPesquisa);
+		
+		String listagem = comObjetivo.get(0).toString();
+		
+		for (int i = 1; i < comObjetivo.size(); i ++) {
+			
+			listagem += " | " + comObjetivo.get(i);
+			
+		}
+		
+		for (int i = 0; i < semObjetivo.size(); i ++) {
+			
+			listagem += " | " + semObjetivo.get(i);
+			
+		}
+		
+		return listagem;
+
+		
+	}
+
+	private String ordenaProblema() {
+		
+		List<Pesquisa> comProblema = new ArrayList<Pesquisa>();
+		List<Pesquisa> semProblema = new ArrayList<Pesquisa>();
+	
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			if (p.getProblema() == null) {
+				
+				semProblema.add(p);
+				
+			} else {
+				
+				comProblema.add(p);
+				
+			}
+			
+		}
+		
+		Comparator<Pesquisa> comparadorProblema = new OrdenaPesquisaProblema();
+		Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisa();
+		Collections.sort(comProblema, comparadorProblema);
+		Collections.sort(semProblema, comparadorPesquisa);
+		
+		String listagem = comProblema.get(0).toString();
+		
+		for (int i = 1; i < comProblema.size(); i ++) {
+			
+			listagem += " | " + comProblema.get(i);
+			
+		}
+		
+		for (int i = 0; i < semProblema.size(); i ++) {
+			
+			listagem += " | " + semProblema.get(i);
+			
+		}
+		
+		return listagem;
+		
+	}
+
+	private String ordenaPesquisa() {
+		
+		List<Pesquisa> lista = new ArrayList<Pesquisa>();
+		
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			lista.add(p);
+			
+		}
+		
+		Comparator<Pesquisa> comparador = new OrdenaPesquisa(); 
+		
+		Collections.sort(lista, comparador);
+		
+		String listagem = lista.get(0).toString();
+		
+		for (int i = 1 ; i < lista.size(); i ++) {
+			
+			listagem += " | " + lista.get(i).toString();
+			
+		}
+		
+		return listagem;
 		
 	}
 
