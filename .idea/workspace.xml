@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/base/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,24 +25,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="java" value="12" />
           <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="12" />
           <entry key="PLAIN_TEXT" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="137" />
+          <entry key="java" value="1929" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="137" />
+          <entry key="JAVA" value="1929" />
         </counts>
       </usages-collector>
     </session>
@@ -54,46 +58,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ControllerProblemas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_3.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-527" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_5.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_8.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+            <state relative-caret-position="225">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding>
+                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Conector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+            <state relative-caret-position="390">
+              <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -114,6 +96,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/base/Pesquisa.java" />
+        <option value="$PROJECT_DIR$/src/controller/Conector.java" />
+        <option value="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" />
+        <option value="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" />
+        <option value="$PROJECT_DIR$/src/controller/ControllerProblemas.java" />
+        <option value="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" />
         <option value="$PROJECT_DIR$/src/controller/ControllerBuscas.java" />
       </list>
     </option>
@@ -150,6 +137,12 @@
               <item name="projeto_lp2" type="b2602c69:ProjectViewProjectNode" />
               <item name="projeto_lp2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_lp2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_lp2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -175,7 +168,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573133983647" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573136609541" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/easyaccept.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -333,13 +326,6 @@
     <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_2.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ControllerProblemas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_4.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-91" />
@@ -370,6 +356,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_8.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerPesquisas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="143" column="29" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
+          <folding>
+            <element signature="e#5488#5489#0" expanded="true" />
+            <element signature="e#5529#5530#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerPesquisador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="139" column="4" selection-start-line="139" selection-start-column="4" selection-end-line="142" selection-end-column="7" />
+          <folding>
+            <element signature="e#5890#5891#0" expanded="true" />
+            <element signature="e#5929#5930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Atividade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerProblemas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="91" selection-end-column="7" />
+          <folding>
+            <element signature="e#3672#3673#0" expanded="true" />
+            <element signature="e#3712#3713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/facade/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -377,20 +413,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_8.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerObjetivos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+        <state relative-caret-position="358">
+          <caret line="94" column="68" selection-start-line="94" selection-start-column="68" selection-end-line="94" selection-end-column="68" />
+          <folding>
+            <element signature="e#4433#4434#0" expanded="true" />
+            <element signature="e#4473#4474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Conector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+        <state relative-caret-position="390">
+          <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding>
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -90,6 +90,10 @@ public class ControllerObjetivos extends Validacao {
 	
 	}
 
+	/**
+	 * Retorna os valores do mapa de objetivos.
+	 * @return Collection contendo todos os objetos do tipo Objetivo cadastrados no sistema.
+	 */
     public Collection<Objetivo> getObjetivos() {
 		return this.objetivos.values();
     }

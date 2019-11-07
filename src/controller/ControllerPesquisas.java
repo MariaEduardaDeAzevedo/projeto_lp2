@@ -139,6 +139,10 @@ public class ControllerPesquisas extends Validacao {
 
     //ADICIONAR METODOS DA US5
 
+    /**
+     * Retorna os valores do mapa de pesquisas.
+     * @return Collection contendo todos os objetos do tipo Pesquisa cadastrados no sistema.
+     */
     public Collection<Pesquisa> getPesquisas() {
         return pesquisas.values();
     }

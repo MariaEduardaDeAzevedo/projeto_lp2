@@ -86,6 +86,10 @@ public class ControllerProblemas extends Validacao {
 		
 	}
 
+	/**
+	 * Retorna os valores do mapa de problemas.
+	 * @return Collection contendo todos os objetos do tipo Problema cadastrados no sistema.
+	 */
     public Collection<Problema> getProblemas() {
 		return this.problemas.values();
     }

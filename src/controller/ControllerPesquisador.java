@@ -136,8 +136,11 @@ public class ControllerPesquisador extends Validacao {
 		pesquisadores.remove(email);
 		pesquisadores.put(email, especializado);
 	}
-	
 
+	/**
+	 * Retorna os valores do mapa de pesquisadores.
+	 * @return Collection contendo todos os objetos do tipo Pesquisador cadastrados no sistema.
+	 */
     public Collection<Pesquisador> getPesquisadores() {
 		return pesquisadores.values();
     }
