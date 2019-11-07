@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import base.Pesquisa;
+import excecoes.ActivationException;
 
 class PesquisaTest {
 
@@ -92,22 +93,22 @@ class PesquisaTest {
 
 	@Test
 	void ativaPesquisaDesativada() {
-		pesquisaTeste.encerraPesquisa();
+		pesquisaTeste.encerraPesquisa("Verba cortada");
 		pesquisaTeste.ativaPesquisa();
 		assertTrue(pesquisaTeste.isAtivada());
 	}
 
 	@Test
 	void inativaPesquisaAtivada() {
-		pesquisaTeste.encerraPesquisa();
+		pesquisaTeste.encerraPesquisa("Concluída");
 		assertFalse(pesquisaTeste.isAtivada());
 	}
 
 	@Test
 	void inativaPesquisaDesativada() {
-		pesquisaTeste.encerraPesquisa();
-		assertThrows(IllegalArgumentException.class, () -> {
-			pesquisaTeste.encerraPesquisa();
+		pesquisaTeste.encerraPesquisa("Corte de verbas");
+		assertThrows(ActivationException.class, () -> {
+			pesquisaTeste.encerraPesquisa("Corte de verbas");
 		});
 	}
 

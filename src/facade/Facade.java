@@ -20,7 +20,7 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
-        this.cBuscas = new ControllerBuscas(cGeral);
+        this.cBuscas = new ControllerBuscas();
 
     }
 
@@ -143,13 +143,12 @@ public class Facade {
     }
     
     //US5 
-   /** 
+   
     public String associaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
     	
     }
-    **/
     
     public String desassociaProblema(String idPesquisa, String idProblema) {
     	
@@ -169,6 +168,11 @@ public class Facade {
     	
     }
     
+    public String listaPesquisas(String ordem) {
+    	
+    	return this.cPesquisa.listar(ordem);
+    	
+    }
     
     //US6
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {

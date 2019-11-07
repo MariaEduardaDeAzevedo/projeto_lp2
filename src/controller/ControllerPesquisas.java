@@ -5,7 +5,9 @@ import base.Atividade;
 import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
+import base.Problema;
 import excecoes.ActivationException;
+import comparators.*;
 
 /**
  * Classe Controller responsavel pelos metodos referentes as pesquisas do sistema.
@@ -95,9 +97,10 @@ public class ControllerPesquisas extends Validacao {
      * @param motivo motivo pelo qual a pesquisa está sendo desativada.
      */
     public void encerraPesquisa(String codigo, String motivo) {
-        super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+    	super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+    	super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
         super.hasValor(pesquisas.containsKey(codigo), "Pesquisa nao encontrada.");
-        pesquisas.get(codigo).encerraPesquisa();
+        pesquisas.get(codigo).encerraPesquisa(motivo);
     }
 
     /**
@@ -193,17 +196,17 @@ public class ControllerPesquisas extends Validacao {
 		return this.pesquisas.get(idPesquisa);
 		
 	}
-/**
-	public String associaProblema(String idPesquisa, String idProblema, Problema problema) {
+	
+public String associaProblema(String idPesquisa, String idProblema, Problema problema) {
 		
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
 		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
-		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
+		super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
 		
 		try {
 			
-			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true, "Problema ja associado a uma pesquisa.");
+			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true, "Pesquisa ja associada a um problema.");
 			
 		} catch (IllegalArgumentException e) {
 			
@@ -211,25 +214,23 @@ public class ControllerPesquisas extends Validacao {
 			
 		}
 		
-		
 		this.pesquisas.get(idPesquisa).setProblema(problema);
-		this.problemasAssociados.put(idPesquisa, idProblema);
+		this.problemasAssociados.put(idProblema, idPesquisa);
 		
-		return "sucesso";
+		return "true";
 		
 	}
-	**/
 
 	public String desassociaProblema(String idPesquisa, String idProblema) {
 	
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		super.validaString(idPesquisa, "Campo idProblema nao pode ser nulo ou vazio.");
+		super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
 		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 		
 		try {
 			
-			super.hasAssociado(idPesquisa, idProblema, this.problemasAssociados, false, "");
+			super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, false, "");
 			
 		} catch (NullPointerException e) {
 			
@@ -237,9 +238,9 @@ public class ControllerPesquisas extends Validacao {
 			
 		}
 		
-		this.problemasAssociados.remove(idPesquisa);
+		this.problemasAssociados.remove(idProblema);
 		this.pesquisas.get(idPesquisa).setProblema(null);
-		return "sucesso";
+		return "true";
 	
 	}
 
@@ -247,13 +248,24 @@ public class ControllerPesquisas extends Validacao {
 		
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
-		super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
+		
+		try {
+			
+			super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, true, "Objetivo ja associado a uma pesquisa.");
+			
+		} catch (IllegalArgumentException e) {
+			
+			return "false";
+			
+		}
+		
 		this.pesquisas.get(idPesquisa).setObjetivo(objetivo);
 		this.objetivosAssociados.put(idPesquisa, idObjetivo);
 		
+		return "true";
 		
-		return "sucesso";
 	}
 
 	public String desassociaObjetivo(String idPesquisa, String idObjetivo) {
@@ -263,12 +275,159 @@ public class ControllerPesquisas extends Validacao {
 		super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 		super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
 		
+		try {
+			
+			super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, false, "");
+			
+		} catch (NullPointerException e) {
+			
+			return "false";
+			
+		}
+		
 		this.objetivosAssociados.remove(idPesquisa);
 		this.pesquisas.get(idPesquisa).setObjetivo(null);
-		return "sucesso";
+		return "true";
 		
 	}
 
+	public String listar(String ordem) {
+		
+		List<String> valores = new ArrayList<String>();
+		valores.add("PESQUISA");
+		valores.add("PROBLEMA");
+		valores.add("OBJETIVOS");
+		super.validaValoresPermitidos(valores , ordem, "Valor invalido da ordem");
+		
+		String lista = "";
+		
+		if (ordem.equals("PESQUISA")) {
+			
+			return this.ordenaPesquisa();
+			
+		} else if (ordem.equals("PROBLEMA")) {
+			
+			return this.ordenaProblema();
+			
+		} 			
+		
+		return this.ordenaObjetivo();
+	
+	
+	}
+
+	private String ordenaObjetivo() {
+
+		List<Pesquisa> comObjetivo = new ArrayList<Pesquisa>();
+		List<Pesquisa> semObjetivo = new ArrayList<Pesquisa>();
+	
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			if (p.getObjetivo() == null) {
+				
+				semObjetivo.add(p);
+				
+			} else {
+				
+				comObjetivo.add(p);
+				
+			}
+			
+		}
+		
+		Comparator<Pesquisa> comparadorObjetivo = new OrdenaPesquisaObjetivo();
+		Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisaID();
+		Collections.sort(comObjetivo, comparadorObjetivo);
+		Collections.sort(semObjetivo, comparadorPesquisa);
+		
+		String listagem = comObjetivo.get(0).toString();
+		
+		for (int i = 1; i < comObjetivo.size(); i ++) {
+			
+			listagem += " | " + comObjetivo.get(i);
+			
+		}
+		
+		for (int i = 0; i < semObjetivo.size(); i ++) {
+			
+			listagem += " | " + semObjetivo.get(i);
+			
+		}
+		
+		return listagem;
+
+		
+	}
+
+	private String ordenaProblema() {
+		
+		List<Pesquisa> comProblema = new ArrayList<Pesquisa>();
+		List<Pesquisa> semProblema = new ArrayList<Pesquisa>();
+	
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			if (p.getProblema() == null) {
+				
+				semProblema.add(p);
+				
+			} else {
+				
+				comProblema.add(p);
+				
+			}
+			
+		}
+		
+		Comparator<Pesquisa> comparadorProblema = new OrdenaPesquisaProblema();
+		Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisaID();
+		Collections.sort(comProblema, comparadorProblema);
+		Collections.sort(semProblema, comparadorPesquisa);
+		
+		String listagem = comProblema.get(0).toString();
+		
+		for (int i = 1; i < comProblema.size(); i ++) {
+			
+			listagem += " | " + comProblema.get(i);
+			
+		}
+		
+		for (int i = 0; i < semProblema.size(); i ++) {
+			
+			listagem += " | " + semProblema.get(i);
+			
+		}
+		
+		return listagem;
+		
+	}
+
+	private String ordenaPesquisa() {
+		
+		List<Pesquisa> lista = new ArrayList<Pesquisa>();
+		
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			lista.add(p);
+			
+		}
+		
+		Comparator<Pesquisa> comparador = new OrdenaPesquisaID(); 
+		
+		Collections.sort(lista, comparador);
+		
+		String listagem = lista.get(0).toString();
+		
+		for (int i = 1 ; i < lista.size(); i ++) {
+			
+			listagem += " | " + lista.get(i).toString();
+			
+		}
+		
+		return listagem;
+		
+	}
+
+	
 	public boolean associaAtividade(String codigoPesquisa, Atividade atividade) {
 		super.validaStatus(this.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
 		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
