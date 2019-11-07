@@ -20,11 +20,8 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
-<<<<<<< HEAD
         this.cBuscas = new ControllerBuscas();
-=======
        /// this.cBuscas = new ControllerBuscas(cGeral);
->>>>>>> 44ab354f27263acba67444bc84338354730e2509
 
     }
 

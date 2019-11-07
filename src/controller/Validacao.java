@@ -187,14 +187,10 @@ public class Validacao {
 		}
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	protected void verificaNuloNegativo(int item, String mensagem) {
 		if(item <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
->>>>>>> 44ab354f27263acba67444bc84338354730e2509
 
 }
