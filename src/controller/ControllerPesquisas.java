@@ -147,17 +147,20 @@ public class ControllerPesquisas extends Validacao {
     	return pesquisas.containsKey(idPesquisa);
     }
     
-    public void associaPesquisador(String idPesquisa, Pesquisador associado) {
+    public boolean associaPesquisador(String idPesquisa, Pesquisador associado) {
     	if (!pesquisas.containsKey(idPesquisa)) {
     		throw new NullPointerException("Pesquisa nao encontrada.");
     	}
-    	if (pesquisas.get(idPesquisa).isAtivada()) {
+    	if (!pesquisas.get(idPesquisa).isAtivada()) {
     		throw new ActivationException("Pesquisa desativada.");
     	}
-    	pesquisas.get(idPesquisa).associaPesquisador(associado);
+    	if (pesquisas.get(idPesquisa).containsPesquisador(associado.getEmail())) {
+    		return false;
+    	}
+    	return pesquisas.get(idPesquisa).associaPesquisador(associado);
     }
     
-    public void desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+    public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
     	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio." );
     	super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
     	if (!pesquisas.containsKey(idPesquisa)) {
@@ -166,7 +169,19 @@ public class ControllerPesquisas extends Validacao {
     	if (!pesquisas.get(idPesquisa).isAtivada()) {
     		throw new ActivationException("Pesquisa desativada.");
     	}
-    	pesquisas.get(idPesquisa).desassociaPesquisador(emailPesquisador);
+    	if (!pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador)) {
+    		return false;
+    	}
+    	return pesquisas.get(idPesquisa).desassociaPesquisador(emailPesquisador);
+    }
+    
+    public boolean containsPesquisador(String idPesquisa, String emailPesquisador) {
+    	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+    	super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+    	if (!pesquisas.containsKey(idPesquisa)) {
+    		throw new NullPointerException("Pesquisa nao encontrada.");
+    	}
+    	return pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador);
     }
 
 	public Pesquisa getPesquisa(String idPesquisa) {

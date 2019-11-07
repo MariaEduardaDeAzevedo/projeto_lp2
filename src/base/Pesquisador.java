@@ -183,6 +183,33 @@ public class Pesquisador extends Validacao {
 		}
 		return null;
     }
+    
+    public void setNome(String novoValor) {
+    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	nome = novoValor;
+    }
+    
+    public void setFuncao(String novoValor) {
+    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	funcao = novoValor;
+    }
+    
+    public void setBiografia(String novoValor) {
+    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	biografia = novoValor;
+    }
+    
+    public void setEmail(String novoValor) {
+    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.verificaEmail(novoValor);
+    	email = novoValor;
+    }
+    
+    public void setFoto(String novoValor) {
+    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.verificaURL(novoValor);
+    	fotoURL = novoValor;
+    }
 }
 
 

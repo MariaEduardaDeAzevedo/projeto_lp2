@@ -158,16 +158,27 @@ public class Pesquisa extends Validacao {
 	
 	}
 	
-	public void associaPesquisador(Pesquisador associado) {
+	public boolean associaPesquisador(Pesquisador associado) {
 		if (!ativada) {
 			throw new ActivationException("Pesquisa desativada.");
 		}
+		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
+			return false;
+		}
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
+		return true;
 	}
 	
-	public void desassociaPesquisador(String emailPesquisador) {
+	public boolean desassociaPesquisador(String emailPesquisador) {
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		if (!ativada) {
+			throw new ActivationException("Pesquisa desativada.");
+		}
+		if (!pesquisadoresAssociados.containsKey(emailPesquisador)) {
+			return false;
+		}
 		pesquisadoresAssociados.remove(emailPesquisador);
+		return true;
 	}
 
     public String buscaTermoDescricao(String termo) {
@@ -199,5 +210,12 @@ public class Pesquisa extends Validacao {
 		}
 		this.atividadesAssociadas.remove(codigoAtividade);
 		return true;
+	}
+	
+	public boolean containsPesquisador(String emailPesquisador) {
+		if (pesquisadoresAssociados.containsKey(emailPesquisador)) {
+			return true;
+		}
+		return false;
 	}
 }

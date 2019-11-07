@@ -111,17 +111,20 @@ public class Validacao {
 	}
 	
 	protected void validaData(String data, String mensagem) {
+		if (data.length() != 10) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		}
 		String[] dataSplit = data.split("/");
 		int comparacaoDia = dataSplit[0].compareTo("31");
 		int comparacaoMes = dataSplit[1].compareTo("12");
 		int comparacaoAno = dataSplit[2].compareTo("2019");
-		if (data.length() != 10 || comparacaoDia > 0 || comparacaoMes > 0 || comparacaoAno > 0) {
+		if (comparacaoDia > 0 || comparacaoMes > 0 || comparacaoAno > 0) {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
 		}
 	}
 	
 	protected void validaSemestreAluno(int semestre, String mensagem) {
-		if (semestre < 0) {
+		if (semestre <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}

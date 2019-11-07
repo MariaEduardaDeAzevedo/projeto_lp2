@@ -171,12 +171,12 @@ public class Facade {
     
     
     //US6
-    public void associaPesquisador(String idPesquisa, String emailPesquisador) {
-    	cGeral.associaPesquisador(cPesquisador, cPesquisa, idPesquisa, emailPesquisador);
+    public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
+    	return cGeral.associaPesquisador(cPesquisador, cPesquisa, idPesquisa, emailPesquisador);
     }
     
-    public void desassociaPesquisador(String idPesquisa, String emailPesquisador) {
-    	cGeral.desassociaPesquisador(cPesquisa, idPesquisa, emailPesquisador);
+    public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+    	return cGeral.desassociaPesquisador(cPesquisa, idPesquisa, emailPesquisador);
     }
     
     public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
@@ -185,6 +185,10 @@ public class Facade {
     
     public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
     	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
+    }
+    
+    public String listaPesquisadores(String tipo) {
+    	return cPesquisador.listaPesquisadores(tipo);
     }
 
     //US7

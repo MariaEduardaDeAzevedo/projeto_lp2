@@ -3,7 +3,11 @@ import excecoes.FuncaoInvalidaException;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import base.Pesquisador;
 import base.Aluno;
 import base.Professor;
@@ -58,8 +62,8 @@ public class ControllerPesquisador extends Validacao {
 		if(atributo.equals("EMAIL")) {
 			this.pesquisadores.put(novoValor, this.pesquisadores.get(email));
 			this.pesquisadores.remove(email);
-		} 	
-	}		
+		}
+	}
 	
 	/**
 	 * Metodo que permite a desativacao do pesquisador.
@@ -128,7 +132,7 @@ public class ControllerPesquisador extends Validacao {
 		if (!pesquisadores.containsKey(email)) {
 			throw new NullPointerException("Pesquisadora nao encontrada.");
 		}
-		if (!pesquisadores.get(email).equals("aluno")) {
+		if (!pesquisadores.get(email).getFuncao().equals("estudante")) {
 			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
 		}
 		Pesquisador naoEspecializado = pesquisadores.get(email);
@@ -145,5 +149,46 @@ public class ControllerPesquisador extends Validacao {
     public Pesquisador getPesquisador(String idPesquisador) {
     	super.validaString(idPesquisador, "email do pesquisador não pode ser nulo ou vazio");
     	return pesquisadores.get(idPesquisador);
+    }
+    
+    public String listaPesquisadores(String tipo) {
+    	super.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
+    	if (!tipo.equals("EXTERNO") && !tipo.equals("ALUNA") && !tipo.equals("PROFESSORA")) {
+    		throw new IllegalArgumentException("Tipo " + tipo + " inexistente.");
+    	}
+    	String tipoReal = "";
+    	if (tipo.equals("EXTERNO")) {
+    		tipoReal += tipo.toLowerCase();
+    	} else if (tipo.equals("ALUNA")) {
+    		tipoReal += "estudante";
+    	} else if (tipo.equals("PROFESSORA")) {
+    		tipoReal += "professor";
+    	}
+    	String listagem = "";
+    	int max = this.qtdTipo(tipoReal);
+    	int cont = 0;
+    	for (Map.Entry<String, Pesquisador> entry : pesquisadores.entrySet()) {
+    		if (cont == max - 1) {
+    			if (entry.getValue().getFuncao().equals(tipoReal)) {
+    				listagem += entry.getValue().toString();
+    			}
+    		} else if (cont < max) {
+    			if (entry.getValue().getFuncao().equals(tipoReal)) {
+    				listagem += entry.getValue().toString() + " | ";
+    				cont++;
+    			}
+    		}
+    	}
+    	return listagem;
+    }
+    
+    private int qtdTipo(String funcao) {
+    	int qtd = 0;
+    	for (Map.Entry<String, Pesquisador> entry : pesquisadores.entrySet()) {
+    		if (entry.getValue().getFuncao().equals(funcao)) {
+    			qtd += 1;
+    		}
+    	}
+    	return qtd;
     }
 }
