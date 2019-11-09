@@ -18,6 +18,10 @@ public class ControllerAtividades extends Validacao {
 	 * que indica seu identificador unico
 	 */
 	private Map<String, Atividade> atividades;
+	
+	private Map<String, String> resultadosCadastrados;
+	
+	private int resultado;
 
 	/**
 	 * Atributo que guarda a parte inteira do proximo ID a ser cadastrado em um
@@ -32,6 +36,8 @@ public class ControllerAtividades extends Validacao {
 
 		this.atividades = new HashMap<String, Atividade>();
 		this.proximoId = 1;
+		this.resultadosCadastrados = new HashMap<String, String>();
+		this.resultado = 1;
 
 	}
 
@@ -154,4 +160,25 @@ public class ControllerAtividades extends Validacao {
 	public boolean containsAtividade(String id) {
     	return atividades.containsKey(id);
     }
+	
+	public void executaAtividade(String codigoAtividade, int item, int duracao) {
+        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+        super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
+        super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
+        this.atividades.get(codigoAtividade).executaItem(item, duracao);
+	}
+
+	public int cadastraResultado(String codigoAtividade, String resultado) {
+        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+        super.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+        this.resultadosCadastrados.put(codigoAtividade, resultado);
+        return this.resultado++;
+	}
+
+	public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+        super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
+		super.verificaNuloNegativo(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+		return false;
+	}
 }

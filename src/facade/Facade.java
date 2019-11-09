@@ -20,7 +20,8 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cGeral = new Conector();
-        this.cBuscas = new ControllerBuscas(cGeral);
+        this.cBuscas = new ControllerBuscas();
+       /// this.cBuscas = new ControllerBuscas(cGeral);
 
     }
 
@@ -143,13 +144,12 @@ public class Facade {
     }
     
     //US5 
-   /** 
+   
     public String associaProblema(String idPesquisa, String idProblema) {
     	
     	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
     	
     }
-    **/
     
     public String desassociaProblema(String idPesquisa, String idProblema) {
     	
@@ -169,6 +169,11 @@ public class Facade {
     	
     }
     
+    public String listaPesquisas(String ordem) {
+    	
+    	return this.cPesquisa.listar(ordem);
+    	
+    }
     
     //US6
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
@@ -201,7 +206,14 @@ public class Facade {
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	//this.cGeral.executaAtividade(cPesquisa, codigoAtividade, item, duracao);
+    	this.cAtividade.executaAtividade(codigoAtividade, item, duracao);
+    }
+    public int cadastraResultado(String codigoAtividade, String resultado) {
+    	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
+    }
+    
+    public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+    	return this.cAtividade.removeResultado(codigoAtividade, numeroResultado);
     }
     //US8
     public String busca(String termo){

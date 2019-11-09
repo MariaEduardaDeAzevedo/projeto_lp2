@@ -40,6 +40,8 @@ public class Pesquisa extends Validacao {
     private Problema problema;
     
     private Objetivo objetivo;
+
+	private String motivo;
     
 
     
@@ -59,7 +61,9 @@ public class Pesquisa extends Validacao {
         this.ativada = true;
         this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
         this.atividadesAssociadas = new HashMap<String, Atividade>();
+        this.motivo = null;
     }
+    
 
     /**
      * Retorna a representacao da pesquisa.
@@ -82,12 +86,14 @@ public class Pesquisa extends Validacao {
 
     /**
      * Altera o status da pesquisa para desativada.
+     * @param motivo 
      */
-    public void encerraPesquisa() {
-        if (!isAtivada()) {
-            throw new IllegalArgumentException("Pesquisa desativada.");
-        }
-        this.ativada = false;
+    public void encerraPesquisa(String motivo) {
+    	super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
+    	super.validaStatus(this.ativada, "Pesquisa desativada.");
+        
+    	this.ativada = false;
+        this.motivo = motivo;
     }
 
     /**
@@ -217,5 +223,11 @@ public class Pesquisa extends Validacao {
 			return true;
 		}
 		return false;
+	}
+
+	public Objetivo getObjetivo() {
+		
+		return this.objetivo;
+	
 	}
 }

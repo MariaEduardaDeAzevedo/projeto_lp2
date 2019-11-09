@@ -32,35 +32,83 @@ public class Conector extends Validacao {
         }
         return cPesquisas.desassociaPesquisador(idPesquisa, emailPesquisador);
     }
-
+    
     /**
-     * public String associaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,String idProblema) {
-     * <p>
-     * Problema problema = cProblema.getProblema(idProblema);
-     * return cPesquisa.associaProblema(idPesquisa, idProblema, problema);
-     * <p>
-     * }
-     **/
+	 * Associa um objeto Problema a um objeto Pesquisa pelos seus IDs indicados.
+	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
+	 * contrário, retorna-se "false"
+	 * 
+	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
+	 * @param cProblema  Entidade controladora de objetos Problema
+	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
+	 * @param idProblema String que representa unicamente um objeto Problema
+	 * @return String referente ao sucesso da operação
+	 */
+	public String associaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
+			String idProblema) {
 
-    public String desassociaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa, String idProblema) {
+		Problema problema = cProblema.getProblema(idProblema);
+		return cPesquisa.associaProblema(idPesquisa, idProblema, problema);
 
-        return cPesquisa.desassociaProblema(idPesquisa, idProblema);
+	}
+	
+	/**
+	 * Desassocia um objeto Problema de uma Pesquisa indicada pelos seus IDs
+	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
+	 * contrário, retorna-se "false"
+	 * 
+	 * 
+	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
+	 * @param cProblema  Entidade controladora de objetos Problema
+	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
+	 * @param idProblema String que representa unicamente um objeto Problema
+	 * @return String referente ao sucesso da operação
+	 */
+	public String desassociaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
+			String idProblema) {
 
-    }
+		return cPesquisa.desassociaProblema(idPesquisa, idProblema);
 
-    public String associaObjetivo(ControllerPesquisas cPesquisa, ControllerObjetivos cObjetivo, String idPesquisa, String idObjetivo) {
+	}
+	
+	/**
+	 * Associa um objeto Objetivo a um objeto Pesquisa pelos seus ID's indicados.
+	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
+	 * contrário, retorna-se "false"
+	 * 
+	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
+	 * @param cObjetivo  Entidade controladora de objetos Objetivo
+	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
+	 * @param idObjetivo String que representa unicamente um objeto Objetivo
+	 * @return String referente ao sucesso da operação
+	 */
+	public String associaObjetivo(ControllerPesquisas cPesquisa, ControllerObjetivos cObjetivo, String idPesquisa,
+			String idObjetivo) {
 
-        Objetivo objetivo = cObjetivo.getObjetivo(idObjetivo);
-        return cPesquisa.associaObjetivo(idPesquisa, idObjetivo, objetivo);
+		Objetivo objetivo = cObjetivo.getObjetivo(idObjetivo);
+		return cPesquisa.associaObjetivo(idPesquisa, idObjetivo, objetivo);
 
-    }
+	}
+	
+	/**
+	 * Desassocia um objeto Objetivo de uma Pesquisa indicada pelos seus IDs
+	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
+	 * contrário, retorna-se "false"
+	 * 
+	 * 
+	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
+	 * @param cObjetivo  Entidade controladora de objetos Problema
+	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
+	 * @param idObjetivo String que representa unicamente um objeto Objetivo
+	 * @return String referente ao sucesso da operação
+	 */
+	public String desassociaObjetivo(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
+			String idProblema) {
 
-    public String desassociaObjetivo(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa, String idProblema) {
+		return cPesquisa.desassociaObjetivo(idPesquisa, idProblema);
 
-        return cPesquisa.desassociaObjetivo(idPesquisa, idProblema);
-
-    }
-
+	}
+    
     /**
      * Busca a ocorrencia de um termo em todas as entidades do sistema.
      * @param cPesquisa ControllerPesquisas com todas as pesquisas cadastradas.
@@ -115,7 +163,7 @@ public class Conector extends Validacao {
                                     String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada.");
+        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada");
         Atividade atividade = cAtividade.getAtividade(codigoAtividade);
         return cPesquisa.associaAtividade(codigoPesquisa, atividade);
 
