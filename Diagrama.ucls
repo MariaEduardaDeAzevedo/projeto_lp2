@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="controller.ControllerPesquisador" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerPesquisador.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="controller.ControllerPesquisador" project="base"
+    file="/base/src/controller/ControllerPesquisador.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="261" width="335" x="4050" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="base.Item" project="projeto_lp2" file="/projeto_lp2/src/base/Item.java" 
+  <class id="2" language="java" name="base.Item" project="base" file="/base/src/base/Item.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="189" width="121" x="3554" y="2651"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="controller.ControllerAtividades" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerAtividades.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="controller.ControllerAtividades" project="base"
+    file="/base/src/controller/ControllerAtividades.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="225" width="247" x="3742" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="facade.Facade" project="projeto_lp2" file="/projeto_lp2/src/facade/Facade.java" 
+  <class id="4" language="java" name="facade.Facade" project="base" file="/base/src/facade/Facade.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="657" width="335" x="5015" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="facade.Main" project="projeto_lp2" file="/projeto_lp2/src/facade/Main.java" 
+  <class id="5" language="java" name="facade.Main" project="base" file="/base/src/facade/Main.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="113" x="3554" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="controller.ControllerBuscas" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerBuscas.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="controller.ControllerBuscas" project="base"
+    file="/base/src/controller/ControllerBuscas.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="117" width="201" x="4753" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="excecoes.FuncaoInvalidaException" project="projeto_lp2" 
-    file="/projeto_lp2/src/excecoes/FuncaoInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="excecoes.FuncaoInvalidaException" project="base"
+    file="/base/src/excecoes/FuncaoInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="81" width="181" x="3707" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="base.Pesquisador" project="projeto_lp2" 
-    file="/projeto_lp2/src/base/Pesquisador.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="base.Pesquisador" project="base"
+    file="/base/src/base/Pesquisador.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="423" width="246" x="3949" y="2651"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="base.Problema" project="projeto_lp2" file="/projeto_lp2/src/base/Problema.java" 
+  <class id="9" language="java" name="base.Problema" project="base" file="/base/src/base/Problema.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="207" width="152" x="4235" y="2651"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="base.Aluno" project="projeto_lp2" file="/projeto_lp2/src/base/Aluno.java" 
+  <class id="10" language="java" name="base.Aluno" project="base" file="/base/src/base/Aluno.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="263" x="3797" y="3114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="controller.Validacao" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/Validacao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="controller.Validacao" project="base"
+    file="/base/src/controller/Validacao.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="297" width="365" x="4331" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="base.Professor" project="projeto_lp2" file="/projeto_lp2/src/base/Professor.java" 
+  <class id="12" language="java" name="base.Professor" project="base" file="/base/src/base/Professor.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="153" width="327" x="4100" y="3114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="controller.ControllerProblemas" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerProblemas.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="controller.ControllerProblemas" project="base"
+    file="/base/src/controller/ControllerProblemas.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="189" width="186" x="5015" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="excecoes.AssociationException" project="projeto_lp2" 
-    file="/projeto_lp2/src/excecoes/AssociationException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="excecoes.AssociationException" project="base"
+    file="/base/src/excecoes/AssociationException.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="99" width="166" x="3928" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +127,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="controller.ControllerPesquisas" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerPesquisas.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="controller.ControllerPesquisas" project="base"
+    file="/base/src/controller/ControllerPesquisas.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="297" width="246" x="4467" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -136,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="base.Atividade" project="projeto_lp2" file="/projeto_lp2/src/base/Atividade.java" 
+  <class id="16" language="java" name="base.Atividade" project="base" file="/base/src/base/Atividade.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="297" width="241" x="3594" y="2206"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="base.Objetivo" project="projeto_lp2" file="/projeto_lp2/src/base/Objetivo.java" 
+  <class id="17" language="java" name="base.Objetivo" project="base" file="/base/src/base/Objetivo.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="243" width="191" x="4427" y="2651"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="base.Pesquisa" project="projeto_lp2" file="/projeto_lp2/src/base/Pesquisa.java" 
+  <class id="18" language="java" name="base.Pesquisa" project="base" file="/base/src/base/Pesquisa.java"
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="405" width="243" x="4163" y="2206"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,8 +163,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="controller.ControllerObjetivos" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/ControllerObjetivos.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="19" language="java" name="controller.ControllerObjetivos" project="base"
+    file="/base/src/controller/ControllerObjetivos.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="189" width="226" x="5241" y="1869"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -172,8 +172,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="controller.Conector" project="projeto_lp2" 
-    file="/projeto_lp2/src/controller/Conector.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="controller.Conector" project="base"
+    file="/base/src/controller/Conector.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="117" width="421" x="4597" y="2206"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -181,8 +181,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="excecoes.ActivationException" project="projeto_lp2" 
-    file="/projeto_lp2/src/excecoes/ActivationException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="21" language="java" name="excecoes.ActivationException" project="base"
+    file="/base/src/excecoes/ActivationException.java" binary="false" corner="BOTTOM_RIGHT">
     <position height="81" width="157" x="4134" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

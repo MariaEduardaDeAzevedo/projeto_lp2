@@ -1,5 +1,6 @@
-package projeto_lp2;
+package controller;
 
+import base.Atividade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -136,10 +137,81 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.alteraPesquisa(null, "DESCRICAO", "mts tecnologias");
 		});
 	}
-	
-	
-	
-	
 
+    @Test
+    void associaAtividadeValida() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+    	Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		assertTrue(controllerPesquisasTest.associaAtividade("COM1", A1));
+	}
 
+	@Test
+	void associaAtividadeValidaRepetida() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("COM1", A1);
+		assertFalse(controllerPesquisasTest.associaAtividade("COM1", A1));
+	}
+
+	@Test
+	void associaAtividadePesquisaInvalida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.associaAtividade("COM1", A1);
+		});
+	}
+
+	@Test
+	void associaAtividadePesquisaEncerrada() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+		controllerPesquisasTest.encerraPesquisa("COM1", "O lab fechou");
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.associaAtividade("COM1", A1);
+		});
+	}
+
+	@Test
+	void desassociaAtividadeValida() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("COM1", A1);
+		assertTrue(controllerPesquisasTest.desassociaAtividade("COM1", "A1"));
+	}
+
+	@Test
+	void desassociaAtividadeValidaRepetida() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("COM1", A1);
+		controllerPesquisasTest.desassociaAtividade("COM1", "A1");
+		assertFalse(controllerPesquisasTest.desassociaAtividade("COM1", "A1"));
+	}
+
+	@Test
+	void desassociaAtividadePesquisaInvalida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.desassociaAtividade("COM1", "A1");
+		});
+	}
+
+	@Test
+	void desassociaAtividadePesquisaEncerrada() {
+		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("COM1", A1);
+		controllerPesquisasTest.encerraPesquisa("COM1", "O lab fechou");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.desassociaAtividade("COM1", "A1");
+		});
+	}
 }

@@ -1,11 +1,10 @@
-package projeto_lp2;
+package base;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import base.Pesquisa;
 import excecoes.ActivationException;
 
 class PesquisaTest {
@@ -180,4 +179,35 @@ class PesquisaTest {
     }
 
 
+    @Test
+    void associaAtividadeValida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		assertTrue(pesquisaTeste.associaAtividade(A1));
+	}
+
+	@Test
+	void associaAtividadeInvalida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		pesquisaTeste.associaAtividade(A1);
+		assertFalse(pesquisaTeste.associaAtividade(A1));
+	}
+
+	@Test
+	void desassociaAtividadeValida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		pesquisaTeste.associaAtividade(A1);
+		assertTrue(pesquisaTeste.desassociaAtividade("A1"));
+	}
+
+	@Test
+	void desassociaAtividadeInvalida() {
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		pesquisaTeste.associaAtividade(A1);
+		pesquisaTeste.desassociaAtividade("A1");
+		assertFalse(pesquisaTeste.desassociaAtividade("A1"));
+	}
 }

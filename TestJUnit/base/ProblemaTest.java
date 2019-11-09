@@ -1,12 +1,8 @@
-package projeto_lp2;
+package base;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import base.Problema;
 
 class ProblemaTest {
 

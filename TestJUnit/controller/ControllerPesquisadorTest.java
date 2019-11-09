@@ -1,4 +1,4 @@
-package projeto_lp2;
+package controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

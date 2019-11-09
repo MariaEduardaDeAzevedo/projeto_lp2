@@ -1,4 +1,4 @@
-package projeto_lp2;
+package controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -3,10 +3,10 @@
 *** JOE was aborted because the terminal closed
 
 *** File '(Unnamed)'
-/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
 
-*** File '/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG'
-Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/projeto_lp2
+*** File '/home/daniel/eclipse-workspace/base/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/base
 merging
 # Please enter a commit message to explain why this merge is necessary,
 # especially if it merges an updated upstream into a topic branch.
@@ -24,7 +24,7 @@ Finished processing /etc/joe/editorrc
 *** JOE was aborted because the terminal closed
 
 *** File '(Unnamed)'
-/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
 
 *** File '* Startup Log *'
 Processing '/etc/joe/editorrc'...
@@ -36,10 +36,10 @@ Finished processing /etc/joe/editorrc
 *** JOE was aborted because the terminal closed
 
 *** File '(Unnamed)'
-/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
 
-*** File '/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG'
-Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/projeto_lp2
+*** File '/home/daniel/eclipse-workspace/base/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/base
 
 # Please enter a commit message to explain why this merge is necessary,
 # especially if it merges an updated upstream into a topic branch.

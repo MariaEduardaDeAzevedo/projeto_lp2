@@ -1,10 +1,7 @@
-package projeto_lp2;
+package base;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import base.Pesquisa;
-import base.Pesquisador;
 
 import static org.junit.jupiter.api.Assertions.*;
 
