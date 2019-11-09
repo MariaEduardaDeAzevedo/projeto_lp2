@@ -76,7 +76,7 @@ public class ControllerBuscas extends Validacao {
         lista_identidades.addAll(lista_problemas);
         lista_identidades.addAll(lista_objetivos);
         lista_identidades.addAll(lista_atividades);
-        super.hasValor(!(lista_identidades.size() == 0), "Nenhum resultado encontrado");
+        //super.hasValor(!(lista_identidades.size() == 0), "Nenhum resultado encontrado");
         String entidadesComTermo = "";
         for (int i = 0; i < lista_identidades.size(); i++) {
             if (i == lista_identidades.size() - 1) {
@@ -84,8 +84,9 @@ public class ControllerBuscas extends Validacao {
             } else {
                 entidadesComTermo += lista_identidades.get(i) + " | ";
             }
+        } if (lista_identidades.size() != 0) {
+            this.buscasRealizadas.put(termo, lista_identidades);
         }
-        this.buscasRealizadas.put(termo, lista_identidades);
         return entidadesComTermo;
     }
 
