@@ -150,10 +150,23 @@ public class ControllerPesquisas extends Validacao {
         return pesquisas.values();
     }
     
+    /**
+     * Retorna um valor booleano que indica se uma pesquisa está ou não cadastrada no sistema.
+     * @param idPesquisa id da pesquisa.
+     * @return true, caso a pesquisa esteja cadastrada no sistema, ou false, caso não esteja cadastrada no sistema.
+     */
     public boolean containsPesquisa(String idPesquisa) {
     	return pesquisas.containsKey(idPesquisa);
     }
     
+    /**
+     * Associa um pesquisador a uma pesquisa cadastrada no sistema.
+     * Retorna um valor booleano que indica se a associação foi bem sucedida ou não.
+     * @param idPesquisa id da pesquisa a que se quer associar o pesquisador.
+     * @param associado Pesquisador que se quer associar à pesquisa.
+     * @return true, caso a associação seja bem sucedida, ou seja, caso o pesquisador já não esteja associado à pesquisa ou false, caso
+     * a associação não seja bem sucedida, ou seja, se o pesquisador já estiver associado à pesquisa.
+     */
     public boolean associaPesquisador(String idPesquisa, Pesquisador associado) {
     	if (!pesquisas.containsKey(idPesquisa)) {
     		throw new NullPointerException("Pesquisa nao encontrada.");
@@ -167,6 +180,14 @@ public class ControllerPesquisas extends Validacao {
     	return pesquisas.get(idPesquisa).associaPesquisador(associado);
     }
     
+    /**
+     * Desassocia um pesquisador de uma pesquisa cadastrada no sistema.
+     * Retorna um valor booleano que indica se a associação foi bem sucedida ou não.
+     * @param idPesquisa id da pesquisa a que se quer desassociar o pesquisador.
+     * @param emailPesquisador email do pesquisador que se quer desassociar da pesquisa.
+     * @return true, caso a desassociação seja bem sucedida, ou seja, se o pesquisador que estava associado for removido, ou false, caso a desassociação
+     * for mal sucedida, ou seja, se o pesquisador não estiver associado à pesquisa.
+     */
     public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
     	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio." );
     	super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
@@ -182,6 +203,12 @@ public class ControllerPesquisas extends Validacao {
     	return pesquisas.get(idPesquisa).desassociaPesquisador(emailPesquisador);
     }
     
+    /**
+     * Retorna um valor booleano que indica se uma pesquisa cadastrada no sistema possui ou não um pesquisador associado.
+     * @param idPesquisa id da pesquisa.
+     * @param emailPesquisador email do pesquisador.
+     * @return true, caso a pesquisa tenha o pesquisador associado a ela, ou false no caso contrário.
+     */
     public boolean containsPesquisador(String idPesquisa, String emailPesquisador) {
     	super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
     	super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
@@ -190,7 +217,7 @@ public class ControllerPesquisas extends Validacao {
     	}
     	return pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador);
     }
-
+    
 	public Pesquisa getPesquisa(String idPesquisa) {
 		
 		return this.pesquisas.get(idPesquisa);

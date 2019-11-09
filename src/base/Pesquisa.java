@@ -164,6 +164,13 @@ public class Pesquisa extends Validacao {
 	
 	}
 	
+	/**
+	 * Associa um pesquisador a esta pesquisa.
+	 * Retorna um valor booleano que indica se a associação foi bem sucedida ou não.
+	 * @param associado pesquisador que se quer associar a esta pesquisa.
+	 * @return true, caso a associação tenha sido bem sucedida, ou seja, se o pesquisador já não estiver associado à esta pesquisa, ou false, caso a associação
+	 * não seja bem sucedida, ou seja, se o pesquisador já esteja associado a esta pesquisa.
+	 */
 	public boolean associaPesquisador(Pesquisador associado) {
 		if (!ativada) {
 			throw new ActivationException("Pesquisa desativada.");
@@ -175,6 +182,14 @@ public class Pesquisa extends Validacao {
 		return true;
 	}
 	
+	/**
+	 * Desassocia um pesquisador a esta pesquisa.
+	 * Retorna um valor booleano que indica se a desassociação foi bem sucedida ou não.
+	 * @param emailPesquisador email do pesquisador que se quer desassociar desta pesquisa.
+	 * @return true, caso a desassociação seja bem sucedida, ou seja, se o email passado como parâmetro identificar um pesquisador associado
+	 * a esta pesquisa e este sendo removido, ou false, caso a desassociação não seja bem sucedida, ou seja, se o email passado como parâmetro não identificar
+	 * nenhum pesquisador associado a esta pesquisa.
+	 */
 	public boolean desassociaPesquisador(String emailPesquisador) {
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
 		if (!ativada) {
@@ -218,6 +233,12 @@ public class Pesquisa extends Validacao {
 		return true;
 	}
 	
+	/**
+	 * Retorna um valor booleano que indica se a pesquisa possui um pesquisador associado ou não.
+	 * @param emailPesquisador email que identifica o pesquisador.
+	 * @return true, caso o email passado como parâmetro identifique um pesquisador associado à pesquisa, ou false, caso o email
+	 * não identifique nenhum pesquisador associado à pesquisa.
+	 */
 	public boolean containsPesquisador(String emailPesquisador) {
 		if (pesquisadoresAssociados.containsKey(emailPesquisador)) {
 			return true;

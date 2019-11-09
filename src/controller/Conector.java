@@ -7,7 +7,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Classe utilizada para juntar a lógica de dois ou mais controllers do sistema.
+ * @author Daniel Fonseca
+ *
+ */
 public class Conector extends Validacao {
+	/**
+	 * Associa um pesquisador cadastrado no sistema (ou qualquer uma de suas especializações) com uma pesquisa, que também deve estar cadastrada no sistema.
+	 * @param cPesquisador controller de Pesquisador, que armazena todas os pesquisadores cadastrados no sistema.
+	 * @param cPesquisas controller de Pesquisa, que armazena todas as pesquisas cadastradas no sistema.
+	 * @param idPesquisa identificador único da pesquisa.
+	 * @param emailPesquisador email do pesquisador que se quer associar a pesquisa.
+	 * @return um valor booleano que indica se a associação do pesquisador a pesquisa foi realizada com sucesso. Se o pesquisador já estiver associado à pesquisa, é retornado
+	 * false, caso contrário, este é associado à pesquisa e é retornado true.
+	 */
     public boolean associaPesquisador(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
@@ -20,7 +34,16 @@ public class Conector extends Validacao {
         Pesquisador associado = cPesquisador.getPesquisador(emailPesquisador);
         return cPesquisas.associaPesquisador(idPesquisa, associado);
     }
-
+    
+    /**
+     * Desassocia um pesquisador associado a uma pesquisa cadastrada no sistema.
+     * @param cPesquisas controller de Pesquisa, que armazena todas as pesquisas cadastradas no sistema.
+     * @param idPesquisa id da pesquisa a que se quer desassociar o pesquisador.
+     * @param emailPesquisador email do pesquisador que se quer desassociar da pesquisa.
+     * @return retorna um valor booleano que indica se a operação foi realizada com sucesso ou não. É retornado true quando
+     * a desassociação é feita com sucesso, e, caso contrário, se o pesquisador não estiver associado à pesquisa, é retornado false, indicando
+     * que a desassociação não foi bem sucedida.
+     */
     public boolean desassociaPesquisador(ControllerPesquisas cPesquisas, String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");

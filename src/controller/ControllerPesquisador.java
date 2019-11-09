@@ -105,6 +105,14 @@ public class ControllerPesquisador extends Validacao {
 		return this.pesquisadores.get(email).pesquisadorEhAtivo();
 	}
 	
+	/**
+	 * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a função "professor", para Professor, que é subclasse
+	 * de Pesquisador e tem três atributos a mais que sua superclasse, que são: formação, unidade e data de contratação.
+	 * @param email email do pesquisador que se quer especializar.
+	 * @param formacao grau de formação do professor.
+	 * @param unidade unidade alocada do professor.
+	 * @param data data de contratação do professor.
+	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		super.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
@@ -123,6 +131,13 @@ public class ControllerPesquisador extends Validacao {
 		pesquisadores.put(email, especializado);
 	}
 	
+	/**
+	 * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a função "estudante", para Aluno, que é subclasse
+	 * de Pesquisador, e tem dois atributos a mais que sua superclasse, que são: semestre de ingresso e índice de eficiência acadêmica (IEA).
+	 * @param email email do pesquisador que se quer especializar.
+	 * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor não pode ser um número menor ou igual a zero.
+	 * @param iea valor correspondente ao índice de eficiência acadêmica do aluno. Este valor não pode ser menor que zero e nem maior que um.
+	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		super.validaString(String.valueOf(semestre), "Campo semestre nao pode ser nulo ou vazio.");
@@ -149,11 +164,25 @@ public class ControllerPesquisador extends Validacao {
 		return pesquisadores.values();
     }
     
+    /**
+     * Retorna um pesquisador cadastrado no sistema.
+     * @param idPesquisador email do pesquisador, que o identifica unicamente no sistema.
+     * @return Pesquisador identificado pelo email passado como parâmetro.
+     */
     public Pesquisador getPesquisador(String idPesquisador) {
     	super.validaString(idPesquisador, "email do pesquisador não pode ser nulo ou vazio");
+    	if (!pesquisadores.containsKey(idPesquisador)) {
+    		throw new NullPointerException("pesquisador não existe.");
+    	}
     	return pesquisadores.get(idPesquisador);
     }
     
+    /**
+     * Retorna uma listagem de todos os pesquisadores cadastrados no sistema de acordo com o seu tipo.
+     * @param tipo tipo dos pesquisadores que se quer listar.
+     * @return String que corresponde à listagem de todos os pesquisadores de determinado tipo cadastrado no sistema. Essa String contém a representação
+     * textual de cada pesquisador.
+     */
     public String listaPesquisadores(String tipo) {
     	super.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
     	if (!tipo.equals("EXTERNO") && !tipo.equals("ALUNA") && !tipo.equals("PROFESSORA")) {
@@ -185,6 +214,11 @@ public class ControllerPesquisador extends Validacao {
     	return listagem;
     }
     
+    /**
+     * Retorna um inteiro que indica quantos pesquisadores de certo tipo existem no sistema.
+     * @param funcao tipo/função dos pesquisadores que se quer contar os cadastros no sistema.
+     * @return inteiro que corresponde à quantidade de pesquisadores de certo tipo cadsatrados no sistema.
+     */
     private int qtdTipo(String funcao) {
     	int qtd = 0;
     	for (Map.Entry<String, Pesquisador> entry : pesquisadores.entrySet()) {

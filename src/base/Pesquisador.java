@@ -157,22 +157,42 @@ public class Pesquisador extends Validacao {
 		return ativada;
 	}
 	
+	/**
+	 * Retorna o valor do nome do pesquisador.
+	 * @return String que corresponde ao nome do pesquisador.
+	 */
 	public String getNome() {
 		return nome;
 	}
 	
+	/**
+	 * Retorna o valor da função do pesquisador.
+	 * @return String que corresponde à função do pesquisador.
+	 */
 	public String getFuncao() {
 		return funcao;
 	}
 	
+	/**
+	 * Retorna a biografia do pesquisador.
+	 * @return String que corresponde à biografia do pesquisador.
+	 */
 	public String getBiografia() {
 		return biografia;
 	}
 	
+	/**
+	 * Retorna o email do pesquisador.
+	 * @return String que corresponde ao email do pesquisador.
+	 */
 	public String getEmail() {
 		return email;
 	}
 	
+	/**
+	 * Retorna a URL da foto do pesquisador.
+	 * @return String que corresponde à URL da foto do pesquisador.
+	 */
 	public String getFoto() {
 		return fotoURL;
 	}
@@ -184,27 +204,52 @@ public class Pesquisador extends Validacao {
 		return null;
     }
     
+    /**
+     * Altera o valor do nome do pesquisador.
+     * @param novoValor String correspondente ao novo valor do nome do pesquisador, que substituirá o antigo valor do
+     * nome deste.
+     */
     public void setNome(String novoValor) {
     	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
     	nome = novoValor;
     }
     
+    /**
+     * Altera o valor da função do pesquisador.
+     * @param novoValor String correspondente ao novo valor da função do pesquisador, que substituirá o antigo
+     * valor da função deste.
+     */
     public void setFuncao(String novoValor) {
     	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
     	funcao = novoValor;
     }
     
+    /**
+     * Altera o valor da biografia do pesquisador.
+     * @param novoValor String que corresponde ao novo valor da biografia do pesquisador, que substituirá o antigo
+     * valor da biografia deste.
+     */
     public void setBiografia(String novoValor) {
     	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
     	biografia = novoValor;
     }
     
+    /**
+     * Altera o valor do email do pesquisador.
+     * @param novoValor String que corresponde ao novo valor do email do pesquisador, que substituirá o antigo
+     * valor do email deste.
+     */
     public void setEmail(String novoValor) {
     	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
     	super.verificaEmail(novoValor);
     	email = novoValor;
     }
     
+    /**
+     * Altera o valor da URL da foto do pesquisador.
+     * @param novoValor String que corresponde ao novo valor da URL da foto do pesquisador, que substituirá o antigo
+     * valor desta.
+     */
     public void setFoto(String novoValor) {
     	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
     	super.verificaURL(novoValor);
