@@ -215,6 +215,14 @@ public class Facade {
     public boolean removeResultado(String codigoAtividade, int numeroResultado) {
     	return this.cAtividade.removeResultado(codigoAtividade, numeroResultado);
     }
+    
+    public String listaResultados(String codigoAtividade) {
+    	return this.cAtividade.listaResultados(codigoAtividade);
+    }
+    
+    public int getDuracao(String codigoAtividade) {
+    	return this.cAtividade.getDuracao(codigoAtividade);
+    }
     //US8
     public String busca(String termo){
         return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);

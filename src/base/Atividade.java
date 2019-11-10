@@ -40,7 +40,6 @@ public class Atividade extends Validacao {
 	 */
 	private String id;
 
-	private List<Integer> itensExecutados;
 
 	/**
 	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
@@ -211,10 +210,19 @@ public class Atividade extends Validacao {
 		return null;
 	}
 
+	/**
+	 * Metodo que permite acesso ao Id de uma atividade.
+	 * @return Id da atividade
+	 */
 	public String getId() {
 		return this.id;
 	}
 	
+	/**
+	 * Metodo que permite a execucao de um item.
+	 * @param item Item a ser executado
+	 * @param duracao Duracao da execucao.
+	 */
 	public void executaItem(int item, int duracao) {
 		if(item > itens.size()) {
 			throw new IllegalArgumentException("Item nao encontrado.");

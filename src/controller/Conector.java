@@ -179,6 +179,14 @@ public class Conector extends Validacao {
         return cBuscas.contaResultadosBusca(termo);
     }
 
+    /**
+     * Metodo que permite a associacao de uma atividade a uma determinada pesquisa.
+     * @param cPesquisa Controller de pesquisa
+     * @param cAtividade Controller de atividade
+     * @param codigoPesquisa Codigo da Pesquisa 
+     * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
+     * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
+     */
     public boolean associaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade,
                                     String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
@@ -189,6 +197,14 @@ public class Conector extends Validacao {
 
     }
 
+    /**
+     * Metodo que permite a desassociacao de uma atividade a uma determinada pesquisa.
+     * @param cPesquisa Controller de pesquisa
+     * @param cAtividade Controller de atividade
+     * @param codigoPesquisa Codigo da Pesquisa 
+     * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
+     * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
+     */
     public boolean desassociaAtividade(ControllerPesquisas cPesquisa, String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");

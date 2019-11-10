@@ -526,12 +526,24 @@ public class ControllerPesquisas extends Validacao {
 
 	}
 
+	/**
+	 * Metodo que permite a associacao de uma atividade a uma pesquisa.
+	 * @param codigoPesquisa Codigo da Pesquisa
+	 * @param atividade Atividade a ser associada
+	 * @return valor booleando indicando se a associacao foi bem sucedida ou nao.
+	 */
 	public boolean associaAtividade(String codigoPesquisa, Atividade atividade) {
 		super.validaStatus(this.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
 		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
 		return this.pesquisas.get(codigoPesquisa).associaAtividade(atividade);
 	}
 
+	/**
+	 * Metodo que permite a desassociacao de uma atividade que ja foi associada a uma pesquisa.
+	 * @param codigoPesquisa Codigo da pesquisa
+	 * @param codigoAtividade codigo da atividade
+	 * @return valor booleando indicando se a desassociacao foi bem sucedida ou nao.
+	 */
 	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
 		super.validaStatus(this.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
 		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");

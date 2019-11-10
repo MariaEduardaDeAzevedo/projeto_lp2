@@ -18,10 +18,12 @@ public class ControllerAtividades extends Validacao {
 	 * que indica seu identificador unico
 	 */
 	private Map<String, Atividade> atividades;
-	
-	private Map<String, String> resultadosCadastrados;
-	
-	private int resultado;
+
+	/**
+	 * Mapa que armazena um arrayList com os resultados cadastrado em uma determinada atividade.
+	 */
+	private Map<String, ArrayList<String>> resultadosCadastrados;
+
 
 	/**
 	 * Atributo que guarda a parte inteira do proximo ID a ser cadastrado em um
@@ -36,8 +38,7 @@ public class ControllerAtividades extends Validacao {
 
 		this.atividades = new HashMap<String, Atividade>();
 		this.proximoId = 1;
-		this.resultadosCadastrados = new HashMap<String, String>();
-		this.resultado = 1;
+		this.resultadosCadastrados = new HashMap<String, ArrayList<String>>();
 
 	}
 
@@ -148,37 +149,105 @@ public class ControllerAtividades extends Validacao {
 
 	}
 
-    public Collection<Atividade> getAtividades() {
+	public Collection<Atividade> getAtividades() {
 		return this.atividades.values();
-    }
+	}
 
-	public Atividade getAtividade(String id) {		
+	/**
+	 * Metodo que permite acessar uma ativiade.
+	 * @param id da atividade.
+	 * @return atividade.
+	 */
+	public Atividade getAtividade(String id) {
 		return this.atividades.get(id);
-		
+
 	}
-	
+
+	/**
+	 * Metodo que verifica se existe uma atividade no mapa de atividades.
+	 * @param id da atividade
+	 * @return valor booleando indicando se existe ou não a atividade.
+	 */
 	public boolean containsAtividade(String id) {
-    	return atividades.containsKey(id);
-    }
-	
+		return atividades.containsKey(id);
+	}
+
+	/**
+	 * Metodo que permite a execucao de uma atividade, atraves do seu codigo,
+	 * determinando o item a ser executado e a duracao da execucao.
+	 * @param codigoAtividade codigo da atividade.
+	 * @param item item a ser executado.
+	 * @param duracao Duracao da execucao.
+	 */
 	public void executaAtividade(String codigoAtividade, int item, int duracao) {
-        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
-        super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
-        this.atividades.get(codigoAtividade).executaItem(item, duracao);
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
+		super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
+		
+		this.atividades.get(codigoAtividade).executaItem(item, duracao);
 	}
 
+	/**
+	 * Metodo que permite o cadastro de um resultado em uma determinada atividade.
+	 * @param codigoAtividade codigo da atividade.
+	 * @param resultado Resultado a ser cadastrado.
+	 * @return inteiro indicando o índice do resultado, que representa o seu numero.
+	 */
 	public int cadastraResultado(String codigoAtividade, String resultado) {
-        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
-        this.resultadosCadastrados.put(codigoAtividade, resultado);
-        return this.resultado++;
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+		if (!resultadosCadastrados.containsKey(codigoAtividade)) {
+			this.resultadosCadastrados.put(codigoAtividade, new ArrayList<String>());
+		}
+		this.resultadosCadastrados.get(codigoAtividade).add(resultado);
+		return resultadosCadastrados.get(codigoAtividade).indexOf(resultado) + 1;
 	}
 
+	/**
+	 * Metodo que permite a remocao de um resultado cadastrado, a partir do 
+	 * codigo da atividade e do numero do resultado.
+	 * @param codigoAtividade codigo da atividade.
+	 * @param numeroResultado Numero do resultado.
+	 * @return valor booleano indicando se a remocao foi bem sucedida ou nao.
+	 */
 	public boolean removeResultado(String codigoAtividade, int numeroResultado) {
-        super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
 		super.verificaNuloNegativo(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+
+		if(resultadosCadastrados.containsKey(codigoAtividade))
+			if (numeroResultado > resultadosCadastrados.size() - 1) {
+				throw new IllegalArgumentException("Resultado nao encontrado.");
+			} else {
+				resultadosCadastrados.get(codigoAtividade).remove(numeroResultado);
+				return true;
+			}
 		return false;
+	}
+
+	/**
+	 * Metodo que lista os resultados cadastrados em uma determinada atividade.
+	 * @param codigoAtividade Codigo da atividade
+	 * @return Resultados listados.
+	 */
+	public String listaResultados(String codigoAtividade) {
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
+		String listaResultados = "";
+		for (int i = 0; i < resultadosCadastrados.size(); i++) {
+			if (i == resultadosCadastrados.size() - 1) {
+				listaResultados += resultadosCadastrados.get(codigoAtividade).get(i);
+			} else {
+				listaResultados += resultadosCadastrados.get(codigoAtividade).get(i) + " | ";
+			}
+		}
+		return listaResultados;
+
+	}
+
+	public int getDuracao(String codigoAtividade) {
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
+		return 0;
 	}
 }
