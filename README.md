@@ -63,7 +63,7 @@
 #### Falta:
 - Testes da US6
 #### Comentários:
-- Ficou um erro remanescente da US5 e irei discutir posteriormente sobre a corretude desse caso de teste na US5.
+- ~Ficou um erro remanescente da US5 e irei discutir posteriormente sobre a corretude desse caso de teste na US5.~ _US5 atualizada_
 
 ### US6
 #### Codificado:
