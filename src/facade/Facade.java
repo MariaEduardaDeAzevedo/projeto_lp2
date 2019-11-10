@@ -202,11 +202,11 @@ public class Facade {
     }
     
     public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
-    	return this.cGeral.desassociaAtividade(cPesquisa, codigoPesquisa, codigoAtividade);
+    	return this.cGeral.desassociaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	this.cAtividade.executaAtividade(codigoAtividade, item, duracao);
+    	this.cGeral.executaAtividade(cPesquisa, cAtividade, codigoAtividade, item, duracao);
     }
     public int cadastraResultado(String codigoAtividade, String resultado) {
     	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);

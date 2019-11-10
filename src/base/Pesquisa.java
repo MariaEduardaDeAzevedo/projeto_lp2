@@ -226,7 +226,7 @@ public class Pesquisa extends Validacao {
 	}
 
 	public boolean desassociaAtividade(String codigoAtividade) {
-		if(atividadesAssociadas.containsKey(codigoAtividade)) {
+		if(!atividadesAssociadas.containsKey(codigoAtividade)) {
 			return false;
 		}
 		this.atividadesAssociadas.remove(codigoAtividade);
@@ -250,5 +250,10 @@ public class Pesquisa extends Validacao {
 		
 		return this.objetivo;
 	
+	}
+
+
+	public boolean contemAtividadeAssociada(String codigoAtividade) {
+		return atividadesAssociadas.containsKey(codigoAtividade);
 	}
 }

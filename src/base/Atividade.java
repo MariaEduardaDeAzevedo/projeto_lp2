@@ -39,6 +39,9 @@ public class Atividade extends Validacao {
 	 * ID que identifica unicamente uma atividade
 	 */
 	private String id;
+	
+	
+	
 
 
 	/**
@@ -227,13 +230,13 @@ public class Atividade extends Validacao {
 		if(item > itens.size()) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		/**
+		
 		if(itensExecutados.contains(item)) {
 			throw new IllegalArgumentException("Item ja executado.");
 		}
 		
 		this.itensExecutados.add(item);
-		**/
+		
 		this.itens.get(item - 1).realizar();
 		
 	}

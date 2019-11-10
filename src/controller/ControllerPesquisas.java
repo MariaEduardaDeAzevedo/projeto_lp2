@@ -549,5 +549,14 @@ public class ControllerPesquisas extends Validacao {
 		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
 		return pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
+	
+	public boolean contemAtividadeAssociada(String codigoAtividade) {
+		for (Pesquisa pesquisa : pesquisas.values()) {
+			if(pesquisa.contemAtividadeAssociada(codigoAtividade)) {
+				return true;
+		}
+		}
+		return false;
+	}
 
 }

@@ -200,15 +200,18 @@ public class Conector extends Validacao {
     /**
      * Metodo que permite a desassociacao de uma atividade a uma determinada pesquisa.
      * @param cPesquisa Controller de pesquisa
+     * @param cAtividade 
      * @param cAtividade Controller de atividade
      * @param codigoPesquisa Codigo da Pesquisa 
      * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
      * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
      */
-    public boolean desassociaAtividade(ControllerPesquisas cPesquisa, String codigoPesquisa, String codigoAtividade) {
+    public boolean desassociaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade, String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        if (cPesquisa.containsPesquisa(codigoPesquisa)) {
+        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada");
+
+        if (!cPesquisa.containsPesquisa(codigoPesquisa)) {
             throw new IllegalArgumentException("Pesquisa nao encontrada.");
         }
         if (!cPesquisa.pesquisaEhAtiva(codigoPesquisa)) {
@@ -216,4 +219,16 @@ public class Conector extends Validacao {
         }
         return cPesquisa.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
+
+	public void executaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade, String codigoAtividade, int item, int duracao) {
+		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
+		super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
+		if(!cPesquisa.contemAtividadeAssociada(codigoAtividade)) {
+			throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+		}
+		cAtividade.executaAtividade(codigoAtividade, item, duracao);
+			
+		
+	}
 }
