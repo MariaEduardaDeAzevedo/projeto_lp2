@@ -11,12 +11,15 @@ class ConectorTest {
     private Conector cGeralTeste;
     private ControllerPesquisas cPesquisaTeste;
     private ControllerAtividades cAtividadeTeste;
+	private ControllerPesquisador cPesquisadorTeste;
 
     @BeforeEach
     void inicializaAtributos() {
         this.cGeralTeste = new Conector();
         this.cPesquisaTeste = new ControllerPesquisas();
         this.cAtividadeTeste = new ControllerAtividades();
+        this.cPesquisadorTeste = new ControllerPesquisador();
+        cPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "pesquisador@pesquisador.com", "https://pic_prof");
         cPesquisaTeste.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
         cAtividadeTeste.cadastrarAtividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.",
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
@@ -152,5 +155,120 @@ class ConectorTest {
         assertThrows(IllegalArgumentException.class, () -> {
             cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A3");
         });
+    }
+    
+    @Test
+    void associaPesquisadorComum() {
+    	
+    	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+    	
+    }
+    
+    @Test
+    void associaPesquisadorInexistente() {
+    	
+    	 assertThrows(NullPointerException.class, () -> {
+    		 this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@professor.com");;
+         });
+    	
+    	
+    }
+    
+    @Test
+    void associaPesquisadorPesquisaInexistente() {
+    	
+    	assertThrows(NullPointerException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM2", "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void associaPesquisadorIDNull() {
+    	
+    	assertThrows(NullPointerException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, null, "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void associaPesquisadorIDVazio() {
+    	
+    	assertThrows(IllegalArgumentException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "", "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void associaPesquisadorEmailNull() {
+    	
+    	assertThrows(NullPointerException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", null);
+        });
+    	
+    }
+    
+    @Test
+    void associaPesquisadorEmailVazio() {
+    	
+    	assertThrows(IllegalArgumentException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "");
+        });
+    	
+    }
+    
+    @Test
+    void associaPesquisadorPesquisaInativa() {
+    	
+    	this.cPesquisaTeste.encerraPesquisa("COM1", "falta de verba");
+    	assertThrows(ActivationException.class, () -> {
+   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void desassociaPesquisadorComum() {
+    	
+    	this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+    	
+    }
+    
+    @Test
+    void desassociaPesquisadorIDNull() {
+    	
+    	assertThrows(NullPointerException.class, () -> {
+    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, null, "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void desassociaPesquisadorIDVazio() {
+    	
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "", "pesquisador@pesquisador.com");
+        });
+    	
+    }
+    
+    @Test
+    void desassociaPesquisadorNull() {
+    	
+    	assertThrows(NullPointerException.class, () -> {
+    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", null);
+        });
+    	
+    }
+    
+    @Test
+    void desassociaPesquisadorVazio() {
+    	
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", "");
+        });
+    	
     }
 }
