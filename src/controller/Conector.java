@@ -82,15 +82,12 @@ public class Conector extends Validacao {
 	 * 
 	 * 
 	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
-	 * @param cProblema  Entidade controladora de objetos Problema
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
-	 * @param idProblema String que representa unicamente um objeto Problema
 	 * @return String referente ao sucesso da operação
 	 */
-	public String desassociaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
-			String idProblema) {
+	public String desassociaProblema(ControllerPesquisas cPesquisa, String idPesquisa) {
 
-		return cPesquisa.desassociaProblema(idPesquisa, idProblema);
+		return cPesquisa.desassociaProblema(idPesquisa);
 
 	}
 	

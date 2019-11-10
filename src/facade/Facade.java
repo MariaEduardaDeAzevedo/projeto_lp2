@@ -151,9 +151,9 @@ public class Facade {
     	
     }
     
-    public String desassociaProblema(String idPesquisa, String idProblema) {
+    public String desassociaProblema(String idPesquisa) {
     	
-    	return this.cGeral.desassociaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
+    	return this.cGeral.desassociaProblema(cPesquisa, idPesquisa);
     	
     }
     

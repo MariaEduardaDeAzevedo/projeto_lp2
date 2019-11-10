@@ -89,4 +89,15 @@ public class Problema extends Validacao {
 		}
 		return null;
     }
+
+    /**
+     * Retorna o ID que identifica unicamente um objeto Problema
+     * 
+     * @return String com ID que representa unicamente objeto Problema
+     */
+	public String getId() {
+		
+		return this.id;
+	
+	}
 }
