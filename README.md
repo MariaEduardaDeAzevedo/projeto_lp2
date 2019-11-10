@@ -58,10 +58,12 @@
 
 ## Parte 2
 ### US5
-- Iniciei alterações para a parte 2. Como sujerido pelo monitor, dividi a parta src em mais de um pacote, para organizar melhor as classes. Iniciei também algumas alterações para minha US e adicionei os EasyAccepts da parte 2.
-- Adicionei novos métodos em Validação
-- Criei novas Exceções
-- Adequei alguns testes do EasyAccept
+#### Codificado:
+- Funcionaliades da US5
+#### Falta:
+- Testes da US6
+#### Comentários:
+- Ficou um erro remanescente da US5 e irei discutir posteriormente sobre a corretude desse caso de teste na US5.
 
 ### US6
 #### Codificado:
