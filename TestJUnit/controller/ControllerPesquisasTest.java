@@ -1,6 +1,8 @@
 package controller;
 
 import base.Atividade;
+import base.Pesquisador;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ControllerPesquisasTest {
 
 	ControllerPesquisas controllerPesquisasTest;
+	private ControllerPesquisador controllerPesquisadorTest;
 	
 	@BeforeEach
 	void constroiController() {
 		controllerPesquisasTest = new ControllerPesquisas();
+		controllerPesquisadorTest = new ControllerPesquisador();
 	}
 	
 	@Test
@@ -214,4 +218,159 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.desassociaAtividade("COM1", "A1");
 		});
 	}
+	
+	@Test
+	void associaPesquisadorComum() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		assertEquals(true, controllerPesquisasTest.associaPesquisador("COM1", pesq));
+		
+	}
+	
+	@Test
+	void associaPesquisadorIDPesquisaNull() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.associaPesquisador(null, pesq);
+		});
+		
+	}
+	
+	@Test
+	void associaPesquisadorIDPesquisaVazio() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.associaPesquisador("", pesq);
+		});
+		
+	}
+	
+	@Test
+	void associaPesquisadorNull() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.associaPesquisador("COM1", null);
+		});
+		
+	}
+	
+	@Test
+	void associaPesquisadorInexistente() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		assertThrows(NullPointerException.class, () -> {
+			Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@professor.com");
+			controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		});
+		
+	}
+	
+	@Test
+	void associaPesquisadorJaAssociado() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertEquals(false, controllerPesquisasTest.associaPesquisador("COM1", pesq));
+		
+	}
+	
+	@Test
+	void desassociaPesquisadorComum() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertEquals(true, (controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com")));
+	
+	}
+	
+	@Test
+	void desassociaPesquisadorIDPesquisaNull() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.desassociaPesquisador(null, "professor@pesquisador.com");
+		});
+		
+	}
+	
+	@Test
+	void desassociaPesquisadorIDPesquisaVazio() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.desassociaPesquisador("", "professor@pesquisador.com");
+		});
+		
+	}
+	
+	@Test
+	void desassociaPesquisadorEmailNull() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.desassociaPesquisador("COM1", null);
+		});
+		
+	}
+	
+	@Test
+	void desassociaPesquisadorEmailVazio() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.desassociaPesquisador("COM1", "");
+		});
+		
+	}
+	
+	@Test
+	void desassociaPesquisadorInexistente() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		assertEquals(false, controllerPesquisasTest.desassociaPesquisador("COM1", "pesquisador@professor.com"));
+		
+	}	
+
+	@Test
+	void desassociaPesquisadorJaDesassociado() {
+		
+		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
+		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
+		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
+		controllerPesquisasTest.associaPesquisador("COM1", pesq);
+		controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com");
+		assertEquals(false, controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com"));
+		
+	}
+
 }
