@@ -253,6 +253,6 @@ public class ControllerAtividades extends Validacao {
 	public int getDuracao(String codigoAtividade) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
-		return 0;
+		return this.atividades.get(codigoAtividade).getDuracao();
 	}
 }

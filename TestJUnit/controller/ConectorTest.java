@@ -271,4 +271,7 @@ class ConectorTest {
         });
     	
     }
+    
+    //testes US8
+    
 }

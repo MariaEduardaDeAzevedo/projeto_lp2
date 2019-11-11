@@ -42,9 +42,7 @@ public class Atividade extends Validacao {
 	
 	private int duracao;
 	
-	
-
-	private List<Integer> itensExecutados;
+	//private List<Integer> itensExecutados;
 	
 
 
@@ -234,16 +232,16 @@ public class Atividade extends Validacao {
 		if(item > itens.size()) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		
 		/**
 		if(itensExecutados.contains(item)) {
-			throw new IllegalArgumentException("Item ja executado.");
+			throw new IllegalArgumentException("Item ja executado.");			
 		}
 		
 		this.itensExecutados.add(item);
-		 **/
+	**/
 		
 		this.itens.get(item - 1).realizar();
+		this.duracao += duracao;
 		
 	}
 	
