@@ -12,7 +12,9 @@ class ConectorTest {
     private ControllerPesquisas cPesquisaTeste;
     private ControllerAtividades cAtividadeTeste;
 	private ControllerPesquisador cPesquisadorTeste;
-
+	private ControllerProblemas cProblemasTeste;
+	private ControllerObjetivos cObjetivosTest;
+	
     @BeforeEach
     void inicializaAtributos() {
         this.cGeralTeste = new Conector();
@@ -23,6 +25,7 @@ class ConectorTest {
         cPesquisaTeste.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
         cAtividadeTeste.cadastrarAtividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.",
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
+        this.cProblemasTeste = new ControllerProblemas();
     }
 
     @Test
