@@ -220,6 +220,15 @@ public class Conector extends Validacao {
         return cPesquisa.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
 
+    /**
+     * Metodo que permite a exeucacao de uma atividade, atraves do codigo da atividade
+     * a ser executada, o item e a duracao do processo.
+     * @param cPesquisa Controller de pesquisa
+     * @param cAtividade Controller de atividade
+     * @param codigoAtividade Codigo da atividade
+     * @param item Item a ser executado
+     * @param duracao Duracao da execucao
+     */
 	public void executaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade, String codigoAtividade, int item, int duracao) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
