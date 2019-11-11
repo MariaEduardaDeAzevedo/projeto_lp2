@@ -40,7 +40,11 @@ public class Atividade extends Validacao {
 	 */
 	private String id;
 	
+	private int duracao;
 	
+	
+
+	private List<Integer> itensExecutados;
 	
 
 
@@ -231,13 +235,19 @@ public class Atividade extends Validacao {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
 		
+		/**
 		if(itensExecutados.contains(item)) {
 			throw new IllegalArgumentException("Item ja executado.");
 		}
 		
 		this.itensExecutados.add(item);
+		 **/
 		
 		this.itens.get(item - 1).realizar();
 		
+	}
+	
+	public int getDuracao() {
+		return duracao;
 	}
 }
