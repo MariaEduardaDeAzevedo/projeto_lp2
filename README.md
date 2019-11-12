@@ -61,7 +61,7 @@
 #### Codificado:
 - Funcionaliades da US5
 #### Falta:
-- Testes da US6
+- ~Testes da US6~_Casos principais concluídos_
 #### Comentários:
 - ~Ficou um erro remanescente da US5 e irei discutir posteriormente sobre a corretude desse caso de teste na US5.~ _US5 atualizada_
 
@@ -70,4 +70,4 @@
 -Todas as funcionalidades da US6.
 #### Falta:
 - Documentar funcionalidades da US6.
--Fazer os testes de unidade de outra US.
+- Fazer os testes de unidade de outra US.
