@@ -33,7 +33,7 @@ public class ControllerBuscas extends Validacao {
     public String busca(String termo, Collection<Pesquisa> pesquisas, Collection<Pesquisador> pesquisadores,
                         Collection<Problema> problemas, Collection<Objetivo> objetivos, Collection<Atividade> atividades) {
         super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
-        List<String> lista_identidades = new ArrayList<String>();
+        List<String> lista_identidades = new ArrayList<>();
         for (Pesquisa pesquisa : pesquisas) {
             if (pesquisa.buscaTermoDescricao(termo) != null) {
                 lista_identidades.add(pesquisa.buscaTermoDescricao(termo));
@@ -113,4 +113,14 @@ public class ControllerBuscas extends Validacao {
         super.hasValor(buscasRealizadas.containsKey(termo), "Nenhum resultado encontrado");
         return buscasRealizadas.get(termo).size();
     }
+
+    /*private List retornaEntidadesComTermo(Collection<Buscavel> entidades, String termo){
+        List lista_entidades = new ArrayList<>();
+        for (Buscavel entidade : entidades) {
+            if (entidade.buscaTermo(termo) != null) {
+                lista_entidades.add(entidade.buscaTermo(termo));
+            }
+        }
+        return lista_entidades;
+    }*/
 }

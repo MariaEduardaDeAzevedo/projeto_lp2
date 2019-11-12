@@ -104,6 +104,11 @@ public class Objetivo extends Validacao {
 		return true;
 	}
 
+	/**
+	 * Busca se um termo esta contido na descricao.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o id e a descricao do objetivo, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
     public String buscaTermo(String termo) {
 		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
 			return this.id + ": " + this.descricao;
