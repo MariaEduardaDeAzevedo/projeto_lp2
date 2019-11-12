@@ -41,4 +41,28 @@ class ItemTest {
 		assertEquals("PENDENTE - Verificar se a condição sem contorno do universo é verdadeira", itemBase2.toString());
 	}
 
+    @Test
+    void realizar() {
+		itemBase1.realizar();
+		assertTrue(itemBase1.getStatus());
+    }
+
+	@Test
+	void realizarItemRealizado() {
+		itemBase1.realizar();
+		assertThrows(IllegalArgumentException.class, () -> {
+			itemBase1.realizar();
+		});
+	}
+
+    @Test
+    void getStatusItemRealizado() {
+		itemBase1.realizar();
+		assertTrue(itemBase1.getStatus());
+    }
+
+	@Test
+	void getStatusItemNaoRealizado() {
+		assertFalse(itemBase1.getStatus());
+	}
 }

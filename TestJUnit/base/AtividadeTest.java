@@ -166,4 +166,42 @@ class AtividadeTest {
 		assertEquals(atividadeBase3.hashCode(), mesmoId3.hashCode());
 	}
 
+	@Test
+	void executaItemValido() {
+		atividadeBase2.executaItem(1, 50);
+		assertEquals(1, atividadeBase2.contaItensRealizados());
+	}
+
+	@Test
+	void executaItemRepetido() {
+		atividadeBase2.executaItem(1, 50);
+		assertThrows(NullPointerException.class, () -> {
+			atividadeBase2.executaItem(1, 50);
+		});
+	}
+
+	@Test
+	void executaItemInvalido() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			atividadeBase2.executaItem(7, 50);
+		});
+	}
+
+	@Test
+	void executaItemNulo() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			atividadeBase2.executaItem(0, 50);
+		});
+	}
+
+	@Test
+	void executaItemNegativo() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			atividadeBase2.executaItem(-1, 50);
+		});
+	}
+
+	@Test
+	void getDuracao() {
+	}
 }

@@ -90,21 +90,21 @@ class ConectorTest {
     @Test
     void desassociaAtividadeValida() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        assertTrue(cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A1"));
+        assertTrue(cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
     }
 
     @Test
     void desassociaAtividadeValidaRepetida() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A1");
-        assertFalse(cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A1"));
+        cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        assertFalse(cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
     }
 
     @Test
     void desassociaAtividadeCodigoPesquisaVazio() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "", "A1");
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "", "A1");
         });
     }
 
@@ -112,7 +112,7 @@ class ConectorTest {
     void desassociaAtividadeCodigoPesquisaNull() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, null, "A1");
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, null, "A1");
         });
     }
 
@@ -120,7 +120,7 @@ class ConectorTest {
     void desassociaAtividadeCodigoAtividadeVazio() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "");
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "");
         });
     }
 
@@ -128,15 +128,15 @@ class ConectorTest {
     void deassociaAtividadeCodigoAtividadeNull() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", null);
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", null);
         });
     }
 
     @Test
     void deassociaAtividadeCodigoPesquisaInvalido() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "PAM1", "A1");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"PAM1", "A1");
         });
     }
 
@@ -145,15 +145,102 @@ class ConectorTest {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         cPesquisaTeste.encerraPesquisa("COM1", "O lab fechou");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A1");
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "A1");
         });
     }
 
     @Test
     void deassociaAtividadeCodigoAtividadeInvalido() {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        assertThrows(NullPointerException.class, () -> {
+            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "A3");
+        });
+    }
+
+    @Test
+    void executaAtividadeValida() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
+        assertEquals(1, cAtividadeTeste.getAtividade("A1").contaItensRealizados());
+    }
+
+    @Test
+    void executaAtividadeRepetida() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, "COM1", "A3");
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 59);
+        });
+    }
+
+    @Test
+    void executaAtividadeNaoAssociada() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeCodigoAtividadeVazio() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "", 1, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeCodigoAtividadeNull() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(NullPointerException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, null, 1, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeItemNulo() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 0, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeItemNegativo() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", -1, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeItemInvalido() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 5, 50);
+        });
+    }
+
+    @Test
+    void executaAtividadeDuracaoNula() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 0);
+        });
+    }
+
+    @Test
+    void executaAtividadeDuracaoNegativa() {
+        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
+        assertThrows(IllegalArgumentException.class, () -> {
+            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, -1);
         });
     }
     
@@ -271,7 +358,7 @@ class ConectorTest {
         });
     	
     }
-    
+
     //testes US8
     
 }

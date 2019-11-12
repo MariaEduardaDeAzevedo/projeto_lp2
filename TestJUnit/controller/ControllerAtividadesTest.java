@@ -306,4 +306,89 @@ class ControllerAtividadesTest {
         });
 	}
 
+	@Test
+	void executaAtividadeValida() {
+		controller3.executaAtividade("A3", 1, 50);
+		assertEquals(1, controller3.getAtividade("A3").contaItensRealizados());
+	}
+
+	@Test
+	void executaAtividadeRepetida() {
+		controller3.executaAtividade("A3", 1, 50);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", 1, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeInvalida() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.executaAtividade("A8", 1, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeCodigoAtividadeVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("", 1, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeCodigoAtividadeNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.executaAtividade(null, 1, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeItemNulo() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", 0, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeItemNegativo() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", -1, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeItemInvalido() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", 5, 50);
+		});
+	}
+
+	@Test
+	void executaAtividadeDuracaoNula() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", 1, 0);
+		});
+	}
+
+	@Test
+	void executaAtividadeDuracaoNegativa() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.executaAtividade("A3", 1, -1);
+		});
+	}
+
+    @Test
+    void cadastraResultado() {
+    }
+
+    @Test
+    void removeResultado() {
+    }
+
+    @Test
+    void listaResultados() {
+    }
+
+    @Test
+    void getDuracao() {
+    }
 }

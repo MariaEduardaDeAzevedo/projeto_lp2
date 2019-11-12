@@ -229,7 +229,7 @@ public class Atividade extends Validacao {
 	 * @param duracao Duracao da execucao.
 	 */
 	public void executaItem(int item, int duracao) {
-		if(item > itens.size()) {
+		if(item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
 		/**
@@ -242,8 +242,16 @@ public class Atividade extends Validacao {
 		
 		this.itens.get(item - 1).realizar();
 		this.duracao += duracao;
-		
 	}
+
+	/*/**
+	 * Retorna um Item cadastrado na atividade.
+	 * @param item número do item que se deseja retornar.
+	 * @return objeto Item cadastrado na atividade.
+	 *
+	public Item getItem(int item){
+		return this.itens.get(item - 1);
+	}*/
 	
 	public int getDuracao() {
 		return duracao;
