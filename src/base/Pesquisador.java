@@ -61,9 +61,7 @@ public class Pesquisador extends Validacao {
 	 * Metodo que verifica o status do pesquisador e torna o mesmo ativo.
 	 */
 	 public void ativaPesquisador() {
-		 if (ativada == true) {
-			 throw new IllegalArgumentException("Pesquisador ja ativado.");
-		 }
+		 super.validaStatus(!ativada, "Pesquisador ja ativado.");
 	     this.ativada = true;
 	 }
 
@@ -71,9 +69,7 @@ public class Pesquisador extends Validacao {
 	 * Metodo que verifica o status do pesquisador e torna o mesmo inativo.
 	 */
 	 public void inativaPesquisador() {
-		 if (ativada == false) {
-			 throw new IllegalArgumentException("Pesquisador inativo.");
-	     }
+		 super.validaStatus(ativada, "Pesquisador inativo.");
 	     this.ativada = false;
 	 }
 	 
@@ -197,6 +193,11 @@ public class Pesquisador extends Validacao {
 		return fotoURL;
 	}
 
+	/**
+	 * Busca se um termo esta contido na biografia.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o email e a biografia do pesquisador, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
     public String buscaTermo(String termo) {
 		if (biografia.toLowerCase().contains(termo.toLowerCase())){
 			return this.email + ": " + this.biografia;
@@ -210,7 +211,7 @@ public class Pesquisador extends Validacao {
      * nome deste.
      */
     public void setNome(String novoValor) {
-    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
     	nome = novoValor;
     }
     
@@ -220,7 +221,7 @@ public class Pesquisador extends Validacao {
      * valor da função deste.
      */
     public void setFuncao(String novoValor) {
-    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
     	funcao = novoValor;
     }
     
@@ -230,7 +231,7 @@ public class Pesquisador extends Validacao {
      * valor da biografia deste.
      */
     public void setBiografia(String novoValor) {
-    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
     	biografia = novoValor;
     }
     
@@ -240,8 +241,8 @@ public class Pesquisador extends Validacao {
      * valor do email deste.
      */
     public void setEmail(String novoValor) {
-    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
-    	super.verificaEmail(novoValor);
+    	super.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+		super.verificaEmail(novoValor);
     	email = novoValor;
     }
     
@@ -251,12 +252,8 @@ public class Pesquisador extends Validacao {
      * valor desta.
      */
     public void setFoto(String novoValor) {
-    	super.validaString(novoValor, "novoValor nao pode ser nulo ou vazio.");
+    	super.validaString(novoValor, "Campo foto nao pode ser nulo ou vazio.");
     	super.verificaURL(novoValor);
     	fotoURL = novoValor;
     }
 }
-
-
-
-

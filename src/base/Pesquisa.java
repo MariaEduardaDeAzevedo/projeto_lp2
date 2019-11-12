@@ -1,7 +1,5 @@
 package base;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -81,9 +79,7 @@ public class Pesquisa extends Validacao {
      * Altera o status da pesquisa para ativada.
      */
     public void ativaPesquisa() {
-        if (isAtivada()) {
-            throw new IllegalArgumentException("Pesquisa ja ativada.");
-        }
+    	super.validaStatus(! isAtivada(), "Pesquisa ja ativada.");
         this.ativada = true;
     }
 
@@ -94,7 +90,6 @@ public class Pesquisa extends Validacao {
     public void encerraPesquisa(String motivo) {
     	super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
     	super.validaStatus(this.ativada, "Pesquisa desativada.");
-        
     	this.ativada = false;
         this.motivo = motivo;
     }
@@ -105,10 +100,8 @@ public class Pesquisa extends Validacao {
      * @param novoConteudo conteudo para qual o atributo deve ser alterado.
      */
     public void alteraPesquisa(String conteudoASerAlterado, String novoConteudo) {
-        if (!isAtivada()) {
-            throw new IllegalArgumentException("Pesquisa desativada.");
-        }
-        if (conteudoASerAlterado.equals("DESCRICAO")) {
+    	super.validaStatus(this.ativada, "Pesquisa desativada.");
+    	if (conteudoASerAlterado.equals("DESCRICAO")) {
             super.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
             this.descricao = novoConteudo;
         } else if (conteudoASerAlterado.equals("CAMPO")) {
@@ -175,9 +168,8 @@ public class Pesquisa extends Validacao {
 	 * não seja bem sucedida, ou seja, se o pesquisador já esteja associado a esta pesquisa.
 	 */
 	public boolean associaPesquisador(Pesquisador associado) {
-		if (!ativada) {
-			throw new ActivationException("Pesquisa desativada.");
-		}
+		super.validaStatus(this.ativada, "Pesquisa desativada.");
+		
 		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
 			return false;
 		}
@@ -195,9 +187,7 @@ public class Pesquisa extends Validacao {
 	 */
 	public boolean desassociaPesquisador(String emailPesquisador) {
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
-		if (!ativada) {
-			throw new ActivationException("Pesquisa desativada.");
-		}
+		super.validaStatus(this.ativada, "Pesquisa desativada.");
 		if (!pesquisadoresAssociados.containsKey(emailPesquisador)) {
 			return false;
 		}
@@ -205,6 +195,11 @@ public class Pesquisa extends Validacao {
 		return true;
 	}
 
+    /**
+     * Busca se um termo esta contido na descricao.
+     * @param termo termo que se deseja procurar.
+     * @return String contendo o codigo e a descricao da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
+     */
     public String buscaTermoDescricao(String termo) {
         if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
             return this.codigo + ": " + this.descricao;
@@ -212,6 +207,11 @@ public class Pesquisa extends Validacao {
         return null;
     }
 
+    /**
+     * Busca se um termo esta contido no campo de interesse.
+     * @param termo termo que se deseja procurar.
+     * @return String contendo o codigo e o campo de interesse da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
+     */
     public String buscaTermoCampoDeInteresse(String termo) {
         if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
             return this.codigo + ": " + this.campoDeInteresse;

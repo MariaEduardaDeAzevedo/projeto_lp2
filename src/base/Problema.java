@@ -83,6 +83,11 @@ public class Problema extends Validacao {
 		return descricao + " - " + viabilidade;
 	}
 
+	/**
+	 * Busca se um termo esta contido na descricao.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o id e a descricao do problema, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
     public String buscaTermo(String termo) {
 		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
 			return this.id + ": " + this.descricao;

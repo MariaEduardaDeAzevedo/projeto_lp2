@@ -1,5 +1,6 @@
 package facade;
 
+import base.Objetivo;
 import controller.*;
 
 public class Facade {
@@ -236,4 +237,5 @@ public class Facade {
 
         return this.cGeral.contaResultadosBusca(cBuscas, termo);
     }
+   
 }

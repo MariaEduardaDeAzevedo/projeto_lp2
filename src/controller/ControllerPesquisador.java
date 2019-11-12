@@ -1,5 +1,4 @@
 package controller;
-import excecoes.FuncaoInvalidaException;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -122,9 +121,6 @@ public class ControllerPesquisador extends Validacao {
 		if (!pesquisadores.containsKey(email)) {
 			throw new NullPointerException("Pesquisadora nao encontrada.");
 		}
-		if (!pesquisadores.get(email).getFuncao().equals("professor")) {
-			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
-		}
 		Pesquisador naoEspecializado = pesquisadores.get(email);
 		Professor especializado = new Professor(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), formacao, unidade, data);
 		pesquisadores.remove(email);
@@ -146,9 +142,6 @@ public class ControllerPesquisador extends Validacao {
 		super.validaSemestreAluno(semestre, "Atributo semestre com formato invalido.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new NullPointerException("Pesquisadora nao encontrada.");
-		}
-		if (!pesquisadores.get(email).getFuncao().equals("estudante")) {
-			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
 		}
 		Pesquisador naoEspecializado = pesquisadores.get(email);
 		Aluno especializado = new Aluno(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), semestre, iea);

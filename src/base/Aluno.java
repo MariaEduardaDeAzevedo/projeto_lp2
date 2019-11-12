@@ -1,12 +1,12 @@
 package base;
-import excecoes.FuncaoInvalidaException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Representação de um aluno, que é, no sistema Psquiza, uma especialização de Pesquisador, ou seja, Aluno é uma subclasse de Pesquisador.
  * Todo aluno, além dos atributos herdados Pesquisador, que são função, nome, biografia, email, foto e status (que diz se o pesquisador é ativo ou não), também
  * tem os atributos semestre de ingresso e seu índice de eficiência acadêmica (iea).
  * Assim como pesquisador, todo aluno é identificado unicamente pelo seu email.
- * @author Daniel Fonseca
  *
  */
 public class Aluno extends Pesquisador {
@@ -33,9 +33,9 @@ public class Aluno extends Pesquisador {
 	 */
 	public Aluno(String nome, String funcao, String biografia, String email, String foto, int semestre, double iea) {
 		super(nome, funcao, biografia, email, foto);
-		if (!funcao.equals("estudante")) {
-			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
-		}
+		List lista = new ArrayList<String>();
+		lista.add("estudante");
+		super.validaValoresPermitidos(lista , funcao, "Pesquisador nao compativel com a especialidade.");
 		super.validaSemestreAluno(semestre, "Atributo semestre com formato invalido.");
 		super.validaIeaAluno(iea, "Atributo IEA com formato invalido.");
 		this.semestre = semestre;
@@ -84,25 +84,18 @@ public class Aluno extends Pesquisador {
 		 super.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
 		 switch(atributo.trim()) {
 			case "NOME":
-				super.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
 				this.setNome(novoValor);
 				break;
 			case "FUNCAO":
-				super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
 				this.setFuncao(novoValor);
 				break;
 			case "BIOGRAFIA":
-				super.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
 				this.setBiografia(novoValor);
 				break;
 			case "EMAIL":
-				super.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
-				super.verificaEmail(novoValor);
 				this.setEmail(novoValor);
 				break;
 			case "FOTO":
-				super.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
-				super.verificaURL(novoValor);
 				this.setFoto(novoValor);
 				break;
 			case "SEMESTRE":
