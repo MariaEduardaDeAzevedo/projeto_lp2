@@ -377,8 +377,37 @@ class ControllerAtividadesTest {
 	}
 
     @Test
-    void cadastraResultado() {
+    void cadastraResultadoValido() {
+		assertEquals(1, controller3.cadastraResultado("A2", "Pesquisa concluída com sucesso"));
     }
+
+	@Test
+	void cadastraResultadoCodigoAtividadeVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.cadastraResultado("", "Pesquisa concluída com sucesso");
+		});
+	}
+
+	@Test
+	void cadastraResultadoCodigoAtividadeNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.cadastraResultado(null, "Pesquisa concluída com sucesso");
+		});
+	}
+
+	@Test
+	void cadastraResultadoVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.cadastraResultado("A3", "");
+		});
+	}
+
+	@Test
+	void cadastraResultadoNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.cadastraResultado("A3", null);
+		});
+	}
 
     @Test
     void removeResultado() {

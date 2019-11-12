@@ -183,11 +183,7 @@ public class ControllerAtividades extends Validacao {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
 		super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
-		/**
-		 * 
-		 
 		this.atividades.get(codigoAtividade).executaItem(item, duracao);
-	*/
 	}
 
 	/**
