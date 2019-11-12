@@ -286,7 +286,7 @@ public class Atividade extends Validacao {
 	 */
 	public int cadastraResultado(String resultado) {
 		
-		this.resultados.put(numeroResultado++, resultado);
+		this.resultados.put(++numeroResultado, resultado);
 		return numeroResultado;
 	}
 		
@@ -310,14 +310,10 @@ public class Atividade extends Validacao {
 	public String listaResultados() {
 		String listaResultados = "";
 		
-		for (int i = 0; i < resultados.size(); i++) {
-			if (i == resultados.size() - 1) {
-				listaResultados += resultados.get(i);
-			} else {
-				listaResultados += resultados.get(i) + " | ";
-			}
+		for (String resultado: this.resultados.values()) {
+			listaResultados += resultado + " | ";
 		}
-		return listaResultados;
+		return listaResultados.substring(0, listaResultados.length() - 3);
 	}
 	
 }
