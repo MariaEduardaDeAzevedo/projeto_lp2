@@ -655,7 +655,7 @@ class ControllerPesquisasTest {
 		Objetivo objetivoImperialismo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		Objetivo consequenciasAmericaLatina = new Objetivo("ESPECIFICO", "Buscar as consequências do imperialismo americano na América Latina", 4, 4, "O2");
 		Objetivo consequenciasOrienteMedio = new Objetivo("ESPECIFICO", "Buscar consequências da Guerra do Golfo", 4, 3, "O3");
-		Objetivo consequenciasAsia = new Objetivo("ESPECIFICO", "Encontrar relação entre o desenvolvimento dos Tigres Asiáticos e o imperialismo", 4, 4, "04");
+		Objetivo consequenciasAsia = new Objetivo("ESPECIFICO", "Encontrar relação entre o desenvolvimento dos Tigres Asiáticos e o imperialismo", 4, 4, "O4");
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
 		controllerPesquisasTest.cadastraPesquisa("O desenvolvimento da mídia e a Guerra do Golfo", "humanas, midia");
 		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
@@ -664,11 +664,94 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("HUM1", "O3", consequenciasOrienteMedio);
 		controllerPesquisasTest.associaObjetivo("HUM1", "O4", consequenciasAsia);
 		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
-		assertEquals("HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | HUM2 - Imperialismo na America Latina - humanas | REA1 - Uma pesquisa bem legal - Real Madrid | HUM3 - O desenvolvimento da mídia e a Guerra do Golfo - humanas, midia", controllerPesquisasTest.listar("OBJETIVOS"));
+		assertEquals("HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | REA1 - Uma pesquisa bem legal - Real Madrid | HUM3 - O desenvolvimento da mídia e a Guerra do Golfo - humanas, midia", controllerPesquisasTest.listar("OBJETIVOS"));
 	}
 	
 	@Test
 	void listarProblemas() {
-		
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
+		controllerPesquisasTest.cadastraPesquisa("O último título do São Paulo", "esportes");
+		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
+		Problema imperialismoSec20 = new Problema("O problema do imperialismo no desenvolvimento dos países do sul global", 1, "P1");
+		Problema baleTitular = new Problema("A problemática de Bale ser titular e não acertar nenhum cruzamento", 2, "P2");
+		Problema spfc = new Problema("O problema da diretoria Jim Carrey desse time sem vergonha", 4, "P3");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", imperialismoSec20);
+		controllerPesquisasTest.associaProblema("REA1", "P2", baleTitular);
+		controllerPesquisasTest.associaProblema("ESP1", "P3", spfc);
+		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | ESP1 - O último título do São Paulo - esportes | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | HUM2 - Imperialismo na America Latina - humanas", controllerPesquisasTest.listar("PROBLEMA"));
+	}
+	
+	@Test
+	void listarPesquisa() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
+		controllerPesquisasTest.cadastraPesquisa("O último título do São Paulo", "esportes");
+		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
+		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | ESP1 - O último título do São Paulo - esportes", controllerPesquisasTest.listar("PESQUISA"));
+		Problema imperialismoSec20 = new Problema("O problema do imperialismo no desenvolvimento dos países do sul global", 1, "P1");
+		Problema baleTitular = new Problema("A problemática de Bale ser titular e não acertar nenhum cruzamento", 2, "P2");
+		Problema spfc = new Problema("O problema da diretoria Jim Carrey desse time sem vergonha", 4, "P3");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", imperialismoSec20);
+		controllerPesquisasTest.associaProblema("REA1", "P2", baleTitular);
+		controllerPesquisasTest.associaProblema("ESP1", "P3", spfc);
+		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | ESP1 - O último título do São Paulo - esportes", controllerPesquisasTest.listar("PESQUISA"));
+		Objetivo objetivoImperialismo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		Objetivo consequenciasAmericaLatina = new Objetivo("ESPECIFICO", "Buscar as consequências do imperialismo americano na América Latina", 4, 4, "O2");
+		Objetivo consequenciasOrienteMedio = new Objetivo("ESPECIFICO", "Buscar consequências da Guerra do Golfo", 4, 3, "O3");
+		Objetivo consequenciasAsia = new Objetivo("ESPECIFICO", "Encontrar relação entre o desenvolvimento dos Tigres Asiáticos e o imperialismo", 4, 4, "O4");
+		Objetivo patoTitular = new Objetivo("ESPECIFICO", "Fazer Pato parar de ser titular", 4, 4, "O5");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivoImperialismo);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O2", consequenciasAmericaLatina);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O3", consequenciasOrienteMedio);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O4", consequenciasAsia);
+		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
+		controllerPesquisasTest.associaObjetivo("ESP1", "O5", patoTitular);
+		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | ESP1 - O último título do São Paulo - esportes", controllerPesquisasTest.listar("PESQUISA"));
+	}
+	
+	@Test
+	void listarPesquisasOrdemInvalida() {
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+    		controllerPesquisasTest.listar("");
+    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+        });
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
+		controllerPesquisasTest.cadastraPesquisa("O último título do São Paulo", "esportes");
+		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+    		controllerPesquisasTest.listar("");
+    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+        });
+		Problema imperialismoSec20 = new Problema("O problema do imperialismo no desenvolvimento dos países do sul global", 1, "P1");
+		Problema baleTitular = new Problema("A problemática de Bale ser titular e não acertar nenhum cruzamento", 2, "P2");
+		Problema spfc = new Problema("O problema da diretoria Jim Carrey desse time sem vergonha", 4, "P3");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", imperialismoSec20);
+		controllerPesquisasTest.associaProblema("REA1", "P2", baleTitular);
+		controllerPesquisasTest.associaProblema("ESP1", "P3", spfc);
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+    		controllerPesquisasTest.listar("");
+    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+        });
+		Objetivo objetivoImperialismo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		Objetivo consequenciasAmericaLatina = new Objetivo("ESPECIFICO", "Buscar as consequências do imperialismo americano na América Latina", 4, 4, "O2");
+		Objetivo consequenciasOrienteMedio = new Objetivo("ESPECIFICO", "Buscar consequências da Guerra do Golfo", 4, 3, "O3");
+		Objetivo consequenciasAsia = new Objetivo("ESPECIFICO", "Encontrar relação entre o desenvolvimento dos Tigres Asiáticos e o imperialismo", 4, 4, "O4");
+		Objetivo patoTitular = new Objetivo("ESPECIFICO", "Fazer Pato parar de ser titular", 4, 4, "O5");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivoImperialismo);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O2", consequenciasAmericaLatina);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O3", consequenciasOrienteMedio);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O4", consequenciasAsia);
+		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
+		controllerPesquisasTest.associaObjetivo("ESP1", "O5", patoTitular);
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+    		controllerPesquisasTest.listar("");
+    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+        });
 	}
 }
