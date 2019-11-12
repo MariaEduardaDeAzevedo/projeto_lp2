@@ -338,7 +338,7 @@ class ControllerPesquisadorTest {
 	void cadastraEspecialidadeAlunoEmailVazio() {
 		
 		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
-		assertThrows(NullPointerException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisadorTeste.cadastraEspecialidadeAluno("", 2, 7.56);
 		});
 		
@@ -363,4 +363,266 @@ class ControllerPesquisadorTest {
 		});
 		
 	}
+	
+	@Test
+	void exibePesquisadorComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		assertEquals(controllerPesquisadorTeste.exibePesquisador("alune@pesquisador.com"), "pesquisador (estudante) - alune pesquisador - alune@pesquisador.com - https://pic_pesq_alune");
+		
+	}
+	
+	@Test
+	void exibePesquisadorEmailNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador(null);
+		});
+		
+	}
+	
+	@Test
+	void exibePesquisadorEmailVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador("");
+		});
+		
+	}
+	
+	@Test
+	void exibePesquisadorInexistente() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador("aluna");
+		});
+		
+	}
+	
+	@Test
+	void listaPesquisadoresComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "aluna pesquisador", "aluna@pesquisador.com", "https://pic_pesq_aluna");
+		assertEquals(controllerPesquisadorTeste.listaPesquisadores("ALUNA"), "pesquisador (estudante) - alune pesquisador - alune@pesquisador.com - https://pic_pesq_alune | pesquisador (estudante) - aluna pesquisador - aluna@pesquisador.com - https://pic_pesq_aluna");
+	}
+	
+	@Test
+	void listaPesquisadoresTipoNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "aluna pesquisador", "aluna@pesquisador.com", "https://pic_pesq_aluna");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador(null);
+		});
+	}
+	
+	@Test
+	void listaPesquisadoresTipoVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "aluna pesquisador", "aluna@pesquisador.com", "https://pic_pesq_aluna");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador("");
+		});
+	}
+	
+	@Test
+	void listaPesquisadoresTipoInexistente() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "aluna pesquisador", "aluna@pesquisador.com", "https://pic_pesq_aluna");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.exibePesquisador("orientador");
+		});
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoSemestreComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "SEMESTRE", "5");
+		
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoIEAComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "IEA", "5.93");
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorFormacaoComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "FORMACAO", "Doutorado");
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorUnidadeComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "UNIDADE", "SPLAB");
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorDataComum() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "DATA", "11/11/2019");
+		
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoSemestreNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "SEMESTRE", null);
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoIEANull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "IEA", null);
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorFormacaoNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "FORMACAO", null);
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorUnidadeNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "UNIDADE", null);
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorDataNull() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "DATA", null);
+		});
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoSemestreVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "SEMESTRE", "");
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoIEAVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "IEA", "");
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorFormacaoVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "FORMACAO", "");
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorUnidadeVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "UNIDADE", "");
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorProfessorDataVazio() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "professor", "professora pesquisadora", "professora@pesquisadora.com", "https://pic_pesq_prof");
+		controllerPesquisadorTeste.cadastraEspecialidadeProfessor("professora@pesquisadora.com", "Bacharel", "DSC", "21/09/2015");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("professora@pesquisadora.com", "DATA", "");
+		});
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoSemestreInvalido() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "SEMESTRE", "0");
+		});
+		
+		
+	}
+	
+	@Test
+	void alteraPesquisadorAlunoIEAInvalido() {
+		
+		controllerPesquisadorTeste.cadastraPesquisador("pesquisador", "estudante", "alune pesquisador", "alune@pesquisador.com", "https://pic_pesq_alune");
+		controllerPesquisadorTeste.cadastraEspecialidadeAluno("alune@pesquisador.com", 4, 7.56);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisadorTeste.alteraPesquisador("alune@pesquisador.com", "IEA", "-3.8");
+		});
+		
+		
+	}
+
 }
