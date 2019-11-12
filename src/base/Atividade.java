@@ -257,5 +257,4 @@ public class Atividade extends Validacao {
 	public int getDuracao() {
 		return duracao;
 	}
-	*/
 }

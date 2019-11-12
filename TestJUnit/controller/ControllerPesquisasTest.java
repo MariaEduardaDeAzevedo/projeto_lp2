@@ -648,4 +648,27 @@ class ControllerPesquisasTest {
     		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
         });
 	}
+	
+	@Test
+	void listarObjetivos() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivoImperialismo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		Objetivo consequenciasAmericaLatina = new Objetivo("ESPECIFICO", "Buscar as consequências do imperialismo americano na América Latina", 4, 4, "O2");
+		Objetivo consequenciasOrienteMedio = new Objetivo("ESPECIFICO", "Buscar consequências da Guerra do Golfo", 4, 3, "O3");
+		Objetivo consequenciasAsia = new Objetivo("ESPECIFICO", "Encontrar relação entre o desenvolvimento dos Tigres Asiáticos e o imperialismo", 4, 4, "04");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
+		controllerPesquisasTest.cadastraPesquisa("O desenvolvimento da mídia e a Guerra do Golfo", "humanas, midia");
+		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivoImperialismo);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O2", consequenciasAmericaLatina);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O3", consequenciasOrienteMedio);
+		controllerPesquisasTest.associaObjetivo("HUM1", "O4", consequenciasAsia);
+		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
+		assertEquals("HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | HUM2 - Imperialismo na America Latina - humanas | REA1 - Uma pesquisa bem legal - Real Madrid | HUM3 - O desenvolvimento da mídia e a Guerra do Golfo - humanas, midia", controllerPesquisasTest.listar("OBJETIVOS"));
+	}
+	
+	@Test
+	void listarProblemas() {
+		
+	}
 }
