@@ -41,10 +41,19 @@ public class Atividade extends Validacao {
 	 */
 	private String id;
 	
+	/**
+	 * Duracao da execucao de um item de uma atividade.
+	 */
 	private int duracao;
 	
+	/**
+	 * Mapa que armazena os resultados cadastrados em uma atividade.
+	 */
 	private Map<Integer, String> resultados;
 	
+	/**
+	 * Variavel de controle que fornece o numero do resultado cadastrado.
+	 */
 	private int numeroResultado;
 	
 	
@@ -262,16 +271,30 @@ public class Atividade extends Validacao {
 		return this.itens.get(item - 1);
 	}*/
 	
+	/**
+	 * Metodo que permite o acesso a duracao da execucao de um item. 
+	 * @return valor inteiro com a duracao.
+	 */
 	public int getDuracao() {
 		return duracao;
 	}
 	
+	/**
+	 * Metodo que cadastra um resultado em uma atividade.
+	 * @param resultado Resultado a ser cadastrado
+	 * @return valor inteiro indicando o numero do resultado cadastrado.
+	 */
 	public int cadastraResultado(String resultado) {
 		
 		this.resultados.put(numeroResultado++, resultado);
 		return numeroResultado;
 	}
 		
+	/**
+	 * Metodo que permite remover os resultados cadastrados na atividade.
+	 * @param numeroDoResultado Numero do resultado.
+	 * @return valor booleano indicando se a remocao foi bem sucedida ou nao.
+	 */
 	public boolean removeResultado(int numeroDoResultado) {
 		if(!resultados.containsKey(numeroDoResultado)) {
 			throw new IllegalArgumentException("Resultado nao encontrado.");
@@ -280,6 +303,10 @@ public class Atividade extends Validacao {
 		return true;
 	}
 	
+	/**
+	 * Metodo que gera uma String com a listagem dos resultados cadastrados na atividade.
+	 * @return lista de String com os resultados.
+	 */
 	public String listaResultados() {
 		String listaResultados = "";
 		
