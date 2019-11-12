@@ -80,7 +80,7 @@ class ConectorTest {
     void associaAtividadePesquisaDesativada() {
         cPesquisaTeste.encerraPesquisa("COM1", "O lab fechou");
         ActivationException exception = new ActivationException("Pesquisa desativada.");
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         });
     }
@@ -363,8 +363,7 @@ class ConectorTest {
         });
     	
     }
-<<<<<<< HEAD
-    
+
     @Test
     void associaProblemaValidoTrue() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
@@ -644,9 +643,4 @@ class ConectorTest {
     		cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1");
         });
     }
-=======
-
-    //testes US8
-    
->>>>>>> 6d16176a023281dd93c1384a3540ebd400cb3ecb
 }

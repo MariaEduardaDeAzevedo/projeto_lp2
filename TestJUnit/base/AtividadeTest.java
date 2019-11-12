@@ -203,5 +203,7 @@ class AtividadeTest {
 
 	@Test
 	void getDuracao() {
+		atividadeBase2.executaItem(1, 50);
+		assertEquals(50, atividadeBase2.getDuracao());
 	}
 }
