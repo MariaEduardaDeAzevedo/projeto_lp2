@@ -62,12 +62,6 @@ public class Item extends Validacao {
 		return this.status;
 
 	}
-	
-	
-
-	public void setStatus(boolean rstatus) {
-		this.status = status;
-	}
 
 	@Override
 	/**
@@ -80,6 +74,4 @@ public class Item extends Validacao {
 
 	}
 	
-	
-
 }

@@ -8,7 +8,6 @@ import controller.Validacao;
  * o objetivo geral.
  * Todo objetivo tem um tipo, podendo ser geral ou específico, uma descrição e dois valores inteiros que podem ir de 1 a 5 que correspondem
  * à aderência e à viabilidade do objetivo.
- * @author Daniel Fonseca
  *
  */
 public class Objetivo extends Validacao {

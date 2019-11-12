@@ -1,5 +1,6 @@
 package base;
-import excecoes.FuncaoInvalidaException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Representação de um professor, que é, no sistema Psquiza, uma especialização de Pesquisador, sendo esta sua superclasse.
@@ -39,9 +40,9 @@ public class Professor extends Pesquisador {
 	 */
 	public Professor(String nome, String funcao, String biografia, String email, String foto, String formacao, String unidade, String dataContratacao) {
 		super(nome, funcao, biografia, email, foto);
-		if (!funcao.equals("professor")) {
-			throw new FuncaoInvalidaException("Pesquisador nao compativel com a especialidade.");
-		}
+		List lista = new ArrayList<String>();
+		lista.add("professor");
+		super.validaValoresPermitidos(lista , funcao, "Pesquisador nao compativel com a especialidade.");
 		super.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
 		super.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
 		super.validaString(dataContratacao, "Campo data nao pode ser nulo ou vazio.");
