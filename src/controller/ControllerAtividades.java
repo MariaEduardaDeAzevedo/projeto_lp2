@@ -248,9 +248,14 @@ public class ControllerAtividades extends Validacao {
 
 	}
 
+	/**
+	 * Metodo que permite ter acesso a duracao de execucao de uma determinada atividade.
+	 * @param codigoAtividade Codigo da atividade
+	 * @return valor inteiro com a duracao.
+	 */
 	public int getDuracao(String codigoAtividade) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
-		return 0;
+		return this.atividades.get(codigoAtividade).getDuracao();
 	}
 }

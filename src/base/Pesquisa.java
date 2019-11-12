@@ -35,6 +35,9 @@ public class Pesquisa extends Validacao {
     
     private Map<String, Pesquisador> pesquisadoresAssociados;
     
+    /**
+     * Armazena as atividades que foram associadas a alguma pesquisa.
+     */
     private Map<String, Atividade> atividadesAssociadas;
     
     private Problema problema;
@@ -216,6 +219,11 @@ public class Pesquisa extends Validacao {
         return null;
     }
 
+    /**
+     * Metodo que permite a associacao de uma atividade a uma Pesquisa.
+     * @param atividade Atividade a ser associada
+     * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
+     */
 	public boolean associaAtividade(Atividade atividade) {
 	
 		if(atividadesAssociadas.containsKey(atividade.getId())) {
@@ -225,6 +233,11 @@ public class Pesquisa extends Validacao {
 		return true;
 	}
 
+	/**
+     * Metodo que permite a desassociacao de uma atividade associada a uma Pesquisa.
+     * @param atividade Atividade a ser desassociada
+     * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
+     */
 	public boolean desassociaAtividade(String codigoAtividade) {
 		if(!atividadesAssociadas.containsKey(codigoAtividade)) {
 			return false;
@@ -253,6 +266,11 @@ public class Pesquisa extends Validacao {
 	}
 
 
+	/**
+	 * Metodo que verifica se existe determinada atividade associada a alguma pesquisa.
+	 * @param codigoAtividade Codigo da atividade a ser verificada.
+	 * @return valor booleano indicando se a atividade esta associada ou nao.
+	 */
 	public boolean contemAtividadeAssociada(String codigoAtividade) {
 		return atividadesAssociadas.containsKey(codigoAtividade);
 	}

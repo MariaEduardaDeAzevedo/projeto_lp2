@@ -40,7 +40,9 @@ public class Atividade extends Validacao {
 	 */
 	private String id;
 	
+	private int duracao;
 	
+	//private List<Integer> itensExecutados;
 	
 
 
@@ -228,18 +230,32 @@ public class Atividade extends Validacao {
 	 */
 	/**
 	public void executaItem(int item, int duracao) {
-		if(item > itens.size()) {
+		if(item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		
+		/**
 		if(itensExecutados.contains(item)) {
-			throw new IllegalArgumentException("Item ja executado.");
+			throw new IllegalArgumentException("Item ja executado.");			
 		}
 		
 		this.itensExecutados.add(item);
+	**/
 		
 		this.itens.get(item - 1).realizar();
-		
+		this.duracao += duracao;
+	}
+
+	/*/**
+	 * Retorna um Item cadastrado na atividade.
+	 * @param item número do item que se deseja retornar.
+	 * @return objeto Item cadastrado na atividade.
+	 *
+	public Item getItem(int item){
+		return this.itens.get(item - 1);
+	}*/
+	
+	public int getDuracao() {
+		return duracao;
 	}
 	*/
 }

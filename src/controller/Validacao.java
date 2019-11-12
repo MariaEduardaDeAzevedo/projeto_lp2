@@ -187,8 +187,14 @@ public class Validacao {
 		}
 	}
 	
-	protected void verificaNuloNegativo(int item, String mensagem) {
-		if(item <= 0) {
+	/**
+	 * Metodo de validacao que verifica se um valor inteiro é menor ou igual a zero, 
+	 * lancando uma excecao caso a condicao retorne true.
+	 * @param numero Numero a ser verificado
+	 * @param mensagem Mensagem de excecao.
+	 */
+	protected void verificaNuloNegativo(int numero, String mensagem) {
+		if(numero <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}

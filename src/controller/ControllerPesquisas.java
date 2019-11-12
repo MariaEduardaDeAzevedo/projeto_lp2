@@ -550,6 +550,11 @@ public class ControllerPesquisas extends Validacao {
 		return pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
 	
+	/**
+	 * Metodo que verifica se existe determinada atividade associada a uma pesquisa.
+	 * @param codigoAtividade Codigo da atividade.
+	 * @return valor booleando indicando se a atividade esta associada a alguma pesquisa ou nao.
+	 */
 	public boolean contemAtividadeAssociada(String codigoAtividade) {
 		for (Pesquisa pesquisa : pesquisas.values()) {
 			if(pesquisa.contemAtividadeAssociada(codigoAtividade)) {
