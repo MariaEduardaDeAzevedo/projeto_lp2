@@ -1,12 +1,16 @@
 package controller;
 
 import base.Atividade;
+import base.Objetivo;
 import base.Pesquisador;
+import base.Problema;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.ControllerPesquisas;
+import excecoes.ActivationException;
+import excecoes.AssociationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -373,4 +377,275 @@ class ControllerPesquisasTest {
 		
 	}
 
+	
+	@Test
+	void associaProblemaValido() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		assertEquals("true", controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		assertEquals("false", controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
+	}
+	
+	@Test
+	void associaProblemaIdPesquisaNull() {
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.associaProblema(null, "P1", problema);
+		});
+	}
+	
+	@Test
+	void associaProblemaIdPesquisaVazio() {
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.associaProblema("", "P1", problema);
+		});
+	}
+	
+	@Test
+	void associaProblemaIdProblemaNull() {
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.associaProblema("HUM1", null, problema);
+		});
+	}
+	
+	@Test
+	void associaProblemaIdProblemaVazio() {
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.associaProblema("HUM1", "", problema);
+		});
+	}
+	
+	@Test
+	void associaProblemaPesquisaJaAssociada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		Problema problema2 = new Problema("Presença de tropas americanas no Oriente Médio", 4, "P2");
+		assertThrows(AssociationException.class, () -> {
+			controllerPesquisasTest.associaProblema("HUM1", "P2", problema2);
+		});
+	}
+	
+	@Test
+	void desassociaProblemaValido() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		assertEquals("true", controllerPesquisasTest.desassociaProblema("HUM1"));
+		controllerPesquisasTest.desassociaProblema("HUM1");
+		assertEquals("false", controllerPesquisasTest.desassociaProblema("HUM1"));
+	}
+	
+	@Test
+	void desassociaProblemaIdPesquisaNull() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.desassociaProblema(null);
+		});
+	}
+	
+	@Test
+	void desassociaProblemaIdPesquisaVazio() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.desassociaProblema("");
+		});
+	}
+	
+	@Test
+    void desassociaProblemaPesquisaInexistente() {
+    	assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaProblema("HUM1");
+        });
+    }
+	
+	@Test
+	void desassociaProblemaPesquisaNaoEncontrada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaProblema("HUM2");
+        });
+	}
+	
+	@Test
+    void desassociaProblemaPesquisaDesativada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
+		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
+		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos Estados Unidos");
+		assertThrows(ActivationException.class, () -> {
+    		controllerPesquisasTest.desassociaProblema("HUM1");
+        });
+	}
+	
+	@Test
+	void associaObjetivoValido() {
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		assertEquals("true", controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertEquals("false", controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
+	}
+	
+	@Test
+	void associaObjetivoJaAssociado() {
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		controllerPesquisasTest.cadastraPesquisa("Consequências do colonialismo no século XXI", "historia");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(AssociationException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HIS1", "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoIdPesquisaNull() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo(null, "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoIdPesquisaVazio() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("", "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoIdObjetivoNull() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HUM1", null, objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoIdObjetivoVazio() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HUM1", "", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoPesquisaNaoEncontrada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HUM2", "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoPesquisaInexistente() {
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void associaObjetivoPesquisaDesativada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
+		assertThrows(ActivationException.class, () -> {
+    		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoValido() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertEquals("true", controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
+		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
+		assertEquals("false", controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
+	}
+	
+	@Test
+	void desassociaObjetivoIdPesquisaNull() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo(null, "O1");
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoIdPesquisaVazio() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("", "O1");
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoIdObjetivoNull() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("HUM1", null);
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoIdObjetivoVazio() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("HUM1", "");
+        });
+	}
+	
+	@Test
+    void desassociaObjetivoPesquisaNaoEncontrada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("HUM2", "O1");
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoPesquisaInexistente() {
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
+        });
+	}
+	
+	@Test
+	void desassociaObjetivoPesquisaDesativada() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
+		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
+		assertThrows(ActivationException.class, () -> {
+    		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
+        });
+	}
 }

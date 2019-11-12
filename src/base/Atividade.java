@@ -226,6 +226,7 @@ public class Atividade extends Validacao {
 	 * @param item Item a ser executado
 	 * @param duracao Duracao da execucao.
 	 */
+	/**
 	public void executaItem(int item, int duracao) {
 		if(item > itens.size()) {
 			throw new IllegalArgumentException("Item nao encontrado.");
@@ -240,4 +241,5 @@ public class Atividade extends Validacao {
 		this.itens.get(item - 1).realizar();
 		
 	}
+	*/
 }

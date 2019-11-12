@@ -3,6 +3,8 @@ package controller;
 import base.*;
 import excecoes.ActivationException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -230,5 +232,11 @@ public class Conector extends Validacao {
 		cAtividade.executaAtividade(codigoAtividade, item, duracao);
 			
 		
+	}
+	
+	public static void main (String[] args) throws Exception {
+		ControllerObjetivos cObjetivosTeste = new ControllerObjetivos();
+		cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
+		System.out.println(cObjetivosTeste.exibeObjetivo("O1"));
 	}
 }
