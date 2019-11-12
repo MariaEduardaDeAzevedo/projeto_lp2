@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import controller.Validacao;
+import excecoes.ActivationException;
 
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
@@ -34,9 +35,18 @@ public class Pesquisa extends Validacao {
     
     private Map<String, Pesquisador> pesquisadoresAssociados;
     
+    /**
+     * Armazena as atividades que foram associadas a alguma pesquisa.
+     */
+    private Map<String, Atividade> atividadesAssociadas;
+    
     private Problema problema;
     
     private Objetivo objetivo;
+
+	private String motivo;
+    
+
     
     /**
      * Constroi o objeto Pesquisa a partir dos parametros.
@@ -53,7 +63,10 @@ public class Pesquisa extends Validacao {
         this.campoDeInteresse = campoDeInteresse;
         this.ativada = true;
         this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
+        this.atividadesAssociadas = new HashMap<String, Atividade>();
+        this.motivo = null;
     }
+    
 
     /**
      * Retorna a representacao da pesquisa.
@@ -76,12 +89,14 @@ public class Pesquisa extends Validacao {
 
     /**
      * Altera o status da pesquisa para desativada.
+     * @param motivo 
      */
-    public void encerraPesquisa() {
-        if (!isAtivada()) {
-            throw new IllegalArgumentException("Pesquisa desativada.");
-        }
-        this.ativada = false;
+    public void encerraPesquisa(String motivo) {
+    	super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
+    	super.validaStatus(this.ativada, "Pesquisa desativada.");
+        
+    	this.ativada = false;
+        this.motivo = motivo;
     }
 
     /**
@@ -152,8 +167,42 @@ public class Pesquisa extends Validacao {
 	
 	}
 	
-	public void associaPesquisador(Pesquisador associado) {
+	/**
+	 * Associa um pesquisador a esta pesquisa.
+	 * Retorna um valor booleano que indica se a associação foi bem sucedida ou não.
+	 * @param associado pesquisador que se quer associar a esta pesquisa.
+	 * @return true, caso a associação tenha sido bem sucedida, ou seja, se o pesquisador já não estiver associado à esta pesquisa, ou false, caso a associação
+	 * não seja bem sucedida, ou seja, se o pesquisador já esteja associado a esta pesquisa.
+	 */
+	public boolean associaPesquisador(Pesquisador associado) {
+		if (!ativada) {
+			throw new ActivationException("Pesquisa desativada.");
+		}
+		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
+			return false;
+		}
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
+		return true;
+	}
+	
+	/**
+	 * Desassocia um pesquisador a esta pesquisa.
+	 * Retorna um valor booleano que indica se a desassociação foi bem sucedida ou não.
+	 * @param emailPesquisador email do pesquisador que se quer desassociar desta pesquisa.
+	 * @return true, caso a desassociação seja bem sucedida, ou seja, se o email passado como parâmetro identificar um pesquisador associado
+	 * a esta pesquisa e este sendo removido, ou false, caso a desassociação não seja bem sucedida, ou seja, se o email passado como parâmetro não identificar
+	 * nenhum pesquisador associado a esta pesquisa.
+	 */
+	public boolean desassociaPesquisador(String emailPesquisador) {
+		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		if (!ativada) {
+			throw new ActivationException("Pesquisa desativada.");
+		}
+		if (!pesquisadoresAssociados.containsKey(emailPesquisador)) {
+			return false;
+		}
+		pesquisadoresAssociados.remove(emailPesquisador);
+		return true;
 	}
 
     public String buscaTermoDescricao(String termo) {
@@ -165,8 +214,64 @@ public class Pesquisa extends Validacao {
 
     public String buscaTermoCampoDeInteresse(String termo) {
         if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
-            return this.codigo + ": " + this.descricao;
+            return this.codigo + ": " + this.campoDeInteresse;
         }
         return null;
     }
+
+    /**
+     * Metodo que permite a associacao de uma atividade a uma Pesquisa.
+     * @param atividade Atividade a ser associada
+     * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
+     */
+	public boolean associaAtividade(Atividade atividade) {
+	
+		if(atividadesAssociadas.containsKey(atividade.getId())) {
+			return false;
+		}
+		this.atividadesAssociadas.put(atividade.getId(), atividade);
+		return true;
+	}
+
+	/**
+     * Metodo que permite a desassociacao de uma atividade associada a uma Pesquisa.
+     * @param atividade Atividade a ser desassociada
+     * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
+     */
+	public boolean desassociaAtividade(String codigoAtividade) {
+		if(!atividadesAssociadas.containsKey(codigoAtividade)) {
+			return false;
+		}
+		this.atividadesAssociadas.remove(codigoAtividade);
+		return true;
+	}
+	
+	/**
+	 * Retorna um valor booleano que indica se a pesquisa possui um pesquisador associado ou não.
+	 * @param emailPesquisador email que identifica o pesquisador.
+	 * @return true, caso o email passado como parâmetro identifique um pesquisador associado à pesquisa, ou false, caso o email
+	 * não identifique nenhum pesquisador associado à pesquisa.
+	 */
+	public boolean containsPesquisador(String emailPesquisador) {
+		if (pesquisadoresAssociados.containsKey(emailPesquisador)) {
+			return true;
+		}
+		return false;
+	}
+
+	public Objetivo getObjetivo() {
+		
+		return this.objetivo;
+	
+	}
+
+
+	/**
+	 * Metodo que verifica se existe determinada atividade associada a alguma pesquisa.
+	 * @param codigoAtividade Codigo da atividade a ser verificada.
+	 * @return valor booleano indicando se a atividade esta associada ou nao.
+	 */
+	public boolean contemAtividadeAssociada(String codigoAtividade) {
+		return atividadesAssociadas.containsKey(codigoAtividade);
+	}
 }

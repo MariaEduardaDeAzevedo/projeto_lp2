@@ -1,7 +1,7 @@
 package controller;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import base.Problema;
@@ -86,7 +86,11 @@ public class ControllerProblemas extends Validacao {
 		
 	}
 
-    public List<Problema> getProblemas() {
-		return (List<Problema>) this.problemas.values();
+	/**
+	 * Retorna os valores do mapa de problemas.
+	 * @return Collection contendo todos os objetos do tipo Problema cadastrados no sistema.
+	 */
+    public Collection<Problema> getProblemas() {
+		return this.problemas.values();
     }
 }

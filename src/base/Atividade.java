@@ -3,6 +3,7 @@ package base;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import controller.Validacao;
 
@@ -38,6 +39,12 @@ public class Atividade extends Validacao {
 	 * ID que identifica unicamente uma atividade
 	 */
 	private String id;
+	
+	private int duracao;
+	
+	//private List<Integer> itensExecutados;
+	
+
 
 	/**
 	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
@@ -207,4 +214,48 @@ public class Atividade extends Validacao {
 		}
 		return null;
 	}
+
+	/**
+	 * Metodo que permite acesso ao Id de uma atividade.
+	 * @return Id da atividade
+	 */
+	public String getId() {
+		return this.id;
+	}
+	
+	/**
+	 * Metodo que permite a execucao de um item.
+	 * @param item Item a ser executado
+	 * @param duracao Duracao da execucao.
+	 */
+	/**
+	public void executaItem(int item, int duracao) {
+		if(item > itens.size() || item <= 0) {
+			throw new IllegalArgumentException("Item nao encontrado.");
+		}
+		/**
+		if(itensExecutados.contains(item)) {
+			throw new IllegalArgumentException("Item ja executado.");			
+		}
+		
+		this.itensExecutados.add(item);
+	**/
+		
+		this.itens.get(item - 1).realizar();
+		this.duracao += duracao;
+	}
+
+	/*/**
+	 * Retorna um Item cadastrado na atividade.
+	 * @param item número do item que se deseja retornar.
+	 * @return objeto Item cadastrado na atividade.
+	 *
+	public Item getItem(int item){
+		return this.itens.get(item - 1);
+	}*/
+	
+	public int getDuracao() {
+		return duracao;
+	}
+	*/
 }

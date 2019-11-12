@@ -35,6 +35,7 @@ public class Problema extends Validacao {
 		super.validaString(id, "id nao pode ser nulo ou vazio");
 		this.descricao = descricao;
 		this.viabilidade = viabilidade;
+		this.id = id;
 	}
 	
 	/**
@@ -88,4 +89,15 @@ public class Problema extends Validacao {
 		}
 		return null;
     }
+
+    /**
+     * Retorna o ID que identifica unicamente um objeto Problema
+     * 
+     * @return String com ID que representa unicamente objeto Problema
+     */
+	public String getId() {
+		
+		return this.id;
+	
+	}
 }

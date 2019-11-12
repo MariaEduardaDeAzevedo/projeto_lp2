@@ -9,6 +9,8 @@ public class Facade {
     private ControllerPesquisas cPesquisa;
     private ControllerObjetivos cObjetivo;
     private ControllerProblemas cProblema;
+    private Conector cGeral;
+    private ControllerBuscas cBuscas;
 
     public Facade() {
 
@@ -17,6 +19,9 @@ public class Facade {
         this.cPesquisador = new ControllerPesquisador();
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
+        this.cGeral = new Conector();
+        this.cBuscas = new ControllerBuscas();
+       /// this.cBuscas = new ControllerBuscas(cGeral);
 
     }
 
@@ -138,42 +143,97 @@ public class Facade {
 
     }
     
-    //US5
+    //US5 
+   
     public String associaProblema(String idPesquisa, String idProblema) {
     	
-    	return this.cPesquisa.associaProblema(idPesquisa, idProblema);
+    	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
     	
     }
     
-    public String desassociaProblema(String idPesquisa, String idProblema) {
+    public String desassociaProblema(String idPesquisa) {
     	
-    	return this.cPesquisa.desassociaProblema(idPesquisa, idProblema);
-    	
-    }
-    
-    public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
-    	
-    	return this.cPesquisa.associaObjetivo(idPesquisa, idObjetivo);
+    	return this.cGeral.desassociaProblema(cPesquisa, idPesquisa);
     	
     }
     
-    public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
+    public String associaObjetivo(String idPesquisa, String idObjetivo) {
     	
-    	return this.cPesquisa.desassociaObjetivo(idPesquisa, idObjetivo);
+    	return this.cGeral.associaObjetivo(cPesquisa, cObjetivo, idPesquisa, idObjetivo);
     	
+    }
+    
+    public String desassociaObjetivo(String idPesquisa, String idProblema) {
+    	
+    	return this.cGeral.desassociaObjetivo(cPesquisa, cProblema, idPesquisa, idProblema);
+    	
+    }
+    
+    public String listaPesquisas(String ordem) {
+    	
+    	return this.cPesquisa.listar(ordem);
+    	
+    }
+    
+    //US6
+    public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
+    	return cGeral.associaPesquisador(cPesquisador, cPesquisa, idPesquisa, emailPesquisador);
+    }
+    
+    public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+    	return cGeral.desassociaPesquisador(cPesquisa, idPesquisa, emailPesquisador);
+    }
+    
+    public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+    	cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+    }
+    
+    public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+    	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
+    }
+    
+    public String listaPesquisadores(String tipo) {
+    	return cPesquisador.listaPesquisadores(tipo);
     }
 
+    //US7
+    public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
+    	return this.cGeral.associaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
+    }
+    
+    public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
+    	return this.cGeral.desassociaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
+    }
+    
+    public void executaAtividade(String codigoAtividade, int item, int duracao) {
+    	this.cGeral.executaAtividade(cPesquisa, cAtividade, codigoAtividade, item, duracao);
+    }
+    public int cadastraResultado(String codigoAtividade, String resultado) {
+    	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
+    }
+    
+    public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+    	return this.cAtividade.removeResultado(codigoAtividade, numeroResultado);
+    }
+    
+    public String listaResultados(String codigoAtividade) {
+    	return this.cAtividade.listaResultados(codigoAtividade);
+    }
+    
+    public int getDuracao(String codigoAtividade) {
+    	return this.cAtividade.getDuracao(codigoAtividade);
+    }
     //US8
     public String busca(String termo){
-        return this.cBuscas.busca(termo);
+        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-
+        return this.cGeral.busca(cBuscas, termo, numeroDoResultado);
     }
 
     public int contaResultadosBusca(String termo){
 
+        return this.cGeral.contaResultadosBusca(cBuscas, termo);
     }
-
 }

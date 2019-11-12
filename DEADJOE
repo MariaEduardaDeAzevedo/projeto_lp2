@@ -3,10 +3,10 @@
 *** JOE was aborted because the terminal closed
 
 *** File '(Unnamed)'
-/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
 
-*** File '/home/daniel/eclipse-workspace/projeto_lp2/.git/MERGE_MSG'
-Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/projeto_lp2
+*** File '/home/daniel/eclipse-workspace/base/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/base
 merging
 # Please enter a commit message to explain why this merge is necessary,
 # especially if it merges an updated upstream into a topic branch.
@@ -21,6 +21,42 @@ Finished processing /etc/joe/ftyperc
 Finished processing /etc/joe/editorrc
 
 *** These modified files were found in JOE when it aborted on Wed Oct 30 11:29:50 2019
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
+
+*** These modified files were found in JOE when it aborted on Thu Nov  7 12:55:58 2019
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/home/daniel/eclipse-workspace/base/.git/MERGE_MSG
+
+*** File '/home/daniel/eclipse-workspace/base/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/MariaEduardaDeAzevedo/base
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+eh nos
+.
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
+
+*** These modified files were found in JOE when it aborted on Mon Nov 11 18:01:41 2019
 *** JOE was aborted because the terminal closed
 
 *** File '(Unnamed)'

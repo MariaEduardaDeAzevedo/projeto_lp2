@@ -112,12 +112,19 @@ public class Validacao {
 	
 	protected void validaData(String data, String mensagem) {
 		if (data.length() != 10) {
-			throw new IllegalArgumentException(mensagem);
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		}
+		String[] dataSplit = data.split("/");
+		int comparacaoDia = dataSplit[0].compareTo("31");
+		int comparacaoMes = dataSplit[1].compareTo("12");
+		int comparacaoAno = dataSplit[2].compareTo("2019");
+		if (comparacaoDia > 0 || comparacaoMes > 0 || comparacaoAno > 0) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
 		}
 	}
 	
 	protected void validaSemestreAluno(int semestre, String mensagem) {
-		if (semestre < 0) {
+		if (semestre <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
@@ -128,27 +135,68 @@ public class Validacao {
 		}
 	}
 
-	public void hasProblemaAssociado(String idProblema, String idPesquisa, Map<String, String> mapa, boolean operacao) {
-		
-		if(mapa.containsKey(idPesquisa)) {
-			
-			if(mapa.get(idPesquisa).equals(idProblema) && operacao) {
-				
-				throw new IllegalArgumentException();
-				
-			} else if (operacao) {
-					
-				throw new AssociationException("Pesquisa ja associada a um problema.");
-			
-			}
-			
-		} else if (!operacao) {
-			
-			throw new NullPointerException(); 
-					
+	/**
+	 * Método que avalia uma associação entre duas classes. As situações avaliadas
+	 * são:
+	 * 
+	 * - 1. Caso o id1 (chave) exista no mapa e a operacão seja de associação (true)
+	 * e o valor apontado por id1 no mapa seja igual a id2, lança-se um
+	 * IllegalArgumentException() que sinaliza a situação de que a associação já foi
+	 * feita.
+	 * 
+	 * - 2. Se o mapa tem o valor de id2 e a operação é de associação (true),
+	 * lança-se uma AssociationException() que indica que o sistema nao permite que
+	 * mais de um objeto seja associado a outro.
+	 * 
+	 * - 3. Se o mapa nao contém id1 (chave) e a operação é de desassociação
+	 * (false), lança-se um NullPointerException()
+	 * 
+	 * 
+	 * @param id1      chave do mapa
+	 * @param id2      valor do mapa
+	 * @param mapa     mapa que guarda as associações
+	 * @param operacao true para associação e false para desassociação
+	 * @param mensagem Mensagem de erro a ser exibida no caso 2. Caso não seja
+	 *                 necessária, coloque uma String vazia.
+	 */
+	protected void hasAssociado(String id1, String id2, Map<String, String> mapa, boolean operacao, String mensagem) {
+
+		if (mapa.containsKey(id1) && operacao && mapa.get(id1).equals(id2)) {
+
+			throw new IllegalArgumentException();
+
 		}
-		
+
+		if (mapa.containsValue(id2) && operacao) {
+
+			throw new AssociationException(mensagem);
+
+		}
+
+		if (!(mapa.containsKey(id1)) && !(operacao)) {
+
+			throw new NullPointerException();
+
+		}
+
 	}
 	
+	protected void validaNumeroResultado(int numero, String mensagem){
+		if (numero < 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
+	
+	/**
+	 * Metodo de validacao que verifica se um valor inteiro é menor ou igual a zero, 
+	 * lancando uma excecao caso a condicao retorne true.
+	 * @param numero Numero a ser verificado
+	 * @param mensagem Mensagem de excecao.
+	 */
+	protected void verificaNuloNegativo(int numero, String mensagem) {
+		if(numero <= 0) {
+			throw new IllegalArgumentException(mensagem);
+		}
+	}
 
 }
