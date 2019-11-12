@@ -178,7 +178,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.encerraPesquisa("COM1", "O lab fechou");
 		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
 				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			controllerPesquisasTest.associaAtividade("COM1", A1);
 		});
 	}
@@ -218,7 +218,7 @@ class ControllerPesquisasTest {
 				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
 		controllerPesquisasTest.associaAtividade("COM1", A1);
 		controllerPesquisasTest.encerraPesquisa("COM1", "O lab fechou");
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			controllerPesquisasTest.desassociaAtividade("COM1", "A1");
 		});
 	}
@@ -251,7 +251,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.associaPesquisador("", pesq);
 		});
 		

@@ -175,7 +175,7 @@ class ConectorTest {
         cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 59);
         });
     }

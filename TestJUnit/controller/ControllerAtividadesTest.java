@@ -411,8 +411,8 @@ class ControllerAtividadesTest {
 
 	@Test
 	void removeResultadoValido() {
-		controller3.cadastraResultado("A2", "Pesquisa concluída com sucesso");
-		assertTrue(controller3.removeResultado("A2", 1));
+		controller3.cadastraResultado("A3", "Pesquisa concluída com sucesso");
+		assertTrue(controller3.removeResultado("A3", 1));
 	}
 
 	@Test
@@ -454,7 +454,7 @@ class ControllerAtividadesTest {
 	}
 	@Test
 	void removeResultadoNumeroResultadoInvalido() {
-		assertThrows(NullPointerException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			controller3.removeResultado("A2", 50);
 		});
 	}
@@ -462,7 +462,7 @@ class ControllerAtividadesTest {
     @Test
     void listaResultadosValido() {
 		controller3.cadastraResultado("A2", "Pesquisa concluída com sucesso");
-		assertEquals("Pesquisa concluída com sucesso", controller3.listaResultados("A3"));
+		assertEquals("Pesquisa concluída com sucesso", controller3.listaResultados("A2"));
 	}
 
 	@Test

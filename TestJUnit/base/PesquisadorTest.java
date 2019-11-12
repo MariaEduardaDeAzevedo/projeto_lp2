@@ -1,5 +1,6 @@
 package base;
 
+import excecoes.ActivationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -90,7 +91,7 @@ public class PesquisadorTest {
 
     @Test
     void ativaPesquisadorAtivado(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             pesquisadorTeste.ativaPesquisador();
         });
     }
@@ -111,7 +112,7 @@ public class PesquisadorTest {
     @Test
     void inativaPesquisadorInativado() {
         pesquisadorTeste.inativaPesquisador();
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             pesquisadorTeste.inativaPesquisador();
         });
     }

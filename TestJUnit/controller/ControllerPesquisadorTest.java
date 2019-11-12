@@ -1,5 +1,6 @@
 package controller;
 
+import excecoes.ActivationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -159,7 +160,7 @@ class ControllerPesquisadorTest {
     void ativaPesquisadorAtivado(){
         controllerPesquisadorTeste.cadastraPesquisador("Arthur", "estudante",
                 "estudante de Computação", "arthur@example.com", "https://formation");
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             controllerPesquisadorTeste.ativaPesquisador("arthur@example.com");
         });
     }
@@ -186,7 +187,7 @@ class ControllerPesquisadorTest {
         controllerPesquisadorTeste.cadastraPesquisador("Arthur", "estudante",
                 "estudante de Computação", "arthur@example.com", "https://formation");
         controllerPesquisadorTeste.desativaPesquisador("arthur@example.com");
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             controllerPesquisadorTeste.desativaPesquisador("arthur@example.com");
         });
     }

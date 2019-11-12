@@ -85,7 +85,7 @@ class PesquisaTest {
 
 	@Test
 	void ativaPesquisaAtivada() {
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			pesquisaTeste.ativaPesquisa();
 		});
 	}

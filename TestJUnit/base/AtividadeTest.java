@@ -1,5 +1,7 @@
 package base;
 import static org.junit.jupiter.api.Assertions.*;
+
+import excecoes.ActivationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -175,7 +177,7 @@ class AtividadeTest {
 	@Test
 	void executaItemRepetido() {
 		atividadeBase2.executaItem(1, 50);
-		assertThrows(NullPointerException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			atividadeBase2.executaItem(1, 50);
 		});
 	}
