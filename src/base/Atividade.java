@@ -201,6 +201,11 @@ public class Atividade extends Validacao {
 
 	}
 
+	/**
+	 * Busca se um termo esta contido na descricao.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o id e a descricao da atividade, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
     public String buscaTermoDescricao(String termo) {
 		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
 			return this.id + ": " + this.descricao;
@@ -208,6 +213,11 @@ public class Atividade extends Validacao {
 		return null;
     }
 
+	/**
+	 * Busca se um termo esta contido no campo de interesse.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o id e a descricao do risco da atividade, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
 	public String buscaTermoDescricaoDoRisco(String termo) {
 		if (this.descricaoRisco.toLowerCase().contains(termo.toLowerCase())) {
 			return this.id + ": " + this.descricaoRisco;

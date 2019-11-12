@@ -197,6 +197,11 @@ public class Pesquisador extends Validacao {
 		return fotoURL;
 	}
 
+	/**
+	 * Busca se um termo esta contido na biografia.
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o email e a biografia do pesquisador, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 */
     public String buscaTermo(String termo) {
 		if (biografia.toLowerCase().contains(termo.toLowerCase())){
 			return this.email + ": " + this.biografia;

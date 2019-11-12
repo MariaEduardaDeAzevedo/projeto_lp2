@@ -205,6 +205,11 @@ public class Pesquisa extends Validacao {
 		return true;
 	}
 
+    /**
+     * Busca se um termo esta contido na descricao.
+     * @param termo termo que se deseja procurar.
+     * @return String contendo o codigo e a descricao da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
+     */
     public String buscaTermoDescricao(String termo) {
         if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
             return this.codigo + ": " + this.descricao;
@@ -212,6 +217,11 @@ public class Pesquisa extends Validacao {
         return null;
     }
 
+    /**
+     * Busca se um termo esta contido no campo de interesse.
+     * @param termo termo que se deseja procurar.
+     * @return String contendo o codigo e o campo de interesse da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
+     */
     public String buscaTermoCampoDeInteresse(String termo) {
         if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
             return this.codigo + ": " + this.campoDeInteresse;

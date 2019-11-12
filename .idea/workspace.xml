@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base/Atividade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Atividade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/Pesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Problema.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +26,7 @@
     <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1573561996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="337" />
+    <option name="myElementSize" value="338" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-168666750">
@@ -41,24 +38,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="24" />
+          <entry key="java" value="32" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="24" />
+          <entry key="JAVA" value="32" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="481" />
+          <entry key="java" value="828" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="481" />
+          <entry key="JAVA" value="828" />
         </counts>
       </usages-collector>
     </session>
@@ -66,50 +63,32 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ControllerAtividades.java">
+        <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="211" column="19" selection-start-line="211" selection-start-column="19" selection-end-line="211" selection-end-column="19" />
+            <state relative-caret-position="178">
+              <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/base/Pesquisa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="219" column="3" lean-forward="true" selection-start-line="219" selection-start-column="3" selection-end-line="223" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
-              <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/base/Atividade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="256" column="23" lean-forward="true" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
+            <state relative-caret-position="573">
+              <caret line="218" column="71" selection-start-line="218" selection-start-column="71" selection-end-line="218" selection-end-column="71" />
               <folding>
                 <element signature="e#5825#5826#0" expanded="true" />
                 <element signature="e#5846#5847#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-792">
-              <caret line="414" column="43" lean-forward="true" selection-start-line="414" selection-start-column="43" selection-end-line="414" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/facade/Facade.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -134,9 +113,12 @@
         <option value="$PROJECT_DIR$/TestJUnit/controller/ConectorTest.java" />
         <option value="$PROJECT_DIR$/src/controller/ControllerAtividades.java" />
         <option value="$PROJECT_DIR$/src/controller/ControllerBuscas.java" />
-        <option value="$PROJECT_DIR$/src/base/Atividade.java" />
         <option value="$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java" />
         <option value="$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java" />
+        <option value="$PROJECT_DIR$/src/base/Pesquisa.java" />
+        <option value="$PROJECT_DIR$/src/base/Pesquisador.java" />
+        <option value="$PROJECT_DIR$/src/base/Problema.java" />
+        <option value="$PROJECT_DIR$/src/base/Atividade.java" />
       </list>
     </option>
   </component>
@@ -220,7 +202,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573561993813" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573562023297" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/easyaccept.jar!/" />
@@ -361,9 +343,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ControllerAtividadesTest_cadastraResultadoNull - 2019.11.12 at 08h 26m 00s.xml">
-      <configuration name="ControllerAtividadesTest.cadastraResultadoNull" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ControllerAtividadesTest - 2019.11.12 at 08h 26m 10s.xml">
       <configuration name="ControllerAtividadesTest" configurationId="JUnit" />
     </history-entry>
@@ -390,6 +369,9 @@
     </history-entry>
     <history-entry file="ControllerAtividadesTest - 2019.11.12 at 09h 30m 37s.xml">
       <configuration name="ControllerAtividadesTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_projeto_lp2 - 2019.11.12 at 09h 33m 23s.xml">
+      <configuration name="All in projeto_lp2" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -482,27 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/Pesquisa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2655">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/Pesquisador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1632">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/Problema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-177">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Conector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2756">
@@ -520,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/facade/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -534,35 +488,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/facade/Facade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ControllerAtividades.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="211" column="19" selection-start-line="211" selection-start-column="19" selection-end-line="211" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestEasyAccept/use_case_7.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="593">
           <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/base/Atividade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="256" column="23" lean-forward="true" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
-          <folding>
-            <element signature="e#5825#5826#0" expanded="true" />
-            <element signature="e#5846#5847#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -575,8 +504,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
+        <state relative-caret-position="404">
           <caret line="207" column="5" lean-forward="true" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestJUnit/base/ItemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerAtividades.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="211" column="19" selection-start-line="211" selection-start-column="19" selection-end-line="211" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/facade/Facade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Pesquisador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="199" column="4" lean-forward="true" selection-start-line="199" selection-start-column="4" selection-end-line="203" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="88" column="61" selection-start-line="88" selection-start-column="61" selection-end-line="88" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ControllerBuscas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Pesquisa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="219" column="3" lean-forward="true" selection-start-line="219" selection-start-column="3" selection-end-line="223" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/base/Atividade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="218" column="71" selection-start-line="218" selection-start-column="71" selection-end-line="218" selection-end-column="71" />
+          <folding>
+            <element signature="e#5825#5826#0" expanded="true" />
+            <element signature="e#5846#5847#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
