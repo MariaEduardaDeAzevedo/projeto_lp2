@@ -2,6 +2,7 @@ package base;
 
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,10 @@ public class Atividade extends Validacao {
 	
 	private int duracao;
 	
-	//private List<Integer> itensExecutados;
+	private Map<Integer, String> resultados;
+	
+	private int numeroResultado;
+	
 	
 
 
@@ -75,6 +79,8 @@ public class Atividade extends Validacao {
 		this.descricaoRisco = descricaoRisco;
 		this.itens = new ArrayList<Item>();
 		this.id = id;
+		this.resultados = new HashMap<Integer, String>();
+		this.numeroResultado = 0;
 
 	}
 
@@ -242,16 +248,7 @@ public class Atividade extends Validacao {
 		if(item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		
-		super.validaStatus(!itens.get(item).getStatus(), "Item ja executado.");
-		/**
-		if(itensExecutados.contains(item)) {
-			throw new IllegalArgumentException("Item ja executado.");			
-		}
-		
-		this.itensExecutados.add(item);
-	**/
-		
+		super.validaStatus(!itens.get(item - 1).getStatus(), "Item ja executado.");
 		this.itens.get(item - 1).realizar();
 		this.duracao += duracao;
 	}
@@ -268,5 +265,32 @@ public class Atividade extends Validacao {
 	public int getDuracao() {
 		return duracao;
 	}
+	
+	public int cadastraResultado(String resultado) {
+		
+		this.resultados.put(numeroResultado++, resultado);
+		return numeroResultado;
+	}
+		
+	public boolean removeResultado(int numeroDoResultado) {
+		if(!resultados.containsKey(numeroDoResultado)) {
+			throw new IllegalArgumentException("Resultado nao encontrado.");
+		}
+		this.resultados.remove(numeroDoResultado);
+		return true;
+	}
+	
+	public String listaResultados() {
+		String listaResultados = "";
+		
+		for (int i = 0; i < resultados.size(); i++) {
+			if (i == resultados.size() - 1) {
+				listaResultados += resultados.get(i);
+			} else {
+				listaResultados += resultados.get(i) + " | ";
+			}
+		}
+		return listaResultados;
+	}
+	
 }
-

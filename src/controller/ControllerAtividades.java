@@ -19,11 +19,6 @@ public class ControllerAtividades extends Validacao {
 	 */
 	private Map<String, Atividade> atividades;
 
-	/**
-	 * Mapa que armazena um arrayList com os resultados cadastrado em uma determinada atividade.
-	 */
-	private Map<String, ArrayList<String>> resultadosCadastrados;
-
 
 	/**
 	 * Atributo que guarda a parte inteira do proximo ID a ser cadastrado em um
@@ -38,7 +33,6 @@ public class ControllerAtividades extends Validacao {
 
 		this.atividades = new HashMap<String, Atividade>();
 		this.proximoId = 1;
-		this.resultadosCadastrados = new HashMap<String, ArrayList<String>>();
 
 	}
 
@@ -186,6 +180,7 @@ public class ControllerAtividades extends Validacao {
 		this.atividades.get(codigoAtividade).executaItem(item, duracao);
 	}
 
+
 	/**
 	 * Metodo que permite o cadastro de um resultado em uma determinada atividade.
 	 * @param codigoAtividade codigo da atividade.
@@ -195,12 +190,9 @@ public class ControllerAtividades extends Validacao {
 	public int cadastraResultado(String codigoAtividade, String resultado) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
-		if (!resultadosCadastrados.containsKey(codigoAtividade)) {
-			this.resultadosCadastrados.put(codigoAtividade, new ArrayList<String>());
-		}
-		this.resultadosCadastrados.get(codigoAtividade).add(resultado);
-		return resultadosCadastrados.get(codigoAtividade).indexOf(resultado) + 1;
+		return this.atividades.get(codigoAtividade).cadastraResultado(resultado);
 	}
+
 
 	/**
 	 * Metodo que permite a remocao de um resultado cadastrado, a partir do 
@@ -213,16 +205,10 @@ public class ControllerAtividades extends Validacao {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
 		super.verificaNuloNegativo(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
-
-		if(resultadosCadastrados.containsKey(codigoAtividade))
-			if (numeroResultado > resultadosCadastrados.size() - 1) {
-				throw new IllegalArgumentException("Resultado nao encontrado.");
-			} else {
-				resultadosCadastrados.get(codigoAtividade).remove(numeroResultado);
-				return true;
-			}
-		return false;
+		return this.atividades.get(codigoAtividade).removeResultado(numeroResultado);
+	
 	}
+	
 
 	/**
 	 * Metodo que lista os resultados cadastrados em uma determinada atividade.
@@ -232,17 +218,10 @@ public class ControllerAtividades extends Validacao {
 	public String listaResultados(String codigoAtividade) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
-		String listaResultados = "";
-		for (int i = 0; i < resultadosCadastrados.size(); i++) {
-			if (i == resultadosCadastrados.size() - 1) {
-				listaResultados += resultadosCadastrados.get(codigoAtividade).get(i);
-			} else {
-				listaResultados += resultadosCadastrados.get(codigoAtividade).get(i) + " | ";
-			}
-		}
-		return listaResultados;
+		return this.atividades.get(codigoAtividade).listaResultados();
 
 	}
+	
 
 	/**
 	 * Metodo que permite ter acesso a duracao de execucao de uma determinada atividade.
