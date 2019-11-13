@@ -257,7 +257,6 @@ public class Atividade extends Validacao {
 		if(item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		super.validaStatus(!itens.get(item - 1).getStatus(), "Item ja executado.");
 		this.itens.get(item - 1).realizar();
 		this.duracao += duracao;
 	}

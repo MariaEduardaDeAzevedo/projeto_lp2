@@ -13,6 +13,26 @@ import java.util.List;
  *
  */
 public class Conector extends Validacao {
+	
+
+	private ControllerPesquisador cPesquisador;
+	private ControllerPesquisas cPesquisas;
+	private ControllerProblemas cProblemas;
+	private ControllerAtividades cAtividades;
+	private ControllerObjetivos cObjetivos;
+	private ControllerBuscas cBuscas;
+
+	public Conector(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, ControllerProblemas cProblemas, ControllerAtividades cAtividades, ControllerObjetivos cObjetivos, ControllerBuscas cBuscas) {
+		
+		this.cPesquisador = cPesquisador;
+		this.cPesquisas = cPesquisas;
+		this.cProblemas = cProblemas;
+		this.cAtividades = cAtividades;
+		this.cObjetivos = cObjetivos;
+		this.cBuscas = cBuscas;
+		
+	}
+	
 	/**
 	 * Associa um pesquisador cadastrado no sistema (ou qualquer uma de suas especializações) com uma pesquisa, que também deve estar cadastrada no sistema.
 	 * @param cPesquisador controller de Pesquisador, que armazena todas os pesquisadores cadastrados no sistema.
@@ -22,7 +42,7 @@ public class Conector extends Validacao {
 	 * @return um valor booleano que indica se a associação do pesquisador a pesquisa foi realizada com sucesso. Se o pesquisador já estiver associado à pesquisa, é retornado
 	 * false, caso contrário, este é associado à pesquisa e é retornado true.
 	 */
-    public boolean associaPesquisador(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, String idPesquisa, String emailPesquisador) {
+    public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
         if (!cPesquisas.containsPesquisa(idPesquisa)) {
@@ -44,7 +64,7 @@ public class Conector extends Validacao {
      * a desassociação é feita com sucesso, e, caso contrário, se o pesquisador não estiver associado à pesquisa, é retornado false, indicando
      * que a desassociação não foi bem sucedida.
      */
-    public boolean desassociaPesquisador(ControllerPesquisas cPesquisas, String idPesquisa, String emailPesquisador) {
+    public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
         if (!cPesquisas.containsPesquisa(idPesquisa)) {
@@ -67,11 +87,10 @@ public class Conector extends Validacao {
 	 * @param idProblema String que representa unicamente um objeto Problema
 	 * @return String referente ao sucesso da operação
 	 */
-	public String associaProblema(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
-			String idProblema) {
+	public boolean associaProblema(String idPesquisa, String idProblema) {
 
-		Problema problema = cProblema.getProblema(idProblema);
-		return cPesquisa.associaProblema(idPesquisa, idProblema, problema);
+		Problema problema = cProblemas.getProblema(idProblema);
+		return cPesquisas.associaProblema(idPesquisa, idProblema, problema);
 
 	}
 	
@@ -85,9 +104,9 @@ public class Conector extends Validacao {
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
 	 * @return String referente ao sucesso da operação
 	 */
-	public String desassociaProblema(ControllerPesquisas cPesquisa, String idPesquisa) {
+	public boolean desassociaProblema (String idPesquisa) {
 
-		return cPesquisa.desassociaProblema(idPesquisa);
+		return cPesquisas.desassociaProblema(idPesquisa);
 
 	}
 	
@@ -102,11 +121,10 @@ public class Conector extends Validacao {
 	 * @param idObjetivo String que representa unicamente um objeto Objetivo
 	 * @return String referente ao sucesso da operação
 	 */
-	public String associaObjetivo(ControllerPesquisas cPesquisa, ControllerObjetivos cObjetivo, String idPesquisa,
-			String idObjetivo) {
+	public boolean associaObjetivo (String idPesquisa, String idObjetivo) {
 
-		Objetivo objetivo = cObjetivo.getObjetivo(idObjetivo);
-		return cPesquisa.associaObjetivo(idPesquisa, idObjetivo, objetivo);
+		Objetivo objetivo = cObjetivos.getObjetivo(idObjetivo);
+		return cPesquisas.associaObjetivo(idPesquisa, idObjetivo, objetivo);
 
 	}
 	
@@ -122,10 +140,9 @@ public class Conector extends Validacao {
 	 * @param idObjetivo String que representa unicamente um objeto Objetivo
 	 * @return String referente ao sucesso da operação
 	 */
-	public String desassociaObjetivo(ControllerPesquisas cPesquisa, ControllerProblemas cProblema, String idPesquisa,
-			String idProblema) {
+	public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
 
-		return cPesquisa.desassociaObjetivo(idPesquisa, idProblema);
+		return cPesquisas.desassociaObjetivo(idPesquisa, idProblema);
 
 	}
     
@@ -140,21 +157,21 @@ public class Conector extends Validacao {
      * @param termo termo que se deseja verificar a ocorrencia.
      * @return String contendo a representacao das entidades que fazem mencao ao termo.
      */
-    public String busca(ControllerPesquisas cPesquisa, ControllerPesquisador cPesquisador, ControllerProblemas cProblema, ControllerObjetivos cObjetivo, ControllerAtividades cAtividade, ControllerBuscas cBuscas, String termo) {
+    public String busca(String termo) {
 
-        Collection<Pesquisa> pesquisas = cPesquisa.getPesquisas();
-
-
-        Collection<Pesquisador> pesquisadores = cPesquisador.getPesquisadores();
+        Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
 
 
-        Collection<Problema> problemas = cProblema.getProblemas();
+        Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
 
 
-        Collection<Objetivo> objetivos = cObjetivo.getObjetivos();
+        Collection<Problema> problemas = this.cProblemas.getProblemas();
 
 
-        Collection<Atividade> atividades = cAtividade.getAtividades();
+        Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
+
+
+        Collection<Atividade> atividades = this.cAtividades.getAtividades();
         return cBuscas.busca(termo, pesquisas, pesquisadores, problemas, objetivos, atividades);
     }
 
@@ -165,7 +182,7 @@ public class Conector extends Validacao {
      * @param numeroDoResultado numero do elemento que se deseja retornar.
      * @return String contendo o elemento que estava na lista dos resultados da busca pelo termo.
      */
-    public String busca(ControllerBuscas cBuscas, String termo, int numeroDoResultado) {
+    public String busca(String termo, int numeroDoResultado) {
         return cBuscas.busca(termo, numeroDoResultado);
     }
 
@@ -175,7 +192,7 @@ public class Conector extends Validacao {
      * @param termo termo que já foi previamente buscado.
      * @return int representado o numero de entidades que contem o termo.
      */
-    public int contaResultadosBusca(ControllerBuscas cBuscas, String termo) {
+    public int contaResultadosBusca(String termo) {
         return cBuscas.contaResultadosBusca(termo);
     }
 
@@ -187,13 +204,12 @@ public class Conector extends Validacao {
      * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
      * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
      */
-    public boolean associaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade,
-                                    String codigoPesquisa, String codigoAtividade) {
+    public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada");
-        Atividade atividade = cAtividade.getAtividade(codigoAtividade);
-        return cPesquisa.associaAtividade(codigoPesquisa, atividade);
+        super.hasValor(cAtividades.containsAtividade(codigoAtividade), "Atividade nao encontrada");
+        Atividade atividade = cAtividades.getAtividade(codigoAtividade);
+        return cPesquisas.associaAtividade(codigoPesquisa, atividade);
 
     }
 
@@ -206,18 +222,18 @@ public class Conector extends Validacao {
      * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
      * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
      */
-    public boolean desassociaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade, String codigoPesquisa, String codigoAtividade) {
+    public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
-        super.hasValor(cAtividade.containsAtividade(codigoAtividade), "Atividade nao encontrada");
+        super.hasValor(cAtividades.containsAtividade(codigoAtividade), "Atividade nao encontrada");
 
-        if (!cPesquisa.containsPesquisa(codigoPesquisa)) {
+        if (!cPesquisas.containsPesquisa(codigoPesquisa)) {
             throw new IllegalArgumentException("Pesquisa nao encontrada.");
         }
-        if (!cPesquisa.pesquisaEhAtiva(codigoPesquisa)) {
+        if (!cPesquisas.pesquisaEhAtiva(codigoPesquisa)) {
             throw new IllegalArgumentException("Pesquisa desativada.");
         }
-        return cPesquisa.desassociaAtividade(codigoPesquisa, codigoAtividade);
+        return cPesquisas.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
 
     /**
@@ -229,21 +245,15 @@ public class Conector extends Validacao {
      * @param item Item a ser executado
      * @param duracao Duracao da execucao
      */
-	public void executaAtividade(ControllerPesquisas cPesquisa, ControllerAtividades cAtividade, String codigoAtividade, int item, int duracao) {
+	public void executaAtividade(String codigoAtividade, int item, int duracao) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		super.verificaNuloNegativo(item, "Item nao pode ser nulo ou negativo.");
 		super.verificaNuloNegativo(duracao, "Duracao nao pode ser nula ou negativa.");
-		if(!cPesquisa.contemAtividadeAssociada(codigoAtividade)) {
+		if(!cPesquisas.contemAtividadeAssociada(codigoAtividade)) {
 			throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
 		}
-		cAtividade.executaAtividade(codigoAtividade, item, duracao);
+		cAtividades.executaAtividade(codigoAtividade, item, duracao);
 			
 		
-	}
-	
-	public static void main (String[] args) throws Exception {
-		ControllerObjetivos cObjetivosTeste = new ControllerObjetivos();
-		cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-		System.out.println(cObjetivosTeste.exibeObjetivo("O1"));
 	}
 }

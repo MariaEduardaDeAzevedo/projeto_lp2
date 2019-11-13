@@ -20,19 +20,22 @@ public class ControllerPesquisas extends Validacao {
 	 * Armazena um mapa de pesquisas a partir dos seus codigos.
 	 */
 	private Map<String, Pesquisa> pesquisas;
-
-	private Conector conector;
-
+	
+	/**
+	 * Armazena um mapa de problemas associados a uma pesquisa indicada pelo seu ID
+	 */
 	private Map<String, String> problemasAssociados;
-
+	
+	/**
+	 * Armazena um mapa de objetivos associados a uma pesquisa indicada pelo seu ID
+	 */
 	private Map<String, String> objetivosAssociados;
 
 	/**
 	 * Constroi o objeto ControllerPesquisas e inicializa seus atributos.
 	 */
 	public ControllerPesquisas() {
-		this.pesquisas = new HashMap<String, Pesquisa>();
-		this.conector = new Conector();
+		this.pesquisas = new TreeMap<String, Pesquisa>();
 		this.problemasAssociados = new HashMap<String, String>();
 		this.objetivosAssociados = new HashMap<String, String>();
 
@@ -50,13 +53,9 @@ public class ControllerPesquisas extends Validacao {
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		super.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		super.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
-		if (campoDeInteresse.length() > 255) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
+		this.validaTamanhoDoCampo(campoDeInteresse, 255);
 		String[] topicos = campoDeInteresse.split(",");
-		if (topicos.length > 4) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
+		this.validaTamanhoDoCampo(topicos, 4);
 		for (String topico : topicos) {
 			validaString(topico, "Formato do campo de interesse invalido.");
 			if (topico.length() < 3) {
@@ -76,6 +75,22 @@ public class ControllerPesquisas extends Validacao {
 		}
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
 		return codigo;
+	}
+
+	private void validaTamanhoDoCampo(String[] campo, int tamanho) {
+		
+		if (campo.length > tamanho) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		
+	}
+
+	private void validaTamanhoDoCampo(String campo, int tamanho) {
+		
+		if (campo.length() > tamanho) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		
 	}
 
 	/**
@@ -177,12 +192,8 @@ public class ControllerPesquisas extends Validacao {
 	 *         estiver associado à pesquisa.
 	 */
 	public boolean associaPesquisador(String idPesquisa, Pesquisador associado) {
-		if (!pesquisas.containsKey(idPesquisa)) {
-			throw new NullPointerException("Pesquisa nao encontrada.");
-		}
-		if (!pesquisas.get(idPesquisa).isAtivada()) {
-			throw new ActivationException("Pesquisa desativada.");
-		}
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+		super.validaStatus(pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
 		if (pesquisas.get(idPesquisa).containsPesquisador(associado.getEmail())) {
 			return false;
 		}
@@ -205,12 +216,9 @@ public class ControllerPesquisas extends Validacao {
 	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(idPesquisa)) {
-			throw new NullPointerException("Pesquisa nao encontrada.");
-		}
-		if (!pesquisas.get(idPesquisa).isAtivada()) {
-			throw new ActivationException("Pesquisa desativada.");
-		}
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+		super.validaStatus(pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
+
 		if (!pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador)) {
 			return false;
 		}
@@ -229,9 +237,8 @@ public class ControllerPesquisas extends Validacao {
 	public boolean containsPesquisador(String idPesquisa, String emailPesquisador) {
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(idPesquisa)) {
-			throw new NullPointerException("Pesquisa nao encontrada.");
-		}
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
+
 		return pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador);
 	}
 
@@ -250,7 +257,7 @@ public class ControllerPesquisas extends Validacao {
 	 * @param problema   Objeto Problema a ser associado a pesquisa indicada
 	 * @return String referente ao sucesso da operação
 	 */
-	public String associaProblema(String idPesquisa, String idProblema, Problema problema) {
+	public boolean associaProblema(String idPesquisa, String idProblema, Problema problema) {
 
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
@@ -264,14 +271,14 @@ public class ControllerPesquisas extends Validacao {
 
 		} catch (IllegalArgumentException e) {
 
-			return "false";
+			return false;
 
 		}
 
 		this.pesquisas.get(idPesquisa).setProblema(problema);
 		this.problemasAssociados.put(idProblema, idPesquisa);
 
-		return "true";
+		return true;
 
 	}
 
@@ -281,7 +288,7 @@ public class ControllerPesquisas extends Validacao {
 	 * @param idPesquisa String que representa unicamente um objeto do tipo Pesquisa
 	 * @return String referente ao sucesso da operação
 	 */
-	public String desassociaProblema(String idPesquisa) {
+	public boolean desassociaProblema(String idPesquisa) {
 
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
@@ -289,14 +296,14 @@ public class ControllerPesquisas extends Validacao {
 
 		if (!this.problemasAssociados.containsValue(idPesquisa)) {
 
-			return "false";
+			return false;
 
 		}
 
 		this.problemasAssociados.remove(this.pesquisas.get(idPesquisa).getProblema().getId());
 		this.pesquisas.get(idPesquisa).setProblema(null);
 
-		return "true";
+		return true;
 
 	}
 
@@ -309,7 +316,7 @@ public class ControllerPesquisas extends Validacao {
 	 * @param problema   Objeto Objetivo a ser associado a pesquisa indicada
 	 * @return String referente ao sucesso da operação
 	 */
-	public String associaObjetivo(String idPesquisa, String idObjetivo, Objetivo objetivo) {
+	public boolean associaObjetivo(String idPesquisa, String idObjetivo, Objetivo objetivo) {
 
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
@@ -323,14 +330,14 @@ public class ControllerPesquisas extends Validacao {
 
 		} catch (IllegalArgumentException e) {
 
-			return "false";
+			return false;
 
 		}
 
 		this.pesquisas.get(idPesquisa).setObjetivo(objetivo);
 		this.objetivosAssociados.put(idPesquisa, idObjetivo);
 
-		return "true";
+		return true;
 
 	}
 
@@ -343,7 +350,7 @@ public class ControllerPesquisas extends Validacao {
 	 * @param problema   Objeto Objetivo a ser desassociado da pesquisa indicada
 	 * @return String referente ao sucesso da operação
 	 */
-	public String desassociaObjetivo(String idPesquisa, String idObjetivo) {
+	public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
 
 		super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
@@ -356,13 +363,13 @@ public class ControllerPesquisas extends Validacao {
 
 		} catch (NullPointerException e) {
 
-			return "false";
+			return false;
 
 		}
 
 		this.objetivosAssociados.remove(idPesquisa);
 		this.pesquisas.get(idPesquisa).setObjetivo(null);
-		return "true";
+		return true;
 
 	}
 
@@ -559,7 +566,7 @@ public class ControllerPesquisas extends Validacao {
 		for (Pesquisa pesquisa : pesquisas.values()) {
 			if(pesquisa.contemAtividadeAssociada(codigoAtividade)) {
 				return true;
-		}
+			}
 		}
 		return false;
 	}

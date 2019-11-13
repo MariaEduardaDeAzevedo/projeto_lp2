@@ -45,7 +45,7 @@ public class Item extends Validacao {
 	 * realizado
 	 */
 	public void realizar() {
-
+		super.validaStatus(! status, "Item ja executado.");
 		this.statusString = "REALIZADO";
 		this.status = true;
 	}

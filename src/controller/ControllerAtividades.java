@@ -19,7 +19,6 @@ public class ControllerAtividades extends Validacao {
 	 */
 	private Map<String, Atividade> atividades;
 
-
 	/**
 	 * Atributo que guarda a parte inteira do proximo ID a ser cadastrado em um
 	 * objeto Atividade
@@ -143,22 +142,28 @@ public class ControllerAtividades extends Validacao {
 
 	}
 
+	/**
+	 * Retorna uma Collection com as atividades do sistema
+	 * 
+	 * @return Collection com as atividades do sistema
+	 */
 	public Collection<Atividade> getAtividades() {
 		return this.atividades.values();
 	}
 
 	/**
 	 * Metodo que permite acessar uma ativiade.
+	 * 
 	 * @param id da atividade.
 	 * @return atividade.
 	 */
 	public Atividade getAtividade(String id) {
 		return this.atividades.get(id);
-
 	}
 
 	/**
 	 * Metodo que verifica se existe uma atividade no mapa de atividades.
+	 * 
 	 * @param id da atividade
 	 * @return valor booleando indicando se existe ou não a atividade.
 	 */
@@ -169,9 +174,10 @@ public class ControllerAtividades extends Validacao {
 	/**
 	 * Metodo que permite a execucao de uma atividade, atraves do seu codigo,
 	 * determinando o item a ser executado e a duracao da execucao.
+	 * 
 	 * @param codigoAtividade codigo da atividade.
-	 * @param item item a ser executado.
-	 * @param duracao Duracao da execucao.
+	 * @param item            item a ser executado.
+	 * @param duracao         Duracao da execucao.
 	 */
 	public void executaAtividade(String codigoAtividade, int item, int duracao) {
 		super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
@@ -180,11 +186,11 @@ public class ControllerAtividades extends Validacao {
 		this.atividades.get(codigoAtividade).executaItem(item, duracao);
 	}
 
-
 	/**
 	 * Metodo que permite o cadastro de um resultado em uma determinada atividade.
+	 * 
 	 * @param codigoAtividade codigo da atividade.
-	 * @param resultado Resultado a ser cadastrado.
+	 * @param resultado       Resultado a ser cadastrado.
 	 * @return inteiro indicando o índice do resultado, que representa o seu numero.
 	 */
 	public int cadastraResultado(String codigoAtividade, String resultado) {
@@ -193,10 +199,10 @@ public class ControllerAtividades extends Validacao {
 		return this.atividades.get(codigoAtividade).cadastraResultado(resultado);
 	}
 
-
 	/**
-	 * Metodo que permite a remocao de um resultado cadastrado, a partir do 
-	 * codigo da atividade e do numero do resultado.
+	 * Metodo que permite a remocao de um resultado cadastrado, a partir do codigo
+	 * da atividade e do numero do resultado.
+	 * 
 	 * @param codigoAtividade codigo da atividade.
 	 * @param numeroResultado Numero do resultado.
 	 * @return valor booleano indicando se a remocao foi bem sucedida ou nao.
@@ -206,12 +212,12 @@ public class ControllerAtividades extends Validacao {
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
 		super.verificaNuloNegativo(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
 		return this.atividades.get(codigoAtividade).removeResultado(numeroResultado);
-	
+
 	}
-	
 
 	/**
 	 * Metodo que lista os resultados cadastrados em uma determinada atividade.
+	 * 
 	 * @param codigoAtividade Codigo da atividade
 	 * @return Resultados listados.
 	 */
@@ -221,10 +227,11 @@ public class ControllerAtividades extends Validacao {
 		return this.atividades.get(codigoAtividade).listaResultados();
 
 	}
-	
 
 	/**
-	 * Metodo que permite ter acesso a duracao de execucao de uma determinada atividade.
+	 * Metodo que permite ter acesso a duracao de execucao de uma determinada
+	 * atividade.
+	 * 
 	 * @param codigoAtividade Codigo da atividade
 	 * @return valor inteiro com a duracao.
 	 */
