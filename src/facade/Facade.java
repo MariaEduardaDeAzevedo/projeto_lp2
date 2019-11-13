@@ -1,5 +1,7 @@
 package facade;
 
+import java.io.IOException;
+
 import base.Objetivo;
 import controller.*;
 
@@ -245,5 +247,14 @@ public class Facade {
     
     public void tiraProximaAtividade(String idPrecedente) {
     	cAtividade.tiraProximaAtividade(idPrecedente);
+    }
+    
+    //US10
+    
+    //US11
+    public void gravarResumo(String id) throws IOException {
+    	
+    	this.cGeral.gravarResumoPesquisa(id);
+    	
     }
 }

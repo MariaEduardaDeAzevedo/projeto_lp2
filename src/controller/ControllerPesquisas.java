@@ -571,4 +571,10 @@ public class ControllerPesquisas extends Validacao {
 		return false;
 	}
 
+	public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
+		
+		return this.pesquisas.get(id).getPesquisadoresAssociados();
+		
+	}
+
 }

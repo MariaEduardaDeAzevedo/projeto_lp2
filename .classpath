@@ -9,6 +9,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="TestJUnit"/>
 	<classpathentry kind="src" path="libs"/>
+	<classpathentry kind="src" path="arquivos"/>
 	<classpathentry kind="lib" path="libs/easyaccept.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

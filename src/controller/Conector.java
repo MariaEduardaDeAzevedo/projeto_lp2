@@ -3,6 +3,9 @@ package controller;
 import base.*;
 import excecoes.ActivationException;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -254,6 +257,31 @@ public class Conector extends Validacao {
 		}
 		cAtividades.executaAtividade(codigoAtividade, item, duracao);
 			
+		
+	}
+
+	public void gravarResumoPesquisa(String id) throws IOException {
+		File file = new File("arquivos/" + id + ".txt");
+		FileWriter writer = new FileWriter(file);
+		String resumo = this.geraResumo(id);	
+		writer.write(resumo);
+		writer.close();
+	}
+
+	private String geraResumo(String id) {
+		
+		Pesquisa pesquisa = this.cPesquisas.getPesquisa(id);
+		String retorno = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		retorno += "	- Pesquisadores:" + System.lineSeparator();
+		
+		for (Pesquisador p : cPesquisas.getPesquisadoresAssociados(id)) {
+			retorno += "		- " + p.toString() + System.lineSeparator();		
+		}
+		
+		retorno += "	- Problemas:" + System.lineSeparator() + "		- " + pesquisa.getProblema().toString();
+		retorno += "	- Objetivos:" + System.lineSeparator();
+		
+		return retorno;
 		
 	}
 }
