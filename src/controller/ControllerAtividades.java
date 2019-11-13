@@ -233,4 +233,19 @@ public class ControllerAtividades extends Validacao {
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
 		return this.atividades.get(codigoAtividade).getDuracao();
 	}
+	
+	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
+		super.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
+		super.validaString(idSubsequente, "Atividade nao pode ser nulo ou vazio.");
+		super.hasValor(atividades.containsKey(idPrecedente), "Atividade nao encontrada.");
+		super.hasValor(atividades.containsKey(idSubsequente), "Atividade nao encontrada.");
+		super.verificaAtvPrcdnt(atividades.get(idPrecedente).hasProx(), "Atividade ja possui uma subsequente.");
+		atividades.get(idPrecedente).defProx(atividades.get(idSubsequente));
+	}
+	
+	public void tiraProximaAtividade(String idPrecedente) {
+		super.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
+		super.hasValor(atividades.containsKey(idPrecedente), "Atividade nao encontrada.");
+		atividades.get(idPrecedente).retiraProx();
+	}
 }

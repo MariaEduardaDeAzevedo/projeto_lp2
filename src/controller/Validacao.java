@@ -8,6 +8,7 @@ import base.Pesquisa;
 import base.Problema;
 import excecoes.ActivationException;
 import excecoes.AssociationException;
+import excecoes.SequenceException;
 
 public class Validacao {
 
@@ -196,6 +197,12 @@ public class Validacao {
 	protected void verificaNuloNegativo(int numero, String mensagem) {
 		if(numero <= 0) {
 			throw new IllegalArgumentException(mensagem);
+		}
+	}
+	
+	protected void verificaAtvPrcdnt(boolean valor, String mensagem) {
+		if (valor) {
+			throw new SequenceException(mensagem);
 		}
 	}
 

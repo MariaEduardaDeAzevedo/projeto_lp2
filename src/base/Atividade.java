@@ -56,6 +56,8 @@ public class Atividade extends Validacao {
 	 */
 	private int numeroResultado;
 	
+	private Atividade proxAtv;
+	
 	
 
 
@@ -90,7 +92,7 @@ public class Atividade extends Validacao {
 		this.id = id;
 		this.resultados = new HashMap<Integer, String>();
 		this.numeroResultado = 0;
-
+		this.proxAtv = null;
 	}
 
 	/**
@@ -316,4 +318,18 @@ public class Atividade extends Validacao {
 		return listaResultados.substring(0, listaResultados.length() - 3);
 	}
 	
+	public boolean hasProx() {
+		if (proxAtv != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void defProx(Atividade prox) {
+		proxAtv = prox;
+	}
+	
+	public void retiraProx() {
+		proxAtv = null;
+	}
 }

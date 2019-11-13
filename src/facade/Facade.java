@@ -238,4 +238,12 @@ public class Facade {
         return this.cGeral.contaResultadosBusca(cBuscas, termo);
     }
    
+   //US9
+    public void defineProximaAtividade(String idPrecedente, String idSubsquente) {
+    	cAtividade.defineProximaAtividade(idPrecedente, idSubsquente);
+    }
+    
+    public void tiraProximaAtividade(String idPrecedente) {
+    	cAtividade.tiraProximaAtividade(idPrecedente);
+    }
 }
