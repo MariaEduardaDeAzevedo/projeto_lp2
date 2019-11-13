@@ -577,4 +577,21 @@ public class ControllerPesquisas extends Validacao {
 		
 	}
 
+	public Collection<String> getObjetivosAssociados(String id) {
+		
+		Collection<String> lista = new ArrayList<String>();
+		
+		for (String s : this.objetivosAssociados.keySet()) {
+			
+			if (this.objetivosAssociados.get(s).equals(id)) {
+
+				lista.add(s);
+				
+			}
+		}
+		
+		return lista;
+		
+	}
+
 }

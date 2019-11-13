@@ -281,6 +281,10 @@ public class Conector extends Validacao {
 		retorno += "	- Problemas:" + System.lineSeparator() + "		- " + pesquisa.getProblema().toString();
 		retorno += "	- Objetivos:" + System.lineSeparator();
 		
+		for (String s : cPesquisas.getObjetivosAssociados(id)) {
+			retorno += "		- " + this.cObjetivos.getObjetivo(s).toString() + System.lineSeparator();		
+		}
+		
 		return retorno;
 		
 	}
