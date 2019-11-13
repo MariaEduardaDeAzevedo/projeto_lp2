@@ -62,11 +62,9 @@ public class ControllerObjetivos extends Validacao {
 	 * @throws Exception exceções são lançadas quando o código do objetivo passado como parâmetro é vazio ou nulo ou quando
 	 * o código passado como parâmetro não identifica nenhum objetivo cadastrado no sistema
 	 */
-	public String exibeObjetivo(String idObjetivo) throws Exception {
+	public String exibeObjetivo(String idObjetivo) {
 		super.validaString(idObjetivo, "Codigo do objetivo passado não pode ser vazio ou nulo");
-		if (!objetivos.containsKey(idObjetivo)) {
-			throw new Exception("Objetivo nao encontrado");
-		}
+		super.hasValor(this.objetivos.containsKey(idObjetivo), "Objetivo nao encontrado");
 		return objetivos.get(idObjetivo).toString();
 	}
 	
@@ -76,18 +74,14 @@ public class ControllerObjetivos extends Validacao {
 	 * @throws Exception exceções são lançadas quando o código passado como parâmetro no método é vazio ou nulo ou quando o código passado como
 	 * parâmetro não identifica nenhum objetivo cadastrado
 	 */
-	public void apagarObjetivo(String idObjetivo) throws Exception {
+	public void apagarObjetivo(String idObjetivo){
 		super.validaString(idObjetivo, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!objetivos.containsKey(idObjetivo)) {
-			throw new Exception("Objetivo nao encontrado");
-		}
+		super.hasValor(this.objetivos.containsKey(idObjetivo), "Objetivo nao encontrado");
 		objetivos.remove(idObjetivo);
 	}
 
 	public Objetivo getObjetivo(String id) {
-		
 		return this.objetivos.get(id);
-	
 	}
 
 	/**

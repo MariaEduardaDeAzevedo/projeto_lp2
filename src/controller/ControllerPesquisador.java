@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -118,9 +119,8 @@ public class ControllerPesquisador extends Validacao {
 		super.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
 		super.validaString(data, "Campo data nao pode ser nulo ou vazio.");
 		super.validaData(data, "Atributo data com formato invalido.");
-		if (!pesquisadores.containsKey(email)) {
-			throw new NullPointerException("Pesquisadora nao encontrada.");
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisadora nao encontrada.");
+		
 		Pesquisador naoEspecializado = pesquisadores.get(email);
 		Professor especializado = new Professor(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), formacao, unidade, data);
 		pesquisadores.remove(email);
@@ -140,9 +140,7 @@ public class ControllerPesquisador extends Validacao {
 		super.validaString(String.valueOf(iea), "Campo IEA nao pode ser nulo ou vazio.");
 		super.validaIeaAluno(iea, "Atributo IEA com formato invalido.");
 		super.validaSemestreAluno(semestre, "Atributo semestre com formato invalido.");
-		if (!pesquisadores.containsKey(email)) {
-			throw new NullPointerException("Pesquisadora nao encontrada.");
-		}
+		super.hasValor(this.pesquisadores.containsKey(email), "Pesquisadora nao encontrada.");
 		Pesquisador naoEspecializado = pesquisadores.get(email);
 		Aluno especializado = new Aluno(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), semestre, iea);
 		pesquisadores.remove(email);
@@ -164,9 +162,7 @@ public class ControllerPesquisador extends Validacao {
      */
     public Pesquisador getPesquisador(String idPesquisador) {
     	super.validaString(idPesquisador, "email do pesquisador não pode ser nulo ou vazio");
-    	if (!pesquisadores.containsKey(idPesquisador)) {
-    		throw new NullPointerException("pesquisador não existe.");
-    	}
+    	super.hasValor(this.pesquisadores.containsKey(idPesquisador), "Pesquisador nao existe.");
     	return pesquisadores.get(idPesquisador);
     }
     
@@ -178,9 +174,12 @@ public class ControllerPesquisador extends Validacao {
      */
     public String listaPesquisadores(String tipo) {
     	super.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
-    	if (!tipo.equals("EXTERNO") && !tipo.equals("ALUNA") && !tipo.equals("PROFESSORA")) {
-    		throw new IllegalArgumentException("Tipo " + tipo + " inexistente.");
-    	}
+    	List valores = new ArrayList<String>();
+    	valores.add("EXTERNO");
+    	valores.add("ALUNA");
+    	valores.add("PROFESSORA");
+		super.validaValoresPermitidos(valores, tipo, "Tipo " + tipo + " inexistente.");
+		
     	String tipoReal = "";
     	if (tipo.equals("EXTERNO")) {
     		tipoReal += tipo.toLowerCase();

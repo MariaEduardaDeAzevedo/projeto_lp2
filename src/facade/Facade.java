@@ -10,8 +10,8 @@ public class Facade {
     private ControllerPesquisas cPesquisa;
     private ControllerObjetivos cObjetivo;
     private ControllerProblemas cProblema;
-    private Conector cGeral;
     private ControllerBuscas cBuscas;
+    private Conector cGeral;
 
     public Facade() {
 
@@ -20,9 +20,9 @@ public class Facade {
         this.cPesquisador = new ControllerPesquisador();
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
-        this.cGeral = new Conector();
         this.cBuscas = new ControllerBuscas();
-       /// this.cBuscas = new ControllerBuscas(cGeral);
+        this.cGeral = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
+        
 
     }
 
@@ -146,27 +146,27 @@ public class Facade {
     
     //US5 
    
-    public String associaProblema(String idPesquisa, String idProblema) {
+    public boolean associaProblema(String idPesquisa, String idProblema) {
     	
-    	return this.cGeral.associaProblema(cPesquisa, cProblema, idPesquisa, idProblema);
-    	
-    }
-    
-    public String desassociaProblema(String idPesquisa) {
-    	
-    	return this.cGeral.desassociaProblema(cPesquisa, idPesquisa);
+    	return this.cGeral.associaProblema(idPesquisa, idProblema);
     	
     }
     
-    public String associaObjetivo(String idPesquisa, String idObjetivo) {
+    public boolean desassociaProblema(String idPesquisa) {
     	
-    	return this.cGeral.associaObjetivo(cPesquisa, cObjetivo, idPesquisa, idObjetivo);
+    	return this.cGeral.desassociaProblema(idPesquisa);
     	
     }
     
-    public String desassociaObjetivo(String idPesquisa, String idProblema) {
+    public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
     	
-    	return this.cGeral.desassociaObjetivo(cPesquisa, cProblema, idPesquisa, idProblema);
+    	return this.cGeral.associaObjetivo(idPesquisa, idObjetivo);
+    	
+    }
+    
+    public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
+    	
+    	return this.cGeral.desassociaObjetivo(idPesquisa, idProblema);
     	
     }
     
@@ -178,11 +178,11 @@ public class Facade {
     
     //US6
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
-    	return cGeral.associaPesquisador(cPesquisador, cPesquisa, idPesquisa, emailPesquisador);
+    	return cGeral.associaPesquisador(idPesquisa, emailPesquisador);
     }
     
     public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
-    	return cGeral.desassociaPesquisador(cPesquisa, idPesquisa, emailPesquisador);
+    	return cGeral.desassociaPesquisador(idPesquisa, emailPesquisador);
     }
     
     public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
@@ -199,15 +199,15 @@ public class Facade {
 
     //US7
     public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
-    	return this.cGeral.associaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
+    	return this.cGeral.associaAtividade(codigoPesquisa, codigoAtividade);
     }
     
     public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
-    	return this.cGeral.desassociaAtividade(cPesquisa, cAtividade, codigoPesquisa, codigoAtividade);
+    	return this.cGeral.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	this.cGeral.executaAtividade(cPesquisa, cAtividade, codigoAtividade, item, duracao);
+    	this.cGeral.executaAtividade(codigoAtividade, item, duracao);
     }
     public int cadastraResultado(String codigoAtividade, String resultado) {
     	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
@@ -226,16 +226,16 @@ public class Facade {
     }
     //US8
     public String busca(String termo){
-        return this.cGeral.busca(cPesquisa, cPesquisador, cProblema, cObjetivo, cAtividade, cBuscas, termo);
+        return this.cGeral.busca(termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-        return this.cGeral.busca(cBuscas, termo, numeroDoResultado);
+        return this.cGeral.busca(termo, numeroDoResultado);
     }
 
     public int contaResultadosBusca(String termo){
 
-        return this.cGeral.contaResultadosBusca(cBuscas, termo);
+        return this.cGeral.contaResultadosBusca(termo);
     }
    
    //US9

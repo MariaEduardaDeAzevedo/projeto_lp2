@@ -9,7 +9,6 @@ import base.Problema;
 /**
  * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operações relacionadas
  * aos problemas. 
- * @author Daniel Fonseca
  *
  */
 public class ControllerProblemas extends Validacao {
@@ -56,11 +55,9 @@ public class ControllerProblemas extends Validacao {
 	 * @throws Exception excelçoes são lançadas quando o código do problema passado como parâmetro é nulo ou vazio ou quando
 	 * este código não identifica nenhum problema cadastrado no sistema
 	 */
-	public String exibeProblema(String idProblema) throws Exception {
+	public String exibeProblema(String idProblema) {
 		super.validaString(idProblema, "id do problema não pode ser vazio ou nulo");
-		if (!problemas.containsKey(idProblema)) {
-			throw new Exception("Problema nao encontrado");
-		}
+		super.hasValor(this.problemas.containsKey(idProblema), "Problema nao encontrado");
 		return idProblema + " - " + problemas.get(idProblema).toString();
 	}
 	
@@ -70,20 +67,14 @@ public class ControllerProblemas extends Validacao {
 	 * @throws Exception exceções são lançadas quando o código passado como parâmetro do método é nulo ou vazio ou quando
 	 * este código não identifica nenhum problema cadastrado no sistema
 	 */
-	public void apagarProblema(String idProblema) throws Exception {
+	public void apagarProblema(String idProblema) {
 		super.validaString(idProblema, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!problemas.containsKey(idProblema)) {
-			throw new Exception("Problema nao encontrado");
-		}
+		super.hasValor(this.problemas.containsKey(idProblema), "Problema nao encontrado");
 		problemas.remove(idProblema);
 	}
 	
-	public Problema getProblema(String id) {
-		
-		// super.hasValor(this.problemas.containsKey(id), "Problema nao encontrado.");
-		
+	public Problema getProblema(String id) {		
 		return this.problemas.get(id);
-		
 	}
 
 	/**
