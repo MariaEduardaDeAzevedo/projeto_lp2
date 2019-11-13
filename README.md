@@ -67,7 +67,10 @@
 
 ### US6
 #### Codificado:
--Todas as funcionalidades da US6.
+- Todas as funcionalidades da US6.
+- Documentação da US6.
+- Testes de unidade da US5.
 #### Falta:
-- Documentar funcionalidades da US6.
-- Fazer os testes de unidade de outra US.
+#### Comentário:
+- Foi utilizado herança para implementar as funcionalidades das classes Professor e Aluno, que são subclasses de Pesquisador.
+- O código não falha em nenhum teste de aceitação.
