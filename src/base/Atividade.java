@@ -325,6 +325,8 @@ public class Atividade extends Validacao {
 	}
 	
 	public void defProx(Atividade prox) {
+		Atividade referencia = prox;
+		super.verificaAtvPrcdnt(this.isLoop(prox, referencia), "Criacao de loops negada.");
 		proxAtv = prox;
 	}
 	
@@ -336,11 +338,11 @@ public class Atividade extends Validacao {
 		return proxAtv;
 	}
 	
-	private boolean isLoop(String idSubsequente) {
-		if (this.hasProx() && proxAtv.getId().equals(idSubsequente)) {
+	private boolean isLoop(Atividade proxAdd, Atividade referencia) {
+		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
 			return true;
-		} else if (this.hasProx() && !proxAtv.getId().equals(idSubsequente)) {
-			proxAtv.isLoop(idSubsequente);
+		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(this)) {
+			proxAdd.getProx().isLoop(proxAdd.getProx(), referencia);
 		}
 		return false;
 	}
