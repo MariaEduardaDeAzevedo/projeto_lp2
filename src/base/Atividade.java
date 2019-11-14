@@ -341,8 +341,8 @@ public class Atividade extends Validacao {
 	private boolean isLoop(Atividade proxAdd, Atividade referencia) {
 		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
 			return true;
-		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(this)) {
-			proxAdd.getProx().isLoop(proxAdd.getProx(), referencia);
+		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(referencia)) {
+			proxAdd.getProx().isLoop(proxAdd, referencia);
 		}
 		return false;
 	}
