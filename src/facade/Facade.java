@@ -251,6 +251,16 @@ public class Facade {
     
     //US10
     
+	public void configuraEstrategia(String estrategia) {
+    	this.cGeral.configuraEstrategia(estrategia);
+
+    }
+
+    public String proximaAtividade(String codigoPesquisa) {
+    	return this.cGeral.proximaAtividade(codigoPesquisa);
+
+    }
+    
     //US11
     public void gravarResumo(String id) throws IOException {
     	

@@ -593,5 +593,9 @@ public class ControllerPesquisas extends Validacao {
 		return lista;
 		
 	}
-
+	
+	public String proximaAtividade(String codigoPesquisa) {
+		super.validaStatus(this.pesquisas.get(codigoPesquisa).isAtivada(), "Pesquisa desativada.");
+		return "a";
+	}
 }
