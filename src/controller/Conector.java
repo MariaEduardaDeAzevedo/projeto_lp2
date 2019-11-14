@@ -186,7 +186,21 @@ public class Conector extends Validacao {
      * @return String contendo o elemento que estava na lista dos resultados da busca pelo termo.
      */
     public String busca(String termo, int numeroDoResultado) {
-        return cBuscas.busca(termo, numeroDoResultado);
+
+		Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
+
+
+		Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
+
+
+		Collection<Problema> problemas = this.cProblemas.getProblemas();
+
+
+		Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
+
+
+		Collection<Atividade> atividades = this.cAtividades.getAtividades();
+    	return cBuscas.buscaResultado(termo,  pesquisas, pesquisadores, problemas, objetivos, atividades, numeroDoResultado);
     }
 
     /**
@@ -196,7 +210,21 @@ public class Conector extends Validacao {
      * @return int representado o numero de entidades que contem o termo.
      */
     public int contaResultadosBusca(String termo) {
-        return cBuscas.contaResultadosBusca(termo);
+		Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
+
+
+		Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
+
+
+		Collection<Problema> problemas = this.cProblemas.getProblemas();
+
+
+		Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
+
+
+		Collection<Atividade> atividades = this.cAtividades.getAtividades();
+
+		return cBuscas.contaResultadosBusca(pesquisas, pesquisadores, problemas, objetivos, atividades, termo);
     }
 
     /**

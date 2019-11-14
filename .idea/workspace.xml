@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/base/AtividadeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/base/PesquisaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/base/PesquisaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ConectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ConectorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ControllerAtividadesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisadorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisasTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ConectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ConectorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/facade/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +33,7 @@
     <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1573561996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="338" />
+    <option name="myElementSize" value="179" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -97,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in projeto_lp2">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="facade.Main" />
       <module name="projeto_lp2" />
@@ -174,8 +175,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in projeto_lp2" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in projeto_lp2" />
         <item itemvalue="JUnit.ControllerAtividadesTest" />
         <item itemvalue="JUnit.ConectorTest" />
         <item itemvalue="JUnit.ControllerAtividadesTest.cadastraResultadoNull" />
@@ -198,7 +199,8 @@
       <workItem from="1573310800125" duration="769000" />
       <workItem from="1573311958983" duration="7269000" />
       <workItem from="1573520746258" duration="4804000" />
-      <workItem from="1573587166114" duration="1991000" />
+      <workItem from="1573587166114" duration="2693000" />
+      <workItem from="1573687600625" duration="2534000" />
     </task>
     <servers />
   </component>
