@@ -267,4 +267,9 @@ public class Facade {
     	this.cGeral.gravarResumoPesquisa(id);
     	
     }
+
+    //US12
+    public void salvar(){
+        //this.Serealizador.SalvarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas, cGeral);
+    }
 }

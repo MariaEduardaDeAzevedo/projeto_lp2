@@ -325,8 +325,17 @@ public class Conector extends Validacao {
 		valores.add("MAIOR_DURACAO");
 		valores.add("MAIOR_RISCO");
 		valores.add("MENOS_PENDENCIAS");
-
 		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
+		
+		switch(estrategia) {
+			case "MAIS_ANTIGA":
+			//	cAtividades.
+			case "MAIOR_DURACAO":
+			case "MAIOR_RISCO":
+			case "MENOS_PENDENCIAS":
+				
+		}
+		
 
 	}
 
@@ -334,7 +343,6 @@ public class Conector extends Validacao {
 
 	public String proximaAtividade(String codigoPesquisa) {
 		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
-		super.hasValor(!this.cPesquisas.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
 		
 
 		//"Pesquisa sem atividades com pendencias."

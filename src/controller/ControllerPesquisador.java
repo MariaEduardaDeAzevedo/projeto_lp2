@@ -22,7 +22,7 @@ public class ControllerPesquisador extends Validacao {
 	 * Constroi o objeto ControllerPesquisador.
 	 */
 	public ControllerPesquisador() {
-		this.pesquisadores = new HashMap<String, Pesquisador>();
+		this.pesquisadores = new TreeMap<String, Pesquisador>(Collections.reverseOrder());
 	}
 	//ATUALIZAR PARA TREEMAP E CONSERTA O LISTAPESQUISADORES
 	/**
