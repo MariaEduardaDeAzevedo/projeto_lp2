@@ -331,4 +331,17 @@ public class Atividade extends Validacao {
 	public void retiraProx() {
 		proxAtv = null;
 	}
+	
+	public Atividade getProx() {
+		return proxAtv;
+	}
+	
+	private boolean isLoop(String idSubsequente) {
+		if (this.hasProx() && proxAtv.getId().equals(idSubsequente)) {
+			return true;
+		} else if (this.hasProx() && !proxAtv.getId().equals(idSubsequente)) {
+			proxAtv.isLoop(idSubsequente);
+		}
+		return false;
+	}
 }
