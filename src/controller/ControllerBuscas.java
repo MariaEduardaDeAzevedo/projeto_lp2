@@ -97,7 +97,7 @@ public class ControllerBuscas extends Validacao {
                 lista_pesquisadores.add(pesquisador.buscaTermo(termo));
             }
         }
-        Collections.reverse(lista_pesquisadores);
+        //Collections.reverse(lista_pesquisadores);
         List<String> lista_problemas = new ArrayList<String>();
         for (Problema problema : problemas) {
             if (problema.buscaTermo(termo) != null) {
