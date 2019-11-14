@@ -1,11 +1,8 @@
-/facade/
-<<<<<<< HEAD
-/base/
-=======
 /.txt
-/COM1.txt
-/COM2.txt
-/COM3.txt
 /ENE1.txt
+/base/
+/comparators/
 /controller/
->>>>>>> 719ccfdcbf043ff596190fb4d201fc891b0a1999
+/easyaccept.jar
+/excecoes/
+/facade/

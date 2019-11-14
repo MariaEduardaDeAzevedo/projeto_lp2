@@ -289,9 +289,10 @@ public class Conector extends Validacao {
 	}
 
 	public void gravarResumoPesquisa(String id) throws IOException {
-		File file = new File("arquivos/" + id + ".txt");
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia");
+		String resumo = geraResumo(id);
+		File file = new File("arquivos" + File.separator + id + ".txt");
 		FileWriter writer = new FileWriter(file);
-		String resumo = this.geraResumo(id);	
 		writer.write(resumo);
 		writer.close();
 	}
@@ -302,17 +303,29 @@ public class Conector extends Validacao {
 		String retorno = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		retorno += "	- Pesquisadores:" + System.lineSeparator();
 		
-		for (Pesquisador p : cPesquisas.getPesquisadoresAssociados(id)) {
-			retorno += "		- " + p.toString() + System.lineSeparator();		
+		for (Pesquisador p : pesquisa.getPesquisadoresAssociados()) {
+			retorno += "		- " + p.toString() + System.lineSeparator();
 		}
 		
-		retorno += "	- Problemas:" + System.lineSeparator() + "		- " + pesquisa.getProblema().toString();
+		retorno += "	- Problema:";
+		
+		if (pesquisa.getProblema() == null) {
+			retorno += System.lineSeparator();	
+		} else {
+			retorno += "		- " + pesquisa.getProblema().toString();	
+		}
+		
 		retorno += "	- Objetivos:" + System.lineSeparator();
 		
 		for (String s : cPesquisas.getObjetivosAssociados(id)) {
-			retorno += "		- " + this.cObjetivos.getObjetivo(s).toString() + System.lineSeparator();		
+			retorno += "		- " + this.cObjetivos.getObjetivo(id).toString();
 		}
 		
+		retorno += "	- Atividades:" + System.lineSeparator();
+		
+		for (Atividade a : pesquisa.getAtividadesAssociadas()) {
+			retorno += a.toStringArquivo();
+		}
 		return retorno;
 		
 	}

@@ -346,4 +346,14 @@ public class Atividade extends Validacao {
 		}
 		return false;
 	}
+
+	public String toStringArquivo() {
+		String listagem = String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco) + System.lineSeparator();
+
+		for (int i = 0; i < this.itens.size(); i++) {
+			listagem += "			- " + this.itens.get(i).toString() + System.lineSeparator();
+		}
+
+		return listagem;
+	}
 }

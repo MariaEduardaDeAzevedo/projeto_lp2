@@ -243,9 +243,8 @@ public class ControllerPesquisas extends Validacao {
 	}
 
 	public Pesquisa getPesquisa(String idPesquisa) {
-
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		return this.pesquisas.get(idPesquisa);
-
 	}
 
 	/**

@@ -283,9 +283,12 @@ public class Pesquisa extends Validacao {
 
 
 	public Collection<Pesquisador> getPesquisadoresAssociados() {
-	
 		return this.pesquisadoresAssociados.values();
-		
+	}
+
+
+	public Collection<Atividade> getAtividadesAssociadas() {	
+		return this.atividadesAssociadas.values();
 	}
 	
 }
