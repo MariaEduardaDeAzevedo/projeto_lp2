@@ -30,7 +30,7 @@ public class ControllerAtividades extends Validacao {
 	 */
 	public ControllerAtividades() {
 
-		this.atividades = new HashMap<String, Atividade>();
+		this.atividades = new LinkedHashMap<String, Atividade>();
 		this.proximoId = 1;
 
 	}

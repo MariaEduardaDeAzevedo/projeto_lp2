@@ -1,11 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import base.Pesquisador;
@@ -27,9 +22,9 @@ public class ControllerPesquisador extends Validacao {
 	 * Constroi o objeto ControllerPesquisador.
 	 */
 	public ControllerPesquisador() {
-		this.pesquisadores = new HashMap<String, Pesquisador>();
+		this.pesquisadores = new TreeMap<String, Pesquisador>(Collections.reverseOrder());
 	}
-	
+	//ATUALIZAR PARA TREEMAP E CONSERTA O LISTAPESQUISADORES
 	/**
 	 * Metodo responsavel por cadastrar um pesquisador no sistema a partir dos seus parametros.
 	 * @param nome Nome do pesquisador

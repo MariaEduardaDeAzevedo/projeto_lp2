@@ -1,5 +1,7 @@
 package facade;
 
+import java.io.IOException;
+
 import base.Objetivo;
 import controller.*;
 
@@ -245,5 +247,29 @@ public class Facade {
     
     public void tiraProximaAtividade(String idPrecedente) {
     	cAtividade.tiraProximaAtividade(idPrecedente);
+    }
+    
+    //US10
+    
+	public void configuraEstrategia(String estrategia) {
+    	this.cGeral.configuraEstrategia(estrategia);
+
+    }
+
+    public String proximaAtividade(String codigoPesquisa) {
+    	return this.cGeral.proximaAtividade(codigoPesquisa);
+
+    }
+    
+    //US11
+    public void gravarResumo(String id) throws IOException {
+    	
+    	this.cGeral.gravarResumoPesquisa(id);
+    	
+    }
+
+    //US12
+    public void salvar(){
+        //this.Serealizador.SalvarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas, cGeral);
     }
 }

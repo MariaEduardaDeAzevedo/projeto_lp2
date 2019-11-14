@@ -3,6 +3,9 @@ package controller;
 import base.*;
 import excecoes.ActivationException;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -183,7 +186,21 @@ public class Conector extends Validacao {
      * @return String contendo o elemento que estava na lista dos resultados da busca pelo termo.
      */
     public String busca(String termo, int numeroDoResultado) {
-        return cBuscas.busca(termo, numeroDoResultado);
+
+		Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
+
+
+		Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
+
+
+		Collection<Problema> problemas = this.cProblemas.getProblemas();
+
+
+		Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
+
+
+		Collection<Atividade> atividades = this.cAtividades.getAtividades();
+    	return cBuscas.buscaResultado(termo,  pesquisas, pesquisadores, problemas, objetivos, atividades, numeroDoResultado);
     }
 
     /**
@@ -193,7 +210,21 @@ public class Conector extends Validacao {
      * @return int representado o numero de entidades que contem o termo.
      */
     public int contaResultadosBusca(String termo) {
-        return cBuscas.contaResultadosBusca(termo);
+		Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
+
+
+		Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
+
+
+		Collection<Problema> problemas = this.cProblemas.getProblemas();
+
+
+		Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
+
+
+		Collection<Atividade> atividades = this.cAtividades.getAtividades();
+
+		return cBuscas.contaResultadosBusca(pesquisas, pesquisadores, problemas, objetivos, atividades, termo);
     }
 
     /**
@@ -255,5 +286,81 @@ public class Conector extends Validacao {
 		cAtividades.executaAtividade(codigoAtividade, item, duracao);
 			
 		
+	}
+
+	public void gravarResumoPesquisa(String id) throws IOException {
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia");
+		String resumo = geraResumo(id);
+		File file = new File("arquivos" + File.separator + id + ".txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(resumo);
+		writer.close();
+	}
+
+	private String geraResumo(String id) {
+		
+		Pesquisa pesquisa = this.cPesquisas.getPesquisa(id);
+		String retorno = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		retorno += "	- Pesquisadores:" + System.lineSeparator();
+		
+		for (Pesquisador p : pesquisa.getPesquisadoresAssociados()) {
+			retorno += "		- " + p.toString() + System.lineSeparator();
+		}
+		
+		retorno += "	- Problema:";
+		
+		if (pesquisa.getProblema() == null) {
+			retorno += System.lineSeparator();	
+		} else {
+			retorno += "		- " + pesquisa.getProblema().toString();	
+		}
+		
+		retorno += "	- Objetivos:" + System.lineSeparator();
+		
+		for (String s : cPesquisas.getObjetivosAssociados(id)) {
+			retorno += "		- " + this.cObjetivos.getObjetivo(id).toString();
+		}
+		
+		retorno += "	- Atividades:" + System.lineSeparator();
+		
+		for (Atividade a : pesquisa.getAtividadesAssociadas()) {
+			retorno += a.toStringArquivo();
+		}
+		return retorno;
+		
+	}
+	
+	public void configuraEstrategia(String estrategia) {
+		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
+
+		List valores = new ArrayList<String>();
+		valores.add("MAIS_ANTIGA");
+		valores.add("MAIOR_DURACAO");
+		valores.add("MAIOR_RISCO");
+		valores.add("MENOS_PENDENCIAS");
+		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
+		
+		switch(estrategia) {
+			case "MAIS_ANTIGA":
+			//	cAtividades.
+			case "MAIOR_DURACAO":
+			case "MAIOR_RISCO":
+			case "MENOS_PENDENCIAS":
+				
+		}
+		
+
+	}
+
+
+
+	public String proximaAtividade(String codigoPesquisa) {
+		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		
+
+		//"Pesquisa sem atividades com pendencias."
+
+		return this.cPesquisas.proximaAtividade(codigoPesquisa);
+
 	}
 }

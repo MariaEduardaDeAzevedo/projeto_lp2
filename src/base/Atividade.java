@@ -325,10 +325,35 @@ public class Atividade extends Validacao {
 	}
 	
 	public void defProx(Atividade prox) {
+		Atividade referencia = prox;
+		super.verificaAtvPrcdnt(this.isLoop(prox, referencia), "Criacao de loops negada.");
 		proxAtv = prox;
 	}
 	
 	public void retiraProx() {
 		proxAtv = null;
+	}
+	
+	public Atividade getProx() {
+		return proxAtv;
+	}
+	
+	private boolean isLoop(Atividade proxAdd, Atividade referencia) {
+		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
+			return true;
+		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(this)) {
+			proxAdd.getProx().isLoop(proxAdd.getProx(), referencia);
+		}
+		return false;
+	}
+
+	public String toStringArquivo() {
+		String listagem = String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco) + System.lineSeparator();
+
+		for (int i = 0; i < this.itens.size(); i++) {
+			listagem += "			- " + this.itens.get(i).toString() + System.lineSeparator();
+		}
+
+		return listagem;
 	}
 }

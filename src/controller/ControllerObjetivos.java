@@ -2,6 +2,7 @@ package controller;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import base.Objetivo;
 
@@ -29,7 +30,7 @@ public class ControllerObjetivos extends Validacao {
 	 * no mapa que armazena todos os objetivos começa como sendo 1.
 	 */
 	public ControllerObjetivos() {
-		this.objetivos = new HashMap<String, Objetivo>();
+		this.objetivos = new TreeMap<String, Objetivo>();
 		this.idNumber = 1;
 	}
 	

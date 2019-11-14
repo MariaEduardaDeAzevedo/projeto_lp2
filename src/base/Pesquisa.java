@@ -2,7 +2,10 @@ package base;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -277,29 +280,15 @@ public class Pesquisa extends Validacao {
 	public boolean contemAtividadeAssociada(String codigoAtividade) {
 		return atividadesAssociadas.containsKey(codigoAtividade);
 	}
-	
-	public void gravaResumo() throws IOException {
-		
-		File file = new File(this.codigo + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resumo());
-		writer.close();
-		
+
+
+	public Collection<Pesquisador> getPesquisadoresAssociados() {
+		return this.pesquisadoresAssociados.values();
+	}
+
+
+	public Collection<Atividade> getAtividadesAssociadas() {	
+		return this.atividadesAssociadas.values();
 	}
 	
-	private String resumo() {
-		
-		String resumo = String.format("PESQUISA: %s - %s - %s", this.codigo, this.descricao, this.campoDeInteresse); 
-		
-		resumo += System.lineSeparator() + "Pesquisadores:";
-		
-		for (Pesquisador p : this.pesquisadoresAssociados.values()) {
-			
-			resumo += System.lineSeparator() + p.toString();
-			
-		}
-		
-		return resumo;
-		
-	}
 }

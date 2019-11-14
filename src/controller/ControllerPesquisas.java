@@ -243,9 +243,8 @@ public class ControllerPesquisas extends Validacao {
 	}
 
 	public Pesquisa getPesquisa(String idPesquisa) {
-
+		super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
 		return this.pesquisas.get(idPesquisa);
-
 	}
 
 	/**
@@ -571,4 +570,33 @@ public class ControllerPesquisas extends Validacao {
 		return false;
 	}
 
+	public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
+		
+		return this.pesquisas.get(id).getPesquisadoresAssociados();
+		
+	}
+
+	public Collection<String> getObjetivosAssociados(String id) {
+		
+		Collection<String> lista = new ArrayList<String>();
+		
+		for (String s : this.objetivosAssociados.keySet()) {
+			
+			if (this.objetivosAssociados.get(s).equals(id)) {
+
+				lista.add(s);
+				
+			}
+		}
+		
+		return lista;
+		
+	}
+	
+	public String proximaAtividade(String codigoPesquisa) {
+		//super.validaStatus(this.pesquisas.get(codigoPesquisa).isAtivada(), "Pesquisa desativada.");
+		//super.hasValor(!this.pesquisas.containsKey(codigoPesquisa), "Pesquisa nao encontrada.");
+
+		return "a";
+	}
 }

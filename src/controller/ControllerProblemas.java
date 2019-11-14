@@ -3,6 +3,7 @@ package controller;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import base.Problema;
 
@@ -27,7 +28,7 @@ public class ControllerProblemas extends Validacao {
 	 * utilizado para gerar o código dos problemas cadastrados no sistema começa como sendo 1.
 	 */
 	public ControllerProblemas() {
-		this.problemas = new HashMap<String, Problema>();
+		this.problemas = new TreeMap<String, Problema>();
 		this.idNumber = 1;
 	}
 	
