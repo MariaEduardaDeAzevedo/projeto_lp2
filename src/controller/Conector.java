@@ -291,8 +291,8 @@ public class Conector extends Validacao {
 	public void gravarResultadosPesquisa(String id) throws IOException {
 		
 		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
-		String resultados = this.cPesquisas.getPesquisa(id).getResultados();
-		File file = new File("arquivos" + File.separator + id + "-RESULTADOS" + ".txt");
+		String resultados = this.cPesquisas.getPesquisa(id).getResultados() + "\"";
+		File file = new File(id + "-RESULTADOS" + ".txt");
 		FileWriter writer = new FileWriter(file);
 		writer.write(resultados);
 		writer.close();

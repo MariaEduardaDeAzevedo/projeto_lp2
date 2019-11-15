@@ -423,16 +423,16 @@ public class Atividade extends Validacao implements Serializable {
 	}
 
 	public String toStringResultado() {
-		String listagem = String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco) + System.lineSeparator();
+		String listagem = System.lineSeparator() + String.format("		- %s", this.descricao);
 		
 		for (int i = 0; i < this.itens.size(); i++) {
 			if (this.itens.get(i).getStatus() == true) {
-				listagem += "			- ITEM" + (i + 1) + " - " + this.duracao + System.lineSeparator();
+				listagem += System.lineSeparator()  + "			- ITEM" + (i + 1) + " - " + this.duracao/this.itens.size();
 			}
 		}
 		
 		for (String s : this.resultados.values()) {
-			listagem += "			- " + s + System.lineSeparator();
+			listagem += System.lineSeparator() + "			- " + s;
 		}
 	
 		return listagem;

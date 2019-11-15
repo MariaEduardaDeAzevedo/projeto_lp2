@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -295,9 +296,9 @@ public class Pesquisa extends Validacao implements Serializable {
 
 	public String getResultados() {
 		
-		String resultado = "- " + this.toString() + System.lineSeparator();
+		String resultado = "\"- Pesquisa: " + this.toString();
 		
-		resultado += "	- Resultados:" + System.lineSeparator();
+		resultado +=  System.lineSeparator() + "	- Resultados:";
 		
 		for (Atividade a : this.atividadesAssociadas.values()) {
 			
