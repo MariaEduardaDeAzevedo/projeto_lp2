@@ -2,13 +2,15 @@ package base;
 
 import controller.Validacao;
 
+import java.io.Serializable;
+
 /**
  * Representação de um problema de um problema de uma pesquisa.
  * Todo problema contém uma descrição e um valor inteiro que vai de 1 a 5 corresponde à viabilidade. 
  * @author Daniel Fonseca
  *
  */
-public class Problema extends Validacao {
+public class Problema extends Validacao implements Serializable {
 	/**
 	 * Descrição do problema.
 	 */

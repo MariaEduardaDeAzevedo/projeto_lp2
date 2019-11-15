@@ -2,6 +2,7 @@ package base;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import excecoes.ActivationException;
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
  */
-public class Pesquisa extends Validacao {
+public class Pesquisa extends Validacao implements Serializable {
 
     /**
      * Armazena o codigo da pesquisa no sistema.

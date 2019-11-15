@@ -2,13 +2,15 @@ package base;
 
 import controller.Validacao;
 
+import java.io.Serializable;
+
 /**
  * Classe que representa um item de uma atividade de pesquisa
  * 
  * @author Maria Eduarda de Azevedo - 119110210
  *
  */
-public class Item extends Validacao {
+public class Item extends Validacao implements Serializable {
 
 	/**
 	 * Descricao do item

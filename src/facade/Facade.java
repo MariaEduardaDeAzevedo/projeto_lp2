@@ -2,7 +2,6 @@ package facade;
 
 import java.io.IOException;
 
-import base.Objetivo;
 import controller.*;
 
 public class Facade {
@@ -14,6 +13,7 @@ public class Facade {
     private ControllerProblemas cProblema;
     private ControllerBuscas cBuscas;
     private Conector cGeral;
+    private Serealizador serealizador;
 
     public Facade() {
 
@@ -24,6 +24,7 @@ public class Facade {
         this.cProblema = new ControllerProblemas();
         this.cBuscas = new ControllerBuscas();
         this.cGeral = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
+        this.serealizador = new Serealizador();
         
 
     }
@@ -282,6 +283,10 @@ public class Facade {
 
     //US12
     public void salvar(){
-        //this.Serealizador.SalvarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas, cGeral);
+        this.serealizador.salvarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo);
+    }
+
+    public void carregar(){
+        this.serealizador.carregarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo);
     }
 }

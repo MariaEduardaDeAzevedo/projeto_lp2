@@ -2,11 +2,13 @@ package base;
 
 import controller.Validacao;
 
+import java.io.Serializable;
+
 /**
  * Representacao de um pesquisador, que contem funcao, nome, biografia, email e url da foto.
  *
  */
-public class Pesquisador extends Validacao {
+public class Pesquisador extends Validacao implements Serializable {
 
 	/**
 	 * Representacao da funcao que o pesquisador exerce.

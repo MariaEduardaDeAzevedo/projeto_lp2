@@ -1,4 +1,5 @@
 package base;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Assim como pesquisador, todo aluno é identificado unicamente pelo seu email.
  *
  */
-public class Aluno extends Pesquisador {
+public class Aluno extends Pesquisador implements Serializable {
 	/**
 	 * Inteiro correspondente ao semestre de ingresso do aluno.
 	 * Por definição, este inteiro não pode ser negativo e nem igual a 0.
