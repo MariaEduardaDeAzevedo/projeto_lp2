@@ -73,5 +73,4 @@ public class Item extends Validacao {
 		return this.statusString + " - " + this.descricao;
 
 	}
-	
 }

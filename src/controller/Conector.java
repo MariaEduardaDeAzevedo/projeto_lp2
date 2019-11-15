@@ -287,49 +287,18 @@ public class Conector extends Validacao {
 			
 		
 	}
-
-	public void gravarResumoPesquisa(String id) throws IOException {
-		super.validaString(id, "Pesquisa nao pode ser nula ou vazia");
-		String resumo = geraResumo(id);
-		File file = new File("arquivos" + File.separator + id + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resumo);
-		writer.close();
-	}
-
-	private String geraResumo(String id) {
-		
-		Pesquisa pesquisa = this.cPesquisas.getPesquisa(id);
-		String retorno = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
-		retorno += "	- Pesquisadores:" + System.lineSeparator();
-		
-		for (Pesquisador p : pesquisa.getPesquisadoresAssociados()) {
-			retorno += "		- " + p.toString() + System.lineSeparator();
-		}
-		
-		retorno += "	- Problema:";
-		
-		if (pesquisa.getProblema() == null) {
-			retorno += System.lineSeparator();	
-		} else {
-			retorno += "		- " + pesquisa.getProblema().toString();	
-		}
-		
-		retorno += "	- Objetivos:" + System.lineSeparator();
-		
-		for (String s : cPesquisas.getObjetivosAssociados(id)) {
-			retorno += "		- " + this.cObjetivos.getObjetivo(id).toString();
-		}
-		
-		retorno += "	- Atividades:" + System.lineSeparator();
-		
-		for (Atividade a : pesquisa.getAtividadesAssociadas()) {
-			retorno += a.toStringArquivo();
-		}
-		return retorno;
-		
-	}
 	
+	public void gravarResultadosPesquisa(String id) throws IOException {
+		
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+		String resultados = this.cPesquisas.getPesquisa(id).getResultados();
+		File file = new File("arquivos" + File.separator + id + "-RESULTADOS" + ".txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(resultados);
+		writer.close();
+		
+	}
+
 	public void configuraEstrategia(String estrategia) {
 		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
 

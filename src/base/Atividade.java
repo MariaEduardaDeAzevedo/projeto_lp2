@@ -347,13 +347,20 @@ public class Atividade extends Validacao {
 		return false;
 	}
 
-	public String toStringArquivo() {
+	public String toStringResultado() {
 		String listagem = String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco) + System.lineSeparator();
-
+		
 		for (int i = 0; i < this.itens.size(); i++) {
-			listagem += "			- " + this.itens.get(i).toString() + System.lineSeparator();
+			if (this.itens.get(i).getStatus() == true) {
+				listagem += "			- ITEM" + (i + 1) + " - " + this.duracao + System.lineSeparator();
+			}
 		}
-
+		
+		for (String s : this.resultados.values()) {
+			listagem += "			- " + s + System.lineSeparator();
+		}
+	
 		return listagem;
+		
 	}
 }
