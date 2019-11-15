@@ -1,4 +1,5 @@
 package controller;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ import base.Objetivo;
  * @author Daniel Fonseca
  *
  */
-public class ControllerObjetivos extends Validacao {
+public class ControllerObjetivos extends Validacao implements Serializable {
 	/**
 	 * Mapa que armazena todos os objetivos cadastrados no sistema.
 	 * Neste mapa, a chave é o código do objetivo, cujo qual este é identificado unicamente e o valor é um Objetivo.

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -11,7 +12,7 @@ import base.Professor;
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador. 
  *
  */
-public class ControllerPesquisador extends Validacao {
+public class ControllerPesquisador extends Validacao implements Serializable {
 
 	/**
 	 * Representacao do mapa responsavel por armazenar os pesquisadores.

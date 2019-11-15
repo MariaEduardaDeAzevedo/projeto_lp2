@@ -2,6 +2,8 @@ package base;
 
 import controller.Validacao;
 
+import java.io.Serializable;
+
 /**
  * Representação de um objetivo de uma pesquisa. Um objetivo define a finalidade de uma pesquisa e pode ser de dois tipos: geral ou específico.
  * Um objetivo geral é mais abrangente e responde diretamente ao problema da pesquisa, um objetivo específico delimita alvos específicos para atingir
@@ -10,7 +12,7 @@ import controller.Validacao;
  * à aderência e à viabilidade do objetivo.
  *
  */
-public class Objetivo extends Validacao {
+public class Objetivo extends Validacao implements Serializable {
 	/**
 	 * Tipo do objetivo. Pode ser geral ou específico.
 	 */

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ import base.Problema;
  * aos problemas. 
  *
  */
-public class ControllerProblemas extends Validacao {
+public class ControllerProblemas extends Validacao implements Serializable {
 	/**
 	 * Mapa que tem como chave uma String, que corresponde a um código que identifica unicamente um Problema no sistema, e tem como valor
 	 * um Problema. Esta coleção armazena todos os problemas cadastrados no sistema.

@@ -1,4 +1,5 @@
 package base;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * @author Daniel Fonseca
  *
  */
-public class Professor extends Pesquisador {
+public class Professor extends Pesquisador implements Serializable {
 	/**
 	 * Grau de formação do professor.
 	 */

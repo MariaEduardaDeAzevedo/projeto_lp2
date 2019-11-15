@@ -1,5 +1,6 @@
 package base;
 
+import java.io.Serializable;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import controller.Validacao;
  * @author Maria Eduarda Eduarda de Azevedo Silva - 119110210
  *
  */
-public class Atividade extends Validacao {
+public class Atividade extends Validacao implements Serializable {
 
 	/**
 	 * Descricao da atividade
