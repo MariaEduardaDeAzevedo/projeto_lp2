@@ -342,7 +342,7 @@ public class Atividade extends Validacao {
 		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
 			return true;
 		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(referencia)) {
-			proxAdd.getProx().isLoop(proxAdd, referencia);
+			isLoop(proxAdd.getProx(), referencia);
 		}
 		return false;
 	}

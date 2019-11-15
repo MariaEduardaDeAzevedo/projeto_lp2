@@ -5,9 +5,9 @@
 #Associando COM3 e P5 e O7.
 
 
-expect true associaPesquisador idPesquisa="COM1" emailPesquisador="eliane@computacao.ufcg.edu.br"
-expect true associaPesquisador idPesquisa="COM1" emailPesquisador="borutofathers@1997"
-expect true associaPesquisador idPesquisa="COM1" emailPesquisador="livia@computacao.ufcg.edu.br"
+expect true associaPesquisador idPesquisa="COM3" emailPesquisador="eliane@computacao.ufcg.edu.br"
+expect true associaPesquisador idPesquisa="COM3" emailPesquisador="borutofathers@1997"
+expect true associaPesquisador idPesquisa="COM3" emailPesquisador="livia@computacao.ufcg.edu.br"
 cadastraProblema descricao="A problematica do aluno de cc encarregado de criar testes para projetos." viabilidade=4
 cadastraObjetivo tipo="ESPECIFICO" descricao="Minimizar a quantidade de testes ruins." aderencia=1 viabilidade=1
 
