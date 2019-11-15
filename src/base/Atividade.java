@@ -335,8 +335,7 @@ public class Atividade extends Validacao implements Serializable {
 	 * @param prox objeto do tipo Atividade que será a atividade subsequente desta.
 	 */
 	public void defProx(Atividade prox) {
-		Atividade referencia = prox;
-		super.verificaAtvPrcdnt(this.isLoop(prox, referencia), "Criacao de loops negada.");
+		super.verificaAtvPrcdnt(isLoop(prox, this), "Criacao de loops negada.");
 		proxAtv = prox;
 	}
 	
@@ -361,11 +360,12 @@ public class Atividade extends Validacao implements Serializable {
 	 * @param proxAdd Atividade que se quer adicionar como subsequente.
 	 * @return true, caso a adição de uma atividade subsequente em outra atividade resulte na criação de um loop, ou false, caso contrário.
 	 */
-	private boolean isLoop(Atividade referencia, Atividade proxAdd) {
-		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
-			return true;
-		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(referencia)) {
-			isLoop(referencia, proxAdd.getProx());
+	private boolean isLoop(Atividade proxAdd, Atividade precedente) {
+		if (proxAdd.hasProx()) {
+			if (proxAdd.getProx().equals(precedente)) {
+				return true;
+			}
+			return isLoop(proxAdd.getProx(), precedente);
 		}
 		return false;
 	}
@@ -375,7 +375,7 @@ public class Atividade extends Validacao implements Serializable {
 	 * @return número inteiro que corresponde à quantidade de atividades que são subsequentes a esta atividade.
 	 */
 	public int contaProximos() {
-		if (!this.hasProx()) {
+		if (!hasProx()) {
 			return 0;
 		}
 		return 1 + this.getProx().contaProximos();
@@ -417,7 +417,7 @@ public class Atividade extends Validacao implements Serializable {
 			if (this.getRisco().compareTo(this.getProx().getRisco()) <= 0) {
 				return this.getProx().getId();
 			}
-			return this.getId();
+			return this.getProx().getId();
 		}
 		return this.getProx().pegaMaiorRiscoAtividades();
 	}
