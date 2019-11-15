@@ -291,5 +291,22 @@ public class Pesquisa extends Validacao implements Serializable {
 	public Collection<Atividade> getAtividadesAssociadas() {	
 		return this.atividadesAssociadas.values();
 	}
+
+
+	public String getResultados() {
+		
+		String resultado = "- " + this.toString() + System.lineSeparator();
+		
+		resultado += "	- Resultados:" + System.lineSeparator();
+		
+		for (Atividade a : this.atividadesAssociadas.values()) {
+			
+			resultado += a.toStringResultado();
+			
+		}
+		
+		return resultado;
+		
+	}
 	
 }

@@ -1,6 +1,21 @@
 /facade/
+<<<<<<< HEAD
+/controller/
+/_COM1.txt
+/_COM2.txt
+/_COM3.txt
+/base/
+/comparators/
+/COM1-RESULTADOS.txt
+/COM2-RESULTADOS.txt
+/COM3-RESULTADOS.txt
+/_COM1-RESULTADOS.txt
+/_COM2-RESULTADOS.txt
+/_COM3-RESULTADOS.txt
+=======
 /base/
 /controller/
 /COM1.txt
 /COM2.txt
 /COM3.txt
+>>>>>>> 824ccabe19eae9a1fa89d09db1f9fcacff368446

@@ -75,5 +75,4 @@ public class Item extends Validacao implements Serializable {
 		return this.statusString + " - " + this.descricao;
 
 	}
-	
 }

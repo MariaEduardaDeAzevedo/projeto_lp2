@@ -275,9 +275,9 @@ public class Facade {
     }
     
     //US11
-    public void gravarResumo(String id) throws IOException {
+    public void gravarResultados(String id) throws IOException {
     	
-    	this.cGeral.gravarResumoPesquisa(id);
+    	this.cGeral.gravarResultadosPesquisa(id);
     	
     }
 
