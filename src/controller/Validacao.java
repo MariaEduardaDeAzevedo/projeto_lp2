@@ -205,5 +205,5 @@ public class Validacao {
 			throw new SequenceException(mensagem);
 		}
 	}
-
+	
 }

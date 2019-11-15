@@ -249,6 +249,18 @@ public class Facade {
     	cAtividade.tiraProximaAtividade(idPrecedente);
     }
     
+    public int contaProximos(String idPrecedente) {
+    	return cAtividade.contaProximos(idPrecedente);
+    }
+    
+    public String pegaProximo(String idAtividade, int enesimaAtividade) {
+    	return cAtividade.pegaProximo(idAtividade, enesimaAtividade);
+    }
+    
+    public String pegaMaiorRiscoAtividades(String idAtividade) {
+    	return cAtividade.pegaMaiorRiscoAtividades(idAtividade);
+    }
+    
     //US10
     
 	public void configuraEstrategia(String estrategia) {

@@ -317,6 +317,11 @@ public class Atividade extends Validacao {
 		return listaResultados.substring(0, listaResultados.length() - 3);
 	}
 	
+	/**
+	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou não.
+	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade não possua
+	 * nenhuma atividade subsequente.
+	 */
 	public boolean hasProx() {
 		if (proxAtv != null) {
 			return true;
@@ -324,27 +329,96 @@ public class Atividade extends Validacao {
 		return false;
 	}
 	
+	/**
+	 * Define a atividade subsequente desta atividade.
+	 * @param prox objeto do tipo Atividade que será a atividade subsequente desta.
+	 */
 	public void defProx(Atividade prox) {
 		Atividade referencia = prox;
 		super.verificaAtvPrcdnt(this.isLoop(prox, referencia), "Criacao de loops negada.");
 		proxAtv = prox;
 	}
 	
+	/**
+	 * Método que retira a atividade subsequente desta atividade.
+	 */
 	public void retiraProx() {
 		proxAtv = null;
 	}
 	
+	/**
+	 * Retorna a Atividade subsequente desta atividade.
+	 * @return
+	 */
 	public Atividade getProx() {
 		return proxAtv;
 	}
 	
-	private boolean isLoop(Atividade proxAdd, Atividade referencia) {
+	/**
+	 * Retorna um valor booleano que indica se a adição de uma atividade como subsequente de outra implica, ou não, em um loop.
+	 * @param referencia Atividade precedente, que se quer adicionar uma subsequente.
+	 * @param proxAdd Atividade que se quer adicionar como subsequente.
+	 * @return true, caso a adição de uma atividade subsequente em outra atividade resulte na criação de um loop, ou false, caso contrário.
+	 */
+	private boolean isLoop(Atividade referencia, Atividade proxAdd) {
 		if (proxAdd.hasProx() && proxAdd.getProx().equals(referencia)) {
 			return true;
 		} else if (proxAdd.hasProx() && !proxAdd.getProx().equals(referencia)) {
-			isLoop(proxAdd.getProx(), referencia);
+			isLoop(referencia, proxAdd.getProx());
 		}
 		return false;
+	}
+	
+	/**
+	 * Retorna um inteiro que representa a quantidade de atividades que sucedem esta atividade.
+	 * @return número inteiro que corresponde à quantidade de atividades que são subsequentes a esta atividade.
+	 */
+	public int contaProximos() {
+		if (!this.hasProx()) {
+			return 0;
+		}
+		return 1 + this.getProx().contaProximos();
+	}
+	
+	/**
+	 * Retorna o id de uma atividade subsequente de índice n, passado como parâmetro do método.
+	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e é passado como parâmetro do método o inteiro 3, então,
+	 * deve ser retornado o id do terceiro sucessor desta atividade.
+	 * @param index indice da atividade que sucede esta e que se quer retornar o id.
+	 * @return id da n-atividade sucessora desta atividade.
+	 */
+	public String pegaProximo(int index) {
+		super.verificaAtvPrcdnt(!this.hasProx(), "Atividade inexistente.");
+		super.verificaNuloNegativo(index, "EnesimaAtividade nao pode ser negativa ou zero.");
+		if (index == 1 && this.hasProx()) {
+			return proxAtv.getId();
+		}
+		index--;
+		return this.getProx().pegaProximo(index);
+	}
+	
+	/**
+	 * Retorna o risco desta atividade.
+	 * O risco de uma atividade pode ser "BAIXO", "MEDIO" ou "ALTO".
+	 * @return String correspondente ao risco desta atividade.
+	 */
+	public String getRisco() {
+		return risco;
+	}
+	
+	/**
+	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
+	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
+	 */
+	public String pegaMaiorRiscoAtividades() {
+		super.hasValor(this.hasProx(), "Nao existe proxima atividade.");
+		if (!this.getProx().hasProx()) {
+			if (this.getRisco().compareTo(this.getProx().getRisco()) <= 0) {
+				return this.getProx().getId();
+			}
+			return this.getId();
+		}
+		return this.getProx().pegaMaiorRiscoAtividades();
 	}
 
 	public String toStringArquivo() {
