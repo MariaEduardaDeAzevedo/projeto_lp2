@@ -356,7 +356,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna um valor booleano que indica se a adição de uma atividade como subsequente de outra implica, ou não, em um loop.
-	 * @param referencia Atividade precedente, que se quer adicionar uma subsequente.
+	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
 	 * @param proxAdd Atividade que se quer adicionar como subsequente.
 	 * @return true, caso a adição de uma atividade subsequente em outra atividade resulte na criação de um loop, ou false, caso contrário.
 	 */
