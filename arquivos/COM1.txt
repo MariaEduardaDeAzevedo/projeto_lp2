@@ -1,9 +1,0 @@
-- Pesquisa: COM1 - Homofobia em mensagens online de alunos de computacao do primeiro periodo. - computacao, homofobia
-	- Pesquisadores:
-	- Problema:		- O problema do discurso homofobico em chats online de alunos de computacao de primeiro periodo - 3	- Objetivos:
-	- Atividades:
-		- Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.)
-			- REALIZADO - Monitoramento facebook/messenger
-			- REALIZADO - Monitoramento slack
-			- REALIZADO - Monitoramento discord
-			- REALIZADO - Monitoramento whatsapp
