@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.*;
 
 import base.Atividade;
@@ -11,7 +12,7 @@ import base.Problema;
  * @author Maria Eduarda de Azevedo Silva - 119110210
  *
  */
-public class ControllerAtividades extends Validacao {
+public class ControllerAtividades extends Validacao implements Serializable {
 
 	/**
 	 * Mapa de objetos Atividade. Todo objeto Atividade e apontado por uma String

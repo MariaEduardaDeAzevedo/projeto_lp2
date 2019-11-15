@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.*;
 
 import base.Atividade;
@@ -14,7 +15,7 @@ import comparators.*;
  * Classe Controller responsavel pelos metodos referentes as pesquisas do
  * sistema.
  */
-public class ControllerPesquisas extends Validacao {
+public class ControllerPesquisas extends Validacao implements Serializable {
 
 	/**
 	 * Armazena um mapa de pesquisas a partir dos seus codigos.
