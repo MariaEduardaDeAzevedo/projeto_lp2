@@ -305,4 +305,10 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.hasValor(atividades.get(idAtividade).hasProx(), "Nao existe proxima atividade.");
 		return atividades.get(idAtividade).pegaMaiorRiscoAtividades();
 	}
+
+	public void salvarArquivos() {
+		Serializador serializador = new Serializador();
+		serializador.salvarArquivos(this.atividades, "Atividades");
+		serializador.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
+	}
 }

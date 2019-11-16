@@ -86,4 +86,10 @@ public class ControllerProblemas extends Validacao implements Serializable {
     public Collection<Problema> getProblemas() {
 		return this.problemas.values();
     }
+
+    public void salvarArquivos() {
+		Serializador serializador = new Serializador();
+		serializador.salvarArquivos(this.problemas, "Problemas");
+		serializador.salvarArquivoInt(this.idNumber, "Proximo ID dos Problemas");
+    }
 }

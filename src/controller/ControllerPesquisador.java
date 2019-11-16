@@ -216,4 +216,9 @@ public class ControllerPesquisador extends Validacao implements Serializable {
     	}
     	return qtd;
     }
+
+    public void salvarArquivos() {
+		Serializador serializador = new Serializador();
+		serializador.salvarArquivos(this.pesquisadores, "Pesquisadores");
+    }
 }

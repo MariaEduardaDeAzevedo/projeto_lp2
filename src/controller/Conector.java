@@ -33,7 +33,6 @@ public class Conector extends Validacao {
 		this.cAtividades = cAtividades;
 		this.cObjetivos = cObjetivos;
 		this.cBuscas = cBuscas;
-		
 	}
 	
 	/**
@@ -331,5 +330,21 @@ public class Conector extends Validacao {
 
 		return this.cPesquisas.proximaAtividade(codigoPesquisa);
 
+	}
+
+	public void salvarArquivos() {
+		this.cPesquisas.salvarArquivos();
+		this.cAtividades.salvarArquivos();
+		this.cPesquisador.salvarArquivos();
+		this.cProblemas.salvarArquivos();
+		this.cObjetivos.salvarArquivos();
+	}
+
+	public void carregarArquivos() {
+		this.cPesquisas.carregarArquivos();
+		this.cAtividades.carregarArquivos();
+		this.cPesquisador.carregarArquivos();
+		this.cProblemas.carregarArquivos();
+		this.cObjetivos.carregarArquivos();
 	}
 }

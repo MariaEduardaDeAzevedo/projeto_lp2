@@ -93,4 +93,10 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     public Collection<Objetivo> getObjetivos() {
 		return this.objetivos.values();
     }
+
+    public void salvarArquivos() {
+		Serializador serializador = new Serializador();
+		serializador.salvarArquivos(this.objetivos, "Objetivos");
+		serializador.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
+    }
 }

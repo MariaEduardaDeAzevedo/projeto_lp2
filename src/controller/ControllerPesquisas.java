@@ -600,4 +600,18 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
 		return "a";
 	}
+
+    public void salvarArquivos() {
+		Serializador serializador = new Serializador();
+		serializador.salvarArquivos(this.pesquisas, "Pesquisas");
+		serializador.salvarArquivos(this.problemasAssociados, "Problemas Associados");
+		serializador.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
+	}
+
+	public void carregarArquivos() throws Exception {
+		Serializador serializador = new Serializador();
+		this,pesquisas = serializador.carregarArquivos("Pesquisas");
+		this,problemasAssociados = serializador.carregarArquivos("Problemas Asscioados");
+		this,pesquisas = serializador.carregarArquivos("Objetivos Associados");
+	}
 }

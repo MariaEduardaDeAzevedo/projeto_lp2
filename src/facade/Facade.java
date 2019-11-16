@@ -13,10 +13,8 @@ public class Facade {
     private ControllerProblemas cProblema;
     private ControllerBuscas cBuscas;
     private Conector cGeral;
-    private Serealizador serealizador;
 
     public Facade() {
-
         this.cAtividade = new ControllerAtividades();
         this.cPesquisa = new ControllerPesquisas();
         this.cPesquisador = new ControllerPesquisador();
@@ -24,39 +22,30 @@ public class Facade {
         this.cProblema = new ControllerProblemas();
         this.cBuscas = new ControllerBuscas();
         this.cGeral = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
-        this.serealizador = new Serealizador();
-        
-
     }
 
     //US1
     public String cadastraPesquisa(String descricao, String campoDeInteresse) {
-
         return this.cPesquisa.cadastraPesquisa(descricao, campoDeInteresse);
     }
 
     public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
-
         this.cPesquisa.alteraPesquisa(codigo, conteudoASerAlterado, novoConteudo);
     }
 
     public void encerraPesquisa(String codigo, String motivo) {
-
         this.cPesquisa.encerraPesquisa(codigo, motivo);
     }
 
     public void ativaPesquisa(String codigo) {
-
         this.cPesquisa.ativaPesquisa(codigo);
     }
 
     public String exibePesquisa(String codigo) {
-
         return this.cPesquisa.exibePesquisa(codigo);
     }
 
     public boolean pesquisaEhAtiva(String codigo) {
-
         return this.cPesquisa.pesquisaEhAtiva(codigo);
     }
 
@@ -283,10 +272,10 @@ public class Facade {
 
     //US12
     public void salvar(){
-        this.serealizador.salvarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo);
+        this.cGeral.salvarArquivos();
     }
 
     public void carregar(){
-        this.serealizador.carregarArquivos(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo);
+        this.cGeral.carregarArquivos();
     }
 }

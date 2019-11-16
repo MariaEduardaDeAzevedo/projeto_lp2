@@ -3,21 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Aluno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Aluno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Atividade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Atividade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Objetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Objetivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Pesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Problema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Professor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Serealizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Serializador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/facade/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Facade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -208,6 +201,7 @@
       <workItem from="1573587166114" duration="2693000" />
       <workItem from="1573687600625" duration="2534000" />
       <workItem from="1573821116130" duration="2406000" />
+      <workItem from="1573878028014" duration="3098000" />
     </task>
     <servers />
   </component>
