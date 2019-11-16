@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Gravando resumo das pesquisas COM1, COM2 e COM3
 #Gravando resumo dos resultados COM1, COM2 e COM3
 #Criando P5 e O7
