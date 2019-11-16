@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 import controller.Validacao;
 import excecoes.ActivationException;
@@ -48,9 +49,11 @@ public class Pesquisa extends Validacao implements Serializable {
     
     private Problema problema;
     
-    private Objetivo objetivo;
+    private Map<String, Objetivo> objetivos;
 
 	private String motivo;
+
+	private boolean statusObjetivo;
     
 
     
@@ -71,6 +74,8 @@ public class Pesquisa extends Validacao implements Serializable {
         this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
         this.atividadesAssociadas = new HashMap<String, Atividade>();
         this.motivo = null;
+        this.objetivos = new HashMap<String, Objetivo>();
+        this.statusObjetivo = false;
     }
     
 
@@ -156,9 +161,10 @@ public class Pesquisa extends Validacao implements Serializable {
     	
     }
     
-    public void setObjetivo(Objetivo objetivo) {
+    public void addObjetivo(String id, Objetivo objetivo) {
     	
-    	this.objetivo = objetivo;
+    	this.objetivos.put(id, objetivo);
+    	this.statusObjetivo = true;
     	
     }
 
@@ -181,6 +187,7 @@ public class Pesquisa extends Validacao implements Serializable {
 		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
 			return false;
 		}
+		
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 		return true;
 	}
@@ -267,9 +274,9 @@ public class Pesquisa extends Validacao implements Serializable {
 		return false;
 	}
 
-	public Objetivo getObjetivo() {
+	public Objetivo getObjetivo(String id) {
 		
-		return this.objetivo;
+		return this.objetivos.get(id);
 	
 	}
 
@@ -307,6 +314,78 @@ public class Pesquisa extends Validacao implements Serializable {
 		}
 		
 		return resultado;
+		
+	}
+
+
+	public void removeObjetivo(String idObjetivo) {
+		
+		this.objetivos.remove(idObjetivo);
+		
+		if (this.objetivos.size() == 0) {
+			
+			this.statusObjetivo = false;
+			
+		}
+		
+	}
+	
+	public boolean hasObjetivo() {
+		return this.statusObjetivo;
+	}
+
+
+	public String getMaiorIDObjetivo() {
+		
+		List<String> lista = new ArrayList<String>();
+		
+		for (String s : this.objetivos.keySet()) {
+			
+			lista.add(s);
+			
+		}
+		
+		Collections.sort(lista);
+			
+		return lista.get(lista.size() - 1);
+	}
+	
+	public String getResumo() {
+		
+		String resumo = "\"- Pesquisa: " + this.toString();
+		resumo += System.lineSeparator() + "	- Pesquisadores:";
+		
+		for (Pesquisador p : this.pesquisadoresAssociados.values()) {
+			
+			resumo += System.lineSeparator() + "		- " + p.toString();
+			
+		}
+		
+		resumo += System.lineSeparator() + "	- Problema:";
+		
+		if (this.problema != null) {
+				
+			resumo += System.lineSeparator() + "		- " + this.problema.toString();
+			
+		}
+		
+		resumo += System.lineSeparator() + "	- Objetivos:";
+		
+		for (Objetivo o : this.objetivos.values()) {
+			
+			resumo += System.lineSeparator() + "		- " + o.toString();
+			
+		}
+		
+		resumo += System.lineSeparator() + "	- Atividades:";
+		
+		for (Atividade a : this.atividadesAssociadas.values()) {
+			
+			resumo += System.lineSeparator() + "		- " + a.toString();
+			
+		}
+		
+		return resumo + "\"";
 		
 	}
 	

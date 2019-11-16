@@ -269,13 +269,19 @@ public class Facade {
     	this.cGeral.gravarResultadosPesquisa(id);
     	
     }
+    
+    public void gravarResumo(String id) throws IOException {
+    	
+    	this.cGeral.gravarResumoPesquisa(id);
+    	
+    }
 
     //US12
     public void salvar(){
         this.cGeral.salvarArquivos();
     }
-
+    /*
     public void carregar(){
         this.cGeral.carregarArquivos();
-    }
+    }*/
 }

@@ -15,7 +15,7 @@ public class OrdenaPesquisaObjetivo implements Comparator<Pesquisa> {
 	 */
 	public int compare(Pesquisa o1, Pesquisa o2) {
 		
-		return o1.getObjetivo().toString().compareTo(o2.getObjetivo().toString());
+		return o1.getMaiorIDObjetivo().toString().compareTo(o2.getMaiorIDObjetivo().toString());
 	
 	}
 

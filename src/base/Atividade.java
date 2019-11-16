@@ -59,9 +59,6 @@ public class Atividade extends Validacao implements Serializable {
 	
 	private Atividade proxAtv;
 	
-	
-
-
 	/**
 	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
 	 * sua descricao e um ID

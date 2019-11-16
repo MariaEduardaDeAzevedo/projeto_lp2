@@ -291,9 +291,21 @@ public class Conector extends Validacao {
 		
 		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
 		String resultados = this.cPesquisas.getPesquisa(id).getResultados() + "\"";
-		File file = new File(id + "-RESULTADOS" + ".txt");
+		File file = new File(id + "-Resultados" + ".txt");
 		FileWriter writer = new FileWriter(file);
 		writer.write(resultados);
+		writer.close();
+		
+	}
+	
+
+	public void gravarResumoPesquisa(String id) throws IOException {
+		
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+		String resumo = this.cPesquisas.getPesquisa(id).getResumo();
+		File file = new File("_" + id + ".txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(resumo);
 		writer.close();
 		
 	}
@@ -340,11 +352,12 @@ public class Conector extends Validacao {
 		this.cObjetivos.salvarArquivos();
 	}
 
-	public void carregarArquivos() {
+	/*public void carregarArquivos() {
 		this.cPesquisas.carregarArquivos();
 		this.cAtividades.carregarArquivos();
 		this.cPesquisador.carregarArquivos();
 		this.cProblemas.carregarArquivos();
 		this.cObjetivos.carregarArquivos();
 	}
+	*/
 }

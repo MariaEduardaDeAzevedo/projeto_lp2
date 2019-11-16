@@ -334,7 +334,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
 		}
 
-		this.pesquisas.get(idPesquisa).setObjetivo(objetivo);
+		this.pesquisas.get(idPesquisa).addObjetivo(idObjetivo, objetivo);
 		this.objetivosAssociados.put(idPesquisa, idObjetivo);
 
 		return true;
@@ -368,7 +368,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		}
 
 		this.objetivosAssociados.remove(idPesquisa);
-		this.pesquisas.get(idPesquisa).setObjetivo(null);
+		this.pesquisas.get(idPesquisa).removeObjetivo(idObjetivo);
 		return true;
 
 	}
@@ -418,7 +418,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
 		for (Pesquisa p : this.pesquisas.values()) {
 
-			if (p.getObjetivo() == null) {
+			if (p.hasObjetivo() == false) {
 
 				semObjetivo.add(p);
 
@@ -608,10 +608,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		serializador.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
 	}
 
-	public void carregarArquivos() throws Exception {
+	/*public void carregarArquivos() throws Exception {
 		Serializador serializador = new Serializador();
 		this,pesquisas = serializador.carregarArquivos("Pesquisas");
 		this,problemasAssociados = serializador.carregarArquivos("Problemas Asscioados");
 		this,pesquisas = serializador.carregarArquivos("Objetivos Associados");
-	}
+	}*/
 }
