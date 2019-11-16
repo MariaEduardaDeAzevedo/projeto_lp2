@@ -341,10 +341,14 @@ public class Conector extends Validacao {
 	}
 
 	public void carregarArquivos() {
-		this.cPesquisas.carregarArquivos();
-		this.cAtividades.carregarArquivos();
-		this.cPesquisador.carregarArquivos();
-		this.cProblemas.carregarArquivos();
-		this.cObjetivos.carregarArquivos();
+		try {
+			this.cPesquisas.carregarArquivos();
+			this.cAtividades.carregarArquivos();
+			this.cPesquisador.carregarArquivos();
+			this.cProblemas.carregarArquivos();
+			this.cObjetivos.carregarArquivos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
