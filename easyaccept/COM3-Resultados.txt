@@ -16,3 +16,6 @@
         - Analise de quantas maos levantadas sao necessarias para Goku fazer uma Genki Dama que consiga derrotar Saitama
         - Busca e analise de uma razao para a Netflix cancelar BoJack Horseman
         - Mudancas nas relacoes do instagram, apos a ocultacao do numero de curtidas das postagens."
+
+
+

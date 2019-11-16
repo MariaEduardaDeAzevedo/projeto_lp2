@@ -2,36 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControllerAtividades" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControllerObjetivos" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControllerPesquisador" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControllerPesquisas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControllerProblemas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Aluno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Aluno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Problema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Professor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Professor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Serealizador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Serializador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Serializador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM1-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM1-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM2-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM2-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM3-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM3-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_5.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +193,7 @@
       <workItem from="1573687600625" duration="2534000" />
       <workItem from="1573821116130" duration="2406000" />
       <workItem from="1573878028014" duration="3305000" />
-      <workItem from="1573909823819" duration="1706000" />
+      <workItem from="1573909823819" duration="2028000" />
     </task>
     <servers />
   </component>
