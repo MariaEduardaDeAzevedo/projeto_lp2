@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerObjetivos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Serealizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Serializador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Facade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM1-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM1-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM2-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM2-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/COM3-Resultados.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/COM3-Resultados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyaccept/use_case_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyaccept/use_case_5.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,12 +40,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="242" />
-    <option name="y" value="117" />
-    <option name="width" value="1390" />
-    <option name="height" value="1000" />
   </component>
   <component name="ProjectId" id="1SzPhhAuLkwQEgwie1FjOCN4p67" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -201,7 +192,8 @@
       <workItem from="1573587166114" duration="2693000" />
       <workItem from="1573687600625" duration="2534000" />
       <workItem from="1573821116130" duration="2406000" />
-      <workItem from="1573878028014" duration="3098000" />
+      <workItem from="1573878028014" duration="3305000" />
+      <workItem from="1573909823819" duration="2028000" />
     </task>
     <servers />
   </component>

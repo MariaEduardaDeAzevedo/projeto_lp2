@@ -364,7 +364,7 @@ public class Pesquisa extends Validacao implements Serializable {
 		resumo += System.lineSeparator() + "	- Problema:";
 		
 		if (this.problema != null) {
-				
+				  
 			resumo += System.lineSeparator() + "		- " + this.problema.toString();
 			
 		}

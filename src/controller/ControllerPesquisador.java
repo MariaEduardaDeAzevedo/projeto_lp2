@@ -221,4 +221,9 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 		Serializador serializador = new Serializador();
 		serializador.salvarArquivos(this.pesquisadores, "Pesquisadores");
     }
+
+    public void carregarArquivos() throws Exception {
+		Serializador serializador = new Serializador();
+		this.pesquisadores = (TreeMap<String, Pesquisador>) serializador.carregarArquivos("Pesquisadores");
+	}
 }

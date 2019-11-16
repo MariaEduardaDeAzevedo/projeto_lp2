@@ -311,4 +311,10 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		serializador.salvarArquivos(this.atividades, "Atividades");
 		serializador.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
 	}
+
+    public void carregarArquivos() throws Exception {
+		Serializador serializador = new Serializador();
+		this.atividades = (LinkedHashMap<String, Atividade>) serializador.carregarArquivos("Atividades");
+		this.proximoId = serializador.carregarArquivoInt("Proximo ID das Atividades");
+	}
 }

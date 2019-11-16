@@ -1,7 +1,5 @@
 package controller;
 
-import base.Pesquisa;
-
 import java.io.*;
 import java.util.Map;
 
@@ -34,10 +32,11 @@ public class Serializador {
         }
     }
 
-    public Map<String, Pesquisa> carregarArquivos(String nomeDoArquivo) throws Exception {
+    public Map carregarArquivos(String nomeDoArquivo) throws Exception {
         FileInputStream arquivo = new FileInputStream(nomeDoArquivo);
         ObjectInputStream objeto = new ObjectInputStream(arquivo);
-        return (Map<String, Pesquisa>) objeto.readObject();
+        Map listaDeEntidades = (Map) objeto.readObject();
+        return listaDeEntidades;
     }
 
     public int carregarArquivoInt(String nomeDoArquivo) throws Exception {

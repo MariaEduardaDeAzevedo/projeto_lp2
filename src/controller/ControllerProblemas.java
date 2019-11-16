@@ -92,4 +92,10 @@ public class ControllerProblemas extends Validacao implements Serializable {
 		serializador.salvarArquivos(this.problemas, "Problemas");
 		serializador.salvarArquivoInt(this.idNumber, "Proximo ID dos Problemas");
     }
+
+    public void carregarArquivos() throws Exception {
+		Serializador serializador = new Serializador();
+		this.problemas = (TreeMap<String, Problema>) serializador.carregarArquivos("Problemas");
+		this.idNumber = serializador.carregarArquivoInt("Proximo ID dos Problemas");
+	}
 }

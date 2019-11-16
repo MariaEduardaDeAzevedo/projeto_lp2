@@ -352,12 +352,15 @@ public class Conector extends Validacao {
 		this.cObjetivos.salvarArquivos();
 	}
 
-	/*public void carregarArquivos() {
-		this.cPesquisas.carregarArquivos();
-		this.cAtividades.carregarArquivos();
-		this.cPesquisador.carregarArquivos();
-		this.cProblemas.carregarArquivos();
-		this.cObjetivos.carregarArquivos();
+	public void carregarArquivos() {
+		try {
+			this.cPesquisas.carregarArquivos();
+			this.cAtividades.carregarArquivos();
+			this.cPesquisador.carregarArquivos();
+			this.cProblemas.carregarArquivos();
+			this.cObjetivos.carregarArquivos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	*/
 }
