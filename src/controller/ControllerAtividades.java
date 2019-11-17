@@ -6,6 +6,7 @@ import java.util.*;
 import base.Atividade;
 import base.Pesquisa;
 import base.Problema;
+import comparators.OrdenaAtvdsMaiorDuracao;
 import comparators.OrdenaAtvdsMenosPendencias;
 import comparators.OrdenaPesquisaID;
 
@@ -377,6 +378,18 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		}
 		
 		Comparator<Atividade> comparador = new OrdenaAtvdsMenosPendencias();
+		Collections.sort(lista, comparador);
+		
+		return lista.get(0).getId();
+	}
+
+	public String ordenaAtvdsMaiorDuracao() {
+		List<Atividade> lista = new ArrayList<Atividade>();
+		for (Atividade atividade : this.atividades.values()) {
+			lista.add(atividade);
+		}
+		
+		Comparator<Atividade> comparador = new OrdenaAtvdsMaiorDuracao();
 		Collections.sort(lista, comparador);
 		
 		return lista.get(0).getId();

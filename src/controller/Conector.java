@@ -325,12 +325,12 @@ public class Conector extends Validacao {
 			case "MAIOR_DURACAO":
 				return this.cAtividades.ordenaAtvdsMenosPendencias();
 			case "MAIOR_RISCO":
+				return "a";
 			case "MENOS_PENDENCIAS":
+				return this.cAtividades.ordenaAtvdsMaiorDuracao();
 				
-				
-
-
 		}
+		return "";
 		
 
 	}
