@@ -254,7 +254,7 @@ public class Facade {
     //US10
     
 	public void configuraEstrategia(String estrategia) {
-    	this.cGeral.configuraEstrategia(estrategia);
+    	this.cAtividade.configuraEstrategia(estrategia);
 
     }
 

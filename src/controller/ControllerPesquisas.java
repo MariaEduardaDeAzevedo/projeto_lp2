@@ -32,6 +32,8 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	 * Armazena um mapa de objetivos associados a uma pesquisa indicada pelo seu ID
 	 */
 	private Map<String, String> objetivosAssociados;
+	
+	private String estrategia;
 
 	/**
 	 * Constroi o objeto ControllerPesquisas e inicializa seus atributos.
@@ -594,13 +596,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		return lista;
 		
 	}
-	
-	public String proximaAtividade(String codigoPesquisa) {
-		//super.validaStatus(this.pesquisas.get(codigoPesquisa).isAtivada(), "Pesquisa desativada.");
-		//super.hasValor(!this.pesquisas.containsKey(codigoPesquisa), "Pesquisa nao encontrada.");
 
-		return "a";
-	}
+	
+
+
 
     public void salvarArquivos() {
 		Serializador serializador = new Serializador();

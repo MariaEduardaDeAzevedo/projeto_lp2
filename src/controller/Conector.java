@@ -312,37 +312,26 @@ public class Conector extends Validacao {
 		
 	}
 
-	public void configuraEstrategia(String estrategia) {
-		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
-
-		List valores = new ArrayList<String>();
-		valores.add("MAIS_ANTIGA");
-		valores.add("MAIOR_DURACAO");
-		valores.add("MAIOR_RISCO");
-		valores.add("MENOS_PENDENCIAS");
-		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
-		
-		switch(estrategia) {
-			case "MAIS_ANTIGA":
-			//	cAtividades.
-			case "MAIOR_DURACAO":
-			case "MAIOR_RISCO":
-			case "MENOS_PENDENCIAS":
-				
-		}
-		
-
-	}
 
 
 
 	public String proximaAtividade(String codigoPesquisa) {
 		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		super.validaStatus(cPesquisas.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+		super.hasValor(cPesquisas.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+		switch(this.cAtividades.getEstrategia()) {
+			case "MAIS_ANTIGA":
+				return this.cAtividades.hasItemPendente();
+			case "MAIOR_DURACAO":
+				return this.cAtividades.ordenaAtvdsMenosPendencias();
+			case "MAIOR_RISCO":
+			case "MENOS_PENDENCIAS":
+				
+				
+
+
+		}
 		
-
-		//"Pesquisa sem atividades com pendencias."
-
-		return this.cPesquisas.proximaAtividade(codigoPesquisa);
 
 	}
 
