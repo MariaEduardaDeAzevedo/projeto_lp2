@@ -13,27 +13,26 @@ class ControllerBuscasTest {
 	private ControllerPesquisador controllerPesquisadorTest;
 	private ControllerPesquisas controllerPesquisasTest;
 	private ControllerProblemas controllerProblemasTest;
-	
+
 	@BeforeEach
 	void criaControllers() {
-		ControllerAtividades cAtividade = new ControllerAtividades();
-		ControllerBuscas cBuscas = new ControllerBuscas();
-		ControllerObjetivos cObjetivos = new ControllerObjetivos();
-		ControllerPesquisador cPesquisador = new ControllerPesquisador();
-		ControllerPesquisas cPesquisas = new ControllerPesquisas();
-		ControllerProblemas cProblemas = new ControllerProblemas();
-		
-		cAtividade.cadastrarAtividade("Cultivo de espécies de plantas por hidroponia", "BAIXO", "Não há risco de haver nenhum tipo de prejuízo com este experimento");
-		cObjetivos.cadastraObjetivo("ESPECIFICO", "Buscar levar ciencia e tecnologia para fora dos muros da universidade", 5, 4);
-		cPesquisador.cadastraPesquisador("Arthur", "estudante", "estudante de Computação", "arthur@example.com", "https://formation");
-		cPesquisas.cadastraPesquisa("pesquisa animais", "gosto de animais");
-		cProblemas.cadastraProblema("Problema do acesso democratico a internet no Brasil", 4);
-		
-		
+		ControllerAtividades controllerAtividadesTest = new ControllerAtividades();
+		ControllerBuscas controllerBuscasTest = new ControllerBuscas();
+		ControllerObjetivos controllerObjetivoTest = new ControllerObjetivos();
+		ControllerPesquisador controllerPesquisadorTest = new ControllerPesquisador();
+		ControllerPesquisas controllerPesquisasTest = new ControllerPesquisas();
+		ControllerProblemas controllerProblemasTest = new ControllerProblemas();
+
+		controllerAtividadesTest.cadastrarAtividade("Cultivo de espécies de plantas por hidroponia", "BAIXO", "Não há risco de haver nenhum tipo de prejuízo com este experimento");
+		controllerObjetivoTest.cadastraObjetivo("ESPECIFICO", "Buscar levar ciencia e tecnologia para fora dos muros da universidade", 5, 4);
+		controllerPesquisadorTest.cadastraPesquisador("Arthur", "estudante", "estudante de Computação", "arthur@example.com", "https://formation");
+		controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "gosto de animais");
+		controllerProblemasTest.cadastraProblema("Problema do acesso democratico a internet no Brasil", 4);
 	}
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		controllerBuscasTest.busca("acesso", controllerPesquisasTest.getPesquisas(), controllerPesquisadorTest.getPesquisadores(),
+				controllerProblemasTest.getProblemas(), controllerObjetivoTest.getObjetivos(), controllerAtividadesTest.getAtividades());;
 	}
 
 }

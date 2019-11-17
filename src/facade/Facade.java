@@ -280,8 +280,8 @@ public class Facade {
     public void salvar(){
         this.cGeral.salvarArquivos();
     }
-    /*
+
     public void carregar(){
         this.cGeral.carregarArquivos();
-    }*/
+    }
 }

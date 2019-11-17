@@ -43,21 +43,21 @@ class ItemTest {
 
     @Test
     void realizar() {
-		itemBase1.realizar();
+		itemBase1.realizar(20);
 		assertTrue(itemBase1.getStatus());
     }
 
 	@Test
 	void realizarItemRealizado() {
-		itemBase1.realizar();
+		itemBase1.realizar(15);
 		assertThrows(IllegalArgumentException.class, () -> {
-			itemBase1.realizar();
+			itemBase1.realizar(15);
 		});
 	}
 
     @Test
     void getStatusItemRealizado() {
-		itemBase1.realizar();
+		itemBase1.realizar(10);
 		assertTrue(itemBase1.getStatus());
     }
 
