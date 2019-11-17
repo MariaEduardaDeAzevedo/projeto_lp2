@@ -27,6 +27,8 @@ public class Item extends Validacao implements Serializable {
 	 */
 	private String statusString;
 
+	private int duracao;
+
 	/**
 	 * Constroi um objeto Item partindo de sua descricao
 	 * 
@@ -40,15 +42,17 @@ public class Item extends Validacao implements Serializable {
 		this.descricao = descricao;
 		this.status = false;
 		this.statusString = "PENDENTE";
+		this.duracao = 1;
 	}
 
 	/**
 	 * Altera os atributos status e statusString, tornando um item pendente
 	 * realizado
 	 */
-	public void realizar() {
+	public void realizar(int duracao) {
 		super.validaStatus(! status, "Item ja executado.");
 		this.statusString = "REALIZADO";
+		this.duracao = duracao;
 		this.status = true;
 	}
 
@@ -78,5 +82,9 @@ public class Item extends Validacao implements Serializable {
 
 	public String getStatusString() {
 		return this.statusString;
+	}
+
+	public int getDuracao() {	
+		return this.duracao;
 	}
 }

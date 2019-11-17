@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -71,8 +72,8 @@ public class Pesquisa extends Validacao implements Serializable {
         this.descricao = descricao;
         this.campoDeInteresse = campoDeInteresse;
         this.ativada = true;
-        this.pesquisadoresAssociados = new HashMap<String, Pesquisador>();
-        this.atividadesAssociadas = new HashMap<String, Atividade>();
+        this.pesquisadoresAssociados = new LinkedHashMap<String, Pesquisador>();
+        this.atividadesAssociadas = new LinkedHashMap<String, Atividade>();
         this.motivo = null;
         this.objetivos = new HashMap<String, Objetivo>();
         this.statusObjetivo = false;
@@ -369,7 +370,7 @@ public class Pesquisa extends Validacao implements Serializable {
 			
 		}
 		
-		resumo += System.lineSeparator() + "	- Objetivo:";
+		resumo += System.lineSeparator() + "	- Objetivos:";
 		
 		for (Objetivo o : this.objetivos.values()) {
 			
