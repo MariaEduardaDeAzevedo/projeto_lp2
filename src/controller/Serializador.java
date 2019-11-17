@@ -11,11 +11,28 @@ public class Serializador {
     public void salvarArquivos(Map entidades, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream(nomeDoArquivo);
-            ObjectOutputStream objeto = new ObjectOutputStream(arquivo);
+            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo nao encontrado");
+            e.printStackTrace();
+        }
+        ObjectOutputStream objeto = null;
+        try {
+            objeto = new ObjectOutputStream(arquivo);
+        } catch (IOException e) {
+            System.err.println("Erro na leitura do arquivo");
+            e.printStackTrace();
+        }
+        try {
             objeto.writeObject(entidades);
+        } catch (IOException e) {
+            System.err.println("Erro na escrita do arquivo");
+            e.printStackTrace();
+        }
+        try {
             objeto.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
+            System.err.println("Erro ao fechar o arquivo");
             e.printStackTrace();
         }
     }
@@ -23,25 +40,86 @@ public class Serializador {
     public void salvarArquivoInt(int numero, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream(nomeDoArquivo);
-            ObjectOutputStream objeto = new ObjectOutputStream(arquivo);
+            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo nao encontrado");
+            e.printStackTrace();
+        }
+        ObjectOutputStream objeto = null;
+        try {
+            objeto = new ObjectOutputStream(arquivo);
+        } catch (IOException e) {
+            System.err.println("Erro na leitura do arquivo");
+            e.printStackTrace();
+        }
+        try {
             objeto.writeObject(numero);
+        } catch (IOException e) {
+            System.err.println("Erro na escrita do arquivo");
+            e.printStackTrace();
+        }
+        try {
             objeto.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
+            System.err.println("Erro ao fechar o arquivo");
             e.printStackTrace();
         }
     }
 
-    public Map carregarArquivos(String nomeDoArquivo) throws Exception {
-        FileInputStream arquivo = new FileInputStream(nomeDoArquivo);
-        ObjectInputStream objeto = new ObjectInputStream(arquivo);
-        Map listaDeEntidades = (Map) objeto.readObject();
+    public Map carregarArquivos(String nomeDoArquivo) {
+        FileInputStream arquivo = null;
+        try {
+            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo nao encontrado");
+            e.printStackTrace();
+        }
+        ObjectInputStream objeto = null;
+        try {
+            objeto = new ObjectInputStream(arquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir arquivo");
+            e.printStackTrace();
+        }
+        Map listaDeEntidades = null;
+        try {
+            listaDeEntidades = (Map) objeto.readObject();
+        } catch (IOException e) {
+            System.err.println("Erro ao ler arquivo");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Classe de objeto desconhecida");
+            e.printStackTrace();
+        }
         return listaDeEntidades;
     }
 
-    public int carregarArquivoInt(String nomeDoArquivo) throws Exception {
-        FileInputStream arquivo = new FileInputStream(nomeDoArquivo);
-        ObjectInputStream objeto = new ObjectInputStream(arquivo);
-        return (int) objeto.readObject();
+    public int carregarArquivoInt(String nomeDoArquivo) {
+        FileInputStream arquivo = null;
+        try {
+            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo nao encontrado");
+            e.printStackTrace();
+        }
+        ObjectInputStream objeto = null;
+        try {
+            objeto = new ObjectInputStream(arquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir arquivo");
+            e.printStackTrace();
+        }
+        Object arquivoInt = null;
+        try {
+            arquivoInt = objeto.readObject();
+        } catch (IOException e) {
+            System.err.println("Erro ao ler arquivo");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Classe de objeto desconhecida");
+            e.printStackTrace();
+        }
+
+        return (int) arquivoInt;
     }
 }

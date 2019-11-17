@@ -609,7 +609,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		serializador.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
 	}
 
-	public void carregarArquivos() throws Exception {
+	public void carregarArquivos() {
 		Serializador serializador = new Serializador();
 		this.pesquisas = (TreeMap<String, Pesquisa>) serializador.carregarArquivos("Pesquisas");
 		this.problemasAssociados = (HashMap<String, String>) serializador.carregarArquivos("Problemas Associados");
