@@ -18,12 +18,14 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 	 * Representacao do mapa responsavel por armazenar os pesquisadores.
 	 */
 	private Map<String, Pesquisador> pesquisadores;
-
+	
+	private List<String> associados;
 	/**
 	 * Constroi o objeto ControllerPesquisador.
 	 */
 	public ControllerPesquisador() {
 		this.pesquisadores = new TreeMap<String, Pesquisador>(Collections.reverseOrder());
+		this.associados = new ArrayList<String>();
 	}
 	//ATUALIZAR PARA TREEMAP E CONSERTA O LISTAPESQUISADORES
 	/**
@@ -108,8 +110,9 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 	 * @param formacao grau de formação do professor.
 	 * @param unidade unidade alocada do professor.
 	 * @param data data de contratação do professor.
+	 * @return 
 	 */
-	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+	public Professor cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		super.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
 		super.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
@@ -121,6 +124,7 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 		Professor especializado = new Professor(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), formacao, unidade, data);
 		pesquisadores.remove(email);
 		pesquisadores.put(email, especializado);
+		return especializado;
 	}
 	
 	/**
@@ -225,5 +229,22 @@ public class ControllerPesquisador extends Validacao implements Serializable {
     public void carregarArquivos() throws Exception {
 		Serializador serializador = new Serializador();
 		this.pesquisadores = (TreeMap<String, Pesquisador>) serializador.carregarArquivos("Pesquisadores");
+	}
+    
+	public void addAssociado(String emailPesquisador) {
+		
+		this.associados.add(emailPesquisador);
+		
+	}
+	
+	public boolean isAssociado(String email) {
+		
+		return this.associados.contains(email);
+		
+	}
+	public void removeAssociado(String email) {
+
+		this.associados.remove(email);
+		
 	}
 }

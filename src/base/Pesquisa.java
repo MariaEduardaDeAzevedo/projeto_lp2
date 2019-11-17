@@ -365,11 +365,11 @@ public class Pesquisa extends Validacao implements Serializable {
 		
 		if (this.problema != null) {
 				  
-			resumo += System.lineSeparator() + "		- " + this.problema.toString();
+			resumo += System.lineSeparator() + "		- " + this.problema.getId() + " - " + this.problema.toString();
 			
 		}
 		
-		resumo += System.lineSeparator() + "	- Objetivos:";
+		resumo += System.lineSeparator() + "	- Objetivo:";
 		
 		for (Objetivo o : this.objetivos.values()) {
 			
@@ -381,11 +381,19 @@ public class Pesquisa extends Validacao implements Serializable {
 		
 		for (Atividade a : this.atividadesAssociadas.values()) {
 			
-			resumo += System.lineSeparator() + "		- " + a.toString();
+			resumo += a.toStringResumo();
 			
 		}
 		
 		return resumo + "\"";
+		
+	}
+
+
+	public void alteraPesquisador(String email, Professor especializado) {
+		
+		this.pesquisadoresAssociados.remove(email);
+		this.pesquisadoresAssociados.put(email, especializado);
 		
 	}
 	

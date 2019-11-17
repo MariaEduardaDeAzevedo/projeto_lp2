@@ -435,4 +435,17 @@ public class Atividade extends Validacao implements Serializable {
 		return listagem;
 		
 	}
+	
+	public String toStringResumo() {
+		String listagem = System.lineSeparator() + String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
+		
+		for (int i = 0; i < this.itens.size(); i++) {
+			if (this.itens.get(i).getStatus() == true) {
+				listagem += System.lineSeparator()  + "			- " + this.itens.get(i).getStatusString() + " - ITEM" + (i + 1) ;
+			}
+		}
+		
+		return listagem;
+		
+	}
 }

@@ -54,6 +54,7 @@ public class Conector extends Validacao {
             throw new ActivationException("Pesquisa desativada.");
         }
         Pesquisador associado = cPesquisador.getPesquisador(emailPesquisador);
+        this.cPesquisador.addAssociado(emailPesquisador);
         return cPesquisas.associaPesquisador(idPesquisa, associado);
     }
     
@@ -75,6 +76,7 @@ public class Conector extends Validacao {
         else if (!cPesquisas.pesquisaEhAtiva(idPesquisa)) {
             throw new ActivationException("Pesquisa desativada.");
         }
+        this.cPesquisador.removeAssociado(emailPesquisador);
         return cPesquisas.desassociaPesquisador(idPesquisa, emailPesquisador);
     }
     
@@ -362,5 +364,19 @@ public class Conector extends Validacao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		
+		if (this.cPesquisador.isAssociado(email)) {
+			
+			this.cPesquisas.alteraPesquisador(email, cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data));
+			
+		} else {
+			
+			cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+			
+		}
+		
 	}
 }

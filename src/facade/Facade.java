@@ -178,7 +178,7 @@ public class Facade {
     }
     
     public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
-    	cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+    	cGeral.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
     }
     
     public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {

@@ -4,13 +4,22 @@
 		- Livia Sampaio (professor) - Pense numa pesquisadora de respeito - livia@computacao.ufcg.edu.br - https://penseNumaMulherMaravilhosa - Doutorado - DSC - 20/06/2006
 		- Uzumaki naruto (estudante) - Interresado nos efeitos da marginalizacao de individuos pelo sociedade e seus empactos sociais. - borutofathers@1997 - https://dattebayo
 	- Problema:
-	- Objetivos:
+	- Objetivo:
 	- Atividades:
-		- Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.) | REALIZADO - Monitoramento facebook/messenger | REALIZADO - Monitoramento slack | REALIZADO - Monitoramento discord | REALIZADO - Monitoramento whatsapp
-		- Busca e analise de uma razao para a Netflix cancelar BoJack Horseman (ALTO - Nao existe uma razao plausivel, assim o risco e elevado.) | PENDENTE - Busca por provas que a netflix esta se auto sabotando cancelando seus melhores shows
+		- Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.)
+			- REALIZADO - ITEM1
+			- REALIZADO - ITEM2
+			- REALIZADO - ITEM3
+			- REALIZADO - ITEM4
+		- Busca e analise de uma razao para a Netflix cancelar BoJack Horseman (ALTO - Nao existe uma razao plausivel, assim o risco e elevado.)
 		- Mudancas nas relacoes do instagram, apos a ocultacao do numero de curtidas das postagens. (ALTO - Por envolver uma crise economica brutal, com diversas blogueirinhas perdendo seus empregos, e de uma crise social, com diversas pessoas perdendo o rummo de suas vidas, o risco e extremamente elevado.)
 		- Monitoramento por ninjas de computacao na guerra ninja. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.)
-		- Ponderacao do por que Imagine dragons e tao bom. (BAIXO - Sem risco, so provar algo obvio.) | REALIZADO - Escutar Night Visions | REALIZADO - Escutar Smoke + Mirrors | REALIZADO - Escutar Evolve | REALIZADO - Escutar Origins | PENDENTE - Comparacao com outras bandas de rock
-		- Analise do comportamento dos alunos de computacao com os alunos de arq/urb. (ALTO - Por se tratar de uma analise a partir de denuncias de um comportamento hostil, o risco e extremamente elevado.) | REALIZADO - Alunos de computacao atrapalhando atividades em campo dos alunos de arq/urb. | PENDENTE - Indiretas no twitter. | PENDENTE - Analisar as redes socias dos individuos ativos nos eventos dessa discurssao
+		- Ponderacao do por que Imagine dragons e tao bom. (BAIXO - Sem risco, so provar algo obvio.)
+			- REALIZADO - ITEM1
+			- REALIZADO - ITEM2
+			- REALIZADO - ITEM3
+			- REALIZADO - ITEM4
+		- Analise do comportamento dos alunos de computacao com os alunos de arq/urb. (ALTO - Por se tratar de uma analise a partir de denuncias de um comportamento hostil, o risco e extremamente elevado.)
+			- REALIZADO - ITEM1
 		- Testando se a terra e plana (BAIXO - Por se tratar de uma atividade que ja se sabe que seus resultados, sendo assim uma atividade simbolica, seu risco e hiperbólicamente baixo.)
 		- Analise de quantas maos levantadas sao necessarias para Goku fazer uma Genki Dama que consiga derrotar Saitama (ALTO - Pela possibilidade de nao existirem pesoas o bastante no universo para levantar a mao, o risco e alto.)"

@@ -8,6 +8,7 @@ import base.Objetivo;
 import base.Pesquisa;
 import base.Pesquisador;
 import base.Problema;
+import base.Professor;
 import excecoes.ActivationException;
 import comparators.*;
 
@@ -613,5 +614,19 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		this.pesquisas = (TreeMap<String, Pesquisa>) serializador.carregarArquivos("Pesquisas");
 		this.problemasAssociados = (HashMap<String, String>) serializador.carregarArquivos("Problemas Associados");
 		this.objetivosAssociados = (HashMap<String, String>) serializador.carregarArquivos("Objetivos Associados");
+	}
+
+	public void alteraPesquisador(String email, Professor especializado) {
+		
+		for (Pesquisa p : this.pesquisas.values()) {
+			
+			if (p.containsPesquisador(email)) {
+				
+				p.alteraPesquisador(email, especializado);
+				
+			}
+			
+		}
+		
 	}
 }
