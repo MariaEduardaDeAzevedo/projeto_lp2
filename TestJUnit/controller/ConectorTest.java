@@ -16,10 +16,10 @@ class ConectorTest {
 	private ControllerPesquisador cPesquisadorTeste;
 	private ControllerProblemas cProblemasTeste;
 	private ControllerObjetivos cObjetivosTeste;
+	private ControllerBuscas cBuscasTeste;
 	
-    /*@BeforeEach
+    @BeforeEach
     void inicializaAtributos() {
-        this.cGeralTeste = new Conector();
         this.cPesquisaTeste = new ControllerPesquisas();
         this.cAtividadeTeste = new ControllerAtividades();
         this.cPesquisadorTeste = new ControllerPesquisador();
@@ -29,230 +29,232 @@ class ConectorTest {
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
         this.cProblemasTeste = new ControllerProblemas();
         this.cObjetivosTeste = new ControllerObjetivos();
+        this.cBuscasTeste = new ControllerBuscas();
+        this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
+                cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
     }
     @Test
     void associaAtividadeValida() {
-        assertTrue(cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
+        assertTrue(cGeralTeste.associaAtividade("COM1", "A1"));
     }
 
     @Test
     void associaAtividadeValidaRepetida() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        assertFalse(cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
+        cGeralTeste.associaAtividade("COM1", "A1");
+        assertFalse(cGeralTeste.associaAtividade("COM1", "A1"));
     }
 
     @Test
     void associaAtividadeCodigoPesquisaVazio() {
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "", "A1");
+            cGeralTeste.associaAtividade("", "A1");
         });
     }
 
     @Test
     void associaAtividadeCodigoPesquisaNull() {
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, null, "A1");
+            cGeralTeste.associaAtividade(null, "A1");
         });
     }
 
     @Test
     void associaAtividadeCodigoAtividadeVazio() {
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "");
+            cGeralTeste.associaAtividade("COM1", "");
         });
     }
 
     @Test
     void associaAtividadeCodigoAtividadeNull() {
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", null);
+            cGeralTeste.associaAtividade("COM1", null);
         });
     }
 
     @Test
     void associaAtividadeCodigoPesquisaInvalido() {
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "PAM1", "A1");
+            cGeralTeste.associaAtividade("PAM1", "A1");
         });
     }
 
     @Test
     void associaAtividadePesquisaDesativada() {
         cPesquisaTeste.encerraPesquisa("COM1", "O lab fechou");
-        ActivationException exception = new ActivationException("Pesquisa desativada.");
         assertThrows(ActivationException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+            cGeralTeste.associaAtividade("COM1", "A1");
         });
     }
 
     @Test
     void associaAtividadeCodigoAtividadeInvalido() {
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A3");
+            cGeralTeste.associaAtividade("COM1", "A3");
         });
     }
 
     @Test
     void desassociaAtividadeValida() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        assertTrue(cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
+        cGeralTeste.associaAtividade("COM1", "A1");
+        assertTrue(cGeralTeste.desassociaAtividade("COM1", "A1"));
     }
 
     @Test
     void desassociaAtividadeValidaRepetida() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
-        assertFalse(cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
+        cGeralTeste.associaAtividade("COM1", "A1");
+        cGeralTeste.desassociaAtividade("COM1", "A1");
+        assertFalse(cGeralTeste.desassociaAtividade("COM1", "A1"));
     }
 
     @Test
     void desassociaAtividadeCodigoPesquisaVazio() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, "", "A1");
+            cGeralTeste.desassociaAtividade("", "A1");
         });
     }
 
     @Test
     void desassociaAtividadeCodigoPesquisaNull() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste, null, "A1");
+            cGeralTeste.desassociaAtividade(null, "A1");
         });
     }
 
     @Test
     void desassociaAtividadeCodigoAtividadeVazio() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "");
+            cGeralTeste.desassociaAtividade("COM1", "");
         });
     }
 
     @Test
     void deassociaAtividadeCodigoAtividadeNull() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", null);
+            cGeralTeste.desassociaAtividade("COM1", null);
         });
     }
 
     @Test
     void deassociaAtividadeCodigoPesquisaInvalido() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"PAM1", "A1");
+            cGeralTeste.desassociaAtividade("PAM1", "A1");
         });
     }
 
     @Test
     void deassociaAtividadePesquisaDesativada() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cPesquisaTeste.encerraPesquisa("COM1", "O lab fechou");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "A1");
+            cGeralTeste.desassociaAtividade("COM1", "A1");
         });
     }
 
     @Test
     void deassociaAtividadeCodigoAtividadeInvalido() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.desassociaAtividade(cPesquisaTeste, cAtividadeTeste,"COM1", "A3");
+            cGeralTeste.desassociaAtividade("COM1", "A3");
         });
     }
 
     @Test
     void executaAtividadeValida() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
-        cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
+        cGeralTeste.executaAtividade("A1", 1, 50);
         assertEquals(1, cAtividadeTeste.getAtividade("A1").contaItensRealizados());
     }
 
     @Test
     void executaAtividadeRepetida() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
-        cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
+        cGeralTeste.executaAtividade("A1", 1, 50);
         assertThrows(ActivationException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 59);
+            cGeralTeste.executaAtividade("A1", 1, 59);
         });
     }
 
     @Test
     void executaAtividadeNaoAssociada() {
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 50);
+            cGeralTeste.executaAtividade("A1", 1, 50);
         });
     }
 
     @Test
     void executaAtividadeCodigoAtividadeVazio() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "", 1, 50);
+            cGeralTeste.executaAtividade("", 1, 50);
         });
     }
 
     @Test
     void executaAtividadeCodigoAtividadeNull() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(NullPointerException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, null, 1, 50);
+            cGeralTeste.executaAtividade(null, 1, 50);
         });
     }
 
     @Test
     void executaAtividadeItemNulo() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 0, 50);
+            cGeralTeste.executaAtividade("A1", 0, 50);
         });
     }
 
     @Test
     void executaAtividadeItemNegativo() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", -1, 50);
+            cGeralTeste.executaAtividade("A1", -1, 50);
         });
     }
 
     @Test
     void executaAtividadeItemInvalido() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 5, 50);
+            cGeralTeste.executaAtividade("A1", 5, 50);
         });
     }
 
     @Test
     void executaAtividadeDuracaoNula() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, 0);
+            cGeralTeste.executaAtividade("A1", 1, 0);
         });
     }
 
     @Test
     void executaAtividadeDuracaoNegativa() {
-        cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1");
+        cGeralTeste.associaAtividade("COM1", "A1");
         cAtividadeTeste.cadastrarItem("A1", "Monitoramento das hashtags como forma de tentar prever resultados das eleicoes");
         assertThrows(IllegalArgumentException.class, () -> {
-            cGeralTeste.executaAtividade(cPesquisaTeste, cAtividadeTeste, "A1", 1, -1);
+            cGeralTeste.executaAtividade("A1", 1, -1);
         });
     }
     
     @Test
     void associaPesquisadorComum() {
     	
-    	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+    	this.cGeralTeste.associaPesquisador("COM1", "pesquisador@pesquisador.com");
     	
     }
     
@@ -260,7 +262,7 @@ class ConectorTest {
     void associaPesquisadorInexistente() {
     	
     	 assertThrows(NullPointerException.class, () -> {
-    		 this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@professor.com");;
+    		 this.cGeralTeste.associaPesquisador("COM1", "pesquisador@professor.com");;
          });
     	
     	
@@ -270,7 +272,7 @@ class ConectorTest {
     void associaPesquisadorPesquisaInexistente() {
     	
     	assertThrows(NullPointerException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM2", "pesquisador@pesquisador.com");
+   		 	this.cGeralTeste.associaPesquisador("COM2", "pesquisador@pesquisador.com");
         });
     	
     }
@@ -279,7 +281,7 @@ class ConectorTest {
     void associaPesquisadorIDNull() {
     	
     	assertThrows(NullPointerException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, null, "pesquisador@pesquisador.com");
+   		 	this.cGeralTeste.associaPesquisador(null, "pesquisador@pesquisador.com");
         });
     	
     }
@@ -288,7 +290,7 @@ class ConectorTest {
     void associaPesquisadorIDVazio() {
     	
     	assertThrows(IllegalArgumentException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "", "pesquisador@pesquisador.com");
+   		 	this.cGeralTeste.associaPesquisador("", "pesquisador@pesquisador.com");
         });
     	
     }
@@ -297,7 +299,7 @@ class ConectorTest {
     void associaPesquisadorEmailNull() {
     	
     	assertThrows(NullPointerException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", null);
+   		 	this.cGeralTeste.associaPesquisador("COM1", null);
         });
     	
     }
@@ -306,7 +308,7 @@ class ConectorTest {
     void associaPesquisadorEmailVazio() {
     	
     	assertThrows(IllegalArgumentException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "");
+   		 	this.cGeralTeste.associaPesquisador("COM1", "");
         });
     	
     }
@@ -316,7 +318,7 @@ class ConectorTest {
     	
     	this.cPesquisaTeste.encerraPesquisa("COM1", "falta de verba");
     	assertThrows(ActivationException.class, () -> {
-   		 	this.cGeralTeste.associaPesquisador(cPesquisadorTeste, cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+   		 	this.cGeralTeste.associaPesquisador("COM1", "pesquisador@pesquisador.com");
         });
     	
     }
@@ -324,7 +326,7 @@ class ConectorTest {
     @Test
     void desassociaPesquisadorComum() {
     	
-    	this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", "pesquisador@pesquisador.com");
+    	this.cGeralTeste.desassociaPesquisador("COM1", "pesquisador@pesquisador.com");
     	
     }
     
@@ -332,7 +334,7 @@ class ConectorTest {
     void desassociaPesquisadorIDNull() {
     	
     	assertThrows(NullPointerException.class, () -> {
-    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, null, "pesquisador@pesquisador.com");
+    		this.cGeralTeste.desassociaPesquisador(null, "pesquisador@pesquisador.com");
         });
     	
     }
@@ -341,7 +343,7 @@ class ConectorTest {
     void desassociaPesquisadorIDVazio() {
     	
     	assertThrows(IllegalArgumentException.class, () -> {
-    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "", "pesquisador@pesquisador.com");
+    		this.cGeralTeste.desassociaPesquisador("", "pesquisador@pesquisador.com");
         });
     	
     }
@@ -350,7 +352,7 @@ class ConectorTest {
     void desassociaPesquisadorNull() {
     	
     	assertThrows(NullPointerException.class, () -> {
-    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", null);
+    		this.cGeralTeste.desassociaPesquisador("COM1", null);
         });
     	
     }
@@ -359,7 +361,7 @@ class ConectorTest {
     void desassociaPesquisadorVazio() {
     	
     	assertThrows(IllegalArgumentException.class, () -> {
-    		this.cGeralTeste.desassociaPesquisador(cPesquisaTeste, "COM1", "");
+    		this.cGeralTeste.desassociaPesquisador("COM1", "");
         });
     	
     }
@@ -368,15 +370,15 @@ class ConectorTest {
     void associaProblemaValidoTrue() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	assertEquals("true", cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P2"));
+    	assertEquals("true", cGeralTeste.associaProblema("HUM1", "P2"));
     }
     
     @Test
     void associaProblemaValidoFalse() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P2");
-    	assertEquals("false", cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P2"));
+    	cGeralTeste.associaProblema("HUM1", "P2");
+    	assertEquals("false", cGeralTeste.associaProblema("HUM1", "P2"));
     }
     
     @Test
@@ -384,7 +386,7 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, null, "P2");
+    		cGeralTeste.associaProblema(null, "P2");
         });
     }
     
@@ -393,7 +395,7 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "", "P2");
+    		cGeralTeste.associaProblema("", "P2");
         });
     }
     
@@ -402,7 +404,7 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", null);
+    		cGeralTeste.associaProblema("HUM1", null);
         });
     }
     
@@ -411,7 +413,7 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "");
+    		cGeralTeste.associaProblema("HUM1", "");
         });
     }
     
@@ -419,9 +421,9 @@ class ConectorTest {
     void associaProblemaPesquisaJaAssociada() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P2");
+    	cGeralTeste.associaProblema("HUM1", "P2");
     	assertThrows(AssociationException.class, () -> {
-    		cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
+    		cGeralTeste.associaProblema("HUM1", "P1");
         });
     }
     
@@ -429,19 +431,19 @@ class ConectorTest {
     void desassociaProblemaValido() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
-    	assertEquals("true", cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM1"));
-    	cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM1");
-    	assertEquals("false", cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM1"));
+    	cGeralTeste.associaProblema("HUM1", "P1");
+    	assertEquals("true", cGeralTeste.desassociaProblema("HUM1"));
+    	cGeralTeste.desassociaProblema("HUM1");
+    	assertEquals("false", cGeralTeste.desassociaProblema("HUM1"));
     }
     
     @Test
     void desassociaProblemaIdPesquisaNull() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
+    	cGeralTeste.associaProblema("HUM1", "P1");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.desassociaProblema(cPesquisaTeste, null);
+    		cGeralTeste.desassociaProblema(null);
         });
     }
     
@@ -449,16 +451,16 @@ class ConectorTest {
     void desassociaProblemaIdPesquisaVazio() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
+    	cGeralTeste.associaProblema("HUM1", "P1");
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.desassociaProblema(cPesquisaTeste, "");
+    		cGeralTeste.desassociaProblema("");
         });
     }
     
     @Test
     void desassociaProblemaPesquisaInexistente() {
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM1");
+    		cGeralTeste.desassociaProblema("HUM1");
         });
     }
     
@@ -466,9 +468,9 @@ class ConectorTest {
     void desassociaProblemaPesquisaNaoEncontrada() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
+    	cGeralTeste.associaProblema("HUM1", "P1");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM2");
+    		cGeralTeste.desassociaProblema("HUM2");
         });
     }
     
@@ -476,10 +478,10 @@ class ConectorTest {
     void desassociaProblemaPesquisaDesativada() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	cGeralTeste.associaProblema(cPesquisaTeste, cProblemasTeste, "HUM1", "P1");
+    	cGeralTeste.associaProblema("HUM1", "P1");
     	cPesquisaTeste.encerraPesquisa("HUM1", "Pesquisa censurada pelos Estados Unidos");
     	assertThrows(ActivationException.class, () -> {
-    		cGeralTeste.desassociaProblema(cPesquisaTeste, "HUM1");
+    		cGeralTeste.desassociaProblema("HUM1");
         });
     }
     
@@ -487,9 +489,9 @@ class ConectorTest {
     void associaObjetivoValido() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	assertEquals("true", cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1"));
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
-    	assertEquals("false", cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1"));
+    	assertEquals("true", cGeralTeste.associaObjetivo("HUM1", "O1"));
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
+    	assertEquals("false", cGeralTeste.associaObjetivo("HUM1", "O1"));
     }
     
     @Test
@@ -497,9 +499,9 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	cPesquisaTeste.cadastraPesquisa("Consequências do Colonialismo no século XXI", "historia");
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	assertThrows(AssociationException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HIS1", "O1");
+    		cGeralTeste.associaObjetivo("HIS1", "O1");
         });
     }
     
@@ -508,7 +510,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, null, "O1");
+    		cGeralTeste.associaObjetivo(null, "O1");
         });
     }
     
@@ -517,7 +519,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "", "O1");
+    		cGeralTeste.associaObjetivo("", "O1");
         });
     }
     
@@ -526,7 +528,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", null);
+    		cGeralTeste.associaObjetivo("HUM1", null);
         });
     }
     
@@ -535,7 +537,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "");
+    		cGeralTeste.associaObjetivo("HUM1", "");
         });
     }
     
@@ -544,7 +546,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM2", "O1");
+    		cGeralTeste.associaObjetivo("HUM2", "O1");
         });
     }
     
@@ -552,7 +554,7 @@ class ConectorTest {
     void associaObjetivoPesquisaInexistente() {
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    		cGeralTeste.associaObjetivo("HUM1", "O1");
         });
     }
     
@@ -562,7 +564,7 @@ class ConectorTest {
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	cPesquisaTeste.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
     	assertThrows(ActivationException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    		cGeralTeste.associaObjetivo("HUM1", "O1");
         });
     }
     
@@ -570,19 +572,19 @@ class ConectorTest {
     void desassociaObjetivoValido() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
-    	assertEquals("true", cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1"));
-    	cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1");
-    	assertEquals("false", cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1"));
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
+    	assertEquals("true", cGeralTeste.desassociaObjetivo("HUM1", "O1"));
+    	cGeralTeste.desassociaObjetivo("HUM1", "O1");
+    	assertEquals("false", cGeralTeste.desassociaObjetivo("HUM1", "O1"));
     }
     
     @Test
     void desassociaObjetivoIdPesquisaNull() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, null, "O1");
+    		cGeralTeste.associaObjetivo(null, "O1");
         });
     }
     
@@ -590,9 +592,9 @@ class ConectorTest {
     void desassociaObjetivoIdPesquisaVazio() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "", "O1");
+    		cGeralTeste.associaObjetivo("", "O1");
         });
     }
     
@@ -600,9 +602,9 @@ class ConectorTest {
     void desassociaObjetivoIdObjetivoNull() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", null);
+    		cGeralTeste.associaObjetivo("HUM1", null);
         });
     }
     
@@ -610,9 +612,9 @@ class ConectorTest {
     void desassociaObjetivoIdObjetivoVazio() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	assertThrows(IllegalArgumentException.class, () -> {
-    		cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "");
+    		cGeralTeste.associaObjetivo("HUM1", "");
         });
     }
     
@@ -621,7 +623,7 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM2", "O1");
+    		cGeralTeste.desassociaObjetivo("HUM2", "O1");
         });
     }
     
@@ -629,7 +631,7 @@ class ConectorTest {
     void desassociaObjetivoPesquisaInexistente() {
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	assertThrows(NullPointerException.class, () -> {
-    		cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1");
+    		cGeralTeste.desassociaObjetivo("HUM1", "O1");
         });
     }
     
@@ -637,10 +639,10 @@ class ConectorTest {
     void desassociaObjetivoPesquisaDesativada() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	cGeralTeste.associaObjetivo(cPesquisaTeste, cObjetivosTeste, "HUM1", "O1");
+    	cGeralTeste.associaObjetivo("HUM1", "O1");
     	cPesquisaTeste.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
     	assertThrows(ActivationException.class, () -> {
-    		cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1");
+    		cGeralTeste.desassociaObjetivo("HUM1", "O1");
         });
-    }*/
+    }
 }
