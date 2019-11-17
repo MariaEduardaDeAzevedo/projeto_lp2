@@ -451,11 +451,9 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	public boolean hasItemPendente() {
-        for(int i = 0; i < this.itens.size(); i++) {
-            if (this.itens.get(i).getStatus() == false) {
-                return true;
-            }
+        if(contaItensPendentes() == 0) {
+        	return false;
         }
-        return false;
+        return true;
     }
 }

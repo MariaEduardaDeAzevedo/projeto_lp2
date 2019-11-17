@@ -323,11 +323,11 @@ public class Conector extends Validacao {
 			case "MAIS_ANTIGA":
 				return this.cAtividades.hasItemPendente();
 			case "MAIOR_DURACAO":
-				return this.cAtividades.ordenaAtvdsMenosPendencias();
+				return this.cAtividades.ordenaAtvdsMaiorDuracao();
 			case "MAIOR_RISCO":
 				return "a";
 			case "MENOS_PENDENCIAS":
-				return this.cAtividades.ordenaAtvdsMaiorDuracao();
+				return this.cAtividades.ordenaAtvdsMenosPendencias();
 				
 		}
 		return "";
