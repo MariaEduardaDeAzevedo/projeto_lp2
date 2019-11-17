@@ -86,3 +86,11 @@
 - Realizar a adequação a todos os testes de aceitação.
 #### Comentário:
 -Todas as funcionalidades até agora implementadas desta US atendem aos testes de aceitação, porém suspeito de erro na linha 30 destes.
+### US11
+#### Codificado:
+- Métodos da Facade
+#### Falta:
+- Adequar todos os EasyAccepts
+- Montar uma estratégia para a criação de uma Interface de Professor e Aluno
+- Documentar
+- Testar US12
