@@ -1,4 +1,5 @@
 package base;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,189 +18,219 @@ import controller.Validacao;
 import excecoes.ActivationException;
 
 /**
- * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de interesse e status.
+ * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de
+ * interesse e status.
  */
 public class Pesquisa extends Validacao implements Serializable {
 
-    /**
-     * Armazena o codigo da pesquisa no sistema.
-     */
-    private String codigo;
+	/**
+	 * Armazena o codigo da pesquisa no sistema.
+	 */
+	private String codigo;
 
-    /**
-     * Armazena a descricao da pesquisa.
-     */
-    private String descricao;
+	/**
+	 * Armazena a descricao da pesquisa.
+	 */
+	private String descricao;
 
-    /**
-     * Armazena o campo de interesse da pesquisa.
-     */
-    private String campoDeInteresse;
+	/**
+	 * Armazena o campo de interesse da pesquisa.
+	 */
+	private String campoDeInteresse;
 
-    /**
-     * Armazena o status da pesquisa.
-     */
-    private boolean ativada;
-    
-    private Map<String, Pesquisador> pesquisadoresAssociados;
-    
-    /**
-     * Armazena as atividades que foram associadas a alguma pesquisa.
-     */
-    private Map<String, Atividade> atividadesAssociadas;
-    
-    private Problema problema;
-    
-    private Map<String, Objetivo> objetivos;
+	/**
+	 * Armazena o status da pesquisa.
+	 */
+	private boolean ativada;
 
+	/**
+	 * Mapa de pesquisadores associados a uma pesquisa.
+	 */
+	private Map<String, Pesquisador> pesquisadoresAssociados;
+
+	/**
+	 * Armazena as atividades que foram associadas a uma pesquisa.
+	 */
+	private Map<String, Atividade> atividadesAssociadas;
+
+	/**
+	 * Problema associado a uma pesquisa.
+	 */
+	private Problema problema;
+
+	/**
+	 * Mapa de objetivos associados a uma pesquisa.
+	 */
+	private Map<String, Objetivo> objetivos;
+
+	/**
+	 * Mootivo pelo qual a pesquisa foi desativada.
+	 */
 	private String motivo;
 
+	/**
+	 * Indica se existem objetivos associados a uma pesquisa.
+	 */
 	private boolean statusObjetivo;
-    
 
-    
-    /**
-     * Constroi o objeto Pesquisa a partir dos parametros.
-     * @param codigo codigo da pesquisa.
-     * @param descricao descricao da pesquisa.
-     * @param campoDeInteresse campo de interese da pesquisa.
-     */
-    public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
-        super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-        super.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
-        super.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
-        this.codigo = codigo;
-        this.descricao = descricao;
-        this.campoDeInteresse = campoDeInteresse;
-        this.ativada = true;
-        this.pesquisadoresAssociados = new LinkedHashMap<String, Pesquisador>();
-        this.atividadesAssociadas = new LinkedHashMap<String, Atividade>();
-        this.motivo = null;
-        this.objetivos = new HashMap<String, Objetivo>();
-        this.statusObjetivo = false;
-    }
-    
+	/**
+	 * Constroi o objeto Pesquisa a partir dos parametros.
+	 * 
+	 * @param codigo           codigo da pesquisa.
+	 * @param descricao        descricao da pesquisa.
+	 * @param campoDeInteresse campo de interese da pesquisa.
+	 */
+	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
+		super.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		super.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		super.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
+		this.codigo = codigo;
+		this.descricao = descricao;
+		this.campoDeInteresse = campoDeInteresse;
+		this.ativada = true;
+		this.pesquisadoresAssociados = new LinkedHashMap<String, Pesquisador>();
+		this.atividadesAssociadas = new LinkedHashMap<String, Atividade>();
+		this.motivo = null;
+		this.objetivos = new HashMap<String, Objetivo>();
+		this.statusObjetivo = false;
+	}
 
-    /**
-     * Retorna a representacao da pesquisa.
-     * @return String contendo a representacao textual de uma pesquisa.
-     */
-    @Override
-    public String toString() {
-        return this.codigo + " - " + this.descricao + " - " + this.campoDeInteresse;
-    }
+	/**
+	 * Retorna a representacao da pesquisa.
+	 * 
+	 * @return String contendo a representacao textual de uma pesquisa.
+	 */
+	@Override
+	public String toString() {
+		return this.codigo + " - " + this.descricao + " - " + this.campoDeInteresse;
+	}
 
-    /**
-     * Altera o status da pesquisa para ativada.
-     */
-    public void ativaPesquisa() {
-    	super.validaStatus(! isAtivada(), "Pesquisa ja ativada.");
-        this.ativada = true;
-    }
+	/**
+	 * Altera o status da pesquisa para ativada.
+	 */
+	public void ativaPesquisa() {
+		super.validaStatus(!isAtivada(), "Pesquisa ja ativada.");
+		this.ativada = true;
+	}
 
-    /**
-     * Altera o status da pesquisa para desativada.
-     * @param motivo 
-     */
-    public void encerraPesquisa(String motivo) {
-    	super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
-    	super.validaStatus(this.ativada, "Pesquisa desativada.");
-    	this.ativada = false;
-        this.motivo = motivo;
-    }
+	/**
+	 * Altera o status da pesquisa para desativada.
+	 * 
+	 * @param motivo
+	 */
+	public void encerraPesquisa(String motivo) {
+		super.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
+		super.validaStatus(this.ativada, "Pesquisa desativada.");
+		this.ativada = false;
+		this.motivo = motivo;
+	}
 
-    /**
-     * Altera alguns atributos da pesquisa.
-     * @param conteudoASerAlterado atributo que se deseja alterar (permitido alterar a descricao ou o campo de interesse).
-     * @param novoConteudo conteudo para qual o atributo deve ser alterado.
-     */
-    public void alteraPesquisa(String conteudoASerAlterado, String novoConteudo) {
-    	super.validaStatus(this.ativada, "Pesquisa desativada.");
-    	if (conteudoASerAlterado.equals("DESCRICAO")) {
-            super.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
-            this.descricao = novoConteudo;
-        } else if (conteudoASerAlterado.equals("CAMPO")) {
-            super.validaString(novoConteudo, "Formato do campo de interesse invalido.");
-            this.campoDeInteresse = novoConteudo;
-        } else {
-            throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
-        }
-    }
+	/**
+	 * Altera alguns atributos da pesquisa.
+	 * 
+	 * @param conteudoASerAlterado atributo que se deseja alterar (permitido alterar
+	 *                             a descricao ou o campo de interesse).
+	 * @param novoConteudo         conteudo para qual o atributo deve ser alterado.
+	 */
+	public void alteraPesquisa(String conteudoASerAlterado, String novoConteudo) {
+		super.validaStatus(this.ativada, "Pesquisa desativada.");
+		if (conteudoASerAlterado.equals("DESCRICAO")) {
+			super.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
+			this.descricao = novoConteudo;
+		} else if (conteudoASerAlterado.equals("CAMPO")) {
+			super.validaString(novoConteudo, "Formato do campo de interesse invalido.");
+			this.campoDeInteresse = novoConteudo;
+		} else {
+			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
+		}
+	}
 
-    /**
-     * Retorna o status da pesquisa.
-     * @return boolean representando se a pesquisa esta ativada ou nao.
-     */
-    public boolean isAtivada() {
-        return ativada;
-    }
+	/**
+	 * Retorna o status da pesquisa.
+	 * 
+	 * @return boolean representando se a pesquisa esta ativada ou nao.
+	 */
+	public boolean isAtivada() {
+		return ativada;
+	}
 
-    /**
-     * Compara se duas pesquisas sao iguais.
-     * @param o pesquisa com qual se deseja comparar.
-     * @return boolean confirmando se as pesquisas sao iguais ou nao.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pesquisa pesquisa = (Pesquisa) o;
-        return Objects.equals(codigo, pesquisa.codigo);
-    }
+	/**
+	 * Compara se duas pesquisas sao iguais.
+	 * 
+	 * @param o pesquisa com qual se deseja comparar.
+	 * @return boolean confirmando se as pesquisas sao iguais ou nao.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Pesquisa pesquisa = (Pesquisa) o;
+		return Objects.equals(codigo, pesquisa.codigo);
+	}
 
-    /**
-     * Gera um codigo unico da Pesquisa a partir do seu atributo Codigo.
-     * @return int representando o codigo unico da pesquisa.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigo);
-    }
-    
-    public void setProblema(Problema problema) {
-    	
-    	this.problema = problema;
-    	
-    }
-    
-    public void addObjetivo(String id, Objetivo objetivo) {
-    	
-    	this.objetivos.put(id, objetivo);
-    	this.statusObjetivo = true;
-    	
-    }
+	/**
+	 * Gera um codigo unico da Pesquisa a partir do seu atributo Codigo.
+	 * 
+	 * @return int representando o codigo unico da pesquisa.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	public void setProblema(Problema problema) {
+
+		this.problema = problema;
+
+	}
+
+	public void addObjetivo(String id, Objetivo objetivo) {
+
+		this.objetivos.put(id, objetivo);
+		this.statusObjetivo = true;
+
+	}
 
 	public Problema getProblema() {
-		
+
 		return this.problema;
-	
+
 	}
-	
+
 	/**
-	 * Associa um pesquisador a esta pesquisa.
-	 * Retorna um valor booleano que indica se a associação foi bem sucedida ou não.
+	 * Associa um pesquisador a esta pesquisa. Retorna um valor booleano que indica
+	 * se a associação foi bem sucedida ou não.
+	 * 
 	 * @param associado pesquisador que se quer associar a esta pesquisa.
-	 * @return true, caso a associação tenha sido bem sucedida, ou seja, se o pesquisador já não estiver associado à esta pesquisa, ou false, caso a associação
-	 * não seja bem sucedida, ou seja, se o pesquisador já esteja associado a esta pesquisa.
+	 * @return true, caso a associação tenha sido bem sucedida, ou seja, se o
+	 *         pesquisador já não estiver associado à esta pesquisa, ou false, caso
+	 *         a associação não seja bem sucedida, ou seja, se o pesquisador já
+	 *         esteja associado a esta pesquisa.
 	 */
 	public boolean associaPesquisador(Pesquisador associado) {
 		super.validaStatus(this.ativada, "Pesquisa desativada.");
-		
+
 		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
 			return false;
 		}
-		
+
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 		return true;
 	}
-	
+
 	/**
-	 * Desassocia um pesquisador a esta pesquisa.
-	 * Retorna um valor booleano que indica se a desassociação foi bem sucedida ou não.
-	 * @param emailPesquisador email do pesquisador que se quer desassociar desta pesquisa.
-	 * @return true, caso a desassociação seja bem sucedida, ou seja, se o email passado como parâmetro identificar um pesquisador associado
-	 * a esta pesquisa e este sendo removido, ou false, caso a desassociação não seja bem sucedida, ou seja, se o email passado como parâmetro não identificar
-	 * nenhum pesquisador associado a esta pesquisa.
+	 * Desassocia um pesquisador a esta pesquisa. Retorna um valor booleano que
+	 * indica se a desassociação foi bem sucedida ou não.
+	 * 
+	 * @param emailPesquisador email do pesquisador que se quer desassociar desta
+	 *                         pesquisa.
+	 * @return true, caso a desassociação seja bem sucedida, ou seja, se o email
+	 *         passado como parâmetro identificar um pesquisador associado a esta
+	 *         pesquisa e este sendo removido, ou false, caso a desassociação não
+	 *         seja bem sucedida, ou seja, se o email passado como parâmetro não
+	 *         identificar nenhum pesquisador associado a esta pesquisa.
 	 */
 	public boolean desassociaPesquisador(String emailPesquisador) {
 		super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
@@ -211,38 +242,43 @@ public class Pesquisa extends Validacao implements Serializable {
 		return true;
 	}
 
-    /**
-     * Busca se um termo esta contido na descricao.
-     * @param termo termo que se deseja procurar.
-     * @return String contendo o codigo e a descricao da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
-     */
-    public String buscaTermoDescricao(String termo) {
-        if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
-            return this.codigo + ": " + this.descricao;
-        }
-        return null;
-    }
+	/**
+	 * Busca se um termo esta contido na descricao.
+	 * 
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o codigo e a descricao da pesquisa, caso o termo seja
+	 *         mencionado, se nao, o objeto null é retornado.
+	 */
+	public String buscaTermoDescricao(String termo) {
+		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
+			return this.codigo + ": " + this.descricao;
+		}
+		return null;
+	}
 
-    /**
-     * Busca se um termo esta contido no campo de interesse.
-     * @param termo termo que se deseja procurar.
-     * @return String contendo o codigo e o campo de interesse da pesquisa, caso o termo seja mencionado, se nao, o objeto null é retornado.
-     */
-    public String buscaTermoCampoDeInteresse(String termo) {
-        if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
-            return this.codigo + ": " + this.campoDeInteresse;
-        }
-        return null;
-    }
+	/**
+	 * Busca se um termo esta contido no campo de interesse.
+	 * 
+	 * @param termo termo que se deseja procurar.
+	 * @return String contendo o codigo e o campo de interesse da pesquisa, caso o
+	 *         termo seja mencionado, se nao, o objeto null é retornado.
+	 */
+	public String buscaTermoCampoDeInteresse(String termo) {
+		if (this.campoDeInteresse.toLowerCase().contains(termo.toLowerCase())) {
+			return this.codigo + ": " + this.campoDeInteresse;
+		}
+		return null;
+	}
 
-    /**
-     * Metodo que permite a associacao de uma atividade a uma Pesquisa.
-     * @param atividade Atividade a ser associada
-     * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
-     */
+	/**
+	 * Metodo que permite a associacao de uma atividade a uma Pesquisa.
+	 * 
+	 * @param atividade Atividade a ser associada
+	 * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
+	 */
 	public boolean associaAtividade(Atividade atividade) {
-	
-		if(atividadesAssociadas.containsKey(atividade.getId())) {
+
+		if (atividadesAssociadas.containsKey(atividade.getId())) {
 			return false;
 		}
 		this.atividadesAssociadas.put(atividade.getId(), atividade);
@@ -250,23 +286,27 @@ public class Pesquisa extends Validacao implements Serializable {
 	}
 
 	/**
-     * Metodo que permite a desassociacao de uma atividade associada a uma Pesquisa.
-     * @param atividade Atividade a ser desassociada
-     * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
-     */
+	 * Metodo que permite a desassociacao de uma atividade associada a uma Pesquisa.
+	 * 
+	 * @param atividade Atividade a ser desassociada
+	 * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
+	 */
 	public boolean desassociaAtividade(String codigoAtividade) {
-		if(!atividadesAssociadas.containsKey(codigoAtividade)) {
+		if (!atividadesAssociadas.containsKey(codigoAtividade)) {
 			return false;
 		}
 		this.atividadesAssociadas.remove(codigoAtividade);
 		return true;
 	}
-	
+
 	/**
-	 * Retorna um valor booleano que indica se a pesquisa possui um pesquisador associado ou não.
+	 * Retorna um valor booleano que indica se a pesquisa possui um pesquisador
+	 * associado ou não.
+	 * 
 	 * @param emailPesquisador email que identifica o pesquisador.
-	 * @return true, caso o email passado como parâmetro identifique um pesquisador associado à pesquisa, ou false, caso o email
-	 * não identifique nenhum pesquisador associado à pesquisa.
+	 * @return true, caso o email passado como parâmetro identifique um pesquisador
+	 *         associado à pesquisa, ou false, caso o email não identifique nenhum
+	 *         pesquisador associado à pesquisa.
 	 */
 	public boolean containsPesquisador(String emailPesquisador) {
 		if (pesquisadoresAssociados.containsKey(emailPesquisador)) {
@@ -276,14 +316,15 @@ public class Pesquisa extends Validacao implements Serializable {
 	}
 
 	public Objetivo getObjetivo(String id) {
-		
+
 		return this.objetivos.get(id);
-	
+
 	}
 
-
 	/**
-	 * Metodo que verifica se existe determinada atividade associada a alguma pesquisa.
+	 * Metodo que verifica se existe determinada atividade associada a alguma
+	 * pesquisa.
+	 * 
 	 * @param codigoAtividade Codigo da atividade a ser verificada.
 	 * @return valor booleano indicando se a atividade esta associada ou nao.
 	 */
@@ -291,111 +332,132 @@ public class Pesquisa extends Validacao implements Serializable {
 		return atividadesAssociadas.containsKey(codigoAtividade);
 	}
 
-
 	public Collection<Pesquisador> getPesquisadoresAssociados() {
 		return this.pesquisadoresAssociados.values();
 	}
 
-
-	public Collection<Atividade> getAtividadesAssociadas() {	
+	public Collection<Atividade> getAtividadesAssociadas() {
 		return this.atividadesAssociadas.values();
 	}
 
-
+	/**
+	 * Gera e retorna uma String com os resultados da Pesquisa
+	 * 
+	 * @return String com os resultados da Pesquisa
+	 */
 	public String getResultados() {
-		
 		String resultado = "\"- Pesquisa: " + this.toString();
-		
-		resultado +=  System.lineSeparator() + "	- Resultados:";
-		
+
+		resultado += System.lineSeparator() + "	- Resultados:";
 		for (Atividade a : this.atividadesAssociadas.values()) {
-			
 			resultado += a.toStringResultado();
-			
 		}
-		
+
 		return resultado;
-		
+
 	}
 
-
+	/**
+	 * Remove um Objetivo indicado pelo ID do mapa de objetivos associados
+	 * 
+	 * @param idObjetivo String que identifica unicamente um objeto Objetivo
+	 */
 	public void removeObjetivo(String idObjetivo) {
-		
 		this.objetivos.remove(idObjetivo);
-		
+
 		if (this.objetivos.size() == 0) {
-			
 			this.statusObjetivo = false;
-			
 		}
-		
+
 	}
-	
+
+	/**
+	 * Retorna o valor do atributo statusObjetivo
+	 * 
+	 * @return boolean referente ao valor do atributo statusObjetivo
+	 */
 	public boolean hasObjetivo() {
 		return this.statusObjetivo;
 	}
 
-
+	/**
+	 * Avalia os objetivos associados e retorna o maior ID encontrado
+	 * 
+	 * @return String com maior ID de um objetivo associado
+	 */
 	public String getMaiorIDObjetivo() {
-		
+
 		List<String> lista = new ArrayList<String>();
-		
+
 		for (String s : this.objetivos.keySet()) {
-			
+
 			lista.add(s);
-			
+
 		}
-		
+
 		Collections.sort(lista);
-			
+
 		return lista.get(lista.size() - 1);
 	}
-	
+
+	/**
+	 * Gera e retorna um resumo do objeto Pesquisa em String
+	 * 
+	 * @return String com resumo do objeto Pesquisa
+	 */
 	public String getResumo() {
-		
+
 		String resumo = "\"- Pesquisa: " + this.toString();
 		resumo += System.lineSeparator() + "	- Pesquisadores:";
-		
 		for (Pesquisador p : this.pesquisadoresAssociados.values()) {
-			
 			resumo += System.lineSeparator() + "		- " + p.toString();
-			
 		}
-		
+
 		resumo += System.lineSeparator() + "	- Problema:";
-		
 		if (this.problema != null) {
-				  
 			resumo += System.lineSeparator() + "		- " + this.problema.getId() + " - " + this.problema.toString();
-			
 		}
-		
+
 		resumo += System.lineSeparator() + "	- Objetivos:";
-		
 		for (Objetivo o : this.objetivos.values()) {
-			
 			resumo += System.lineSeparator() + "		- " + o.toString();
-			
 		}
-		
+
 		resumo += System.lineSeparator() + "	- Atividades:";
-		
 		for (Atividade a : this.atividadesAssociadas.values()) {
-			
 			resumo += a.toStringResumo();
-			
 		}
-		
+
 		return resumo + "\"";
-		
+
 	}
 
+	/**
+	 * Altera o tipo de um pesquisador para Professor em caso de especializacao.
+	 * 
+	 * @param email         String que indica o email unico de cada pesquisador
+	 * @param professor Objeto Professor que indica o novo objeto a ser apontado
+	 *                      pelo identificador unico
+	 */
+	public void alteraPesquisadorProfessor(String email, Professor professor) {
 
-	public void alteraPesquisador(String email, Professor especializado) {
-		
 		this.pesquisadoresAssociados.remove(email);
-		this.pesquisadoresAssociados.put(email, especializado);
-		
+		this.pesquisadoresAssociados.put(email, professor);
+
 	}
-	
+
+	/**
+	 * Altera o tipo de um pesquisador para Aluno em caso de especializacao.
+	 * 
+	 * @param email         String que indica o email unico de cada pesquisador
+	 * @param aluno Objeto Aluno que indica o novo objeto a ser apontado
+	 *                      pelo identificador unico
+	 */
+	public void alteraPesquisadorAluno(String email, Aluno aluno) {
+
+		this.pesquisadoresAssociados.remove(email);
+		this.pesquisadoresAssociados.put(email, aluno);
+
+	}
+
 }

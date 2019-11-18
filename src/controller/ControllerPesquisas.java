@@ -1,8 +1,12 @@
 package controller;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
+import base.Aluno;
 import base.Atividade;
 import base.Objetivo;
 import base.Pesquisa;
@@ -22,17 +26,17 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	 * Armazena um mapa de pesquisas a partir dos seus codigos.
 	 */
 	private Map<String, Pesquisa> pesquisas;
-	
+
 	/**
 	 * Armazena um mapa de problemas associados a uma pesquisa indicada pelo seu ID
 	 */
 	private Map<String, String> problemasAssociados;
-	
+
 	/**
 	 * Armazena um mapa de objetivos associados a uma pesquisa indicada pelo seu ID
 	 */
 	private Map<String, String> objetivosAssociados;
-	
+
 	private String estrategia;
 
 	/**
@@ -82,19 +86,19 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	private void validaTamanhoDoCampo(String[] campo, int tamanho) {
-		
+
 		if (campo.length > tamanho) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		
+
 	}
 
 	private void validaTamanhoDoCampo(String campo, int tamanho) {
-		
+
 		if (campo.length() > tamanho) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		
+
 	}
 
 	/**
@@ -455,7 +459,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		return listagem;
 
 	}
-	
+
 	/**
 	 * Ordena as pesquisas do sistema por ordem do Problema de maior ID para o menor
 	 * 
@@ -503,7 +507,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		return listagem;
 
 	}
-	
+
 	/**
 	 * Ordena as pesquisas do sistema por ordem da de maior ID para o menor
 	 * 
@@ -538,8 +542,9 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
 	/**
 	 * Metodo que permite a associacao de uma atividade a uma pesquisa.
+	 * 
 	 * @param codigoPesquisa Codigo da Pesquisa
-	 * @param atividade Atividade a ser associada
+	 * @param atividade      Atividade a ser associada
 	 * @return valor booleando indicando se a associacao foi bem sucedida ou nao.
 	 */
 	public boolean associaAtividade(String codigoPesquisa, Atividade atividade) {
@@ -549,8 +554,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	/**
-	 * Metodo que permite a desassociacao de uma atividade que ja foi associada a uma pesquisa.
-	 * @param codigoPesquisa Codigo da pesquisa
+	 * Metodo que permite a desassociacao de uma atividade que ja foi associada a
+	 * uma pesquisa.
+	 * 
+	 * @param codigoPesquisa  Codigo da pesquisa
 	 * @param codigoAtividade codigo da atividade
 	 * @return valor booleando indicando se a desassociacao foi bem sucedida ou nao.
 	 */
@@ -559,15 +566,17 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		super.hasValor(this.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
 		return pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
-	
+
 	/**
 	 * Metodo que verifica se existe determinada atividade associada a uma pesquisa.
+	 * 
 	 * @param codigoAtividade Codigo da atividade.
-	 * @return valor booleando indicando se a atividade esta associada a alguma pesquisa ou nao.
+	 * @return valor booleando indicando se a atividade esta associada a alguma
+	 *         pesquisa ou nao.
 	 */
 	public boolean contemAtividadeAssociada(String codigoAtividade) {
 		for (Pesquisa pesquisa : pesquisas.values()) {
-			if(pesquisa.contemAtividadeAssociada(codigoAtividade)) {
+			if (pesquisa.contemAtividadeAssociada(codigoAtividade)) {
 				return true;
 			}
 		}
@@ -575,33 +584,29 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
-		
+
 		return this.pesquisas.get(id).getPesquisadoresAssociados();
-		
+
 	}
 
 	public Collection<String> getObjetivosAssociados(String id) {
-		
+
 		Collection<String> lista = new ArrayList<String>();
-		
+
 		for (String s : this.objetivosAssociados.keySet()) {
-			
+
 			if (this.objetivosAssociados.get(s).equals(id)) {
 
 				lista.add(s);
-				
+
 			}
 		}
-		
+
 		return lista;
-		
+
 	}
 
-	
-
-
-
-    public void salvarArquivos() {
+	public void salvarArquivos() {
 		Serializador serializador = new Serializador();
 		serializador.salvarArquivos(this.pesquisas, "Pesquisas");
 		serializador.salvarArquivos(this.problemasAssociados, "Problemas Associados");
@@ -616,16 +621,64 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	public void alteraPesquisador(String email, Professor especializado) {
-		
+
 		for (Pesquisa p : this.pesquisas.values()) {
-			
+
 			if (p.containsPesquisador(email)) {
-				
-				p.alteraPesquisador(email, especializado);
-				
+
+				p.alteraPesquisadorProfessor(email, especializado);
+
 			}
-			
+
 		}
+
+	}
+
+	/**
+	 * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes relativas
+	 * aos seus resultados e grava em um arquivo de texto armazenado na raiz do
+	 * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa-Resultados.txt"
+	 * 
+	 * @param id String que identifica unicamente um objeto Pesquisa
+	 * @throws IOException em caso de falhas, uma exceção de entrada e saida será
+	 *                     lançada
+	 */
+	public void gravarResultadosPesquisa(String id) throws IOException {
+
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+		super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
+		String resultados = this.pesquisas.get(id).getResultados() + "\"";
+		File file = new File(id + "-Resultados" + ".txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(resultados);
+		writer.close();
+
+	}
+
+	/**
+	 * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes que
+	 * caracterizam um resumo e grava em um arquivo de texto armazenado na raiz do
+	 * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa.txt"
+	 * 
+	 * @param id String que identifica unicamente um objeto Pesquisa
+	 * @throws IOException em caso de falhas, uma exceção de entrada e saida será
+	 *                     lançada
+	 */
+	public void gravarResumoPesquisa(String id) throws IOException {
+
+		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+		super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
+		String resumo = this.pesquisas.get(id).getResumo();
+		File file = new File("_" + id + ".txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(resumo);
+		writer.close();
+
+	}
+
+	public void alteraPesquisadorAluno(String email, Aluno aluno) {
+		
+		this.pesquisas.get(email).alteraPesquisadorAluno(email, aluno);
 		
 	}
 }

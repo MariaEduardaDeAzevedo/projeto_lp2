@@ -1,6 +1,4 @@
-/base/
-/comparators/
 /controller/
-/easyaccept.jar
-/excecoes/
 /facade/
+/comparators/
+/base/

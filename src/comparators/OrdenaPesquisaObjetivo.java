@@ -4,6 +4,9 @@ import java.util.Comparator;
 
 import base.Pesquisa;
 
+/**
+ * Classe de ordenacao de objetos pesquisa com base em seus objetivos associados
+ */
 public class OrdenaPesquisaObjetivo implements Comparator<Pesquisa> {
 
 	@Override

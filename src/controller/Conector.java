@@ -289,31 +289,6 @@ public class Conector extends Validacao {
 		
 	}
 	
-	public void gravarResultadosPesquisa(String id) throws IOException {
-		
-		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
-		String resultados = this.cPesquisas.getPesquisa(id).getResultados() + "\"";
-		File file = new File(id + "-Resultados" + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resultados);
-		writer.close();
-		
-	}
-	
-
-	public void gravarResumoPesquisa(String id) throws IOException {
-		
-		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
-		String resumo = this.cPesquisas.getPesquisa(id).getResumo();
-		File file = new File("_" + id + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resumo);
-		writer.close();
-		
-	}
-
-
-
 	/**
 	 * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
 	 * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
@@ -335,8 +310,6 @@ public class Conector extends Validacao {
 				
 		}
 		return "";
-		
-
 	}
 
 	public void salvarArquivos() {
@@ -359,17 +332,34 @@ public class Conector extends Validacao {
 		}
 	}
 	
+	/**
+	 * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a função "professor", para Professor, que é subclasse
+	 * de Pesquisador e tem três atributos a mais que sua superclasse, que são: formação, unidade e data de contratação.
+	 * @param email email do pesquisador que se quer especializar.
+	 * @param formacao grau de formação do professor.
+	 * @param unidade unidade alocada do professor.
+	 * @param data data de contratação do professor. 
+	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
-		
 		if (this.cPesquisador.isAssociado(email)) {
-			
 			this.cPesquisas.alteraPesquisador(email, cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data));
-			
 		} else {
-			
 			cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
-			
 		}
-		
+	}
+	
+	/**
+	 * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a função "estudante", para Aluno, que é subclasse
+	 * de Pesquisador, e tem dois atributos a mais que sua superclasse, que são: semestre de ingresso e índice de eficiência acadêmica (IEA).
+	 * @param email email do pesquisador que se quer especializar.
+	 * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor não pode ser um número menor ou igual a zero.
+	 * @param iea valor correspondente ao índice de eficiência acadêmica do aluno. Este valor não pode ser menor que zero e nem maior que um. 
+	 */
+	public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
+		if (this.cPesquisador.isAssociado(email)) {
+			this.cPesquisas.alteraPesquisadorAluno(email, cPesquisador.cadastraEspecialidadeAluno(email, semestre, iea));
+		} else {
+			cPesquisador.cadastraEspecialidadeAluno(email, semestre, iea);
+		}
 	}
 }
