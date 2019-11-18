@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import excecoes.ActivationException;
+
 class ItemTest {
 	private Item itemBase1;
 	private Item itemBase2;
@@ -50,7 +52,7 @@ class ItemTest {
 	@Test
 	void realizarItemRealizado() {
 		itemBase1.realizar(15);
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			itemBase1.realizar(15);
 		});
 	}

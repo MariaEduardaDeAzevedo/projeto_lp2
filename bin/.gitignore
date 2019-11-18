@@ -1,4 +1,5 @@
-/controller/
-/facade/
-/comparators/
 /base/
+/comparators/
+/controller/
+/excecoes/
+/facade/

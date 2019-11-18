@@ -11,7 +11,7 @@ class ObjetivoTest {
 
 		Objetivo objetivo = new Objetivo("GERAL", "Estimular mulheres a seguir em profissoes na area de TI", 4, 4,
 				"O1");
-		assertEquals(objetivo.toString(), "GERAL - Estimular mulheres a seguir em profissoes na area de TI - 8");
+		assertEquals(objetivo.toString(), "O1 - GERAL - Estimular mulheres a seguir em profissoes na area de TI - 8");
 
 	}
 
@@ -141,7 +141,7 @@ class ObjetivoTest {
 		
 		Objetivo objetivo = new Objetivo("GERAL", "Estimular mulheres a seguir em profissoes na area de TI", 4, 4,
 				"O1");
-		assertEquals(objetivo.toString(), "GERAL - Estimular mulheres a seguir em profissoes na area de TI - 8");
+		assertEquals(objetivo.toString(), "O1 - GERAL - Estimular mulheres a seguir em profissoes na area de TI - 8");
 		
 	}
 	

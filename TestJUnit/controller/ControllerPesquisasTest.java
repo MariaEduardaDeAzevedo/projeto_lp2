@@ -382,9 +382,9 @@ class ControllerPesquisasTest {
 	void associaProblemaValido() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
-		assertEquals("true", controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
+		assertEquals(true, controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
 		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
-		assertEquals("false", controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
+		assertEquals(false, controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
 	}
 	
 	@Test
@@ -435,9 +435,9 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
 		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
-		assertEquals("true", controllerPesquisasTest.desassociaProblema("HUM1"));
+		assertEquals(true, controllerPesquisasTest.desassociaProblema("HUM1"));
 		controllerPesquisasTest.desassociaProblema("HUM1");
-		assertEquals("false", controllerPesquisasTest.desassociaProblema("HUM1"));
+		assertEquals(false, controllerPesquisasTest.desassociaProblema("HUM1"));
 	}
 	
 	@Test
@@ -492,9 +492,9 @@ class ControllerPesquisasTest {
 	void associaObjetivoValido() {
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-		assertEquals("true", controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
+		assertEquals(true, controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
-		assertEquals("false", controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
+		assertEquals(false, controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
 	}
 	
 	@Test
@@ -576,9 +576,9 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
-		assertEquals("true", controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
+		assertEquals(true, controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
 		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
-		assertEquals("false", controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
+		assertEquals(false, controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
 	}
 	
 	@Test

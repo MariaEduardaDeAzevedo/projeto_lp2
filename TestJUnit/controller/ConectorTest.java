@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 class ConectorTest {
 
     private Conector cGeralTeste;
@@ -17,6 +21,7 @@ class ConectorTest {
 	private ControllerProblemas cProblemasTeste;
 	private ControllerObjetivos cObjetivosTeste;
 	private ControllerBuscas cBuscasTeste;
+	private File dados;
 	
     @BeforeEach
     void inicializaAtributos() {
@@ -32,6 +37,7 @@ class ConectorTest {
         this.cBuscasTeste = new ControllerBuscas();
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
                 cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
+        this.dados = new File("Dados");
     }
     @Test
     void associaAtividadeValida() {
@@ -370,7 +376,7 @@ class ConectorTest {
     void associaProblemaValidoTrue() {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-    	assertEquals("true", cGeralTeste.associaProblema("HUM1", "P2"));
+    	assertEquals(true, cGeralTeste.associaProblema("HUM1", "P2"));
     }
     
     @Test
@@ -378,7 +384,7 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cGeralTeste.associaProblema("HUM1", "P2");
-    	assertEquals("false", cGeralTeste.associaProblema("HUM1", "P2"));
+    	assertEquals(false, cGeralTeste.associaProblema("HUM1", "P2"));
     }
     
     @Test
@@ -432,9 +438,9 @@ class ConectorTest {
     	cProblemasTeste.cadastraProblema("A interferência americana nos países da América Latina", 4);
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cGeralTeste.associaProblema("HUM1", "P1");
-    	assertEquals("true", cGeralTeste.desassociaProblema("HUM1"));
+    	assertEquals(true, cGeralTeste.desassociaProblema("HUM1"));
     	cGeralTeste.desassociaProblema("HUM1");
-    	assertEquals("false", cGeralTeste.desassociaProblema("HUM1"));
+    	assertEquals(false, cGeralTeste.desassociaProblema("HUM1"));
     }
     
     @Test
@@ -489,9 +495,9 @@ class ConectorTest {
     void associaObjetivoValido() {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
-    	assertEquals("true", cGeralTeste.associaObjetivo("HUM1", "O1"));
+    	assertEquals(true, cGeralTeste.associaObjetivo("HUM1", "O1"));
     	cGeralTeste.associaObjetivo("HUM1", "O1");
-    	assertEquals("false", cGeralTeste.associaObjetivo("HUM1", "O1"));
+    	assertEquals(false, cGeralTeste.associaObjetivo("HUM1", "O1"));
     }
     
     @Test
@@ -573,9 +579,9 @@ class ConectorTest {
     	cPesquisaTeste.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
     	cObjetivosTeste.cadastraObjetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2);
     	cGeralTeste.associaObjetivo("HUM1", "O1");
-    	assertEquals("true", cGeralTeste.desassociaObjetivo("HUM1", "O1"));
+    	assertEquals(true, cGeralTeste.desassociaObjetivo("HUM1", "O1"));
     	cGeralTeste.desassociaObjetivo("HUM1", "O1");
-    	assertEquals("false", cGeralTeste.desassociaObjetivo("HUM1", "O1"));
+    	assertEquals(false, cGeralTeste.desassociaObjetivo("HUM1", "O1"));
     }
     
     @Test
@@ -644,5 +650,34 @@ class ConectorTest {
     	assertThrows(ActivationException.class, () -> {
     		cGeralTeste.desassociaObjetivo("HUM1", "O1");
         });
+    }
+    
+    @Test
+    void salvarArquivosComum() {
+    	
+    	this.cGeralTeste.salvarArquivos();
+    	List<String> valores = new ArrayList<String>();
+    	valores.add("Pesquisas");
+    	valores.add("Pesquisadores");
+    	valores.add("Objetivos");
+    	valores.add("Problemas");
+    	valores.add("Atividades");
+    	valores.add("Problemas Associados");
+    	valores.add("Objetivos Associados");
+    	valores.add("Proximo ID das Atividades");
+    	valores.add("Proximo ID dos Objetivos");
+    	valores.add("Proximo ID dos Problemas");
+    	
+    	boolean resultado = true;
+    	
+    	for (String s : this.dados.list()) {
+    		if (! valores.contains(s)) {
+    			resultado = false;
+    			break;	
+    		}
+    		File file = new File("Dados" + File.separator + s);
+    		file.delete();
+    	}
+    	assertEquals(true, resultado);	
     }
 }
