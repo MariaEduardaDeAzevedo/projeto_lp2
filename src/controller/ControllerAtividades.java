@@ -377,7 +377,7 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	public String hasItemPendente() {
 		
 		for (Atividade atividade : atividades.values()) {
-			if(atividade.hasItemPendente()) {
+			if(!atividade.hasItemPendente()) {
 				return atividade.getId();
 			}
 		}
