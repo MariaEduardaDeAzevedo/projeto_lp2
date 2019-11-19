@@ -406,6 +406,8 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
+	 * @param precedente atividade precedente, cuja a qual se quer analisar as suas sucessoras.
+	 * @param comparacao primeira atividade da sequência de atividades que se quer analisar.
 	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
 	 */
 	public String pegaMaiorRiscoAtividades(Atividade precedente, Atividade comparacao) {
