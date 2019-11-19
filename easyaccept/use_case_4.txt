@@ -41,10 +41,10 @@ expectError "Item nao pode ser nulo ou vazio." cadastraItem codigo="A1" item=""
 
 #exibindo atividades
 
-cadastraAtividade Descricao="Analise das intencoes de votos de diversas pesquisas para comparar com a analise das avaliacao de modelos preditivos nas eleicoes brasileiras." nivelRisco="BAIXO" descricaoRisco="Sem grandes riscos, apenas analise de dados."
+cadastraAtividade Descricao="Analise das intencoes de votos de diversas pesquisas para comparar com a analise das avaliacao de modelos preditivos nas eleicoes brasileiras." nivelRisco="BAIXO" descricaoRisco="Sem grandes riscos, apenas analise de arquivo."
 expect "Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.) | PENDENTE - Monitoramento facebook/messenger | PENDENTE - Monitoramento slack | PENDENTE - Monitoramento discord | PENDENTE - Monitoramento whatsapp" exibeAtividade codigo="A1"
 expect "Degustacao de uma nova remeca de cervejas, criadas a partir de um novo processo de fermentacao. (MEDIO - Degustadores podem sofrer com problemas de saude nessa atividade, tal como ser alergico a algum ingrediente da cerveja.) | PENDENTE - Degustacao com cerveja a temperatura ambiente | PENDENTE - Degustacao com cerveja a temperatura acima da ambiente(quente) | PENDENTE - Degustacao com cerveja a temperatura abaixo da ambiente(frio)" exibeAtividade codigo="A2"
-expect "Analise das intencoes de votos de diversas pesquisas para comparar com a analise das avaliacao de modelos preditivos nas eleicoes brasileiras. (BAIXO - Sem grandes riscos, apenas analise de dados.)" exibeAtividade codigo="A4"
+expect "Analise das intencoes de votos de diversas pesquisas para comparar com a analise das avaliacao de modelos preditivos nas eleicoes brasileiras. (BAIXO - Sem grandes riscos, apenas analise de arquivo.)" exibeAtividade codigo="A4"
 expectError "Atividade nao encontrada" exibeAtividade codigo="A3"
 
 

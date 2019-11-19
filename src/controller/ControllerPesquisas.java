@@ -604,17 +604,17 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	public void salvarArquivos() {
-		Dados dados = new Dados();
-		dados.salvarArquivos(this.pesquisas, "Pesquisas");
-		dados.salvarArquivos(this.problemasAssociados, "Problemas Associados");
-		dados.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
+		Arquivo arquivo = new Arquivo();
+		arquivo.salvarArquivos(this.pesquisas, "Pesquisas");
+		arquivo.salvarArquivos(this.problemasAssociados, "Problemas Associados");
+		arquivo.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
 	}
 
 	public void carregarArquivos() {
-		Dados dados = new Dados();
-		this.pesquisas = (TreeMap<String, Pesquisa>) dados.carregarArquivos("Pesquisas");
-		this.problemasAssociados = (HashMap<String, String>) dados.carregarArquivos("Problemas Associados");
-		this.objetivosAssociados = (HashMap<String, String>) dados.carregarArquivos("Objetivos Associados");
+		Arquivo arquivo = new Arquivo();
+		this.pesquisas = (TreeMap<String, Pesquisa>) arquivo.carregarArquivos("Pesquisas");
+		this.problemasAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Problemas Associados");
+		this.objetivosAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Objetivos Associados");
 	}
 
 	public void alteraPesquisador(String email, Professor especializado) {

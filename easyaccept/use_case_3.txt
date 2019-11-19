@@ -13,9 +13,9 @@ cadastraProblema descricao="A dificuldade da predicao do sistema eleitoral brasi
 #ERRO NO CADASTRO DE NOVOS PROBLEMAS
 
 expectError "Campo descricao nao pode ser nulo ou vazio." cadastraProblema descricao="" viabilidade=2
-expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar dados precisos em experimentos sobre dinamica em gravidade 0" viabilidade=-3
-expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar dados precisos em experimentos sobre dinamica em gravidade 0" viabilidade=0
-expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar dados precisos em experimentos sobre dinamica em gravidade 0" viabilidade=111
+expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar arquivo precisos em experimentos sobre dinamica em gravidade 0" viabilidade=-3
+expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar arquivo precisos em experimentos sobre dinamica em gravidade 0" viabilidade=0
+expectError "Valor invalido de viabilidade." cadastraProblema descricao="A dificuldade de gerar arquivo precisos em experimentos sobre dinamica em gravidade 0" viabilidade=111
 
 #CRIANDO NOVOS OBJETIVOS
 

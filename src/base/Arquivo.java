@@ -3,15 +3,15 @@ package base;
 import java.io.*;
 import java.util.Map;
 
-public class Dados {
+public class Arquivo {
 
-    public Dados() {
+    public Arquivo() {
     }
 
     public void salvarArquivos(Map entidades, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream("Arquivo" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class Dados {
     public void salvarArquivoInt(int numero, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream("Arquivo" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class Dados {
     public Map carregarArquivos(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream("Arquivo" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class Dados {
     public int carregarArquivoInt(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream("Arquivo" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();

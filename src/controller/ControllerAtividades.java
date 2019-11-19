@@ -3,8 +3,8 @@ package controller;
 import java.io.Serializable;
 import java.util.*;
 
+import base.Arquivo;
 import base.Atividade;
-import base.Dados;
 
 /**
  * Entidade controladora de objetos Atividade e Item
@@ -326,15 +326,15 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	}
 
 	public void salvarArquivos() {
-		Dados dados = new Dados();
-		dados.salvarArquivos(this.atividades, "Atividades");
-		dados.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
+		Arquivo arquivo = new Arquivo();
+		arquivo.salvarArquivos(this.atividades, "Atividades");
+		arquivo.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
 	}
 
 	public void carregarArquivos() throws Exception {
-		Dados dados = new Dados();
-		this.atividades = (LinkedHashMap<String, Atividade>) dados.carregarArquivos("Atividades");
-		this.proximoId = dados.carregarArquivoInt("Proximo ID das Atividades");
+		Arquivo arquivo = new Arquivo();
+		this.atividades = (LinkedHashMap<String, Atividade>) arquivo.carregarArquivos("Atividades");
+		this.proximoId = arquivo.carregarArquivoInt("Proximo ID das Atividades");
 	}
 	
 	
