@@ -57,6 +57,10 @@ public class Atividade extends Validacao implements Serializable {
 	 */
 	private int numeroResultado;
 	
+	/**
+	 * Atividade subsequente que deve ser realizada após esta atividade. Por padrão, quando uma atividade é contruída, esta não
+	 * tem uma atividade subsequente.
+	 */
 	private Atividade proxAtv;
 	
 	/**

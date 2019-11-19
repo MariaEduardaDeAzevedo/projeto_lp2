@@ -16,10 +16,10 @@ class ConectorTest {
 	private ControllerPesquisador cPesquisadorTeste;
 	private ControllerProblemas cProblemasTeste;
 	private ControllerObjetivos cObjetivosTeste;
-	
-    /*@BeforeEach
+	/**
+	 * 
+    @BeforeEach
     void inicializaAtributos() {
-        this.cGeralTeste = new Conector();
         this.cPesquisaTeste = new ControllerPesquisas();
         this.cAtividadeTeste = new ControllerAtividades();
         this.cPesquisadorTeste = new ControllerPesquisador();
@@ -29,10 +29,11 @@ class ConectorTest {
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
         this.cProblemasTeste = new ControllerProblemas();
         this.cObjetivosTeste = new ControllerObjetivos();
+        this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste, cAtividadeTeste, cObjetivosTeste, null);
     }
     @Test
     void associaAtividadeValida() {
-        assertTrue(cGeralTeste.associaAtividade(cPesquisaTeste, cAtividadeTeste, "COM1", "A1"));
+        assertTrue(cGeralTeste.associaAtividade("COM1", "A1"));
     }
 
     @Test
@@ -642,5 +643,7 @@ class ConectorTest {
     	assertThrows(ActivationException.class, () -> {
     		cGeralTeste.desassociaObjetivo(cPesquisaTeste, cProblemasTeste, "HUM1", "O1");
         });
-    }*/
+    }
+}
+	*/
 }
