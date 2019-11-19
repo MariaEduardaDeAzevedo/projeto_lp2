@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.ControllerAtividades;
+import excecoes.ActivationException;
 
 class ControllerAtividadesTest {
 	
@@ -315,7 +316,7 @@ class ControllerAtividadesTest {
 	@Test
 	void executaAtividadeRepetida() {
 		controller3.executaAtividade("A3", 1, 50);
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(ActivationException.class, () -> {
 			controller3.executaAtividade("A3", 1, 50);
 		});
 	}

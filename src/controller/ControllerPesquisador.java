@@ -110,7 +110,7 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 	 * @param formacao grau de formação do professor.
 	 * @param unidade unidade alocada do professor.
 	 * @param data data de contratação do professor.
-	 * @return 
+	 * @return Objeto Professor
 	 */
 	public Professor cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
@@ -133,8 +133,9 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 	 * @param email email do pesquisador que se quer especializar.
 	 * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor não pode ser um número menor ou igual a zero.
 	 * @param iea valor correspondente ao índice de eficiência acadêmica do aluno. Este valor não pode ser menor que zero e nem maior que um.
+	 * @return Objeto Aluno
 	 */
-	public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
+	public Aluno cadastraEspecialidadeAluno(String email, int semestre, double iea) {
 		super.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		super.validaString(String.valueOf(semestre), "Campo semestre nao pode ser nulo ou vazio.");
 		super.validaString(String.valueOf(iea), "Campo IEA nao pode ser nulo ou vazio.");
@@ -145,6 +146,7 @@ public class ControllerPesquisador extends Validacao implements Serializable {
 		Aluno especializado = new Aluno(naoEspecializado.getNome(), naoEspecializado.getFuncao(), naoEspecializado.getBiografia(), naoEspecializado.getEmail(), naoEspecializado.getFoto(), semestre, iea);
 		pesquisadores.remove(email);
 		pesquisadores.put(email, especializado);
+		return especializado;
 	}
 
 	/**

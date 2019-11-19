@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.*;
 
 import base.Atividade;
+import base.Pesquisa;
 import base.Problema;
+import comparators.OrdenaAtvdsMaiorDuracao;
+import comparators.OrdenaAtvdsMenosPendencias;
+import comparators.OrdenaPesquisaID;
 
 /**
  * Entidade controladora de objetos Atividade e Item
@@ -25,6 +29,8 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	 * objeto Atividade
 	 */
 	private int proximoId;
+
+
 
 	/**
 	 * Constroi um objeto ControllerAtividades
@@ -241,12 +247,16 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.hasValor(this.atividades.containsKey(codigoAtividade), "Atividade nao encontrada");
 		return this.atividades.get(codigoAtividade).getDuracao();
 	}
-	
+
 	/**
-	 * Define a atividade subsequente de outra atividade cadastrada no sistema.
-	 * A atividade precedente não pode ter uma subsequente para que a operação aconteça com sucesso.
-	 * @param idPrecedente id da atividade precedente, ou seja, da atividade a qual se quer adicionar uma subsequente.
-	 * @param idSubsequente id da atividade que se deseja adicionar como subsequente à outra atividade cadastrada no sistema.
+	 * Define a atividade subsequente de outra atividade cadastrada no sistema. A
+	 * atividade precedente não pode ter uma subsequente para que a operação
+	 * aconteça com sucesso.
+	 * 
+	 * @param idPrecedente  id da atividade precedente, ou seja, da atividade a qual
+	 *                      se quer adicionar uma subsequente.
+	 * @param idSubsequente id da atividade que se deseja adicionar como subsequente
+	 *                      à outra atividade cadastrada no sistema.
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
 		super.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
@@ -256,11 +266,13 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.verificaAtvPrcdnt(atividades.get(idPrecedente).hasProx(), "Atividade ja possui uma subsequente.");
 		atividades.get(idPrecedente).defProx(atividades.get(idSubsequente));
 	}
-	
+
 	/**
 	 * Retira a atividade subsequente de uma atividade cadastrada no sistema.
-	 * Retirar uma atividade subsequente não significa retirar todas as outras que sucedem esta atividade subsequente, uma vez que, 
-	 * quando esta é retirada, a sequência é quebrada em duas.
+	 * Retirar uma atividade subsequente não significa retirar todas as outras que
+	 * sucedem esta atividade subsequente, uma vez que, quando esta é retirada, a
+	 * sequência é quebrada em duas.
+	 * 
 	 * @param idPrecedente id da atividade da qual se quer retirar sua subsequente.
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
@@ -268,23 +280,31 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.hasValor(atividades.containsKey(idPrecedente), "Atividade nao encontrada.");
 		atividades.get(idPrecedente).retiraProx();
 	}
-	
+
 	/**
-	 * Retorna um número inteiro que corresponde à quantidade de atividades subsequentes uma atividade cadastrada no sistema tem.
-	 * @param idPrecedente id da atividade que se quer contar quantas atividades a sucedem.
-	 * @return inteiro equivalente à quantidade de atividades que sucedem uma atividade cadastrada no sistema.
+	 * Retorna um número inteiro que corresponde à quantidade de atividades
+	 * subsequentes uma atividade cadastrada no sistema tem.
+	 * 
+	 * @param idPrecedente id da atividade que se quer contar quantas atividades a
+	 *                     sucedem.
+	 * @return inteiro equivalente à quantidade de atividades que sucedem uma
+	 *         atividade cadastrada no sistema.
 	 */
 	public int contaProximos(String idPrecedente) {
 		super.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		super.hasValor(atividades.containsKey(idPrecedente), "Atividade nao encontrada.");
 		return atividades.get(idPrecedente).contaProximos();
 	}
-	
+
 	/**
-	 * Retorna o id de uma enésima atividade que sucede uma atividade cadastrada no sistema.
-	 * @param idAtividade id da atividade que se quer retornar o id de algum de suas outras atividades sucessoras.
+	 * Retorna o id de uma enésima atividade que sucede uma atividade cadastrada no
+	 * sistema.
+	 * 
+	 * @param idAtividade      id da atividade que se quer retornar o id de algum de
+	 *                         suas outras atividades sucessoras.
 	 * @param enesimaAtividade index da atividade que se quer retornar o id.
-	 * @return String correspondente ao id da sucessora de número n (representado por enesimaAtividade).
+	 * @return String correspondente ao id da sucessora de número n (representado
+	 *         por enesimaAtividade).
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
 		super.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
@@ -292,12 +312,15 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.hasValor(atividades.containsKey(idAtividade), "Atividade inexistente.");
 		return atividades.get(idAtividade).pegaProximo(enesimaAtividade);
 	}
-	
+
 	/**
-	 * Retorna o id da atividade de maior risco de uma sequência de atividades cadastradas no sistema.
-	 * @param idAtividade id da atividade que se quer retornar o id da atividade de maior risco.
-	 * @return String correspondente ao id da atividade de maior risco da sequência das sucessoras de uma determinada
-	 * atividade cadastrada no sistema.
+	 * Retorna o id da atividade de maior risco de uma sequência de atividades
+	 * cadastradas no sistema.
+	 * 
+	 * @param idAtividade id da atividade que se quer retornar o id da atividade de
+	 *                    maior risco.
+	 * @return String correspondente ao id da atividade de maior risco da sequência
+	 *         das sucessoras de uma determinada atividade cadastrada no sistema.
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
 		super.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
@@ -312,9 +335,15 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		serializador.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
 	}
 
-    public void carregarArquivos() throws Exception {
+	public void carregarArquivos() throws Exception {
 		Serializador serializador = new Serializador();
 		this.atividades = (LinkedHashMap<String, Atividade>) serializador.carregarArquivos("Atividades");
 		this.proximoId = serializador.carregarArquivoInt("Proximo ID das Atividades");
 	}
+	
+	
+
+	
+
+	
 }

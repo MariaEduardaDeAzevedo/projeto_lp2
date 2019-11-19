@@ -181,19 +181,12 @@ public class Atividade extends Validacao implements Serializable {
 	public int contaItensPendentes() {
 
 		int contador = 0;
-
 		for (Item i : this.itens) {
-
 			if (!i.getStatus()) {
-
 				contador++;
-
 			}
-
 		}
-
 		return contador;
-
 	}
 
 	/**
@@ -207,17 +200,11 @@ public class Atividade extends Validacao implements Serializable {
 		int contador = 0;
 
 		for (Item i : this.itens) {
-
 			if (i.getStatus()) {
-
 				contador++;
-
 			}
-
 		}
-
 		return contador;
-
 	}
 
 	/**
@@ -261,7 +248,7 @@ public class Atividade extends Validacao implements Serializable {
 		if(item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
-		this.itens.get(item - 1).realizar();
+		this.itens.get(item - 1).realizar(duracao);
 		this.duracao += duracao;
 	}
 
@@ -428,8 +415,9 @@ public class Atividade extends Validacao implements Serializable {
 		
 		for (int i = 0; i < this.itens.size(); i++) {
 			if (this.itens.get(i).getStatus() == true) {
-				listagem += System.lineSeparator()  + "			- ITEM" + (i + 1) + " - " + this.duracao/this.itens.size();
-			}
+					listagem += System.lineSeparator()  + "			- ITEM" + (i + 1) + " - " + this.itens.get(i).getDuracao();
+				}
+				
 		}
 		
 		for (String s : this.resultados.values()) {
@@ -444,12 +432,19 @@ public class Atividade extends Validacao implements Serializable {
 		String listagem = System.lineSeparator() + String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
 		
 		for (int i = 0; i < this.itens.size(); i++) {
-			if (this.itens.get(i).getStatus() == true) {
-				listagem += System.lineSeparator()  + "			- " + this.itens.get(i).getStatusString() + " - ITEM" + (i + 1) ;
-			}
+			
+			listagem += System.lineSeparator()  + "			- " + this.itens.get(i).getStatusString() + " - ITEM" + (i + 1) ;
+		
 		}
 		
 		return listagem;
 		
 	}
+	
+	public boolean hasItemPendente() {
+        if(contaItensPendentes() == 0) {
+        	return false;
+        }
+        return true;
+    }
 }

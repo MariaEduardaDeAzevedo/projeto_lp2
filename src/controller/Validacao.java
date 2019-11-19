@@ -161,25 +161,17 @@ public class Validacao {
 	 *                 necessária, coloque uma String vazia.
 	 */
 	protected void hasAssociado(String id1, String id2, Map<String, String> mapa, boolean operacao, String mensagem) {
-
 		if (mapa.containsKey(id1) && operacao && mapa.get(id1).equals(id2)) {
-
 			throw new IllegalArgumentException();
-
 		}
 
 		if (mapa.containsValue(id2) && operacao) {
-
 			throw new AssociationException(mensagem);
-
 		}
 
 		if (!(mapa.containsKey(id1)) && !(operacao)) {
-
 			throw new NullPointerException();
-
 		}
-
 	}
 	
 	protected void validaNumeroResultado(int numero, String mensagem){

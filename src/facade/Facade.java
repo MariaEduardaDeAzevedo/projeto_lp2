@@ -182,7 +182,7 @@ public class Facade {
     }
     
     public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
-    	cPesquisador.cadastraEspecialidadeAluno(email, semestre, IEA);
+    	cGeral.cadastraEspecialidadeAluno(email, semestre, IEA);
     }
     
     public String listaPesquisadores(String tipo) {
@@ -254,25 +254,25 @@ public class Facade {
     //US10
     
 	public void configuraEstrategia(String estrategia) {
-    	this.cGeral.configuraEstrategia(estrategia);
+    	this.cPesquisa.configuraEstrategia(estrategia);
 
     }
 
     public String proximaAtividade(String codigoPesquisa) {
-    	return this.cGeral.proximaAtividade(codigoPesquisa);
+    	return this.cPesquisa.proximaAtividade(codigoPesquisa);
 
     }
     
     //US11
     public void gravarResultados(String id) throws IOException {
     	
-    	this.cGeral.gravarResultadosPesquisa(id);
+    	this.cPesquisa.gravarResultadosPesquisa(id);
     	
     }
     
     public void gravarResumo(String id) throws IOException {
     	
-    	this.cGeral.gravarResumoPesquisa(id);
+    	this.cPesquisa.gravarResumoPesquisa(id);
     	
     }
 
@@ -280,8 +280,8 @@ public class Facade {
     public void salvar(){
         this.cGeral.salvarArquivos();
     }
-    /*
+
     public void carregar(){
         this.cGeral.carregarArquivos();
-    }*/
+    }
 }

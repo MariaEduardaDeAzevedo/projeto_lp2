@@ -90,7 +90,7 @@
 #### Codificado:
 - Métodos da Facade
 #### Falta:
-- Adequar todos os EasyAccepts
-- Montar uma estratégia para a criação de uma Interface de Professor e Aluno
-- Documentar
+- Concluir documentação
+- Revisar o código e o relatório
+- Gerar Diagrama de Classes
 - Testar US12
