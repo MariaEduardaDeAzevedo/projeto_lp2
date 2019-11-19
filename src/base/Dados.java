@@ -1,11 +1,11 @@
-package controller;
+package base;
 
 import java.io.*;
 import java.util.Map;
 
-public class Serializador {
+public class Dados {
 
-    public Serializador() {
+    public Dados() {
     }
 
     public void salvarArquivos(Map entidades, String nomeDoArquivo) {

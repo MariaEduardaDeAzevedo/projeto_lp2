@@ -2,11 +2,11 @@ package controller;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 import base.Problema;
+import base.Dados;
 
 /**
  * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operações relacionadas
@@ -88,14 +88,14 @@ public class ControllerProblemas extends Validacao implements Serializable {
     }
 
     public void salvarArquivos() {
-		Serializador serializador = new Serializador();
-		serializador.salvarArquivos(this.problemas, "Problemas");
-		serializador.salvarArquivoInt(this.idNumber, "Proximo ID dos Problemas");
+		Dados dados = new Dados();
+		dados.salvarArquivos(this.problemas, "Problemas");
+		dados.salvarArquivoInt(this.idNumber, "Proximo ID dos Problemas");
     }
 
     public void carregarArquivos() throws Exception {
-		Serializador serializador = new Serializador();
-		this.problemas = (TreeMap<String, Problema>) serializador.carregarArquivos("Problemas");
-		this.idNumber = serializador.carregarArquivoInt("Proximo ID dos Problemas");
+		Dados dados = new Dados();
+		this.problemas = (TreeMap<String, Problema>) dados.carregarArquivos("Problemas");
+		this.idNumber = dados.carregarArquivoInt("Proximo ID dos Problemas");
 	}
 }

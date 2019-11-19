@@ -2,11 +2,11 @@ package controller;
 
 import java.io.Serializable;
 import java.util.*;
-import java.util.Map.Entry;
 
 import base.Pesquisador;
 import base.Aluno;
 import base.Professor;
+import base.Dados;
 
 /**
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador. 
@@ -224,13 +224,13 @@ public class ControllerPesquisador extends Validacao implements Serializable {
     }
 
     public void salvarArquivos() {
-		Serializador serializador = new Serializador();
-		serializador.salvarArquivos(this.pesquisadores, "Pesquisadores");
+		Dados dados = new Dados();
+		dados.salvarArquivos(this.pesquisadores, "Pesquisadores");
     }
 
     public void carregarArquivos() throws Exception {
-		Serializador serializador = new Serializador();
-		this.pesquisadores = (TreeMap<String, Pesquisador>) serializador.carregarArquivos("Pesquisadores");
+		Dados dados = new Dados();
+		this.pesquisadores = (TreeMap<String, Pesquisador>) dados.carregarArquivos("Pesquisadores");
 	}
     
 	public void addAssociado(String emailPesquisador) {

@@ -6,14 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
-import base.Aluno;
-import base.Atividade;
-import base.Objetivo;
-import base.Pesquisa;
-import base.Pesquisador;
-import base.Problema;
-import base.Professor;
-import excecoes.ActivationException;
+import base.*;
 import comparators.*;
 
 /**
@@ -611,17 +604,17 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	}
 
 	public void salvarArquivos() {
-		Serializador serializador = new Serializador();
-		serializador.salvarArquivos(this.pesquisas, "Pesquisas");
-		serializador.salvarArquivos(this.problemasAssociados, "Problemas Associados");
-		serializador.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
+		Dados dados = new Dados();
+		dados.salvarArquivos(this.pesquisas, "Pesquisas");
+		dados.salvarArquivos(this.problemasAssociados, "Problemas Associados");
+		dados.salvarArquivos(this.objetivosAssociados, "Objetivos Associados");
 	}
 
 	public void carregarArquivos() {
-		Serializador serializador = new Serializador();
-		this.pesquisas = (TreeMap<String, Pesquisa>) serializador.carregarArquivos("Pesquisas");
-		this.problemasAssociados = (HashMap<String, String>) serializador.carregarArquivos("Problemas Associados");
-		this.objetivosAssociados = (HashMap<String, String>) serializador.carregarArquivos("Objetivos Associados");
+		Dados dados = new Dados();
+		this.pesquisas = (TreeMap<String, Pesquisa>) dados.carregarArquivos("Pesquisas");
+		this.problemasAssociados = (HashMap<String, String>) dados.carregarArquivos("Problemas Associados");
+		this.objetivosAssociados = (HashMap<String, String>) dados.carregarArquivos("Objetivos Associados");
 	}
 
 	public void alteraPesquisador(String email, Professor especializado) {
