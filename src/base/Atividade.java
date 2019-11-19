@@ -408,10 +408,10 @@ public class Atividade extends Validacao implements Serializable {
 	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
 	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
 	 */
-	public String pegaMaiorRiscoAtividades(Atividade precedente) {
+	public String pegaMaiorRiscoAtividades(Atividade precedente, Atividade comparacao) {
 		super.hasValor(this.hasProx(), "Nao existe proxima atividade.");
 		if (!this.getProx().hasProx()) {
-			if (this.equals(precedente) && this.contaProximos() == 1) {
+			if (this.equals(comparacao) && this.contaProximos() == 1) {
 				return this.getProx().getId();
 			}
 			if (this.converteRisco() > this.getProx().converteRisco()) {
@@ -429,9 +429,9 @@ public class Atividade extends Validacao implements Serializable {
 			}
 		}
 		if (this.converteRisco() > this.getProx().converteRisco()) {
-			return this.getProx().pegaMaiorRiscoAtividades(this);
+			return this.getProx().pegaMaiorRiscoAtividades(this, comparacao);
 		} else {
-			return this.getProx().pegaMaiorRiscoAtividades(this.getProx());
+			return this.getProx().pegaMaiorRiscoAtividades(this.getProx(), comparacao);
 		}
 	}
 
