@@ -37,8 +37,6 @@ public class Conector extends Validacao {
 	
 	/**
 	 * Associa um pesquisador cadastrado no sistema (ou qualquer uma de suas especializações) com uma pesquisa, que também deve estar cadastrada no sistema.
-	 * @param cPesquisador controller de Pesquisador, que armazena todas os pesquisadores cadastrados no sistema.
-	 * @param cPesquisas controller de Pesquisa, que armazena todas as pesquisas cadastradas no sistema.
 	 * @param idPesquisa identificador único da pesquisa.
 	 * @param emailPesquisador email do pesquisador que se quer associar a pesquisa.
 	 * @return um valor booleano que indica se a associação do pesquisador a pesquisa foi realizada com sucesso. Se o pesquisador já estiver associado à pesquisa, é retornado
@@ -60,7 +58,6 @@ public class Conector extends Validacao {
     
     /**
      * Desassocia um pesquisador associado a uma pesquisa cadastrada no sistema.
-     * @param cPesquisas controller de Pesquisa, que armazena todas as pesquisas cadastradas no sistema.
      * @param idPesquisa id da pesquisa a que se quer desassociar o pesquisador.
      * @param emailPesquisador email do pesquisador que se quer desassociar da pesquisa.
      * @return retorna um valor booleano que indica se a operação foi realizada com sucesso ou não. É retornado true quando
@@ -84,9 +81,6 @@ public class Conector extends Validacao {
 	 * Associa um objeto Problema a um objeto Pesquisa pelos seus IDs indicados.
 	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
 	 * contrário, retorna-se "false"
-	 * 
-	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
-	 * @param cProblema  Entidade controladora de objetos Problema
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
 	 * @param idProblema String que representa unicamente um objeto Problema
 	 * @return String referente ao sucesso da operação
@@ -104,7 +98,6 @@ public class Conector extends Validacao {
 	 * contrário, retorna-se "false"
 	 * 
 	 * 
-	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
 	 * @return String referente ao sucesso da operação
 	 */
@@ -119,8 +112,6 @@ public class Conector extends Validacao {
 	 * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
 	 * contrário, retorna-se "false"
 	 * 
-	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
-	 * @param cObjetivo  Entidade controladora de objetos Objetivo
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
 	 * @param idObjetivo String que representa unicamente um objeto Objetivo
 	 * @return String referente ao sucesso da operação
@@ -138,10 +129,8 @@ public class Conector extends Validacao {
 	 * contrário, retorna-se "false"
 	 * 
 	 * 
-	 * @param cPesquisa  Entidade controladora de objetos Pesquisa
-	 * @param cObjetivo  Entidade controladora de objetos Problema
 	 * @param idPesquisa String que representa unicamente um objeto Pesquisa
-	 * @param idObjetivo String que representa unicamente um objeto Objetivo
+	 * @param idProblema String que representa unicamente um objeto Objetivo
 	 * @return String referente ao sucesso da operação
 	 */
 	public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
@@ -152,12 +141,6 @@ public class Conector extends Validacao {
     
     /**
      * Busca a ocorrencia de um termo em todas as entidades do sistema.
-     * @param cPesquisa ControllerPesquisas com todas as pesquisas cadastradas.
-     * @param cPesquisador ControllerPesquisadores com todos os pesquisadores cadastrados.
-     * @param cProblema ControllerProblemas com todas as problemas cadastrados.
-     * @param cObjetivo ControllerObjetivos com todas os objetivos cadastrados.
-     * @param cAtividade ControllerAtividades com todas as atividades cadastradas.
-     * @param cBuscas ControllerBuscas responsavel por verificar a ocorrencia do termo nas outras entidades.
      * @param termo termo que se deseja verificar a ocorrencia.
      * @return String contendo a representacao das entidades que fazem mencao ao termo.
      */
@@ -181,7 +164,6 @@ public class Conector extends Validacao {
 
     /**
      * Busca um termo que ja foi previamente buscado no sistema e retorna um determinado elemento da lista de entidades que possuem esse termo.
-     * @param cBuscas ControllerBuscas com todas as buscas ja realizadas pelo sistema.
      * @param termo termo que ja foi previamente buscado.
      * @param numeroDoResultado numero do elemento que se deseja retornar.
      * @return String contendo o elemento que estava na lista dos resultados da busca pelo termo.
@@ -206,7 +188,6 @@ public class Conector extends Validacao {
 
     /**
      * Conta o numero de entidades que fazem mencao ao termo que ja foi previamente buscado.
-     * @param cBuscas ControllerBuscas com todas as buscas já realizadas pelo sistema.
      * @param termo termo que já foi previamente buscado.
      * @return int representado o numero de entidades que contem o termo.
      */
@@ -230,8 +211,6 @@ public class Conector extends Validacao {
 
     /**
      * Metodo que permite a associacao de uma atividade a uma determinada pesquisa.
-     * @param cPesquisa Controller de pesquisa
-     * @param cAtividade Controller de atividade
      * @param codigoPesquisa Codigo da Pesquisa 
      * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
      * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
@@ -247,9 +226,6 @@ public class Conector extends Validacao {
 
     /**
      * Metodo que permite a desassociacao de uma atividade a uma determinada pesquisa.
-     * @param cPesquisa Controller de pesquisa
-     * @param cAtividade 
-     * @param cAtividade Controller de atividade
      * @param codigoPesquisa Codigo da Pesquisa 
      * @param codigoAtividade Codigo da atividade a ser associada a pesquisa
      * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
@@ -271,8 +247,6 @@ public class Conector extends Validacao {
     /**
      * Metodo que permite a exeucacao de uma atividade, atraves do codigo da atividade
      * a ser executada, o item e a duracao do processo.
-     * @param cPesquisa Controller de pesquisa
-     * @param cAtividade Controller de atividade
      * @param codigoAtividade Codigo da atividade
      * @param item Item a ser executado
      * @param duracao Duracao da execucao
