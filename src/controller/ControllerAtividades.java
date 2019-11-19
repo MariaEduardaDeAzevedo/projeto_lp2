@@ -30,7 +30,6 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	 */
 	private int proximoId;
 
-	private String estrategia;
 
 
 	/**
@@ -342,76 +341,9 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		this.proximoId = serializador.carregarArquivoInt("Proximo ID das Atividades");
 	}
 	
-	/**
-	 * Metodo que configura uma estrategia de deteccao da proxima atividade com itens pendentes.
-	 * Podendo ser MAIS_ANTIGA, MAIOR_DURACAO, MAIOR_RISCO e MENOS_PENDENCIAS.
-	 * @param estrategia Estrategia a ser configurada.
-	 */
-	public void configuraEstrategia(String estrategia) {
-		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
-		
-		List valores = new ArrayList<String>();
-		valores.add("MAIS_ANTIGA");
-		valores.add("MAIOR_DURACAO");
-		valores.add("MAIOR_RISCO");
-		valores.add("MENOS_PENDENCIAS");
-		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
-		this.estrategia = estrategia;
-
-	}
 	
-	/**
-	 * Metodo que permite o acesso a estrategia definida.
-	 * @return Estrategia atual.
-	 */
-	public String getEstrategia() {
-		return estrategia;
-	}
 
 	
-	/**
-	 * Metodo que verifica se uma atividade possui itens pendentes. 
-	 * @return Id da primeira atividade encontrada com item pendente ou excecao indicando que a atividade
-	 * 			nao tem pendencias.
-	 */
-	public String hasItemPendente() {
-		
-		for (Atividade atividade : atividades.values()) {
-			if(atividade.hasItemPendente()) {
-				return atividade.getId();
-			}
-		}
-		throw new IllegalArgumentException("Pesquisa sem atividades com pendencias.");
-	}
-	
-	/**
-	 * Metodo que ordena atividades de acordo com o menor numero de pendencias. 
-	 * @return Id da atividade com menor numero de pendencias.
-	 */
-	public String ordenaAtvdsMenosPendencias() {
-		List<Atividade> lista = new ArrayList<Atividade>();
-		for (Atividade atividade : this.atividades.values()) {
-			if(atividade.hasItemPendente())
-				lista.add(atividade);
-		}
-		Collections.sort(lista, new OrdenaAtvdsMenosPendencias());
-		return lista.get(0).getId();
-	}
-
-	/**
-	 * Metodo que ordena atividades de acordo com a maior duracao de execucao.
-	 * @return Id da atividade que teve a maior duracao.
-	 */
-	public String ordenaAtvdsMaiorDuracao() {
-		List<Atividade> lista = new ArrayList<Atividade>();
-		for (Atividade atividade : this.atividades.values()) {
-			if(atividade.hasItemPendente())
-				lista.add(atividade);
-		}
-		Collections.sort(lista, new OrdenaAtvdsMaiorDuracao());
-		return lista.get(0).getId();
-	}
-
 
 	
 }

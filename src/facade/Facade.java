@@ -254,12 +254,12 @@ public class Facade {
     //US10
     
 	public void configuraEstrategia(String estrategia) {
-    	this.cAtividade.configuraEstrategia(estrategia);
+    	this.cPesquisa.configuraEstrategia(estrategia);
 
     }
 
     public String proximaAtividade(String codigoPesquisa) {
-    	return this.cGeral.proximaAtividade(codigoPesquisa);
+    	return this.cPesquisa.proximaAtividade(codigoPesquisa);
 
     }
     

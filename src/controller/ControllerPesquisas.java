@@ -46,6 +46,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		this.pesquisas = new TreeMap<String, Pesquisa>();
 		this.problemasAssociados = new HashMap<String, String>();
 		this.objetivosAssociados = new HashMap<String, String>();
+		this.estrategia = "MAIS_ANTIGA";
 
 	}
 
@@ -680,5 +681,48 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		
 		this.pesquisas.get(email).alteraPesquisadorAluno(email, aluno);
 		
+	}
+	
+	/**
+	 * Metodo que configura uma estrategia de deteccao da proxima atividade com itens pendentes.
+	 * Podendo ser MAIS_ANTIGA, MAIOR_DURACAO, MAIOR_RISCO e MENOS_PENDENCIAS.
+	 * @param estrategia Estrategia a ser configurada.
+	 */
+	public void configuraEstrategia(String estrategia) {
+		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
+		
+		List valores = new ArrayList<String>();
+		valores.add("MAIS_ANTIGA");
+		valores.add("MAIOR_DURACAO");
+		valores.add("MAIOR_RISCO");
+		valores.add("MENOS_PENDENCIAS");
+		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
+		this.estrategia = estrategia;
+
+	}
+
+	/**
+	 * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
+	 * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
+	 * @return
+	 */
+	public String proximaAtividade(String codigoPesquisa) {
+		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		super.validaStatus(pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+		super.hasValor(containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+		
+		switch(this.estrategia) {
+		case "MAIS_ANTIGA":
+			return this.pesquisas.get(codigoPesquisa).hasItemPendente();
+		case "MAIOR_DURACAO":
+			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMaiorDuracao();
+		case "MAIOR_RISCO":
+			return "a";
+		case "MENOS_PENDENCIAS":
+			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMenosPendencias();
+			
+		}
+		return "";
+	
 	}
 }

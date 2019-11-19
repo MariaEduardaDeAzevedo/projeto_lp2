@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
+import comparators.OrdenaAtvdsMaiorDuracao;
+import comparators.OrdenaAtvdsMenosPendencias;
 import controller.Validacao;
 import excecoes.ActivationException;
 
@@ -459,5 +461,50 @@ public class Pesquisa extends Validacao implements Serializable {
 		this.pesquisadoresAssociados.put(email, aluno);
 
 	}
+	
+
+	/**
+	 * Metodo que verifica se uma atividade possui itens pendentes. 
+	 * @return Id da primeira atividade encontrada com item pendente ou excecao indicando que a atividade
+	 * 			nao tem pendencias.
+	 */
+	public String hasItemPendente() {
+		
+		for (Atividade atividade : atividadesAssociadas.values()) {
+			if(atividade.hasItemPendente()) {
+				return atividade.getId();
+			}
+		}
+		throw new IllegalArgumentException("Pesquisa sem atividades com pendencias.");
+	}
+	
+	/**
+	 * Metodo que ordena atividades de acordo com o menor numero de pendencias. 
+	 * @return Id da atividade com menor numero de pendencias.
+	 */
+	public String ordenaAtvdsMenosPendencias() {
+		List<Atividade> lista = new ArrayList<Atividade>();
+		for (Atividade atividade : this.atividadesAssociadas.values()) {
+			if(atividade.hasItemPendente())
+				lista.add(atividade);
+		}
+		Collections.sort(lista, new OrdenaAtvdsMenosPendencias());
+		return lista.get(0).getId();
+	}
+
+	/**
+	 * Metodo que ordena atividades de acordo com a maior duracao de execucao.
+	 * @return Id da atividade que teve a maior duracao.
+	 */
+	public String ordenaAtvdsMaiorDuracao() {
+		List<Atividade> lista = new ArrayList<Atividade>();
+		for (Atividade atividade : this.atividadesAssociadas.values()) {
+			if(atividade.hasItemPendente())
+				lista.add(atividade);
+		}
+		Collections.sort(lista, new OrdenaAtvdsMaiorDuracao());
+		return lista.get(0).getId();
+	}
+
 
 }

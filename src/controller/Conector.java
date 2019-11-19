@@ -289,28 +289,8 @@ public class Conector extends Validacao {
 		
 	}
 	
-	/**
-	 * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
-	 * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
-	 * @return
-	 */
-	public String proximaAtividade(String codigoPesquisa) {
-		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
-		super.validaStatus(cPesquisas.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
-		super.hasValor(cPesquisas.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
-		switch(this.cAtividades.getEstrategia()) {
-			case "MAIS_ANTIGA":
-				return this.cAtividades.hasItemPendente();
-			case "MAIOR_DURACAO":
-				return this.cAtividades.ordenaAtvdsMaiorDuracao();
-			case "MAIOR_RISCO":
-				return "a";
-			case "MENOS_PENDENCIAS":
-				return this.cAtividades.ordenaAtvdsMenosPendencias();
-				
-		}
-		return "";
-	}
+
+	
 
 	public void salvarArquivos() {
 		this.cPesquisas.salvarArquivos();
