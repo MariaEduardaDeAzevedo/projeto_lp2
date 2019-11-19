@@ -83,19 +83,19 @@ public class Facade {
     	cObjetivo.cadastraObjetivo(tipo, descricao, aderencia, viabilidade);
     }
     
-    public void apagarProblema(String codigo) throws Exception {
+    public void apagarProblema(String codigo) {
     	cProblema.apagarProblema(codigo);
     }
     
-    public void apagarObjetivo(String codigo) throws Exception {
+    public void apagarObjetivo(String codigo) {
     	cObjetivo.apagarObjetivo(codigo);
     }
     
-    public String exibeProblema(String codigo) throws Exception {
+    public String exibeProblema(String codigo) {
     	return cProblema.exibeProblema(codigo);
     }
     
-    public String exibeObjetivo(String codigo) throws Exception {
+    public String exibeObjetivo(String codigo) {
     	return cObjetivo.exibeObjetivo(codigo);
     }
 

@@ -61,8 +61,6 @@ public class ControllerObjetivos extends Validacao implements Serializable {
 	 * A representação textual de todo objetivo é dada no formato "CÓDIGO DO OBJETIVO - TIPO - DESCRIÇÃO - VALOR"
 	 * @param idObjetivo o código que identifica unicamente o objetivo no sistema
 	 * @return String que corresponde à representação textual do objetivo
-	 * @throws Exception exceções são lançadas quando o código do objetivo passado como parâmetro é vazio ou nulo ou quando
-	 * o código passado como parâmetro não identifica nenhum objetivo cadastrado no sistema
 	 */
 	public String exibeObjetivo(String idObjetivo) {
 		super.validaString(idObjetivo, "Codigo do objetivo passado não pode ser vazio ou nulo");
@@ -72,9 +70,7 @@ public class ControllerObjetivos extends Validacao implements Serializable {
 	
 	/**
 	 * Apaga um objetivo do sistema, ou seja, retira um objetivo cadastrado no sistema através do seu código.
-	 * @param idObjetivo código que identifica unicamente o objetivo cadastrado no sistema
-	 * @throws Exception exceções são lançadas quando o código passado como parâmetro no método é vazio ou nulo ou quando o código passado como
-	 * parâmetro não identifica nenhum objetivo cadastrado
+	 * @param idObjetivo código que identifica unicamente o objetivo cadastrado no sistema.
 	 */
 	public void apagarObjetivo(String idObjetivo){
 		super.validaString(idObjetivo, "Campo codigo nao pode ser nulo ou vazio.");

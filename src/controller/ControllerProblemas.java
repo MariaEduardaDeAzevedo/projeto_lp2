@@ -54,8 +54,6 @@ public class ControllerProblemas extends Validacao implements Serializable {
 	 * A representação textual de um problema é retornada no formato "CÓDIGO DO PROBLEMA - DESCRIÇÃO - VIABILIDADE".
 	 * @param idProblema código que identifica unicamente o problema no sistema
 	 * @return String que corresponde à representação textual de determinado problema cadastrado no sistema
-	 * @throws Exception excelçoes são lançadas quando o código do problema passado como parâmetro é nulo ou vazio ou quando
-	 * este código não identifica nenhum problema cadastrado no sistema
 	 */
 	public String exibeProblema(String idProblema) {
 		super.validaString(idProblema, "id do problema não pode ser vazio ou nulo");
@@ -65,9 +63,7 @@ public class ControllerProblemas extends Validacao implements Serializable {
 	
 	/**
 	 * Remove um problema cadastrado do sistema através de seu código de identificação.
-	 * @param idProblema código que identifica o problema unicamente no sistema
-	 * @throws Exception exceções são lançadas quando o código passado como parâmetro do método é nulo ou vazio ou quando
-	 * este código não identifica nenhum problema cadastrado no sistema
+	 * @param idProblema código que identifica o problema unicamente no sistema.
 	 */
 	public void apagarProblema(String idProblema) {
 		super.validaString(idProblema, "Campo codigo nao pode ser nulo ou vazio.");
