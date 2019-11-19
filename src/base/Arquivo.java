@@ -3,11 +3,24 @@ package base;
 import java.io.*;
 import java.util.Map;
 
+/**
+ * Classe responsavel por salvar e carregar arquivos.
+ */
 public class Arquivo {
 
+    /**
+     * Constroi o objeto Arquivo sem nenhum parametro nem atributo.
+     */
     public Arquivo() {
     }
 
+    /**
+     * Metodo utilizado para criar um arquivo fisico na pasta Dados no formato binario de uma
+     * collection.
+     *
+     * @param entidades     collection das entidades que se deseja salvar.
+     * @param nomeDoArquivo nome do arquivo que sera salvo.
+     */
     public void salvarArquivos(Map entidades, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
@@ -37,6 +50,13 @@ public class Arquivo {
         }
     }
 
+    /**
+     * Metodo utilizado para criar um arquivo fisico na pasta Dados no formato binario de um
+     * numero inteiro.
+     *
+     * @param numero        Numero que se deseja salvar.
+     * @param nomeDoArquivo nome do arquivo que sera salvo.
+     */
     public void salvarArquivoInt(int numero, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
@@ -66,6 +86,13 @@ public class Arquivo {
         }
     }
 
+    /**
+     * Metodo utilizado para carregar um arquivo fisico da pasta Dados que esta no formato binario
+     * e retornar uma collection.
+     *
+     * @param nomeDoArquivo nome do arquivo que sera carregado.
+     * @return collection que estava contido no arquivo.
+     */
     public Map carregarArquivos(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
@@ -94,6 +121,14 @@ public class Arquivo {
         return listaDeEntidades;
     }
 
+
+    /**
+     * Metodo utilizado para carregar um arquivo fisico da pasta Dados que esta no formato binario
+     * e retornar um numero.
+     *
+     * @param nomeDoArquivo nome do arquivo que sera carregado.
+     * @return numero que estava contido no arquivo.
+     */
     public int carregarArquivoInt(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
