@@ -67,8 +67,7 @@ class ControllerBuscasTest {
 	
 	@Test
 	void testBuscaResultadoComum() {
-		//assertEquals("COM1: computacao, homofobia", 
-		cBuscas.buscaResultado("computacao",  cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(), cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), 3);
+		assertEquals("COM1: computacao, homofobia", cBuscas.buscaResultado("computacao",  cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(), cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), 3));
 	}
 	
 	@Test
