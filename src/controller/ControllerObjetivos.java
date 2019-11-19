@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import base.Objetivo;
-import base.Dados;
+import base.Arquivo;
 
 /**
  * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contém os métodos utilizados pela fachada
@@ -95,14 +95,14 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     }
 
     public void salvarArquivos() {
-		Dados dados = new Dados();
-		dados.salvarArquivos(this.objetivos, "Objetivos");
-		dados.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
+		Arquivo arquivo = new Arquivo();
+		arquivo.salvarArquivos(this.objetivos, "Objetivos");
+		arquivo.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
     }
 
     public void carregarArquivos() throws Exception {
-		Dados dados = new Dados();
-		this.objetivos = (TreeMap<String, Objetivo>) dados.carregarArquivos("Objetivos");
-		this.idNumber = dados.carregarArquivoInt("Proximo ID dos Objetivos");
+		Arquivo arquivo = new Arquivo();
+		this.objetivos = (TreeMap<String, Objetivo>) arquivo.carregarArquivos("Objetivos");
+		this.idNumber = arquivo.carregarArquivoInt("Proximo ID dos Objetivos");
 	}
 }

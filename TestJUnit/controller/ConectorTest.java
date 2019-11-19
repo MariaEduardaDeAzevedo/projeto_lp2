@@ -38,7 +38,7 @@ class ConectorTest {
         this.cBuscasTeste = new ControllerBuscas();
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
                 cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
-        this.dados = new File("Dados");
+        this.dados = new File("Arquivo");
     }
     @Test
     void associaAtividadeValida() {
@@ -676,7 +676,7 @@ class ConectorTest {
     			resultado = false;
     			break;	
     		}
-    		File file = new File("Dados" + File.separator + s);
+    		File file = new File("Arquivo" + File.separator + s);
     		file.delete();
     	}
     	assertEquals(true, resultado);	
