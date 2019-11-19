@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerAtividades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMaiorDuracao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMaiorDuracao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMenosPendencias.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMenosPendencias.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +116,7 @@
       <module name="projeto_lp2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,7 +131,7 @@
       <module name="projeto_lp2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,7 +147,7 @@
       <module name="projeto_lp2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -195,6 +202,8 @@
       <workItem from="1574034905731" duration="2206000" />
       <workItem from="1574090077654" duration="2298000" />
       <workItem from="1574121604286" duration="1451000" />
+      <workItem from="1574130368172" duration="1202000" />
+      <workItem from="1574193372981" duration="134000" />
     </task>
     <servers />
   </component>

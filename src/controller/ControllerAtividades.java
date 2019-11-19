@@ -4,11 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import base.Atividade;
-import base.Pesquisa;
-import base.Problema;
-import comparators.OrdenaAtvdsMaiorDuracao;
-import comparators.OrdenaAtvdsMenosPendencias;
-import comparators.OrdenaPesquisaID;
+import base.Dados;
 
 /**
  * Entidade controladora de objetos Atividade e Item
@@ -330,15 +326,15 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	}
 
 	public void salvarArquivos() {
-		Serializador serializador = new Serializador();
-		serializador.salvarArquivos(this.atividades, "Atividades");
-		serializador.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
+		Dados dados = new Dados();
+		dados.salvarArquivos(this.atividades, "Atividades");
+		dados.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
 	}
 
 	public void carregarArquivos() throws Exception {
-		Serializador serializador = new Serializador();
-		this.atividades = (LinkedHashMap<String, Atividade>) serializador.carregarArquivos("Atividades");
-		this.proximoId = serializador.carregarArquivoInt("Proximo ID das Atividades");
+		Dados dados = new Dados();
+		this.atividades = (LinkedHashMap<String, Atividade>) dados.carregarArquivos("Atividades");
+		this.proximoId = dados.carregarArquivoInt("Proximo ID das Atividades");
 	}
 	
 	

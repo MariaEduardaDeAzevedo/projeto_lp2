@@ -1,11 +1,11 @@
 package controller;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 import base.Objetivo;
+import base.Dados;
 
 /**
  * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contém os métodos utilizados pela fachada
@@ -95,14 +95,14 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     }
 
     public void salvarArquivos() {
-		Serializador serializador = new Serializador();
-		serializador.salvarArquivos(this.objetivos, "Objetivos");
-		serializador.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
+		Dados dados = new Dados();
+		dados.salvarArquivos(this.objetivos, "Objetivos");
+		dados.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
     }
 
     public void carregarArquivos() throws Exception {
-		Serializador serializador = new Serializador();
-		this.objetivos = (TreeMap<String, Objetivo>) serializador.carregarArquivos("Objetivos");
-		this.idNumber = serializador.carregarArquivoInt("Proximo ID dos Objetivos");
+		Dados dados = new Dados();
+		this.objetivos = (TreeMap<String, Objetivo>) dados.carregarArquivos("Objetivos");
+		this.idNumber = dados.carregarArquivoInt("Proximo ID dos Objetivos");
 	}
 }
