@@ -336,7 +336,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna a Atividade subsequente desta atividade.
-	 * @return
+	 * @return Atividade que sucede esta.
 	 */
 	public Atividade getProx() {
 		return proxAtv;
