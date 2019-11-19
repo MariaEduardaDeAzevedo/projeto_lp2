@@ -20,14 +20,9 @@ class ConectorTest {
 	private ControllerPesquisador cPesquisadorTeste;
 	private ControllerProblemas cProblemasTeste;
 	private ControllerObjetivos cObjetivosTeste;
-<<<<<<< HEAD
-	/**
-	 * 
-=======
 	private ControllerBuscas cBuscasTeste;
 	private File dados;
 	
->>>>>>> afa40d864c2564d489930adb9a0b413ead64a8a4
     @BeforeEach
     void inicializaAtributos() {
         this.cPesquisaTeste = new ControllerPesquisas();
@@ -39,14 +34,11 @@ class ConectorTest {
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
         this.cProblemasTeste = new ControllerProblemas();
         this.cObjetivosTeste = new ControllerObjetivos();
-<<<<<<< HEAD
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste, cAtividadeTeste, cObjetivosTeste, null);
-=======
         this.cBuscasTeste = new ControllerBuscas();
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
                 cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
         this.dados = new File("Dados");
->>>>>>> afa40d864c2564d489930adb9a0b413ead64a8a4
     }
     @Test
     void associaAtividadeValida() {
@@ -660,10 +652,6 @@ class ConectorTest {
     		cGeralTeste.desassociaObjetivo("HUM1", "O1");
         });
     }
-<<<<<<< HEAD
-}
-	*/
-=======
     
     @Test
     void salvarArquivosComum() {
@@ -693,5 +681,4 @@ class ConectorTest {
     	}
     	assertEquals(true, resultado);	
     }
->>>>>>> afa40d864c2564d489930adb9a0b413ead64a8a4
 }

@@ -326,7 +326,7 @@ public class ControllerAtividades extends Validacao implements Serializable {
 		super.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
 		super.hasValor(atividades.containsKey(idAtividade), "Atividade nao encontrada.");
 		super.hasValor(atividades.get(idAtividade).hasProx(), "Nao existe proxima atividade.");
-		return atividades.get(idAtividade).pegaMaiorRiscoAtividades();
+		return atividades.get(idAtividade).pegaMaiorRiscoAtividades(atividades.get(idAtividade));
 	}
 
 	public void salvarArquivos() {

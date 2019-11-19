@@ -395,19 +395,44 @@ public class Atividade extends Validacao implements Serializable {
 		return risco;
 	}
 	
+	public int converteRisco() {
+		if (risco.equals("ALTO")) {
+			return 2;
+		} else if (risco.equals("MEDIO")) {
+			return 1;
+		}
+		return 0;
+	}
+	
 	/**
 	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
 	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
 	 */
-	public String pegaMaiorRiscoAtividades() {
+	public String pegaMaiorRiscoAtividades(Atividade precedente) {
 		super.hasValor(this.hasProx(), "Nao existe proxima atividade.");
 		if (!this.getProx().hasProx()) {
-			if (this.getRisco().compareTo(this.getProx().getRisco()) <= 0) {
+			if (this.equals(precedente) && this.contaProximos() == 1) {
 				return this.getProx().getId();
 			}
-			return this.getProx().getId();
+			if (this.converteRisco() > this.getProx().converteRisco()) {
+				if (this.converteRisco() >= precedente.converteRisco()) {
+					return this.getId();
+				} else {
+					return precedente.getId();
+				}
+			} else {
+				if (this.getProx().converteRisco() >= precedente.converteRisco()) {
+					return this.getProx().getId();
+				} else {
+					return precedente.getId();
+				}
+			}
 		}
-		return this.getProx().pegaMaiorRiscoAtividades();
+		if (this.converteRisco() > this.getProx().converteRisco()) {
+			return this.getProx().pegaMaiorRiscoAtividades(this);
+		} else {
+			return this.getProx().pegaMaiorRiscoAtividades(this.getProx());
+		}
 	}
 
 	public String toStringResultado() {
