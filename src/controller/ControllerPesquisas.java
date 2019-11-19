@@ -36,7 +36,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	 * Armazena um mapa de objetivos associados a uma pesquisa indicada pelo seu ID
 	 */
 	private Map<String, String> objetivosAssociados;
-
+	
+	/**
+	 * Atributo que define a estrategia de escolha de proxima atividade.
+	 */
 	private String estrategia;
 
 	/**
@@ -717,12 +720,12 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		case "MAIOR_DURACAO":
 			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMaiorDuracao();
 		case "MAIOR_RISCO":
-			return "a";
+			return this.pesquisas.get(codigoPesquisa).getMaiorRisco();
 		case "MENOS_PENDENCIAS":
 			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMenosPendencias();
 			
 		}
-		return "";
+		return null;
 	
 	}
 }

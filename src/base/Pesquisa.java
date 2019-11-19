@@ -506,5 +506,24 @@ public class Pesquisa extends Validacao implements Serializable {
 		return lista.get(0).getId();
 	}
 
+	public String getMaiorRisco() {
+		for (Atividade atvd : this.atividadesAssociadas.values()) {
+			if(atvd.getRisco().equals("ALTO")) 
+				return atvd.getId();
+		}
+		
+		for (Atividade atvd : this.atividadesAssociadas.values()) {
+			if(atvd.getRisco().equals("MEDIO")) 
+				return atvd.getId();
+		}
+		
+		for (Atividade atvd : this.atividadesAssociadas.values()) {
+			if(atvd.getRisco().equals("BAIXO")) 
+				return atvd.getId();
+		}
+			
+		return null;
+	}
+
 
 }
