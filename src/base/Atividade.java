@@ -57,6 +57,10 @@ public class Atividade extends Validacao implements Serializable {
 	 */
 	private int numeroResultado;
 	
+	/**
+	 * Atividade subsequente que deve ser realizada após esta atividade. Por padrão, quando uma atividade é contruída, esta não
+	 * tem uma atividade subsequente.
+	 */
 	private Atividade proxAtv;
 	
 	/**
@@ -391,19 +395,46 @@ public class Atividade extends Validacao implements Serializable {
 		return risco;
 	}
 	
+	public int converteRisco() {
+		if (risco.equals("ALTO")) {
+			return 2;
+		} else if (risco.equals("MEDIO")) {
+			return 1;
+		}
+		return 0;
+	}
+	
 	/**
 	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
+	 * @param precedente atividade precedente, cuja a qual se quer analisar as suas sucessoras.
+	 * @param comparacao primeira atividade da sequência de atividades que se quer analisar.
 	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
 	 */
-	public String pegaMaiorRiscoAtividades() {
+	public String pegaMaiorRiscoAtividades(Atividade precedente, Atividade comparacao) {
 		super.hasValor(this.hasProx(), "Nao existe proxima atividade.");
 		if (!this.getProx().hasProx()) {
-			if (this.getRisco().compareTo(this.getProx().getRisco()) <= 0) {
+			if (this.equals(comparacao) && this.contaProximos() == 1) {
 				return this.getProx().getId();
 			}
-			return this.getProx().getId();
+			if (this.converteRisco() > this.getProx().converteRisco()) {
+				if (this.converteRisco() >= precedente.converteRisco()) {
+					return this.getId();
+				} else {
+					return precedente.getId();
+				}
+			} else {
+				if (this.getProx().converteRisco() >= precedente.converteRisco()) {
+					return this.getProx().getId();
+				} else {
+					return precedente.getId();
+				}
+			}
 		}
-		return this.getProx().pegaMaiorRiscoAtividades();
+		if (this.converteRisco() > this.getProx().converteRisco()) {
+			return this.getProx().pegaMaiorRiscoAtividades(this, comparacao);
+		} else {
+			return this.getProx().pegaMaiorRiscoAtividades(this.getProx(), comparacao);
+		}
 	}
 
 	public String toStringResultado() {

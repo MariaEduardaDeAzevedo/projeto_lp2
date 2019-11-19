@@ -34,6 +34,7 @@ class ConectorTest {
                 "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.");
         this.cProblemasTeste = new ControllerProblemas();
         this.cObjetivosTeste = new ControllerObjetivos();
+        this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste, cAtividadeTeste, cObjetivosTeste, null);
         this.cBuscasTeste = new ControllerBuscas();
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
                 cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
