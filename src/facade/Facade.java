@@ -12,7 +12,7 @@ public class Facade {
     private ControllerObjetivos cObjetivo;
     private ControllerProblemas cProblema;
     private ControllerBuscas cBuscas;
-    private Conector cGeral;
+    private Conector conector;
 
     public Facade() {
         this.cAtividade = new ControllerAtividades();
@@ -21,7 +21,7 @@ public class Facade {
         this.cObjetivo = new ControllerObjetivos();
         this.cProblema = new ControllerProblemas();
         this.cBuscas = new ControllerBuscas();
-        this.cGeral = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
+        this.conector = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
     }
 
     //US1
@@ -140,25 +140,25 @@ public class Facade {
    
     public boolean associaProblema(String idPesquisa, String idProblema) {
     	
-    	return this.cGeral.associaProblema(idPesquisa, idProblema);
+    	return this.conector.associaProblema(idPesquisa, idProblema);
     	
     }
     
     public boolean desassociaProblema(String idPesquisa) {
     	
-    	return this.cGeral.desassociaProblema(idPesquisa);
+    	return this.conector.desassociaProblema(idPesquisa);
     	
     }
     
     public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
     	
-    	return this.cGeral.associaObjetivo(idPesquisa, idObjetivo);
+    	return this.conector.associaObjetivo(idPesquisa, idObjetivo);
     	
     }
     
     public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
     	
-    	return this.cGeral.desassociaObjetivo(idPesquisa, idProblema);
+    	return this.conector.desassociaObjetivo(idPesquisa, idProblema);
     	
     }
     
@@ -170,19 +170,19 @@ public class Facade {
     
     //US6
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
-    	return cGeral.associaPesquisador(idPesquisa, emailPesquisador);
+    	return conector.associaPesquisador(idPesquisa, emailPesquisador);
     }
     
     public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
-    	return cGeral.desassociaPesquisador(idPesquisa, emailPesquisador);
+    	return conector.desassociaPesquisador(idPesquisa, emailPesquisador);
     }
     
     public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
-    	cGeral.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+    	conector.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
     }
     
     public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
-    	cGeral.cadastraEspecialidadeAluno(email, semestre, IEA);
+    	conector.cadastraEspecialidadeAluno(email, semestre, IEA);
     }
     
     public String listaPesquisadores(String tipo) {
@@ -191,15 +191,15 @@ public class Facade {
 
     //US7
     public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
-    	return this.cGeral.associaAtividade(codigoPesquisa, codigoAtividade);
+    	return this.conector.associaAtividade(codigoPesquisa, codigoAtividade);
     }
     
     public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
-    	return this.cGeral.desassociaAtividade(codigoPesquisa, codigoAtividade);
+    	return this.conector.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
     
     public void executaAtividade(String codigoAtividade, int item, int duracao) {
-    	this.cGeral.executaAtividade(codigoAtividade, item, duracao);
+    	this.conector.executaAtividade(codigoAtividade, item, duracao);
     }
     public int cadastraResultado(String codigoAtividade, String resultado) {
     	return this.cAtividade.cadastraResultado(codigoAtividade, resultado);
@@ -218,16 +218,16 @@ public class Facade {
     }
     //US8
     public String busca(String termo){
-        return this.cGeral.busca(termo);
+        return this.conector.busca(termo);
     }
 
     public String busca(String termo, int numeroDoResultado){
-        return this.cGeral.busca(termo, numeroDoResultado);
+        return this.conector.busca(termo, numeroDoResultado);
     }
 
     public int contaResultadosBusca(String termo){
 
-        return this.cGeral.contaResultadosBusca(termo);
+        return this.conector.contaResultadosBusca(termo);
     }
    
    //US9
@@ -278,10 +278,10 @@ public class Facade {
 
     //US12
     public void salvar(){
-        this.cGeral.salvarArquivos();
+        this.conector.salvarArquivos();
     }
 
     public void carregar(){
-        this.cGeral.carregarArquivos();
+        this.conector.carregarArquivos();
     }
 }
