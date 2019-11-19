@@ -391,7 +391,8 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	public String ordenaAtvdsMenosPendencias() {
 		List<Atividade> lista = new ArrayList<Atividade>();
 		for (Atividade atividade : this.atividades.values()) {
-			lista.add(atividade);
+			if(atividade.hasItemPendente())
+				lista.add(atividade);
 		}
 		Collections.sort(lista, new OrdenaAtvdsMenosPendencias());
 		return lista.get(0).getId();
@@ -404,10 +405,10 @@ public class ControllerAtividades extends Validacao implements Serializable {
 	public String ordenaAtvdsMaiorDuracao() {
 		List<Atividade> lista = new ArrayList<Atividade>();
 		for (Atividade atividade : this.atividades.values()) {
-			lista.add(atividade);
+			if(atividade.hasItemPendente())
+				lista.add(atividade);
 		}
 		Collections.sort(lista, new OrdenaAtvdsMaiorDuracao());
-		
 		return lista.get(0).getId();
 	}
 

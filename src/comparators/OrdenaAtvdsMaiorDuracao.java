@@ -21,8 +21,9 @@ public class OrdenaAtvdsMaiorDuracao implements Comparator<Atividade>{
 			return -1;
 		} else if(a1.getDuracao() < a2.getDuracao()) {
 			return 1;
+		}else {
+			return a1.getId().compareTo(a2.getId());
 		}
-		return 0;
 	}
 	
 	
