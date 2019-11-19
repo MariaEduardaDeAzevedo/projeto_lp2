@@ -1,4 +1,4 @@
-"- Pesquisa: COM1 - Homofobia em mensagens online de alunos de computacao do primeiro periodo. - computacao, homofobia
+- Pesquisa: COM1 - Homofobia em mensagens online de alunos de computacao do primeiro periodo. - computacao, homofobia
     - Pesquisadores:
         - Eliane Araujo (professor) - A rainha das rainhas - eliane@computacao.ufcg.edu.br - https://penseNumaMulherLinda - Doutorado - DSC - 07/07/2007
     - Problema:
@@ -12,4 +12,4 @@
             - REALIZADO - ITEM1
             - REALIZADO - ITEM2
             - REALIZADO - ITEM3
-            - REALIZADO - ITEM4"
+            - REALIZADO - ITEM4

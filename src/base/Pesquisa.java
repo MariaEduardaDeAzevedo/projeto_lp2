@@ -409,7 +409,7 @@ public class Pesquisa extends Validacao implements Serializable {
 	 */
 	public String getResumo() {
 
-		String resumo = "\"- Pesquisa: " + this.toString();
+		String resumo = "- Pesquisa: " + this.toString();
 		resumo += System.lineSeparator() + "	- Pesquisadores:";
 		for (Pesquisador p : this.pesquisadoresAssociados.values()) {
 			resumo += System.lineSeparator() + "		- " + p.toString();
@@ -430,7 +430,7 @@ public class Pesquisa extends Validacao implements Serializable {
 			resumo += a.toStringResumo();
 		}
 
-		return resumo + "\"";
+		return resumo;
 
 	}
 
@@ -442,10 +442,8 @@ public class Pesquisa extends Validacao implements Serializable {
 	 *                      pelo identificador unico
 	 */
 	public void alteraPesquisadorProfessor(String email, Professor professor) {
-
 		this.pesquisadoresAssociados.remove(email);
 		this.pesquisadoresAssociados.put(email, professor);
-
 	}
 
 	/**
@@ -456,12 +454,9 @@ public class Pesquisa extends Validacao implements Serializable {
 	 *                      pelo identificador unico
 	 */
 	public void alteraPesquisadorAluno(String email, Aluno aluno) {
-
 		this.pesquisadoresAssociados.remove(email);
 		this.pesquisadoresAssociados.put(email, aluno);
-
 	}
-	
 
 	/**
 	 * Metodo que verifica se uma atividade possui itens pendentes. 
