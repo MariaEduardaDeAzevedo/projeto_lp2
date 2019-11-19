@@ -651,7 +651,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
 		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
 		super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
-		String resultados = this.pesquisas.get(id).getResultados() + "\"";
+		String resultados = this.pesquisas.get(id).getResultados();
 		File file = new File(id + "-Resultados" + ".txt");
 		FileWriter writer = new FileWriter(file);
 		writer.write(resultados);

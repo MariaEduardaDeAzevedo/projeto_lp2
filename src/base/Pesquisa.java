@@ -348,7 +348,7 @@ public class Pesquisa extends Validacao implements Serializable {
 	 * @return String com os resultados da Pesquisa
 	 */
 	public String getResultados() {
-		String resultado = "\"- Pesquisa: " + this.toString();
+		String resultado = "- Pesquisa: " + this.toString();
 
 		resultado += System.lineSeparator() + "	- Resultados:";
 		for (Atividade a : this.atividadesAssociadas.values()) {

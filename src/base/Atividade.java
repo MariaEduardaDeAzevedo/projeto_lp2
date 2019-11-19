@@ -177,19 +177,12 @@ public class Atividade extends Validacao implements Serializable {
 	public int contaItensPendentes() {
 
 		int contador = 0;
-
 		for (Item i : this.itens) {
-
 			if (!i.getStatus()) {
-
 				contador++;
-
 			}
-
 		}
-
 		return contador;
-
 	}
 
 	/**
@@ -203,17 +196,11 @@ public class Atividade extends Validacao implements Serializable {
 		int contador = 0;
 
 		for (Item i : this.itens) {
-
 			if (i.getStatus()) {
-
 				contador++;
-
 			}
-
 		}
-
 		return contador;
-
 	}
 
 	/**
