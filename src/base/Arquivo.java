@@ -11,7 +11,7 @@ public class Arquivo {
     public void salvarArquivos(Map entidades, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Arquivo" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class Arquivo {
     public void salvarArquivoInt(int numero, String nomeDoArquivo) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Arquivo" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class Arquivo {
     public Map carregarArquivos(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Arquivo" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class Arquivo {
     public int carregarArquivoInt(String nomeDoArquivo) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Arquivo" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
