@@ -230,4 +230,25 @@ class PesquisaTest {
 	void buscaTermoDescricaoTermoInexistente() {
 		assertEquals(null, pesquisaTeste.buscaTermoDescricao("mar menino"));
 	}
+
+	@Test
+	void getResultados() {
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		pesquisaTeste.associaAtividade(atividadeTeste);
+		assertEquals("- Pesquisa: animal - pesquisa animais - vida animal\n" +
+				"\t- Resultados:\n" +
+				"\t\t- Monitoramento de chats dos alunos de computacao do primeiro periodo.", pesquisaTeste.getResultados());
+	}
+
+	@Test
+	void getResumo() {
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		pesquisaTeste.associaAtividade(atividadeTeste);
+		assertEquals("- Pesquisa: animal - pesquisa animais - vida animal\n" +
+				"\t- Pesquisadores:\n" +
+				"\t- Problema:\n" +
+				"\t- Objetivos:\n" +
+				"\t- Atividades:\n" +
+				"\t\t- Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.)", pesquisaTeste.getResumo());
+	}
 }
