@@ -21,10 +21,10 @@ public class Arquivo {
      * @param entidades     collection das entidades que se deseja salvar.
      * @param nomeDoArquivo nome do arquivo que sera salvo.
      */
-    public void salvarArquivos(Map entidades, String nomeDoArquivo) {
+    public void salvarArquivos(Map entidades, String nomeDoArquivo, String nomeDaPasta) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream(nomeDaPasta + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -57,10 +57,10 @@ public class Arquivo {
      * @param numero        Numero que se deseja salvar.
      * @param nomeDoArquivo nome do arquivo que sera salvo.
      */
-    public void salvarArquivoInt(int numero, String nomeDoArquivo) {
+    public void salvarArquivoInt(int numero, String nomeDoArquivo, String nomeDaPasta) {
         FileOutputStream arquivo = null;
         try {
-            arquivo = new FileOutputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileOutputStream(nomeDaPasta + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -93,10 +93,10 @@ public class Arquivo {
      * @param nomeDoArquivo nome do arquivo que sera carregado.
      * @return collection que estava contido no arquivo.
      */
-    public Map carregarArquivos(String nomeDoArquivo) {
+    public Map carregarArquivos(String nomeDoArquivo, String nomeDaPasta) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream(nomeDaPasta + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();
@@ -129,10 +129,10 @@ public class Arquivo {
      * @param nomeDoArquivo nome do arquivo que sera carregado.
      * @return numero que estava contido no arquivo.
      */
-    public int carregarArquivoInt(String nomeDoArquivo) {
+    public int carregarArquivoInt(String nomeDoArquivo, String nomeDaPasta) {
         FileInputStream arquivo = null;
         try {
-            arquivo = new FileInputStream("Dados" + File.separator + nomeDoArquivo);
+            arquivo = new FileInputStream(nomeDaPasta + File.separator + nomeDoArquivo);
         } catch (FileNotFoundException e) {
             System.err.println("Arquivo nao encontrado");
             e.printStackTrace();

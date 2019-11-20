@@ -101,8 +101,8 @@ public class ControllerObjetivos extends Validacao implements Serializable {
      */
     public void salvarArquivos() {
         Arquivo arquivo = new Arquivo();
-        arquivo.salvarArquivos(this.objetivos, "Objetivos");
-        arquivo.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos");
+        arquivo.salvarArquivos(this.objetivos, "Objetivos", "Dados");
+        arquivo.salvarArquivoInt(this.idNumber, "Proximo ID dos Objetivos", "Dados");
     }
 
     /**
@@ -111,7 +111,7 @@ public class ControllerObjetivos extends Validacao implements Serializable {
      */
     public void carregarArquivos() {
         Arquivo arquivo = new Arquivo();
-        this.objetivos = (TreeMap<String, Objetivo>) arquivo.carregarArquivos("Objetivos");
-        this.idNumber = arquivo.carregarArquivoInt("Proximo ID dos Objetivos");
+        this.objetivos = (TreeMap<String, Objetivo>) arquivo.carregarArquivos("Objetivos", "Dados");
+        this.idNumber = arquivo.carregarArquivoInt("Proximo ID dos Objetivos", "Dados");
     }
 }

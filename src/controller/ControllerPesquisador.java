@@ -240,7 +240,7 @@ public class ControllerPesquisador extends Validacao implements Serializable {
      */
     public void salvarArquivos() {
         Arquivo arquivo = new Arquivo();
-        arquivo.salvarArquivos(this.pesquisadores, "Pesquisadores");
+        arquivo.salvarArquivos(this.pesquisadores, "Pesquisadores", "Dados");
     }
 
     /**
@@ -249,7 +249,7 @@ public class ControllerPesquisador extends Validacao implements Serializable {
      */
     public void carregarArquivos() {
         Arquivo arquivo = new Arquivo();
-        this.pesquisadores = (TreeMap<String, Pesquisador>) arquivo.carregarArquivos("Pesquisadores");
+        this.pesquisadores = (TreeMap<String, Pesquisador>) arquivo.carregarArquivos("Pesquisadores", "Dados");
     }
 
     public void addAssociado(String emailPesquisador) {

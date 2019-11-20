@@ -327,8 +327,8 @@ public class ControllerAtividades extends Validacao implements Serializable {
      */
     public void salvarArquivos() {
         Arquivo arquivo = new Arquivo();
-        arquivo.salvarArquivos(this.atividades, "Atividades");
-        arquivo.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades");
+        arquivo.salvarArquivos(this.atividades, "Atividades", "Dados");
+        arquivo.salvarArquivoInt(this.proximoId, "Proximo ID das Atividades", "Dados");
     }
 
     /**
@@ -337,8 +337,8 @@ public class ControllerAtividades extends Validacao implements Serializable {
      */
     public void carregarArquivos() {
         Arquivo arquivo = new Arquivo();
-        this.atividades = (LinkedHashMap<String, Atividade>) arquivo.carregarArquivos("Atividades");
-        this.proximoId = arquivo.carregarArquivoInt("Proximo ID das Atividades");
+        this.atividades = (LinkedHashMap<String, Atividade>) arquivo.carregarArquivos("Atividades", "Dados");
+        this.proximoId = arquivo.carregarArquivoInt("Proximo ID das Atividades", "Dados");
     }
 
 
