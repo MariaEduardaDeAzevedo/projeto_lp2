@@ -56,7 +56,7 @@ public class Atividade extends Validacao implements Serializable {
 	private int numeroResultado;
 	
 	/**
-	 * Atividade subsequente que deve ser realizada após esta atividade. Por padrão, quando uma atividade é contruída, esta não
+	 * Atividade subsequente que deve ser realizada apos esta atividade. Por padrao, quando uma atividade é contruida, esta nao
 	 * tem uma atividade subsequente.
 	 */
 	private Atividade proxAtv;
@@ -296,8 +296,8 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou não.
-	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade não possua
+	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou nao.
+	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade nao possua
 	 * nenhuma atividade subsequente.
 	 */
 	public boolean hasProx() {
@@ -309,7 +309,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Define a atividade subsequente desta atividade.
-	 * @param prox objeto do tipo Atividade que será a atividade subsequente desta.
+	 * @param prox objeto do tipo Atividade que sera a atividade subsequente desta.
 	 */
 	public void defProx(Atividade prox) {
 		super.verificaAtvPrcdnt(isLoop(prox, this), "Criacao de loops negada.");
@@ -317,7 +317,7 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Método que retira a atividade subsequente desta atividade.
+	 * Metodo que retira a atividade subsequente desta atividade.
 	 */
 	public void retiraProx() {
 		proxAtv = null;
@@ -332,10 +332,10 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna um valor booleano que indica se a adição de uma atividade como subsequente de outra implica, ou não, em um loop.
+	 * Retorna um valor booleano que indica se a adicao de uma atividade como subsequente de outra implica, ou nao, em um loop.
 	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
 	 * @param proxAdd Atividade que se quer adicionar como subsequente.
-	 * @return true, caso a adição de uma atividade subsequente em outra atividade resulte na criação de um loop, ou false, caso contrário.
+	 * @return true, caso a adicao de uma atividade subsequente em outra atividade resulte na criacao de um loop, ou false, caso contrario.
 	 */
 	private boolean isLoop(Atividade proxAdd, Atividade precedente) {
 		if (proxAdd.hasProx()) {
@@ -349,7 +349,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna um inteiro que representa a quantidade de atividades que sucedem esta atividade.
-	 * @return número inteiro que corresponde à quantidade de atividades que são subsequentes a esta atividade.
+	 * @return numero inteiro que corresponde a quantidade de atividades que sao subsequentes a esta atividade.
 	 */
 	public int contaProximos() {
 		if (!hasProx()) {
@@ -359,8 +359,8 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna o id de uma atividade subsequente de índice n, passado como parâmetro do método.
-	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e é passado como parâmetro do método o inteiro 3, então,
+	 * Retorna o id de uma atividade subsequente de indice n, passado como parametro do metodo.
+	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do metodo o inteiro 3, entao,
 	 * deve ser retornado o id do terceiro sucessor desta atividade.
 	 * @param index indice da atividade que sucede esta e que se quer retornar o id.
 	 * @return id da n-atividade sucessora desta atividade.
@@ -384,6 +384,10 @@ public class Atividade extends Validacao implements Serializable {
 		return risco;
 	}
 	
+	/**
+	 * Converte o risco de uma atividade para um determinado valor inteiro.
+	 * @return inteiro que representa o risco de uma atividade.
+	 */
 	public int converteRisco() {
 		if (risco.equals("ALTO")) {
 			return 2;

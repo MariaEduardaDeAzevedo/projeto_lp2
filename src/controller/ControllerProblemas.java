@@ -10,23 +10,23 @@ import base.Problema;
 import validacao.Validacao;
 
 /**
- * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operações relacionadas
+ * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operacoes relacionadas
  * aos problemas.
  */
 public class ControllerProblemas extends Validacao implements Serializable {
     /**
-     * Mapa que tem como chave uma String, que corresponde a um código que identifica unicamente um Problema no sistema, e tem como valor
-     * um Problema. Esta coleção armazena todos os problemas cadastrados no sistema.
+     * Mapa que tem como chave uma String, que corresponde a um codigo que identifica unicamente um Problema no sistema, e tem como valor
+     * um Problema. Esta colecao armazena todos os problemas cadastrados no sistema.
      */
     private Map<String, Problema> problemas;
     /**
-     * Número utilizado para gerar os códigos que identificam unicamente os problemas no sistema.
+     * Numero utilizado para gerar os codigos que identificam unicamente os problemas no sistema.
      */
     private int idNumber;
 
     /**
-     * Constrói um novo controller de Problema que, por padrão, começa sem nenhum Problema cadastrado e o valor do número
-     * utilizado para gerar o código dos problemas cadastrados no sistema começa como sendo 1.
+     * Constroi um novo controller de Problema que, por padrao, começa sem nenhum Problema cadastrado e o valor do numero
+     * utilizado para gerar o codigo dos problemas cadastrados no sistema começa como sendo 1.
      */
     public ControllerProblemas() {
         this.problemas = new TreeMap<String, Problema>();
@@ -34,12 +34,12 @@ public class ControllerProblemas extends Validacao implements Serializable {
     }
 
     /**
-     * Cadastra um novo problema no sistema a partir de uma descrição e de um valor inteiro que vai de 1 a 5 correspondente à
+     * Cadastra um novo problema no sistema a partir de uma descricao e de um valor inteiro que vai de 1 a 5 correspondente a
      * viabilidade do problema.
-     * Todo problema cadastrado no sistema será identificado por um código no formato "P" + id gerado automaticamente (a partir de 1).
+     * Todo problema cadastrado no sistema sera identificado por um codigo no formato "P" + id gerado automaticamente (a partir de 1).
      *
-     * @param descricao   descrição do problema
-     * @param viabilidade valor inteiro que pode ir de 1 a 5 e corresponde à viabilidade do problema
+     * @param descricao   descricao do problema
+     * @param viabilidade valor inteiro que pode ir de 1 a 5 e corresponde a viabilidade do problema
      */
     public void cadastraProblema(String descricao, int viabilidade) {
         super.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
@@ -51,11 +51,11 @@ public class ControllerProblemas extends Validacao implements Serializable {
     }
 
     /**
-     * Retorna a representação textual de determinado problema cadastrado no sistema.
-     * A representação textual de um problema é retornada no formato "CÓDIGO DO PROBLEMA - DESCRIÇÃO - VIABILIDADE".
+     * Retorna a representacao textual de determinado problema cadastrado no sistema.
+     * A representacao textual de um problema e retornada no formato "CÓDIGO DO PROBLEMA - DESCRIÇÃO - VIABILIDADE".
      *
-     * @param idProblema código que identifica unicamente o problema no sistema
-     * @return String que corresponde à representação textual de determinado problema cadastrado no sistema
+     * @param idProblema codigo que identifica unicamente o problema no sistema
+     * @return String que corresponde a representação textual de determinado problema cadastrado no sistema
      */
     public String exibeProblema(String idProblema) {
         super.validaString(idProblema, "id do problema não pode ser vazio ou nulo");
@@ -64,9 +64,9 @@ public class ControllerProblemas extends Validacao implements Serializable {
     }
 
     /**
-     * Remove um problema cadastrado do sistema através de seu código de identificação.
+     * Remove um problema cadastrado do sistema atraves de seu codigo de identificação.
      *
-     * @param idProblema código que identifica o problema unicamente no sistema.
+     * @param idProblema codigo que identifica o problema unicamente no sistema.
      */
     public void apagarProblema(String idProblema) {
         super.validaString(idProblema, "Campo codigo nao pode ser nulo ou vazio.");
@@ -74,6 +74,11 @@ public class ControllerProblemas extends Validacao implements Serializable {
         problemas.remove(idProblema);
     }
 
+    /**
+     * Retorna um objeto do tipo Problema cadastrado no sistema.
+     * @param id id do problema que se quer retornar.
+     * @return objeto do tipo Problema que esta cadastrado no sistema.
+     */
     public Problema getProblema(String id) {
         return this.problemas.get(id);
     }

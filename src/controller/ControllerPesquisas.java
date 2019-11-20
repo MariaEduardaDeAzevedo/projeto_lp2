@@ -162,7 +162,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         return pesquisas.get(codigo).isAtivada();
     }
 
-    // ADICIONAR METODOS DA US5
 
     /**
      * Retorna os valores do mapa de pesquisas.
@@ -175,7 +174,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     }
 
     /**
-     * Retorna um valor booleano que indica se uma pesquisa está ou não cadastrada
+     * Retorna um valor booleano que indica se uma pesquisa esta ou nao cadastrada
      * no sistema.
      *
      * @param idPesquisa id da pesquisa.
@@ -188,14 +187,14 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Associa um pesquisador a uma pesquisa cadastrada no sistema. Retorna um valor
-     * booleano que indica se a associação foi bem sucedida ou não.
+     * booleano que indica se a associacao foi bem sucedida ou nao.
      *
      * @param idPesquisa id da pesquisa a que se quer associar o pesquisador.
      * @param associado  Pesquisador que se quer associar à pesquisa.
-     * @return true, caso a associação seja bem sucedida, ou seja, caso o
-     * pesquisador já não esteja associado à pesquisa ou false, caso a
-     * associação não seja bem sucedida, ou seja, se o pesquisador já
-     * estiver associado à pesquisa.
+     * @return true, caso a associacao seja bem sucedida, ou seja, caso o
+     * pesquisador ja nao esteja associado a pesquisa ou false, caso a
+     * associacao nao seja bem sucedida, ou seja, se o pesquisador ja
+     * estiver associado a pesquisa.
      */
     public boolean associaPesquisador(String idPesquisa, Pesquisador associado) {
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
@@ -208,16 +207,16 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Desassocia um pesquisador de uma pesquisa cadastrada no sistema. Retorna um
-     * valor booleano que indica se a associação foi bem sucedida ou não.
+     * valor booleano que indica se a desassociacao foi bem sucedida ou nao.
      *
      * @param idPesquisa       id da pesquisa a que se quer desassociar o
      *                         pesquisador.
      * @param emailPesquisador email do pesquisador que se quer desassociar da
      *                         pesquisa.
-     * @return true, caso a desassociação seja bem sucedida, ou seja, se o
+     * @return true, caso a desassociacao seja bem sucedida, ou seja, se o
      * pesquisador que estava associado for removido, ou false, caso a
-     * desassociação for mal sucedida, ou seja, se o pesquisador não estiver
-     * associado à pesquisa.
+     * desassociacao for mal sucedida, ou seja, se o pesquisador nao estiver
+     * associado a pesquisa.
      */
     public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -233,12 +232,12 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Retorna um valor booleano que indica se uma pesquisa cadastrada no sistema
-     * possui ou não um pesquisador associado.
+     * possui ou nao um pesquisador associado.
      *
      * @param idPesquisa       id da pesquisa.
      * @param emailPesquisador email do pesquisador.
      * @return true, caso a pesquisa tenha o pesquisador associado a ela, ou false
-     * no caso contrário.
+     * no caso contrario.
      */
     public boolean containsPesquisador(String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -248,13 +247,18 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         return pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador);
     }
 
+    /**
+     * Retorna um objeto do tipo Pesquisa cadastrado no sistema.
+     * @param idPesquisa id da pesquisa cadastrada no sistema.
+     * @return objeto do tipo Pesquisa.
+     */
     public Pesquisa getPesquisa(String idPesquisa) {
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         return this.pesquisas.get(idPesquisa);
     }
 
     /**
-     * Associa um Problema, indicado pelo seu ID, a uma Pesquisa, também indicada
+     * Associa um Problema, indicado pelo seu ID, a uma Pesquisa, tambem indicada
      * pelo seu ID e retorna uma String referente ao sucesso da operação
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
@@ -291,7 +295,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * Desassocia um Problema de uma Pesquisa, indicada pelo seu ID
      *
      * @param idPesquisa String que representa unicamente um objeto do tipo Pesquisa
-     * @return String referente ao sucesso da operação
+     * @return String referente ao sucesso da operacao
      */
     public boolean desassociaProblema(String idPesquisa) {
 
@@ -313,13 +317,12 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     }
 
     /**
-     * Associa um Objetivo, indicado pelo seu ID, a uma Pesquisa, também indicada
+     * Associa um Objetivo, indicado pelo seu ID, a uma Pesquisa, tambem indicada
      * pelo seu ID e retorna uma String referente ao sucesso da operação
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
      * @param idObjetivo String que representa unicamente um objeto Objetivo
-     * @param problema   Objeto Objetivo a ser associado a pesquisa indicada
-     * @return String referente ao sucesso da operação
+     * @return String referente ao sucesso da operacao
      */
     public boolean associaObjetivo(String idPesquisa, String idObjetivo, Objetivo objetivo) {
 
@@ -347,13 +350,12 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     }
 
     /**
-     * Desassocia um Objetivo, indicado pelo seu ID, a uma Pesquisa, também indicada
-     * pelo seu ID e retorna uma String referente ao sucesso da operação
+     * Desassocia um Objetivo, indicado pelo seu ID, a uma Pesquisa, tambem indicada
+     * pelo seu ID e retorna uma String referente ao sucesso da operacao
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
      * @param idObjetivo String que representa unicamente um objeto Objetivo
-     * @param problema   Objeto Objetivo a ser desassociado da pesquisa indicada
-     * @return String referente ao sucesso da operação
+     * @return String referente ao sucesso da operacao
      */
     public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
 
@@ -380,7 +382,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Cria uma listagem em String com todas as pesquisas do sistema ordenadas pela
-     * ordem indicada como parâmetro. Por padrão, as ordem aceitas são: - PESQUISA -
+     * ordem indicada como parametro. Por padrão, as ordem aceitas são: - PESQUISA -
      * PROBLEMAS - OBJETIVO
      *
      * @param ordem String que indica a ordem que deve ser gerada a listagem
@@ -595,7 +597,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	/**
 	 * Altera o tipo apontado pelo email de um Pesquisador para Aluno no sistema
 	 * @param email String que identifica unicamente um Aluno/Pesquisador
-	 * @param professor novo objeto a ser apontado pelo email
 	 */
 	public void alteraPesquisadorAluno(String email, Aluno aluno) {
 		for (Pesquisa p : this.pesquisas.values()) {

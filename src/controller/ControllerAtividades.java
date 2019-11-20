@@ -241,13 +241,13 @@ public class ControllerAtividades extends Validacao implements Serializable {
 
     /**
      * Define a atividade subsequente de outra atividade cadastrada no sistema. A
-     * atividade precedente não pode ter uma subsequente para que a operação
-     * aconteça com sucesso.
+     * atividade precedente nao pode ter uma subsequente para que a operacao
+     * aconteca com sucesso.
      *
      * @param idPrecedente  id da atividade precedente, ou seja, da atividade a qual
      *                      se quer adicionar uma subsequente.
      * @param idSubsequente id da atividade que se deseja adicionar como subsequente
-     *                      à outra atividade cadastrada no sistema.
+     *                      e outra atividade cadastrada no sistema.
      */
     public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
         super.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
@@ -260,9 +260,9 @@ public class ControllerAtividades extends Validacao implements Serializable {
 
     /**
      * Retira a atividade subsequente de uma atividade cadastrada no sistema.
-     * Retirar uma atividade subsequente não significa retirar todas as outras que
-     * sucedem esta atividade subsequente, uma vez que, quando esta é retirada, a
-     * sequência é quebrada em duas.
+     * Retirar uma atividade subsequente nao significa retirar todas as outras que
+     * sucedem esta atividade subsequente, uma vez que, quando esta e retirada, a
+     * sequência e quebrada em duas.
      *
      * @param idPrecedente id da atividade da qual se quer retirar sua subsequente.
      */
@@ -273,12 +273,12 @@ public class ControllerAtividades extends Validacao implements Serializable {
     }
 
     /**
-     * Retorna um número inteiro que corresponde à quantidade de atividades
+     * Retorna um numero inteiro que corresponde a quantidade de atividades
      * subsequentes uma atividade cadastrada no sistema tem.
      *
      * @param idPrecedente id da atividade que se quer contar quantas atividades a
      *                     sucedem.
-     * @return inteiro equivalente à quantidade de atividades que sucedem uma
+     * @return inteiro equivalente a quantidade de atividades que sucedem uma
      * atividade cadastrada no sistema.
      */
     public int contaProximos(String idPrecedente) {
@@ -288,7 +288,7 @@ public class ControllerAtividades extends Validacao implements Serializable {
     }
 
     /**
-     * Retorna o id de uma enésima atividade que sucede uma atividade cadastrada no
+     * Retorna o id de uma enesima atividade que sucede uma atividade cadastrada no
      * sistema.
      *
      * @param idAtividade      id da atividade que se quer retornar o id de algum de
@@ -310,7 +310,7 @@ public class ControllerAtividades extends Validacao implements Serializable {
      *
      * @param idAtividade id da atividade que se quer retornar o id da atividade de
      *                    maior risco.
-     * @return String correspondente ao id da atividade de maior risco da sequência
+     * @return String correspondente ao id da atividade de maior risco da sequencia
      * das sucessoras de uma determinada atividade cadastrada no sistema.
      */
     public String pegaMaiorRiscoAtividades(String idAtividade) {
