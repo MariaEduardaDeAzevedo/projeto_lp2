@@ -99,7 +99,7 @@ public class Validacao {
 	 * @param status boolean com o status a ser avaliado
 	 * @param mensagem String com mensagem de erro
 	 */
-	public void validaStatus(boolean status, String mensagem) {
+	protected void validaStatus(boolean status, String mensagem) {
 		if (!status) {
 			throw new ActivationException(mensagem);
 		}

@@ -116,7 +116,6 @@ public class Atividade extends Validacao implements Serializable {
 	 * de seus itens
 	 * 
 	 * @return String com representacao textual de um objeto Atividade
-	 * 
 	 */
 	public String toString() {
 
@@ -296,8 +295,8 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou não.
-	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade não possua
+	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou nao.
+	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade nao possua
 	 * nenhuma atividade subsequente.
 	 */
 	public boolean hasProx() {
@@ -317,7 +316,7 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Método que retira a atividade subsequente desta atividade.
+	 * Metodo que retira a atividade subsequente desta atividade.
 	 */
 	public void retiraProx() {
 		proxAtv = null;
@@ -332,10 +331,10 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna um valor booleano que indica se a adição de uma atividade como subsequente de outra implica, ou não, em um loop.
+	 * Retorna um valor booleano que indica se a adiçao de uma atividade como subsequente de outra implica, ou nao, em um loop.
 	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
 	 * @param proxAdd Atividade que se quer adicionar como subsequente.
-	 * @return true, caso a adição de uma atividade subsequente em outra atividade resulte na criação de um loop, ou false, caso contrário.
+	 * @return true, caso a adiçao de uma atividade subsequente em outra atividade resulte na criaçao de um loop, ou false, caso contrario.
 	 */
 	private boolean isLoop(Atividade proxAdd, Atividade precedente) {
 		if (proxAdd.hasProx()) {
@@ -349,7 +348,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna um inteiro que representa a quantidade de atividades que sucedem esta atividade.
-	 * @return número inteiro que corresponde à quantidade de atividades que são subsequentes a esta atividade.
+	 * @return numero inteiro que corresponde a quantidade de atividades que sao subsequentes a esta atividade.
 	 */
 	public int contaProximos() {
 		if (!hasProx()) {
@@ -359,8 +358,8 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna o id de uma atividade subsequente de índice n, passado como parâmetro do método.
-	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e é passado como parâmetro do método o inteiro 3, então,
+	 * Retorna o id de uma atividade subsequente de indice n, passado como parametro do metodo.
+	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do e todo o inteiro 3, entao,
 	 * deve ser retornado o id do terceiro sucessor desta atividade.
 	 * @param index indice da atividade que sucede esta e que se quer retornar o id.
 	 * @return id da n-atividade sucessora desta atividade.
@@ -425,7 +424,11 @@ public class Atividade extends Validacao implements Serializable {
 			return this.getProx().pegaMaiorRiscoAtividades(this.getProx(), comparacao);
 		}
 	}
-
+	
+	/**
+	 * Gera e retorna uma representacao em String de uma Atividade para ser colocada em um arquivo de resultado
+	 * @return String que representa uma atividade para ser escrita em um arquivo de resultado
+	 */
 	public String toStringResultado() {
 		String listagem = System.lineSeparator() + String.format("		- %s", this.descricao);
 		
@@ -433,28 +436,25 @@ public class Atividade extends Validacao implements Serializable {
 			if (this.itens.get(i).getStatus() == true) {
 					listagem += System.lineSeparator()  + "			- ITEM" + (i + 1) + " - " + this.itens.get(i).getDuracao();
 				}
-				
 		}
 		
 		for (String s : this.resultados.values()) {
 			listagem += System.lineSeparator() + "			- " + s;
 		}
-	
 		return listagem;
-		
 	}
 	
+	/**
+	 * Gera uma representacao em String de uma Atividade para ser colocada em um arquivo de resumo
+	 * @return String que representa uma atividade para ser escrita em um arquivo de resumo
+	 */
 	public String toStringResumo() {
 		String listagem = System.lineSeparator() + String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
 		
 		for (int i = 0; i < this.itens.size(); i++) {
-			
 			listagem += System.lineSeparator()  + "			- " + this.itens.get(i).getStatusString() + " - ITEM" + (i + 1) ;
-		
 		}
-		
-		return listagem;
-		
+		return listagem;	
 	}
 	
 	/**

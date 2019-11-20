@@ -26,7 +26,10 @@ public class Item extends Validacao implements Serializable {
 	 * Representacao textual do status do item
 	 */
 	private String statusString;
-
+	
+	/**
+	 * Tempo de duracao de um item
+	 */
 	private int duracao;
 
 	/**
@@ -79,11 +82,19 @@ public class Item extends Validacao implements Serializable {
 		return this.statusString + " - " + this.descricao;
 
 	}
-
+	
+	/**
+	 * Retorna a representacao em String de um Item
+	 * @return String que representa o status de um Item
+	 */
 	public String getStatusString() {
 		return this.statusString;
 	}
-
+	
+	/**
+	 * Retorna a duracao do Item em questao
+	 * @return int com o valor do atributo duracao
+	 */
 	public int getDuracao() {	
 		return this.duracao;
 	}

@@ -149,7 +149,7 @@ class ConectorTest {
     @Test
     void deassociaAtividadeCodigoPesquisaInvalido() {
         cGeralTeste.associaAtividade("COM1", "A1");
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             cGeralTeste.desassociaAtividade("PAM1", "A1");
         });
     }
@@ -158,7 +158,7 @@ class ConectorTest {
     void deassociaAtividadePesquisaDesativada() {
         cGeralTeste.associaAtividade("COM1", "A1");
         cPesquisaTeste.encerraPesquisa("COM1", "O lab fechou");
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ActivationException.class, () -> {
             cGeralTeste.desassociaAtividade("COM1", "A1");
         });
     }

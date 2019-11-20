@@ -26,7 +26,6 @@ public class ControllerAtividades extends Validacao implements Serializable {
      */
     private int proximoId;
 
-
     /**
      * Constroi um objeto ControllerAtividades
      */

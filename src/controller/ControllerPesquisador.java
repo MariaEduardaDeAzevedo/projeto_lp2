@@ -18,7 +18,10 @@ public class ControllerPesquisador extends Validacao implements Serializable {
      * Representacao do mapa responsavel por armazenar os pesquisadores.
      */
     private Map<String, Pesquisador> pesquisadores;
-
+    
+    /**
+     * Lista que guarda os IDs dos pesquisadores que estao associados a uma pesquisa
+     */
     private List<String> associados;
 
     /**
@@ -252,14 +255,27 @@ public class ControllerPesquisador extends Validacao implements Serializable {
         this.pesquisadores = (TreeMap<String, Pesquisador>) arquivo.carregarArquivos("Pesquisadores", "Dados");
     }
 
+    /**
+     * Adiciona o email de um Pesquisador associado a lista de associados
+     * @param emailPesquisador String que representa unicamete um Pesquisador
+     */
     public void addAssociado(String emailPesquisador) {
         this.associados.add(emailPesquisador);
     }
 
+    /**
+     * Retorna um valor booleano se o Pesquisador indicado estiver associado
+     * @param email String que representa unicamete um Pesquisador
+     * @return boolean referente a existencia de um pesquisador associado
+     */
     public boolean isAssociado(String email) {
         return this.associados.contains(email);
     }
-
+    
+    /**
+     * Remove um pesquisador indicado pelo seu email da lista de associados
+     * @param email String que representa unicamete um Pesquisador
+     */
     public void removeAssociado(String email) {
         this.associados.remove(email);
     }
