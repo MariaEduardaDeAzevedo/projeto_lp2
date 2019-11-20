@@ -617,19 +617,31 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		this.problemasAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Problemas Associados", "Dados");
 		this.objetivosAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Objetivos Associados", "Dados");
 	}
-
-	public void alteraPesquisador(String email, Professor especializado) {
-
+	
+	/**
+	 * Altera o tipo apontado pelo email de um Pesquisador para Professor no sistema
+	 * @param email String que identifica unicamente um Professor/Pesquisador
+	 * @param professor novo objeto a ser apontado pelo email
+	 */
+	public void alteraPesquisadorProfessor(String email, Professor professor) {
 		for (Pesquisa p : this.pesquisas.values()) {
-
 			if (p.containsPesquisador(email)) {
-
-				p.alteraPesquisadorProfessor(email, especializado);
-
+				p.alteraPesquisadorProfessor(email, professor);
 			}
-
 		}
-
+	}
+	
+	/**
+	 * Altera o tipo apontado pelo email de um Pesquisador para Aluno no sistema
+	 * @param email String que identifica unicamente um Aluno/Pesquisador
+	 * @param professor novo objeto a ser apontado pelo email
+	 */
+	public void alteraPesquisadorAluno(String email, Aluno aluno) {
+		for (Pesquisa p : this.pesquisas.values()) {
+			if (p.containsPesquisador(email)) {
+				p.alteraPesquisadorAluno(email, aluno);
+			}
+		}		
 	}
 
 	/**
@@ -672,12 +684,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		writer.write(resumo);
 		writer.close();
 
-	}
-
-	public void alteraPesquisadorAluno(String email, Aluno aluno) {
-		
-		this.pesquisas.get(email).alteraPesquisadorAluno(email, aluno);
-		
 	}
 	
 	/**

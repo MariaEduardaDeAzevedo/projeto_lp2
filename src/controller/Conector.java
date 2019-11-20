@@ -298,7 +298,7 @@ public class Conector extends Validacao {
      */
     public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
         if (this.cPesquisador.isAssociado(email)) {
-            this.cPesquisas.alteraPesquisador(email, cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data));
+            this.cPesquisas.alteraPesquisadorProfessor(email, cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data));
         } else {
             cPesquisador.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
         }
