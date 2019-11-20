@@ -605,7 +605,7 @@ class ControllerAtividadesTest {
 	
 	@Test
 	void pegaProximo() {
-		controller3.pegaProximo("A1", 1);
+		controller3.pegaProximo("A1", 3);
 	}
 	
 	@Test

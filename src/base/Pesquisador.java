@@ -164,8 +164,8 @@ public class Pesquisador extends Validacao implements Serializable {
 	}
 	
 	/**
-	 * Retorna o valor da função do pesquisador.
-	 * @return String que corresponde à função do pesquisador.
+	 * Retorna o valor da funcao do pesquisador.
+	 * @return String que corresponde a funcao do pesquisador.
 	 */
 	public String getFuncao() {
 		return funcao;
@@ -173,7 +173,7 @@ public class Pesquisador extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna a biografia do pesquisador.
-	 * @return String que corresponde à biografia do pesquisador.
+	 * @return String que corresponde a biografia do pesquisador.
 	 */
 	public String getBiografia() {
 		return biografia;
@@ -189,7 +189,7 @@ public class Pesquisador extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna a URL da foto do pesquisador.
-	 * @return String que corresponde à URL da foto do pesquisador.
+	 * @return String que corresponde a URL da foto do pesquisador.
 	 */
 	public String getFoto() {
 		return fotoURL;
@@ -209,7 +209,7 @@ public class Pesquisador extends Validacao implements Serializable {
     
     /**
      * Altera o valor do nome do pesquisador.
-     * @param novoValor String correspondente ao novo valor do nome do pesquisador, que substituirá o antigo valor do
+     * @param novoValor String correspondente ao novo valor do nome do pesquisador, que substituira o antigo valor do
      * nome deste.
      */
     public void setNome(String novoValor) {
@@ -218,9 +218,9 @@ public class Pesquisador extends Validacao implements Serializable {
     }
     
     /**
-     * Altera o valor da função do pesquisador.
-     * @param novoValor String correspondente ao novo valor da função do pesquisador, que substituirá o antigo
-     * valor da função deste.
+     * Altera o valor da funcao do pesquisador.
+     * @param novoValor String correspondente ao novo valor da funcao do pesquisador, que substituira o antigo
+     * valor da funcao deste.
      */
     public void setFuncao(String novoValor) {
     	super.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
@@ -229,7 +229,7 @@ public class Pesquisador extends Validacao implements Serializable {
     
     /**
      * Altera o valor da biografia do pesquisador.
-     * @param novoValor String que corresponde ao novo valor da biografia do pesquisador, que substituirá o antigo
+     * @param novoValor String que corresponde ao novo valor da biografia do pesquisador, que substituira o antigo
      * valor da biografia deste.
      */
     public void setBiografia(String novoValor) {
@@ -239,7 +239,7 @@ public class Pesquisador extends Validacao implements Serializable {
     
     /**
      * Altera o valor do email do pesquisador.
-     * @param novoValor String que corresponde ao novo valor do email do pesquisador, que substituirá o antigo
+     * @param novoValor String que corresponde ao novo valor do email do pesquisador, que substituira o antigo
      * valor do email deste.
      */
     public void setEmail(String novoValor) {
@@ -250,7 +250,7 @@ public class Pesquisador extends Validacao implements Serializable {
     
     /**
      * Altera o valor da URL da foto do pesquisador.
-     * @param novoValor String que corresponde ao novo valor da URL da foto do pesquisador, que substituirá o antigo
+     * @param novoValor String que corresponde ao novo valor da URL da foto do pesquisador, que substituira o antigo
      * valor desta.
      */
     public void setFoto(String novoValor) {

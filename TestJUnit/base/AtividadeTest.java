@@ -2,6 +2,8 @@ package base;
 import static org.junit.jupiter.api.Assertions.*;
 
 import excecoes.ActivationException;
+import excecoes.SequenceException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -217,5 +219,17 @@ class AtividadeTest {
 	@Test
 	void buscaTermoDescricaoRiscoTermoInexistente() {
 		assertEquals(null, atividadeBase1.buscaTermoDescricaoDoRisco("ziriguidun"));
+	}
+	
+	@Test
+	void pegaProximo() {
+		atividadeBase3.pegaProximo(2);
+	}
+	
+	@Test
+	void pegaProximoIndexNegativo() {
+		assertThrows(SequenceException.class, () -> {
+			atividadeBase1.pegaProximo(-1);
+		});
 	}
 }
