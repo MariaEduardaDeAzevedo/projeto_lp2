@@ -1,8 +1,8 @@
 package base;
 
-import controller.Validacao;
-
 import java.io.Serializable;
+
+import validacao.Validacao;
 
 /**
  * Classe que representa um item de uma atividade de pesquisa

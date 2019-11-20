@@ -5,6 +5,7 @@ import java.util.*;
 
 import base.Arquivo;
 import base.Atividade;
+import validacao.Validacao;
 
 /**
  * Entidade controladora de objetos Atividade e Item

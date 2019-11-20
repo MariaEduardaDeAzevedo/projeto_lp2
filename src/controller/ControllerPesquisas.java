@@ -8,6 +8,7 @@ import java.util.*;
 
 import base.*;
 import comparators.*;
+import validacao.Validacao;
 
 /**
  * Classe Controller responsavel pelos metodos referentes as pesquisas do

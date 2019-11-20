@@ -38,7 +38,7 @@ class ConectorTest {
         this.cBuscasTeste = new ControllerBuscas();
         this.cGeralTeste = new Conector(cPesquisadorTeste, cPesquisaTeste, cProblemasTeste,
                 cAtividadeTeste, cObjetivosTeste, cBuscasTeste);
-        this.dados = new File("Arquivo");
+        this.dados = new File("Dados");
     }
     @Test
     void associaAtividadeValida() {
@@ -670,14 +670,12 @@ class ConectorTest {
     	valores.add("Proximo ID dos Problemas");
     	
     	boolean resultado = true;
-    	
+        	
     	for (String s : this.dados.list()) {
     		if (! valores.contains(s)) {
     			resultado = false;
     			break;	
     		}
-    		File file = new File("Arquivo" + File.separator + s);
-    		file.delete();
     	}
     	assertEquals(true, resultado);	
     }
@@ -724,7 +722,7 @@ class ConectorTest {
     
     @Test
     void buscaTermoValidoComResultadoNull() {
-    	assertThrows(IndexOutOfBoundsException.class, () -> {
+    	assertThrows(IllegalArgumentException.class, () -> {
     		cGeralTeste.busca("", 0);
         });
     }

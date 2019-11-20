@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import base.Objetivo;
+import validacao.Validacao;
 import base.Arquivo;
 
 /**

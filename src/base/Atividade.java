@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.Validacao;
+import validacao.Validacao;
 
 /**
  * Classe que representa uma atividade de pesquisa

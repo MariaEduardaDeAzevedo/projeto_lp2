@@ -1,8 +1,8 @@
 package base;
 
-import controller.Validacao;
-
 import java.io.Serializable;
+
+import validacao.Validacao;
 
 /**
  * Representação de um objetivo de uma pesquisa. Um objetivo define a finalidade de uma pesquisa e pode ser de dois tipos: geral ou específico.

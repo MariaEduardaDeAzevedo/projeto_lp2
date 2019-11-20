@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import base.Arquivo;
 import base.Problema;
+import validacao.Validacao;
 
 /**
  * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operações relacionadas

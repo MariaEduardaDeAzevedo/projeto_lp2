@@ -7,6 +7,7 @@ import base.Arquivo;
 import base.Pesquisador;
 import base.Aluno;
 import base.Professor;
+import validacao.Validacao;
 
 /**
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador.

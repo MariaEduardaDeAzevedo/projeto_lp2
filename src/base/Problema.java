@@ -1,8 +1,8 @@
 package base;
 
-import controller.Validacao;
-
 import java.io.Serializable;
+
+import validacao.Validacao;
 
 /**
  * Representação de um problema de um problema de uma pesquisa.

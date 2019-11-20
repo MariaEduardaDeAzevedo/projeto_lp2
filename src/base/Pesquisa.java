@@ -16,8 +16,8 @@ import java.util.TreeMap;
 
 import comparators.OrdenaAtvdsMaiorDuracao;
 import comparators.OrdenaAtvdsMenosPendencias;
-import controller.Validacao;
 import excecoes.ActivationException;
+import validacao.Validacao;
 
 /**
  * Representacao de uma Pesquisa, que contem um codigo, descricao, campo de

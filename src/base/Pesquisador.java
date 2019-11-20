@@ -1,8 +1,8 @@
 package base;
 
-import controller.Validacao;
-
 import java.io.Serializable;
+
+import validacao.Validacao;
 
 /**
  * Representacao de um pesquisador, que contem funcao, nome, biografia, email e url da foto.

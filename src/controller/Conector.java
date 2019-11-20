@@ -2,6 +2,7 @@ package controller;
 
 import base.*;
 import excecoes.ActivationException;
+import validacao.Validacao;
 
 import java.util.Collection;
 
