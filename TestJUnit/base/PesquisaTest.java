@@ -210,4 +210,24 @@ class PesquisaTest {
 		pesquisaTeste.desassociaAtividade("A1");
 		assertFalse(pesquisaTeste.desassociaAtividade("A1"));
 	}
+	
+	@Test
+	void buscaTermoCampoInteresse() {
+		assertEquals("animal: vida animal",pesquisaTeste.buscaTermoCampoDeInteresse("vida"));
+	}
+	
+	@Test
+	void buscaTermoCampoInteresseTermoInexistente() {
+		assertEquals(null,pesquisaTeste.buscaTermoCampoDeInteresse("netbruk"));
+	}
+	
+	@Test
+	void buscaTermoDescricao() {
+		assertEquals("animal: pesquisa animais",pesquisaTeste.buscaTermoDescricao("animais"));
+	}
+	
+	@Test
+	void buscaTermoDescricaoTermoInexistente() {
+		assertEquals(null, pesquisaTeste.buscaTermoDescricao("mar menino"));
+	}
 }
