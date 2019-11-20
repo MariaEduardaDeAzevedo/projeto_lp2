@@ -65,7 +65,7 @@ public class ControllerBuscas extends Validacao {
     /**
      * Conta o numero de entidades que fazem mencao ao termo que ja foi previamente buscado.
      *
-     * @param termo termo que já foi previamente buscado.
+     * @param termo termo que ja foi previamente buscado.
      * @return int representado o numero de entidades que contem o termo.
      */
     public int contaResultadosBusca(Collection<Pesquisa> pesquisas, Collection<Pesquisador> pesquisadores,
@@ -79,6 +79,17 @@ public class ControllerBuscas extends Validacao {
         return entidades.size();
     }
 
+    /**
+     * Busca a ocorrencia de um termo em todas as entidades cadastradas do sistema.
+     *
+     * @param termo         termo que se deseja verificar a ocorrencia.
+     * @param pesquisas     Collection com todas as pesquisas cadastradas.
+     * @param pesquisadores Collection com todos os pesquisadores cadastrados.
+     * @param problemas     Collection com todas as problemas cadastrados.
+     * @param objetivos     Collection com todas os objetivos cadastrados.
+     * @param atividades    Collection com todas as atividades cadastradas.
+     * @return List contendo todas as entidades que faziam mencao ao termo buscado.
+     */
     private List retornaEntidadesComTermo(Collection<Pesquisa> pesquisas, Collection<Pesquisador> pesquisadores,
                                           Collection<Problema> problemas, Collection<Objetivo> objetivos, Collection<Atividade> atividades, String termo) {
         List entidades = new ArrayList<>();

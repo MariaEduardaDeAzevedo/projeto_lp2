@@ -10,26 +10,24 @@ import validacao.Validacao;
 import base.Arquivo;
 
 /**
- * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contém os métodos utilizados pela fachada
- * para realizar operações com os objetivos.
- *
- * @author Daniel Fonseca
+ * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contem os metodos utilizados pela fachada
+ * para realizar operacoes com os objetivos.
  */
 public class ControllerObjetivos extends Validacao implements Serializable {
     /**
      * Mapa que armazena todos os objetivos cadastrados no sistema.
-     * Neste mapa, a chave é o código do objetivo, cujo qual este é identificado unicamente e o valor é um Objetivo.
-     * O código de todo objetivo cadastrado tem o formato "O" + id gerado automaticamente (a partir de 1).
+     * Neste mapa, a chave e o codigo do objetivo, cujo qual este e identificado unicamente e o valor e um Objetivo.
+     * O codigo de todo objetivo cadastrado tem o formato "O" + id gerado automaticamente (a partir de 1).
      */
     private Map<String, Objetivo> objetivos;
     /**
-     * inteiro utilizado como id para gerar os códigos que são utilizados como chave no mapa que armazena os objetivos cadastrados no sistema.
+     * inteiro utilizado como id para gerar os codigos que sao utilizados como chave no mapa que armazena os objetivos cadastrados no sistema.
      */
     private int idNumber;
 
     /**
-     * Constrói um controller de Objetivo.
-     * Por padrão, todo controller desse tipo começa sem nenhum Objetivo cadastrado e o seu id utilizado para gerar os códigos utilizados como chave
+     * Constroi um controller de Objetivo.
+     * Por padrao, todo controller desse tipo começa sem nenhum Objetivo cadastrado e o seu id utilizado para gerar os codigos utilizados como chave
      * no mapa que armazena todos os objetivos começa como sendo 1.
      */
     public ControllerObjetivos() {
@@ -38,15 +36,15 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     }
 
     /**
-     * Cadastra um objetivo no sistema a partir de seu tipo (pode ser "GERAL" ou "ESPECIFICO"), sua descrição e mais dois valores
-     * que irão corresponder à aderência e à viabilidade do objetivo.
-     * Todo objetivo cadastrado é armazenado no mapa e tem sua chave como sendo seu código que o identifica unicamente no sistema, este
-     * código é gerado pela concatenação de "O" + id gerado automaticamente (a partir de 1).
+     * Cadastra um objetivo no sistema a partir de seu tipo (pode ser "GERAL" ou "ESPECIFICO"), sua descricao e mais dois valores
+     * que irao corresponder a aderencia e a viabilidade do objetivo.
+     * Todo objetivo cadastrado e armazenado no mapa e tem sua chave como sendo seu codigo que o identifica unicamente no sistema, este
+     * codigo e gerado pela concatenação de "O" + id gerado automaticamente (a partir de 1).
      *
      * @param tipo        tipo do objetivo a ser cadastrado no sistema (pode ser "GERAL" ou "ESPECIFICO"
-     * @param descricao   descrição do objetivo a ser cadastrado no sistema
-     * @param aderencia   valor inteiro correspondente à aderência do objetivo a ser cadastrado no sistema, pode ser qualquer valor no intervalo de 1 a 5
-     * @param viabilidade valor inteiro correspondente à viabilidade do objetivo a ser cadastrado no sistema, pode ser qualquer valor no intervalo de 1 a 5
+     * @param descricao   descricao do objetivo a ser cadastrado no sistema
+     * @param aderencia   valor inteiro correspondente a aderencia do objetivo a ser cadastrado no sistema, pode ser qualquer valor no intervalo de 1 a 5
+     * @param viabilidade valor inteiro correspondente a viabilidade do objetivo a ser cadastrado no sistema, pode ser qualquer valor no intervalo de 1 a 5
      */
     public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade) {
         super.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
@@ -60,11 +58,11 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     }
 
     /**
-     * Exibe a representação textual de um determinado objetivo cadastrado no sistema.
-     * A representação textual de todo objetivo é dada no formato "CÓDIGO DO OBJETIVO - TIPO - DESCRIÇÃO - VALOR"
+     * Exibe a representacao textual de um determinado objetivo cadastrado no sistema.
+     * A representacao textual de todo objetivo é dada no formato "CODIGO DO OBJETIVO - TIPO - DESCRICAO - VALOR"
      *
-     * @param idObjetivo o código que identifica unicamente o objetivo no sistema
-     * @return String que corresponde à representação textual do objetivo
+     * @param idObjetivo o codigo que identifica unicamente o objetivo no sistema
+     * @return String que corresponde a representacao textual do objetivo
      */
     public String exibeObjetivo(String idObjetivo) {
         super.validaString(idObjetivo, "Codigo do objetivo passado não pode ser vazio ou nulo");
@@ -73,9 +71,9 @@ public class ControllerObjetivos extends Validacao implements Serializable {
     }
 
     /**
-     * Apaga um objetivo do sistema, ou seja, retira um objetivo cadastrado no sistema através do seu código.
+     * Apaga um objetivo do sistema, ou seja, retira um objetivo cadastrado no sistema atraves do seu codigo.
      *
-     * @param idObjetivo código que identifica unicamente o objetivo cadastrado no sistema.
+     * @param idObjetivo codigo que identifica unicamente o objetivo cadastrado no sistema.
      */
     public void apagarObjetivo(String idObjetivo) {
         super.validaString(idObjetivo, "Campo codigo nao pode ser nulo ou vazio.");
@@ -83,6 +81,12 @@ public class ControllerObjetivos extends Validacao implements Serializable {
         objetivos.remove(idObjetivo);
     }
 
+    /**
+     * Retorna um Objetivo cadastrado no mapa de objetivos, a partir do ID recebido como parametro.
+     *
+     * @param id ID do objetivo que se deseja retornar.
+     * @return Objetivo que tinha o ID passado como parametro.
+     */
     public Objetivo getObjetivo(String id) {
         return this.objetivos.get(id);
     }
