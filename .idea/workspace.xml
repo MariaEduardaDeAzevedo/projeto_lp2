@@ -3,8 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/base/PesquisaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/base/PesquisaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJUnit/controller/ControllerPesquisasTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Objetivo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Problema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerAtividades.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Validacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ConectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ConectorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisa.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +40,7 @@
     <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1573561996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="169" />
+    <option name="myElementSize" value="163" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -86,7 +101,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PesquisaTest.getResumo">
+  <component name="RunManager" selected="JUnit.All in projeto_lp2">
+    <configuration name="All in projeto_lp2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projeto_lp2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ControllerPesquisasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="projeto_lp2" />
       <extension name="coverage">
@@ -98,22 +121,6 @@
       <option name="PACKAGE_NAME" value="controller" />
       <option name="MAIN_CLASS_NAME" value="controller.ControllerPesquisasTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ControllerPesquisasTest.gravarResultadosPesquisaValido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="projeto_lp2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ControllerPesquisasTest" />
-      <option name="METHOD_NAME" value="gravarResultadosPesquisaValido" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,19 +174,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ControllerPesquisasTest.gravarResultadosPesquisaValido" />
       <item itemvalue="JUnit.ControllerPesquisasTest.gravarResumoPesquisaValida" />
       <item itemvalue="JUnit.ControllerPesquisasTest" />
       <item itemvalue="JUnit.PesquisaTest.getResultados" />
       <item itemvalue="JUnit.PesquisaTest.getResumo" />
+      <item itemvalue="JUnit.All in projeto_lp2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in projeto_lp2" />
         <item itemvalue="JUnit.PesquisaTest.getResumo" />
         <item itemvalue="JUnit.PesquisaTest.getResultados" />
         <item itemvalue="JUnit.ControllerPesquisasTest" />
         <item itemvalue="JUnit.ControllerPesquisasTest.gravarResumoPesquisaValida" />
-        <item itemvalue="JUnit.ControllerPesquisasTest.gravarResultadosPesquisaValido" />
       </list>
     </recent_temporary>
   </component>
@@ -212,7 +219,7 @@
       <workItem from="1574130368172" duration="1202000" />
       <workItem from="1574193372981" duration="836000" />
       <workItem from="1574198866181" duration="2223000" />
-      <workItem from="1574256056035" duration="3134000" />
+      <workItem from="1574256056035" duration="6343000" />
     </task>
     <servers />
   </component>
@@ -248,7 +255,7 @@
     <SUITE FILE_PATH="coverage/projeto_lp2$PesquisaTest.ic" NAME="PesquisaTest Coverage Results" MODIFIED="1573322892315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>base.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1573589343218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1574264173931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/projeto_lp2$AtividadeTest.ic" NAME="AtividadeTest Coverage Results" MODIFIED="1573526887192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>base.*</FILTER>
     </SUITE>
