@@ -517,4 +517,91 @@ class ControllerAtividadesTest {
 			controller3.getDuracao("A9");
 		});
 	}
+	
+	@Test
+	void defineProximaAtividade() {
+		controller3.defineProximaAtividade("A2", "A3");
+	}
+	
+	@Test
+	void defineProximaAtvdIdPrecedenteVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.defineProximaAtividade("", "A3");
+		});
+	}
+	
+	@Test
+	void defineProximaAtvdIdSubsequenteVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.defineProximaAtividade("A2", "");
+		});
+	}
+	
+	@Test
+	void defineProximaAtvdIdsVazios() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.defineProximaAtividade("", "");
+		});
+	}
+	
+	@Test
+	void defineProximaAtvdIdPrecedenteNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.defineProximaAtividade(null, "A3");
+		});
+	}
+	
+	@Test
+	void defineProximaAtvdIdSubsequenteNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.defineProximaAtividade("A3", null);
+		});
+	}
+	
+	@Test
+	void defineProximaAtvdIdsNulos() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.defineProximaAtividade(null, null);
+		});
+	}
+	
+	@Test
+	void tiraProximaAtividade() {
+		controller3.tiraProximaAtividade("A2");
+	}
+	
+	@Test
+	void tiraProximaAtividadeIdPrecedenteNulo() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.tiraProximaAtividade(null);
+		});
+	}
+	
+	@Test
+	void tiraProximaAtividadeIdPrecedenteVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.tiraProximaAtividade("");
+		});
+	}
+	
+	@Test
+	void contaProximos() {
+		controller3.contaProximos("A2");
+	}
+	
+	@Test
+	void contaProximosIdPrecedenteVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.tiraProximaAtividade("");
+		});
+	}
+	
+	@Test
+	void contaProximosIdPrecedenteNulo() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.tiraProximaAtividade(null);
+		});
+	}
+	
+	
 }
