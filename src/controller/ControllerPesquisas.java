@@ -83,6 +83,11 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         return codigo;
     }
 
+    /**
+     * Metodo privado responsavel por validar o tamanho do campo a ser verificado.
+     * @param campo Array que armazena o campo a ser avaliado.
+     * @param tamanho Referencia do tamanho a ser comparado.
+     */
     private void validaTamanhoDoCampo(String[] campo, int tamanho) {
 
         if (campo.length > tamanho) {
@@ -91,6 +96,11 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     }
 
+    /**
+     * Metodo privado responsavel por validar o tamanho do campo a ser verificado.
+     * @param campo String que representa o campo a ser avaliado.
+     * @param tamanho Referencia do tamanho a ser comparado.
+     */
     private void validaTamanhoDoCampo(String campo, int tamanho) {
 
         if (campo.length() > tamanho) {
@@ -267,26 +277,19 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * @return String referente ao sucesso da operação
      */
     public boolean associaProblema(String idPesquisa, String idProblema, Problema problema) {
-
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
 
         try {
-
             super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true,
                     "Pesquisa ja associada a um problema.");
-
         } catch (IllegalArgumentException e) {
-
             return false;
-
         }
-
         this.pesquisas.get(idPesquisa).setProblema(problema);
         this.problemasAssociados.put(idProblema, idPesquisa);
-
         return true;
 
     }
@@ -298,22 +301,17 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * @return String referente ao sucesso da operacao
      */
     public boolean desassociaProblema(String idPesquisa) {
-
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 
         if (!this.problemasAssociados.containsValue(idPesquisa)) {
-
             return false;
-
         }
 
         this.problemasAssociados.remove(this.pesquisas.get(idPesquisa).getProblema().getId());
         this.pesquisas.get(idPesquisa).setProblema(null);
-
         return true;
-
     }
 
     /**
@@ -325,26 +323,20 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * @return String referente ao sucesso da operacao
      */
     public boolean associaObjetivo(String idPesquisa, String idObjetivo, Objetivo objetivo) {
-
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
 
         try {
-
             super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, true,
                     "Objetivo ja associado a uma pesquisa.");
-
         } catch (IllegalArgumentException e) {
-
             return false;
-
         }
 
         this.pesquisas.get(idPesquisa).addObjetivo(idObjetivo, objetivo);
         this.objetivosAssociados.put(idPesquisa, idObjetivo);
-
         return true;
 
     }
@@ -358,26 +350,20 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * @return String referente ao sucesso da operacao
      */
     public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
-
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
         super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
 
         try {
-
             super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, false, "");
-
         } catch (NullPointerException e) {
-
             return false;
-
         }
 
         this.objetivosAssociados.remove(idPesquisa);
         this.pesquisas.get(idPesquisa).removeObjetivo(idObjetivo);
         return true;
-
     }
 
     /**
@@ -389,7 +375,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * @return String com a listagem de todas as pesquisas do sistema
      */
     public String listar(String ordem) {
-
         List<String> valores = new ArrayList<String>();
         valores.add("PESQUISA");
         valores.add("PROBLEMA");
@@ -411,12 +396,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * quesito OBJETIVOS
      */
     private String ordenaObjetivo() {
-
         List<Pesquisa> comObjetivo = new ArrayList<Pesquisa>();
         List<Pesquisa> semObjetivo = new ArrayList<Pesquisa>();
 
         for (Pesquisa p : this.pesquisas.values()) {
-
             if (p.hasObjetivo() == false) {
                 semObjetivo.add(p);
             } else {
@@ -446,12 +429,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * quesito PROBLEMA
      */
     private String ordenaProblema() {
-
         List<Pesquisa> comProblema = new ArrayList<Pesquisa>();
         List<Pesquisa> semProblema = new ArrayList<Pesquisa>();
 
         for (Pesquisa p : this.pesquisas.values()) {
-
             if (p.getProblema() == null) {
                 semProblema.add(p);
             } else {
@@ -483,7 +464,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * quesito PESQUISA
      */
     private String ordenaPesquisa() {
-
         List<Pesquisa> lista = new ArrayList<Pesquisa>();
 
         for (Pesquisa p : this.pesquisas.values()) {
@@ -545,26 +525,18 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     }
     
     public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
-
         return this.pesquisas.get(id).getPesquisadoresAssociados();
-
     }
     
     public Collection<String> getObjetivosAssociados(String id) {
-
         Collection<String> lista = new ArrayList<String>();
 
 		for (String s : this.objetivosAssociados.keySet()) {
-
 			if (this.objetivosAssociados.get(s).equals(id)) {
-
 				lista.add(s);
-
 			}
 		}
-
 		return lista;
-
 	}
 
 	public void salvarArquivos() {
@@ -689,5 +661,4 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		}
 		return null;
 	}
-
 }
