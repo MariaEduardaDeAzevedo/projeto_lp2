@@ -393,9 +393,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         valores.add("PROBLEMA");
         valores.add("OBJETIVOS");
         super.validaValoresPermitidos(valores, ordem, "Valor invalido da ordem");
-
-        String lista = "";
-
+        
         if (ordem.equals("PESQUISA")) {
             return this.ordenaPesquisa();
         } else if (ordem.equals("PROBLEMA")) {

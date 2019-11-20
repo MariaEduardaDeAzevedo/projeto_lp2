@@ -28,7 +28,6 @@ public class ControllerPesquisador extends Validacao implements Serializable {
         this.pesquisadores = new TreeMap<String, Pesquisador>(Collections.reverseOrder());
         this.associados = new ArrayList<String>();
     }
-    //ATUALIZAR PARA TREEMAP E CONSERTA O LISTAPESQUISADORES
 
     /**
      * Metodo responsavel por cadastrar um pesquisador no sistema a partir dos seus parametros.
@@ -254,20 +253,14 @@ public class ControllerPesquisador extends Validacao implements Serializable {
     }
 
     public void addAssociado(String emailPesquisador) {
-
         this.associados.add(emailPesquisador);
-
     }
 
     public boolean isAssociado(String email) {
-
         return this.associados.contains(email);
-
     }
 
     public void removeAssociado(String email) {
-
         this.associados.remove(email);
-
     }
 }
