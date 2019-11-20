@@ -154,7 +154,6 @@ public class Arquivo {
             System.err.println("Classe de objeto desconhecida");
             e.printStackTrace();
         }
-
         return (int) arquivoInt;
     }
 }
