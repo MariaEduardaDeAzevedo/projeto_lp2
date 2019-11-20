@@ -7,9 +7,7 @@ import validacao.Validacao;
 import java.util.Collection;
 
 /**
- * Classe utilizada para juntar a lógica de dois ou mais controllers do sistema.
- *
- * @author Daniel Fonseca
+ * Classe utilizada para juntar a lógica de dois ou mais controllers do sistema. 
  */
 public class Conector extends Validacao {
 
@@ -234,13 +232,9 @@ public class Conector extends Validacao {
         super.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
         super.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
         super.hasValor(cAtividades.containsAtividade(codigoAtividade), "Atividade nao encontrada");
-
-        if (!cPesquisas.containsPesquisa(codigoPesquisa)) {
-            throw new IllegalArgumentException("Pesquisa nao encontrada.");
-        }
-        if (!cPesquisas.pesquisaEhAtiva(codigoPesquisa)) {
-            throw new IllegalArgumentException("Pesquisa desativada.");
-        }
+        super.hasValor(cPesquisas.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+        super.validaStatus(cPesquisas.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+       
         return cPesquisas.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
 
@@ -260,8 +254,6 @@ public class Conector extends Validacao {
             throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
         }
         cAtividades.executaAtividade(codigoAtividade, item, duracao);
-
-
     }
 
     /**
