@@ -754,4 +754,128 @@ class ControllerPesquisasTest {
     		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
         });
 	}
+	
+	@Test
+	void configuraEstrategiaValido() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
+		controllerPesquisasTest.configuraEstrategia("MENOS_PENDENCIAS");
+		assertEquals("MENOS_PENDENCIAS", controllerPesquisasTest.getEstrategia());
+		controllerPesquisasTest.configuraEstrategia("MAIOR_RISCO");
+		assertEquals("MAIOR_RISCO", controllerPesquisasTest.getEstrategia());
+		controllerPesquisasTest.configuraEstrategia("MAIOR_DURACAO");
+		assertEquals("MAIOR_DURACAO", controllerPesquisasTest.getEstrategia());
+		controllerPesquisasTest.configuraEstrategia("MAIS_ANTIGA");
+		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
+		controllerPesquisasTest.configuraEstrategia("MAIS_ANTIGA");
+		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
+	}
+	
+	@Test
+	void configuraEstrategiaNull() {
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.configuraEstrategia(null);
+        });
+	}
+	
+	@Test
+	void configuraEstrategiaVazia() {
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.configuraEstrategia("");
+        });
+	}
+	
+	@Test
+	void configuraEstrategiaInvalida() {
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.configuraEstrategia("ESTRATEGIA BEM LEGAL ESTOU ADORANDO");
+        });
+	}
+	
+	@Test
+	void proximaAtividadeValido() {
+		Atividade A1 = new Atividade("Busca de raízes históricas do problema do imperialismo americano", "BAIXO", "Como é apenas um estudo da história dos EUA o risco não é elevado", "A1");
+		Atividade A2 = new Atividade("Estudo das consequências do imperialismo americano na América Latina", "BAIXO", "Risco baixo pois é apenas um estudo da história da América Latina", "A2");
+		Atividade A3 = new Atividade("Busca da última vez em que o torcedor do São Paulo foi feliz", "ALTO", "Algum torcedor pode se sentir ofendido", "A3");
+		Atividade A4 = new Atividade("Do you like our owl?", "ALTO", "Is it artificial?", "A4");
+		Atividade A5 = new Atividade("I want more life, father", "MEDIO", "Talvez o Roy Batty mate o Tyrell", "A5");
+		Atividade A6 = new Atividade("It's too bad she won't live", "MEDIO", "But, then again, who does?", "A6");
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		controllerPesquisasTest.associaAtividade("HUM1", A1);
+		controllerPesquisasTest.associaAtividade("HUM1", A2);
+		controllerPesquisasTest.associaAtividade("HUM1", A3);
+		controllerPesquisasTest.associaAtividade("HUM1", A4);
+		controllerPesquisasTest.associaAtividade("HUM1", A5);
+		controllerPesquisasTest.associaAtividade("HUM1", A6);
+		A1.cadastrarItem("Os EUA são um país de primeiro mundo, lá todo mundo fala inglês");
+		A2.cadastrarItem("A máfia do apito roubou uns 30 título do Treze só nesses últimos 2 anos");
+		A3.cadastrarItem("Agradecer a Rogério Ceni");
+		A4.cadastrarItem("Ver se a coruja era artificial ou não");
+		A5.cadastrarItem("Dar um beijo no papai");
+		A5.cadastrarItem("Conversar amigavelmente com o papai");
+		assertEquals("A1", controllerPesquisasTest.proximaAtividade("HUM1"));
+		controllerPesquisasTest.configuraEstrategia("MAIS_ANTIGA");
+		assertEquals("A1", controllerPesquisasTest.proximaAtividade("HUM1"));
+		A1.cadastrarItem("item bem legal");
+		A1.cadastrarItem("item um pouco menos legal que o anterior");
+		A3.cadastrarItem("saudades do juvenal juvencio");
+		A3.cadastrarItem("diretoria = jim carrey");
+		A2.cadastrarItem("plano marshall bem legal");
+		controllerPesquisasTest.configuraEstrategia("MENOS_PENDENCIAS");
+		assertEquals("A4", controllerPesquisasTest.proximaAtividade("HUM1"));
+		A4.executaItem(1, 20);
+		assertEquals("A2", controllerPesquisasTest.proximaAtividade("HUM1"));
+		controllerPesquisasTest.configuraEstrategia("MAIOR_RISCO");
+		assertEquals("A3", controllerPesquisasTest.proximaAtividade("HUM1"));
+		controllerPesquisasTest.configuraEstrategia("MAIOR_DURACAO");
+		A1.executaItem(1, 10);
+		A1.executaItem(2, 10);
+		A3.executaItem(1, 30);
+		A3.executaItem(2, 20);
+		assertEquals("A3", controllerPesquisasTest.proximaAtividade("HUM1"));
+		A3.executaItem(3, 1600);
+		assertEquals("A1", controllerPesquisasTest.proximaAtividade("HUM1"));
+		A1.executaItem(3, 60);
+		assertEquals("A2", controllerPesquisasTest.proximaAtividade("HUM1"));
+	}
+	
+	@Test
+	void proximaAtividadeNull() {
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.proximaAtividade(null);
+        });
+	}
+	
+	@Test
+	void proximaAtividadeVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.proximaAtividade("");
+        });
+	}
+	
+	@Test
+	void proximaAtividadeNaoExistente() {
+		assertThrows(NullPointerException.class, () -> {
+    		controllerPesquisasTest.proximaAtividade("ABC1");
+        });
+	}
+	
+	@Test
+	void proximaAtividadePesquisaDesativada() {
+		controllerPesquisasTest.cadastraPesquisa("Interpretação do final de 2001", "cinema, artes");
+		controllerPesquisasTest.encerraPesquisa("CIN1", "Ninguém conseguiu entender o final do filme");
+		assertThrows(ActivationException.class, () -> {
+    		controllerPesquisasTest.proximaAtividade("CIN1");
+        });
+	}
+	
+	@Test
+	void proximaAtividadePesquisaSemAtividadesComPendencias() {
+		controllerPesquisasTest.cadastraPesquisa("Interpretação do final de 2001", "cinema, artes");
+		Atividade A1 = new Atividade("Blade Runner 2049 é melhor que o original", "ALTO", "O cinéfilo pode ficar irritado com isso", "A1");
+		controllerPesquisasTest.associaAtividade("CIN1", A1);
+		assertThrows(IllegalArgumentException.class, () -> {
+    		controllerPesquisasTest.proximaAtividade("CIN1");
+        });
+	}
 }

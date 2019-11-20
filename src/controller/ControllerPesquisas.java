@@ -721,4 +721,8 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		return null;
 	
 	}
+	
+	public String getEstrategia() {
+		return estrategia;
+	}
 }
