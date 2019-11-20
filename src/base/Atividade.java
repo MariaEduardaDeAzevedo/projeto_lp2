@@ -1,7 +1,6 @@
 package base;
 
 import java.io.Serializable;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,28 +38,28 @@ public class Atividade extends Validacao implements Serializable {
 	 * ID que identifica unicamente uma atividade
 	 */
 	private String id;
-	
+
 	/**
 	 * Duracao da execucao de um item de uma atividade.
 	 */
 	private int duracao;
-	
+
 	/**
 	 * Mapa que armazena os resultados cadastrados em uma atividade.
 	 */
 	private Map<Integer, String> resultados;
-	
+
 	/**
 	 * Variavel de controle que fornece o numero do resultado cadastrado.
 	 */
 	private int numeroResultado;
-	
+
 	/**
-	 * Atividade subsequente que deve ser realizada apos esta atividade. Por padrao, quando uma atividade é contruida, esta nao
-	 * tem uma atividade subsequente.
+	 * Atividade subsequente que deve ser realizada apos esta atividade. Por padrao,
+	 * quando uma atividade é contruida, esta nao tem uma atividade subsequente.
 	 */
 	private Atividade proxAtv;
-	
+
 	/**
 	 * Constroi um objeto Atividade partindo de uma descricao, um nivel de risco e
 	 * sua descricao e um ID
@@ -206,20 +205,24 @@ public class Atividade extends Validacao implements Serializable {
 
 	/**
 	 * Busca se um termo esta contido na descricao.
+	 * 
 	 * @param termo termo que se deseja procurar.
-	 * @return String contendo o id e a descricao da atividade, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 * @return String contendo o id e a descricao da atividade, caso o termo seja
+	 *         mencionado, se nao, o objeto null é retornado.
 	 */
-    public String buscaTermoDescricao(String termo) {
+	public String buscaTermoDescricao(String termo) {
 		if (this.descricao.toLowerCase().contains(termo.toLowerCase())) {
 			return this.id + ": " + this.descricao;
 		}
 		return null;
-    }
+	}
 
 	/**
 	 * Busca se um termo esta contido no campo de interesse.
+	 * 
 	 * @param termo termo que se deseja procurar.
-	 * @return String contendo o id e a descricao do risco da atividade, caso o termo seja mencionado, se nao, o objeto null é retornado.
+	 * @return String contendo o id e a descricao do risco da atividade, caso o
+	 *         termo seja mencionado, se nao, o objeto null é retornado.
 	 */
 	public String buscaTermoDescricaoDoRisco(String termo) {
 		if (this.descricaoRisco.toLowerCase().contains(termo.toLowerCase())) {
@@ -230,74 +233,83 @@ public class Atividade extends Validacao implements Serializable {
 
 	/**
 	 * Metodo que permite acesso ao Id de uma atividade.
+	 * 
 	 * @return Id da atividade
 	 */
 	public String getId() {
 		return this.id;
 	}
-	
+
 	/**
 	 * Metodo que permite a execucao de um item.
-	 * @param item Item a ser executado
+	 * 
+	 * @param item    Item a ser executado
 	 * @param duracao Duracao da execucao.
 	 */
 	public void executaItem(int item, int duracao) {
-		if(item > itens.size() || item <= 0) {
+		if (item > itens.size() || item <= 0) {
 			throw new IllegalArgumentException("Item nao encontrado.");
 		}
 		this.itens.get(item - 1).realizar(duracao);
 		this.duracao += duracao;
 	}
-	
+
 	/**
-	 * Metodo que permite o acesso a duracao da execucao de um item. 
+	 * Metodo que permite o acesso a duracao da execucao de um item.
+	 * 
 	 * @return valor inteiro com a duracao.
 	 */
 	public int getDuracao() {
 		return duracao;
 	}
-	
+
 	/**
 	 * Metodo que cadastra um resultado em uma atividade.
+	 * 
 	 * @param resultado Resultado a ser cadastrado
 	 * @return valor inteiro indicando o numero do resultado cadastrado.
 	 */
 	public int cadastraResultado(String resultado) {
-		
+
 		this.resultados.put(++numeroResultado, resultado);
 		return numeroResultado;
 	}
-		
+
 	/**
 	 * Metodo que permite remover os resultados cadastrados na atividade.
+	 * 
 	 * @param numeroDoResultado Numero do resultado.
 	 * @return valor booleano indicando se a remocao foi bem sucedida ou nao.
 	 */
 	public boolean removeResultado(int numeroDoResultado) {
-		if(!resultados.containsKey(numeroDoResultado)) {
+		if (!resultados.containsKey(numeroDoResultado)) {
 			throw new IllegalArgumentException("Resultado nao encontrado.");
 		}
 		this.resultados.remove(numeroDoResultado);
 		return true;
 	}
-	
+
 	/**
-	 * Metodo que gera uma String com a listagem dos resultados cadastrados na atividade.
+	 * Metodo que gera uma String com a listagem dos resultados cadastrados na
+	 * atividade.
+	 * 
 	 * @return lista de String com os resultados.
 	 */
 	public String listaResultados() {
 		String listaResultados = "";
-		
-		for (String resultado: this.resultados.values()) {
+
+		for (String resultado : this.resultados.values()) {
 			listaResultados += resultado + " | ";
 		}
 		return listaResultados.substring(0, listaResultados.length() - 3);
 	}
-	
+
 	/**
-	 * Retorna um valor booleano que indica se uma atividade possui uma atividade subsequente ou nao.
-	 * @return true, caso a atividade possua uma atividade que a suceda, ou false, caso esta atividade nao possua
-	 * nenhuma atividade subsequente.
+	 * Retorna um valor booleano que indica se uma atividade possui uma atividade
+	 * subsequente ou nao.
+	 * 
+	 * @return true, caso a atividade possua uma atividade que a suceda, ou false,
+	 *         caso esta atividade nao possua nenhuma atividade subsequente.
 	 */
 	public boolean hasProx() {
 		if (proxAtv != null) {
@@ -305,43 +317,44 @@ public class Atividade extends Validacao implements Serializable {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Define a atividade subsequente desta atividade.
+	 * 
 	 * @param prox objeto do tipo Atividade que sera a atividade subsequente desta.
 	 */
 	public void defProx(Atividade prox) {
 		super.verificaAtvPrcdnt(isLoop(prox, this), "Criacao de loops negada.");
 		proxAtv = prox;
 	}
-	
+
 	/**
 	 * Metodo que retira a atividade subsequente desta atividade.
 	 */
 	public void retiraProx() {
 		proxAtv = null;
 	}
-	
+
 	/**
 	 * Retorna a Atividade subsequente desta atividade.
+	 * 
 	 * @return Atividade que sucede esta.
 	 */
 	public Atividade getProx() {
 		return proxAtv;
 	}
-	
+
 	/**
-<<<<<<< HEAD
-	 * Retorna um valor booleano que indica se a adiçao de uma atividade como subsequente de outra implica, ou nao, em um loop.
-	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
-	 * @param proxAdd Atividade que se quer adicionar como subsequente.
-	 * @return true, caso a adiçao de uma atividade subsequente em outra atividade resulte na criaçao de um loop, ou false, caso contrario.
-=======
-	 * Retorna um valor booleano que indica se a adicao de uma atividade como subsequente de outra implica, ou nao, em um loop.
-	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
-	 * @param proxAdd Atividade que se quer adicionar como subsequente.
-	 * @return true, caso a adicao de uma atividade subsequente em outra atividade resulte na criacao de um loop, ou false, caso contrario.
->>>>>>> f025c8f60219f02de37f693ed96545d1cc7f24a8
+	 * Retorna um valor booleano que indica se a adiçao de uma
+	 * atividade como subsequente de outra implica, ou nao, em um loop.
+	 * 
+	 * @param precedente Atividade precedente, que se quer adicionar uma
+	 *                   subsequente.
+	 * @param proxAdd    Atividade que se quer adicionar como subsequente.
+	 * @return true, caso a adiçao de uma atividade subsequente em outra atividade
+	 *         resulte na criaçao de um loop, ou false, caso contrario. =======
+	 *         Retorna um valor booleano que indica se a adicao de uma atividade
+	 *         como subsequente de outra implica, ou nao, em um loop.
 	 */
 	private boolean isLoop(Atividade proxAdd, Atividade precedente) {
 		if (proxAdd.hasProx()) {
@@ -352,10 +365,13 @@ public class Atividade extends Validacao implements Serializable {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Retorna um inteiro que representa a quantidade de atividades que sucedem esta atividade.
-	 * @return numero inteiro que corresponde a quantidade de atividades que sao subsequentes a esta atividade.
+	 * Retorna um inteiro que representa a quantidade de atividades que sucedem esta
+	 * atividade.
+	 * 
+	 * @return numero inteiro que corresponde a quantidade de atividades que sao
+	 *         subsequentes a esta atividade.
 	 */
 	public int contaProximos() {
 		if (!hasProx()) {
@@ -363,15 +379,13 @@ public class Atividade extends Validacao implements Serializable {
 		}
 		return 1 + this.getProx().contaProximos();
 	}
-	
+
 	/**
-	 * Retorna o id de uma atividade subsequente de indice n, passado como parametro do metodo.
-<<<<<<< HEAD
-	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do e todo o inteiro 3, entao,
-=======
-	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do metodo o inteiro 3, entao,
->>>>>>> f025c8f60219f02de37f693ed96545d1cc7f24a8
-	 * deve ser retornado o id do terceiro sucessor desta atividade.
+	 * Retorna o id de uma atividade subsequente de indice n, passado como parametro
+	 * do metodo. Por exemplo, se uma atividade tem 5 atividades que a sucedem e e
+	 * passado como parametro do metodo o inteiro 3, entao, deve ser retornado o id
+	 * do terceiro sucessor desta atividade.
+	 * 
 	 * @param index indice da atividade que sucede esta e que se quer retornar o id.
 	 * @return id da n-atividade sucessora desta atividade.
 	 */
@@ -384,18 +398,20 @@ public class Atividade extends Validacao implements Serializable {
 		index--;
 		return this.getProx().pegaProximo(index);
 	}
-	
+
 	/**
-	 * Retorna o risco desta atividade.
-	 * O risco de uma atividade pode ser "BAIXO", "MEDIO" ou "ALTO".
+	 * Retorna o risco desta atividade. O risco de uma atividade pode ser "BAIXO",
+	 * "MEDIO" ou "ALTO".
+	 * 
 	 * @return String correspondente ao risco desta atividade.
 	 */
 	public String getRisco() {
 		return risco;
 	}
-	
+
 	/**
 	 * Converte o risco de uma atividade para um determinado valor inteiro.
+	 * 
 	 * @return inteiro que representa o risco de uma atividade.
 	 */
 	public int converteRisco() {
@@ -406,11 +422,15 @@ public class Atividade extends Validacao implements Serializable {
 		}
 		return 0;
 	}
-	
+
 	/**
-	 * Retorna o id da atividade que sucede esta atividade que tem maior risco dentre suas antecessoras.
-	 * @param precedente atividade precedente, cuja a qual se quer analisar as suas sucessoras.
-	 * @param comparacao primeira atividade da sequência de atividades que se quer analisar.
+	 * Retorna o id da atividade que sucede esta atividade que tem maior risco
+	 * dentre suas antecessoras.
+	 * 
+	 * @param precedente atividade precedente, cuja a qual se quer analisar as suas
+	 *                   sucessoras.
+	 * @param comparacao primeira atividade da sequência de atividades que se quer
+	 *                   analisar.
 	 * @return id da atividade de maior risco dentre as sucessoras desta atividade.
 	 */
 	public String pegaMaiorRiscoAtividades(Atividade precedente, Atividade comparacao) {
@@ -439,47 +459,57 @@ public class Atividade extends Validacao implements Serializable {
 			return this.getProx().pegaMaiorRiscoAtividades(this.getProx(), comparacao);
 		}
 	}
-	
+
 	/**
-	 * Gera e retorna uma representacao em String de uma Atividade para ser colocada em um arquivo de resultado
-	 * @return String que representa uma atividade para ser escrita em um arquivo de resultado
+	 * Gera e retorna uma representacao em String de uma Atividade para ser colocada
+	 * em um arquivo de resultado
+	 * 
+	 * @return String que representa uma atividade para ser escrita em um arquivo de
+	 *         resultado
 	 */
 	public String toStringResultado() {
 		String listagem = System.lineSeparator() + String.format("		- %s", this.descricao);
-		
+
 		for (int i = 0; i < this.itens.size(); i++) {
 			if (this.itens.get(i).getStatus() == true) {
-					listagem += System.lineSeparator()  + "			- ITEM" + (i + 1) + " - " + this.itens.get(i).getDuracao();
-				}
+				listagem += System.lineSeparator() + "			- ITEM" + (i + 1) + " - "
+						+ this.itens.get(i).getDuracao();
+			}
 		}
-		
+
 		for (String s : this.resultados.values()) {
 			listagem += System.lineSeparator() + "			- " + s;
 		}
 		return listagem;
 	}
-	
+
 	/**
-	 * Gera uma representacao em String de uma Atividade para ser colocada em um arquivo de resumo
-	 * @return String que representa uma atividade para ser escrita em um arquivo de resumo
+	 * Gera uma representacao em String de uma Atividade para ser colocada em um
+	 * arquivo de resumo
+	 * 
+	 * @return String que representa uma atividade para ser escrita em um arquivo de
+	 *         resumo
 	 */
 	public String toStringResumo() {
-		String listagem = System.lineSeparator() + String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
-		
+		String listagem = System.lineSeparator()
+				+ String.format("		- %s (%s - %s)", this.descricao, this.risco, this.descricaoRisco);
+
 		for (int i = 0; i < this.itens.size(); i++) {
-			listagem += System.lineSeparator()  + "			- " + this.itens.get(i).getStatusString() + " - ITEM" + (i + 1) ;
+			listagem += System.lineSeparator() + "			- " + this.itens.get(i).getStatusString() + " - ITEM"
+					+ (i + 1);
 		}
-		return listagem;	
+		return listagem;
 	}
-	
+
 	/**
 	 * Metodo que verifica se existe itens pendentes na atividade.
+	 * 
 	 * @return valor booleano indicando se existe pendencia ou nao.
 	 */
 	public boolean hasItemPendente() {
-        if(contaItensPendentes() == 0) {
-        	return false;
-        }
-        return true;
-    }
+		if (contaItensPendentes() == 0) {
+			return false;
+		}
+		return true;
+	}
 }
