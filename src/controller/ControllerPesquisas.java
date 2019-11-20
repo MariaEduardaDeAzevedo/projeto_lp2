@@ -85,28 +85,26 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Metodo privado responsavel por validar o tamanho do campo a ser verificado.
-     * @param campo Array que armazena o campo a ser avaliado.
+     *
+     * @param campo   Array que armazena o campo a ser avaliado.
      * @param tamanho Referencia do tamanho a ser comparado.
      */
     private void validaTamanhoDoCampo(String[] campo, int tamanho) {
-
         if (campo.length > tamanho) {
             throw new IllegalArgumentException("Formato do campo de interesse invalido.");
         }
-
     }
 
     /**
      * Metodo privado responsavel por validar o tamanho do campo a ser verificado.
-     * @param campo String que representa o campo a ser avaliado.
+     *
+     * @param campo   String que representa o campo a ser avaliado.
      * @param tamanho Referencia do tamanho a ser comparado.
      */
     private void validaTamanhoDoCampo(String campo, int tamanho) {
-
         if (campo.length() > tamanho) {
             throw new IllegalArgumentException("Formato do campo de interesse invalido.");
         }
-
     }
 
     /**
@@ -241,33 +239,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     }
 
     /**
-     * Retorna um valor booleano que indica se uma pesquisa cadastrada no sistema
-     * possui ou nao um pesquisador associado.
-     *
-     * @param idPesquisa       id da pesquisa.
-     * @param emailPesquisador email do pesquisador.
-     * @return true, caso a pesquisa tenha o pesquisador associado a ela, ou false
-     * no caso contrario.
-     */
-    public boolean containsPesquisador(String idPesquisa, String emailPesquisador) {
-        super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-        super.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
-        super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
-
-        return pesquisas.get(idPesquisa).containsPesquisador(emailPesquisador);
-    }
-
-    /**
-     * Retorna um objeto do tipo Pesquisa cadastrado no sistema.
-     * @param idPesquisa id da pesquisa cadastrada no sistema.
-     * @return objeto do tipo Pesquisa.
-     */
-    public Pesquisa getPesquisa(String idPesquisa) {
-        super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
-        return this.pesquisas.get(idPesquisa);
-    }
-
-    /**
      * Associa um Problema, indicado pelo seu ID, a uma Pesquisa, tambem indicada
      * pelo seu ID e retorna uma String referente ao sucesso da operação
      *
@@ -281,7 +252,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         super.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisas.get(idPesquisa).isAtivada(), "Pesquisa desativada.");
-
         try {
             super.hasAssociado(idProblema, idPesquisa, this.problemasAssociados, true,
                     "Pesquisa ja associada a um problema.");
@@ -291,7 +261,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         this.pesquisas.get(idPesquisa).setProblema(problema);
         this.problemasAssociados.put(idProblema, idPesquisa);
         return true;
-
     }
 
     /**
@@ -304,11 +273,9 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
-
         if (!this.problemasAssociados.containsValue(idPesquisa)) {
             return false;
         }
-
         this.problemasAssociados.remove(this.pesquisas.get(idPesquisa).getProblema().getId());
         this.pesquisas.get(idPesquisa).setProblema(null);
         return true;
@@ -327,18 +294,15 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
         super.hasValor(this.pesquisas.containsKey(idPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
-
         try {
             super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, true,
                     "Objetivo ja associado a uma pesquisa.");
         } catch (IllegalArgumentException e) {
             return false;
         }
-
         this.pesquisas.get(idPesquisa).addObjetivo(idObjetivo, objetivo);
         this.objetivosAssociados.put(idPesquisa, idObjetivo);
         return true;
-
     }
 
     /**
@@ -354,13 +318,11 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         super.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
         super.validaStatus(this.pesquisaEhAtiva(idPesquisa), "Pesquisa desativada.");
         super.hasValor(this.containsPesquisa(idPesquisa), "Pesquisa nao encontrada.");
-
         try {
             super.hasAssociado(idPesquisa, idObjetivo, this.objetivosAssociados, false, "");
         } catch (NullPointerException e) {
             return false;
         }
-
         this.objetivosAssociados.remove(idPesquisa);
         this.pesquisas.get(idPesquisa).removeObjetivo(idObjetivo);
         return true;
@@ -368,7 +330,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 
     /**
      * Cria uma listagem em String com todas as pesquisas do sistema ordenadas pela
-     * ordem indicada como parametro. Por padrão, as ordem aceitas são: - PESQUISA -
+     * ordem indicada como parametro. Por padrao, as ordem aceitas sao: - PESQUISA -
      * PROBLEMAS - OBJETIVO
      *
      * @param ordem String que indica a ordem que deve ser gerada a listagem
@@ -380,7 +342,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         valores.add("PROBLEMA");
         valores.add("OBJETIVOS");
         super.validaValoresPermitidos(valores, ordem, "Valor invalido da ordem");
-        
         if (ordem.equals("PESQUISA")) {
             return this.ordenaPesquisa();
         } else if (ordem.equals("PROBLEMA")) {
@@ -406,12 +367,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
                 comObjetivo.add(p);
             }
         }
-
         Comparator<Pesquisa> comparadorObjetivo = new OrdenaPesquisaObjetivo();
         Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisaID();
         Collections.sort(comObjetivo, comparadorObjetivo);
         Collections.sort(semObjetivo, comparadorPesquisa);
-
         String listagem = comObjetivo.get(0).toString();
         for (int i = 1; i < comObjetivo.size(); i++) {
             listagem += " | " + comObjetivo.get(i);
@@ -431,7 +390,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
     private String ordenaProblema() {
         List<Pesquisa> comProblema = new ArrayList<Pesquisa>();
         List<Pesquisa> semProblema = new ArrayList<Pesquisa>();
-
         for (Pesquisa p : this.pesquisas.values()) {
             if (p.getProblema() == null) {
                 semProblema.add(p);
@@ -439,18 +397,14 @@ public class ControllerPesquisas extends Validacao implements Serializable {
                 comProblema.add(p);
             }
         }
-
         Comparator<Pesquisa> comparadorProblema = new OrdenaPesquisaProblema();
         Comparator<Pesquisa> comparadorPesquisa = new OrdenaPesquisaID();
         Collections.sort(comProblema, comparadorProblema);
         Collections.sort(semProblema, comparadorPesquisa);
-
         String listagem = comProblema.get(0).toString();
-
         for (int i = 1; i < comProblema.size(); i++) {
             listagem += " | " + comProblema.get(i);
         }
-
         for (int i = 0; i < semProblema.size(); i++) {
             listagem += " | " + semProblema.get(i);
         }
@@ -465,19 +419,15 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      */
     private String ordenaPesquisa() {
         List<Pesquisa> lista = new ArrayList<Pesquisa>();
-
         for (Pesquisa p : this.pesquisas.values()) {
             lista.add(p);
         }
-        
         Comparator<Pesquisa> comparador = new OrdenaPesquisaID();
         Collections.sort(lista, comparador);
         String listagem = lista.get(0).toString();
-       
         for (int i = 1; i < lista.size(); i++) {
             listagem += " | " + lista.get(i).toString();
         }
-
         return listagem;
     }
 
@@ -523,142 +473,131 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         }
         return false;
     }
-    
-    public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
-        return this.pesquisas.get(id).getPesquisadoresAssociados();
+
+    /**
+     * Metodo responsavel por salvar a collection que contem as pesquisas, os problemas associados e
+     * os objetivos associados.
+     */
+    public void salvarArquivos() {
+        Arquivo arquivo = new Arquivo();
+        arquivo.salvarArquivos(this.pesquisas, "Pesquisas", "Dados");
+        arquivo.salvarArquivos(this.problemasAssociados, "Problemas Associados", "Dados");
+        arquivo.salvarArquivos(this.objetivosAssociados, "Objetivos Associados", "Dados");
     }
-    
-    public Collection<String> getObjetivosAssociados(String id) {
-        Collection<String> lista = new ArrayList<String>();
 
-		for (String s : this.objetivosAssociados.keySet()) {
-			if (this.objetivosAssociados.get(s).equals(id)) {
-				lista.add(s);
-			}
-		}
-		return lista;
-	}
+    /**
+     * Metodo responsavel por recuperar a collection que contem as pesquisas, os problemas associados e
+     * os objetivos associados, de uma utilizacao anterior.
+     */
+    public void carregarArquivos() {
+        Arquivo arquivo = new Arquivo();
+        this.pesquisas = (TreeMap<String, Pesquisa>) arquivo.carregarArquivos("Pesquisas", "Dados");
+        this.problemasAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Problemas Associados", "Dados");
+        this.objetivosAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Objetivos Associados", "Dados");
+    }
 
-	public void salvarArquivos() {
-		Arquivo arquivo = new Arquivo();
-		arquivo.salvarArquivos(this.pesquisas, "Pesquisas", "Dados");
-		arquivo.salvarArquivos(this.problemasAssociados, "Problemas Associados", "Dados");
-		arquivo.salvarArquivos(this.objetivosAssociados, "Objetivos Associados", "Dados");
-	}
+    /**
+     * Altera o tipo apontado pelo email de um Pesquisador para Professor no sistema
+     *
+     * @param email     String que identifica unicamente um Professor/Pesquisador
+     * @param professor novo objeto a ser apontado pelo email
+     */
+    public void alteraPesquisadorProfessor(String email, Professor professor) {
+        for (Pesquisa p : this.pesquisas.values()) {
+            if (p.containsPesquisador(email)) {
+                p.alteraPesquisadorProfessor(email, professor);
+            }
+        }
+    }
 
-	public void carregarArquivos() {
-		Arquivo arquivo = new Arquivo();
-		this.pesquisas = (TreeMap<String, Pesquisa>) arquivo.carregarArquivos("Pesquisas", "Dados");
-		this.problemasAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Problemas Associados", "Dados");
-		this.objetivosAssociados = (HashMap<String, String>) arquivo.carregarArquivos("Objetivos Associados", "Dados");
-	}
-	
-	/**
-	 * Altera o tipo apontado pelo email de um Pesquisador para Professor no sistema
-	 * @param email String que identifica unicamente um Professor/Pesquisador
-	 * @param professor novo objeto a ser apontado pelo email
-	 */
-	public void alteraPesquisadorProfessor(String email, Professor professor) {
-		for (Pesquisa p : this.pesquisas.values()) {
-			if (p.containsPesquisador(email)) {
-				p.alteraPesquisadorProfessor(email, professor);
-			}
-		}
-	}
-	
-	/**
-	 * Altera o tipo apontado pelo email de um Pesquisador para Aluno no sistema
-	 * @param email String que identifica unicamente um Aluno/Pesquisador
-	 */
-	public void alteraPesquisadorAluno(String email, Aluno aluno) {
-		for (Pesquisa p : this.pesquisas.values()) {
-			if (p.containsPesquisador(email)) {
-				p.alteraPesquisadorAluno(email, aluno);
-			}
-		}		
-	}
+    /**
+     * Altera o tipo apontado pelo email de um Pesquisador para Aluno no sistema
+     *
+     * @param email String que identifica unicamente um Aluno/Pesquisador
+     */
+    public void alteraPesquisadorAluno(String email, Aluno aluno) {
+        for (Pesquisa p : this.pesquisas.values()) {
+            if (p.containsPesquisador(email)) {
+                p.alteraPesquisadorAluno(email, aluno);
+            }
+        }
+    }
 
-	/**
-	 * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes relativas
-	 * aos seus resultados e grava em um arquivo de texto armazenado na raiz do
-	 * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa-Resultados.txt"
-	 * 
-	 * @param id String que identifica unicamente um objeto Pesquisa
-	 * @throws IOException em caso de falhas, uma exceção de entrada e saida será
-	 *                     lançada
-	 */
-	public void gravarResultadosPesquisa(String id) throws IOException {
+    /**
+     * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes relativas
+     * aos seus resultados e grava em um arquivo de texto armazenado na raiz do
+     * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa-Resultados.txt"
+     *
+     * @param id String que identifica unicamente um objeto Pesquisa
+     * @throws IOException em caso de falhas, uma exceção de entrada e saida será
+     *                     lançada
+     */
+    public void gravarResultadosPesquisa(String id) throws IOException {
+        super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+        super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
+        String resultados = this.pesquisas.get(id).getResultados();
+        File file = new File(id + "-Resultados" + ".txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write(resultados);
+        writer.close();
+    }
 
-		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
-		super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
-		String resultados = this.pesquisas.get(id).getResultados();
-		File file = new File(id + "-Resultados" + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resultados);
-		writer.close();
+    /**
+     * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes que
+     * caracterizam um resumo e grava em um arquivo de texto armazenado na raiz do
+     * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa.txt"
+     *
+     * @param id String que identifica unicamente um objeto Pesquisa
+     * @throws IOException em caso de falhas, uma exceção de entrada e saida será
+     *                     lançada
+     */
+    public void gravarResumoPesquisa(String id) throws IOException {
+        super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
+        super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
+        String resumo = this.pesquisas.get(id).getResumo();
+        File file = new File("_" + id + ".txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write(resumo);
+        writer.close();
+    }
 
-	}
+    /**
+     * Metodo que configura uma estrategia de deteccao da proxima atividade com itens pendentes.
+     * Podendo ser MAIS_ANTIGA, MAIOR_DURACAO, MAIOR_RISCO e MENOS_PENDENCIAS.
+     *
+     * @param estrategia Estrategia a ser configurada.
+     */
+    public void configuraEstrategia(String estrategia) {
+        super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
+        List valores = new ArrayList<String>();
+        valores.add("MAIS_ANTIGA");
+        valores.add("MAIOR_DURACAO");
+        valores.add("MAIOR_RISCO");
+        valores.add("MENOS_PENDENCIAS");
+        super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
+        this.estrategia = estrategia;
+    }
 
-	/**
-	 * Acessa um objeto Pesquisa indicado pelo seu ID, pega as informacoes que
-	 * caracterizam um resumo e grava em um arquivo de texto armazenado na raiz do
-	 * projeto. O arquivo criado tem o seguinte modelo: "IDPesquisa.txt"
-	 * 
-	 * @param id String que identifica unicamente um objeto Pesquisa
-	 * @throws IOException em caso de falhas, uma exceção de entrada e saida será
-	 *                     lançada
-	 */
-	public void gravarResumoPesquisa(String id) throws IOException {
-
-		super.validaString(id, "Pesquisa nao pode ser nula ou vazia.");
-		super.hasValor(this.pesquisas.containsKey(id), "Pesquisa nao encontrada.");
-		String resumo = this.pesquisas.get(id).getResumo();
-		File file = new File("_" + id + ".txt");
-		FileWriter writer = new FileWriter(file);
-		writer.write(resumo);
-		writer.close();
-
-	}
-	
-	/**
-	 * Metodo que configura uma estrategia de deteccao da proxima atividade com itens pendentes.
-	 * Podendo ser MAIS_ANTIGA, MAIOR_DURACAO, MAIOR_RISCO e MENOS_PENDENCIAS.
-	 * @param estrategia Estrategia a ser configurada.
-	 */
-	public void configuraEstrategia(String estrategia) {
-		super.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
-		
-		List valores = new ArrayList<String>();
-		valores.add("MAIS_ANTIGA");
-		valores.add("MAIOR_DURACAO");
-		valores.add("MAIOR_RISCO");
-		valores.add("MENOS_PENDENCIAS");
-		super.validaValoresPermitidos(valores, estrategia, "Valor invalido da estrategia");
-		this.estrategia = estrategia;
-
-	}
-
-	/**
-	 * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
-	 * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
-	 * @return
-	 */
-	public String proximaAtividade(String codigoPesquisa) {
-		super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
-		super.validaStatus(pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
-		super.hasValor(containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
-		
-		switch(this.estrategia) {
-		case "MAIS_ANTIGA":
-			return this.pesquisas.get(codigoPesquisa).hasItemPendente();
-		case "MAIOR_DURACAO":
-			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMaiorDuracao();
-		case "MAIOR_RISCO":
-			return this.pesquisas.get(codigoPesquisa).getMaiorRisco();
-		case "MENOS_PENDENCIAS":
-			return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMenosPendencias();
-			
-		}
-		return null;
-	}
+    /**
+     * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
+     *
+     * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
+     * @return
+     */
+    public String proximaAtividade(String codigoPesquisa) {
+        super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+        super.validaStatus(pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
+        super.hasValor(containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
+        switch (this.estrategia) {
+            case "MAIS_ANTIGA":
+                return this.pesquisas.get(codigoPesquisa).hasItemPendente();
+            case "MAIOR_DURACAO":
+                return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMaiorDuracao();
+            case "MAIOR_RISCO":
+                return this.pesquisas.get(codigoPesquisa).getMaiorRisco();
+            case "MENOS_PENDENCIAS":
+                return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMenosPendencias();
+        }
+        return null;
+    }
 }

@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMaiorDuracao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMaiorDuracao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMenosPendencias.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMenosPendencias.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaObjetivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaObjetivo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaProblema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaPesquisaProblema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerBuscas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerObjetivos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerProblemas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerBuscas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerProblemas.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +206,7 @@
       <workItem from="1574193372981" duration="836000" />
       <workItem from="1574198866181" duration="2223000" />
       <workItem from="1574256056035" duration="6343000" />
-      <workItem from="1574286395308" duration="2290000" />
+      <workItem from="1574286395308" duration="3155000" />
     </task>
     <servers />
   </component>
