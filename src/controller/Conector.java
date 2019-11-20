@@ -7,43 +7,51 @@ import validacao.Validacao;
 import java.util.Collection;
 
 /**
- * Classe utilizada para juntar a lógica de dois ou mais controllers do sistema. 
+ * Classe utilizada para juntar a lógica de dois ou mais controllers do sistema.
  */
 public class Conector extends Validacao {
 
-
+    /**
+     * Classe controller de Pesquisador.
+     */
     private ControllerPesquisador cPesquisador;
+    /**
+     * Classe controller de Pesquisa.
+     */
     private ControllerPesquisas cPesquisas;
+    /**
+     * Classe controller de Problema.
+     */
     private ControllerProblemas cProblemas;
+    /**
+     * Classe controller de Atividade.
+     */
     private ControllerAtividades cAtividades;
+    /**
+     * Classe controller de Objetivos.
+     */
     private ControllerObjetivos cObjetivos;
+    /**
+     * Classe controller de buscas, que realiza a busca de um termo nas entidades do sistema.
+     */
     private ControllerBuscas cBuscas;
 
+    /**
+     * Constroi o objeto Conector, para realizar funcoes que exigem mais de um controller.
+     *
+     * @param cPesquisador classe controller de Pesquisador.
+     * @param cPesquisas   classe controller de Pesquisa.
+     * @param cProblemas   classe controller de Problema.
+     * @param cAtividades  classe controller de Atividade.
+     * @param cObjetivos   classe controller de Objetivos.
+     * @param cBuscas      classe controller de buscas, que realiza a busca de um termo nas entidades do sistema.
+     */
     public Conector(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, ControllerProblemas cProblemas, ControllerAtividades cAtividades, ControllerObjetivos cObjetivos, ControllerBuscas cBuscas) {
-    	
-    	/**
-    	 * Classe controller de Pesquisador.
-    	 */
         this.cPesquisador = cPesquisador;
-        /**
-         * Classe controller de Pesquisa.
-         */
         this.cPesquisas = cPesquisas;
-        /**
-         * Classe controller de Problema.
-         */
         this.cProblemas = cProblemas;
-        /*
-         * Classe controller de Atividade.
-         */
         this.cAtividades = cAtividades;
-        /**
-         * Classe controller de Objetivos.
-         */
         this.cObjetivos = cObjetivos;
-        /**
-         * Classe controller de buscas, que realiza a busca de um termo nas entidades do sistema.
-         */
         this.cBuscas = cBuscas;
     }
 
@@ -99,10 +107,8 @@ public class Conector extends Validacao {
      * @return String referente ao sucesso da operação
      */
     public boolean associaProblema(String idPesquisa, String idProblema) {
-
         Problema problema = cProblemas.getProblema(idProblema);
         return cPesquisas.associaProblema(idPesquisa, idProblema, problema);
-
     }
 
     /**
@@ -114,9 +120,7 @@ public class Conector extends Validacao {
      * @return String referente ao sucesso da operação
      */
     public boolean desassociaProblema(String idPesquisa) {
-
         return cPesquisas.desassociaProblema(idPesquisa);
-
     }
 
     /**
@@ -129,10 +133,8 @@ public class Conector extends Validacao {
      * @return String referente ao sucesso da operação
      */
     public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
-
         Objetivo objetivo = cObjetivos.getObjetivo(idObjetivo);
         return cPesquisas.associaObjetivo(idPesquisa, idObjetivo, objetivo);
-
     }
 
     /**
@@ -145,9 +147,7 @@ public class Conector extends Validacao {
      * @return String referente ao sucesso da operação
      */
     public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
-
         return cPesquisas.desassociaObjetivo(idPesquisa, idProblema);
-
     }
 
     /**
@@ -157,19 +157,10 @@ public class Conector extends Validacao {
      * @return String contendo a representacao das entidades que fazem mencao ao termo.
      */
     public String busca(String termo) {
-
         Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
-
-
         Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
-
-
         Collection<Problema> problemas = this.cProblemas.getProblemas();
-
-
         Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
-
-
         Collection<Atividade> atividades = this.cAtividades.getAtividades();
         return cBuscas.busca(termo, pesquisas, pesquisadores, problemas, objetivos, atividades);
     }
@@ -182,19 +173,10 @@ public class Conector extends Validacao {
      * @return String contendo o elemento que estava na lista dos resultados da busca pelo termo.
      */
     public String busca(String termo, int numeroDoResultado) {
-
         Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
-
-
         Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
-
-
         Collection<Problema> problemas = this.cProblemas.getProblemas();
-
-
         Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
-
-
         Collection<Atividade> atividades = this.cAtividades.getAtividades();
         return cBuscas.buscaResultado(termo, pesquisas, pesquisadores, problemas, objetivos, atividades, numeroDoResultado);
     }
@@ -202,24 +184,15 @@ public class Conector extends Validacao {
     /**
      * Conta o numero de entidades que fazem mencao ao termo que ja foi previamente buscado.
      *
-     * @param termo termo que já foi previamente buscado.
+     * @param termo termo que ja foi previamente buscado.
      * @return int representado o numero de entidades que contem o termo.
      */
     public int contaResultadosBusca(String termo) {
         Collection<Pesquisa> pesquisas = this.cPesquisas.getPesquisas();
-
-
         Collection<Pesquisador> pesquisadores = this.cPesquisador.getPesquisadores();
-
-
         Collection<Problema> problemas = this.cProblemas.getProblemas();
-
-
         Collection<Objetivo> objetivos = this.cObjetivos.getObjetivos();
-
-
         Collection<Atividade> atividades = this.cAtividades.getAtividades();
-
         return cBuscas.contaResultadosBusca(pesquisas, pesquisadores, problemas, objetivos, atividades, termo);
     }
 
@@ -236,7 +209,6 @@ public class Conector extends Validacao {
         super.hasValor(cAtividades.containsAtividade(codigoAtividade), "Atividade nao encontrada");
         Atividade atividade = cAtividades.getAtividade(codigoAtividade);
         return cPesquisas.associaAtividade(codigoPesquisa, atividade);
-
     }
 
     /**
@@ -252,7 +224,6 @@ public class Conector extends Validacao {
         super.hasValor(cAtividades.containsAtividade(codigoAtividade), "Atividade nao encontrada");
         super.hasValor(cPesquisas.containsPesquisa(codigoPesquisa), "Pesquisa nao encontrada.");
         super.validaStatus(cPesquisas.pesquisaEhAtiva(codigoPesquisa), "Pesquisa desativada.");
-       
         return cPesquisas.desassociaAtividade(codigoPesquisa, codigoAtividade);
     }
 
@@ -322,7 +293,7 @@ public class Conector extends Validacao {
      * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor nao pode ser um numero menor ou igual a zero.
      * @param iea      valor correspondente ao indice de eficiencia academica do aluno. Este valor nao pode ser menor que zero e nem maior que um.
      */
-    public void cadastraEspecialidadeAluno(String email, int semestre, double iea){
+    public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
         if (this.cPesquisador.isAssociado(email)) {
             this.cPesquisas.alteraPesquisadorAluno(email, cPesquisador.cadastraEspecialidadeAluno(email, semestre, iea));
         } else {
