@@ -502,22 +502,28 @@ public class Pesquisa extends Validacao implements Serializable {
 	}
 
 	public String getMaiorRisco() {
-		for (Atividade atvd : this.atividadesAssociadas.values()) {
-			if(atvd.getRisco().equals("ALTO")) 
-				return atvd.getId();
+		List<String> lista1 = new ArrayList<>();
+		List<String> lista2 = new ArrayList<>();
+		List<String> lista3 = new ArrayList<>();
+		List<String> lista4 = new ArrayList<>();
+		
+		
+		for (Atividade atividade : this.atividadesAssociadas.values()) {
+			if(atividade.getRisco().equals("ALTO")) {
+				lista1.add(atividade.getId());				
+			} else if(atividade.getRisco().equals("MEDIO")) {
+				lista2.add(atividade.getId());
+			} else if(atividade.getRisco().equals("BAIXO")) {
+				lista3.add(atividade.getId());				
+			}
 		}
 		
-		for (Atividade atvd : this.atividadesAssociadas.values()) {
-			if(atvd.getRisco().equals("MEDIO")) 
-				return atvd.getId();
-		}
+		lista4.addAll(lista1);
+		lista4.addAll(lista2);
+		lista4.addAll(lista3);
 		
-		for (Atividade atvd : this.atividadesAssociadas.values()) {
-			if(atvd.getRisco().equals("BAIXO")) 
-				return atvd.getId();
-		}
-			
-		return null;
+		return lista4.get(0);
+		
 	}
 
 
