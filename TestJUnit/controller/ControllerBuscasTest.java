@@ -105,7 +105,47 @@ class ControllerBuscasTest {
 
 	}
 	
+	@Test
+	void testBuscaResultadoEntidadeNaoEncontrada() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			cBuscas.buscaResultado("computacao", cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(),
+					cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), 42);
+		});
+
+	}
 	
+	@Test
+	void contaResultadosBuscaComum() {
+		cBuscas.contaResultadosBusca(cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(),
+					cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), "computacao");
+	}
+	
+	@Test
+	void contaBuscaResultadoTermoVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			cBuscas.contaResultadosBusca(cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(),
+					cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), "");
+		});
+
+	}
+	
+	@Test
+	void contaBuscaResultadoTermoNull() {
+		assertThrows(NullPointerException.class, () -> {
+			cBuscas.contaResultadosBusca(cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(),
+					cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), null);
+		});
+
+	}
+	
+	@Test
+	void contaBuscaResultadoNenhumResultado() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			cBuscas.contaResultadosBusca(cPesquisas.getPesquisas(), cPesquisadores.getPesquisadores(),
+					cProblemas.getProblemas(), cObjetivos.getObjetivos(), cAtividades.getAtividades(), "Ziggy Stardust");
+		});
+
+	}
 	
 	
 }
