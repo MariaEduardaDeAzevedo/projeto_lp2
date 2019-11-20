@@ -322,7 +322,7 @@ public class Conector extends Validacao {
      * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor nao pode ser um numero menor ou igual a zero.
      * @param iea      valor correspondente ao indice de eficiencia academica do aluno. Este valor nao pode ser menor que zero e nem maior que um.
      */
-    public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
+    public void cadastraEspecialidadeAluno(String email, int semestre, double iea){
         if (this.cPesquisador.isAssociado(email)) {
             this.cPesquisas.alteraPesquisadorAluno(email, cPesquisador.cadastraEspecialidadeAluno(email, semestre, iea));
         } else {
