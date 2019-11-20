@@ -8,9 +8,13 @@ import base.Problema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import controller.ControllerPesquisas;
 import excecoes.ActivationException;
 import excecoes.AssociationException;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -877,5 +881,90 @@ class ControllerPesquisasTest {
 		assertThrows(IllegalArgumentException.class, () -> {
     		controllerPesquisasTest.proximaAtividade("CIN1");
         });
+	}
+
+	@Test
+	void gravarResultadosPesquisaValido() throws IOException {
+		controllerPesquisasTest.cadastraPesquisa("Estudo sobre uso de celulares", "tecnologia, saude");
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("TEC1", atividadeTeste);
+		controllerPesquisasTest.gravarResultadosPesquisa("TEC1");
+		File arquivoTeste = new File("TEC1-Resultados.txt");
+		FileReader leitorTeste = new FileReader(arquivoTeste);
+		int content;
+		String resultadoTeste = "";
+		while ((content = leitorTeste.read()) != -1) {
+			resultadoTeste += (char) content;
+		}
+		assertEquals("- Pesquisa: TEC1 - Estudo sobre uso de celulares - tecnologia, saude\n" +
+				"\t- Resultados:\n" +
+				"\t\t- Monitoramento de chats dos alunos de computacao do primeiro periodo.", resultadoTeste);
+		leitorTeste.close();
+		arquivoTeste.delete();
+	}
+
+	@Test
+	void gravarResultadosPesquisaIdVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.gravarResultadosPesquisa("");
+		});
+	}
+
+	@Test
+	void gravarResultadosPesquisaIdNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.gravarResultadosPesquisa(null);
+		});
+	}
+
+	@Test
+	void gravarResultadosPesquisaIdInvalido() {
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.gravarResultadosPesquisa("TEC1");
+		});
+	}
+
+	@Test
+	void gravarResumoPesquisaValida() throws IOException {
+		controllerPesquisasTest.cadastraPesquisa("Estudo sobre uso de celulares", "tecnologia, saude");
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		controllerPesquisasTest.associaAtividade("TEC1", atividadeTeste);
+		controllerPesquisasTest.gravarResumoPesquisa("TEC1");
+		File arquivoTeste = new File("_TEC1.txt");
+		FileReader leitorTeste = new FileReader(arquivoTeste);
+		int content;
+		String resultadoTeste = "";
+		while ((content = leitorTeste.read()) != -1) {
+			resultadoTeste += (char) content;
+		}
+		assertEquals("- Pesquisa: TEC1 - Estudo sobre uso de celulares - tecnologia, saude\n" +
+				"\t- Pesquisadores:\n" +
+				"\t- Problema:\n" +
+				"\t- Objetivos:\n" +
+				"\t- Atividades:\n" +
+				"\t\t- Monitoramento de chats dos alunos de computacao do primeiro periodo. (BAIXO - Por se tratar de apenas um monitoramento, o risco nao e elevado.)", resultadoTeste);
+		leitorTeste.close();
+		arquivoTeste.delete();
+	}
+
+	@Test
+	void gravarResumoPesquisaIdVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controllerPesquisasTest.gravarResumoPesquisa("");
+		});
+	}
+
+	@Test
+	void gravarResumoPesquisaIdNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.gravarResumoPesquisa(null);
+		});
+	}
+
+	@Test
+	void gravarResumoPesquisaIdInvalido() {
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.gravarResumoPesquisa("TEC1");
+		});
 	}
 }
