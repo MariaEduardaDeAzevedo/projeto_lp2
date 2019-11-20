@@ -5,30 +5,30 @@ import java.io.Serializable;
 import validacao.Validacao;
 
 /**
- * Representação de um problema de um problema de uma pesquisa.
- * Todo problema contém uma descrição e um valor inteiro que vai de 1 a 5 corresponde à viabilidade. 
+ * Representacao de um problema de um problema de uma pesquisa.
+ * Todo problema contem uma descrição e um valor inteiro que vai de 1 a 5 e corresponde a viabilidade. 
  * @author Daniel Fonseca
  *
  */
 public class Problema extends Validacao implements Serializable {
 	/**
-	 * Descrição do problema.
+	 * Descricao do problema.
 	 */
 	private String descricao;
 	/**
-	 * Inteiro que pode ser qualquer valor de 1 a 5 e representa a viabilidade da resolução do problema
+	 * Inteiro que pode ser qualquer valor de 1 a 5 e representa a viabilidade da resolucao do problema
 	 */
 	private int viabilidade;
 	/**
 	 * id que identifica um problema unicamente.
-	 * Todo id de um problema tem o formato "Pn", em que n é um número inteiro.
+	 * Todo id de um problema tem o formato "Pn", em que n e um número inteiro.
 	 */
 	private String id;
 	
 	/**
-	 * Constrói um Problema a partir de uma descrição e de um valor inteiro que corresponde à viabilidade.
+	 * Constroi um Problema a partir de uma descricao e de um valor inteiro que corresponde a viabilidade.
 	 * @param descricao descrição do problema
-	 * @param viabilidade valor inteiro que pode ir de 1 a 5 e corresponde à viabilidade
+	 * @param viabilidade valor inteiro que pode ir de 1 a 5 e corresponde a viabilidade
 	 * @param id id que identifica unicamente um problema
 	 */
 	public Problema(String descricao, int viabilidade, String id) {
@@ -42,8 +42,8 @@ public class Problema extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna um inteiro que representa um Problema.
-	 * O critério utilizado para gerar este inteiro é o id do problema.
-	 * @return número inteiro que representa um problema
+	 * O criterio utilizado para gerar este inteiro e o id do problema.
+	 * @return numero inteiro que representa um problema
 	 */
 	@Override
 	public int hashCode() {
@@ -54,10 +54,10 @@ public class Problema extends Validacao implements Serializable {
 	}
 
 	/**
-	 * Retorna um valor booleano que indica se um Problema é igual a outro passado como parâmetro do método.
-	 * Dois problemas são iguais quando estes tem o mesmo id.
-	 * @return true, se o problema for igual ao problema passado como parâmetro, ou false, se o problema for diferente
-	 * do problema passado como método
+	 * Retorna um valor booleano que indica se um Problema e igual a outro passado como parametro do metodo.
+	 * Dois problemas sao iguais quando estes tem o mesmo id.
+	 * @return true, se o problema for igual ao problema passado como parametro, ou false, se o problema for diferente
+	 * do problema passado como parametro.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -77,8 +77,8 @@ public class Problema extends Validacao implements Serializable {
 	}
 
 	/**
-	 * Retorna a representação textual de um Problema no formato "DESCRIÇÃO - VIABILIDADE".
-	 * @return String que corresponde à representação textual de um Problema
+	 * Retorna a representacao textual de um Problema no formato "DESCRIÇÃO - VIABILIDADE".
+	 * @return String que corresponde a representação textual de um Problema
 	 */
 	@Override
 	public String toString() {

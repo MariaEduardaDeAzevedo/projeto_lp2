@@ -20,22 +20,40 @@ public class Conector extends Validacao {
     private ControllerBuscas cBuscas;
 
     public Conector(ControllerPesquisador cPesquisador, ControllerPesquisas cPesquisas, ControllerProblemas cProblemas, ControllerAtividades cAtividades, ControllerObjetivos cObjetivos, ControllerBuscas cBuscas) {
-
+    	
+    	/**
+    	 * Classe controller de Pesquisador.
+    	 */
         this.cPesquisador = cPesquisador;
+        /**
+         * Classe controller de Pesquisa.
+         */
         this.cPesquisas = cPesquisas;
+        /**
+         * Classe controller de Problema.
+         */
         this.cProblemas = cProblemas;
+        /*
+         * Classe controller de Atividade.
+         */
         this.cAtividades = cAtividades;
+        /**
+         * Classe controller de Objetivos.
+         */
         this.cObjetivos = cObjetivos;
+        /**
+         * Classe controller de buscas, que realiza a busca de um termo nas entidades do sistema.
+         */
         this.cBuscas = cBuscas;
     }
 
     /**
-     * Associa um pesquisador cadastrado no sistema (ou qualquer uma de suas especializações) com uma pesquisa, que também deve estar cadastrada no sistema.
+     * Associa um pesquisador cadastrado no sistema (ou qualquer uma de suas especializacoes) com uma pesquisa, que tambem deve estar cadastrada no sistema.
      *
-     * @param idPesquisa       identificador único da pesquisa.
+     * @param idPesquisa       identificador unico da pesquisa.
      * @param emailPesquisador email do pesquisador que se quer associar a pesquisa.
-     * @return um valor booleano que indica se a associação do pesquisador a pesquisa foi realizada com sucesso. Se o pesquisador já estiver associado à pesquisa, é retornado
-     * false, caso contrário, este é associado à pesquisa e é retornado true.
+     * @return um valor booleano que indica se a associacao do pesquisador a pesquisa foi realizada com sucesso. Se o pesquisador já estiver associado a pesquisa, e retornado
+     * false, caso contrario, este e associado a pesquisa e e retornado true.
      */
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
         super.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -55,8 +73,8 @@ public class Conector extends Validacao {
      *
      * @param idPesquisa       id da pesquisa a que se quer desassociar o pesquisador.
      * @param emailPesquisador email do pesquisador que se quer desassociar da pesquisa.
-     * @return retorna um valor booleano que indica se a operação foi realizada com sucesso ou não. É retornado true quando
-     * a desassociação é feita com sucesso, e, caso contrário, se o pesquisador não estiver associado à pesquisa, é retornado false, indicando
+     * @return retorna um valor booleano que indica se a operacao foi realizada com sucesso ou nao. E retornado true quando
+     * a desassociacao e feita com sucesso, e, caso contrario, se o pesquisador não estiver associado a pesquisa, e retornado false, indicando
      * que a desassociação não foi bem sucedida.
      */
     public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
@@ -73,8 +91,8 @@ public class Conector extends Validacao {
 
     /**
      * Associa um objeto Problema a um objeto Pesquisa pelos seus IDs indicados.
-     * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
-     * contrário, retorna-se "false"
+     * Caso a operacao seja bem sucedida, retorna-se a String "true". Caso
+     * contrario, retorna-se "false"
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
      * @param idProblema String que representa unicamente um objeto Problema
@@ -89,8 +107,8 @@ public class Conector extends Validacao {
 
     /**
      * Desassocia um objeto Problema de uma Pesquisa indicada pelos seus IDs
-     * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
-     * contrário, retorna-se "false"
+     * Caso a operacao seja bem sucedida, retorna-se a String "true". Caso
+     * contrario, retorna-se "false"
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
      * @return String referente ao sucesso da operação
@@ -103,8 +121,8 @@ public class Conector extends Validacao {
 
     /**
      * Associa um objeto Objetivo a um objeto Pesquisa pelos seus ID's indicados.
-     * Caso a operação seja bem sucedida, retorna-se a String "true". Caso
-     * contrário, retorna-se "false"
+     * Caso a operacao seja bem sucedida, retorna-se a String "true". Caso
+     * contrario, retorna-se "false"
      *
      * @param idPesquisa String que representa unicamente um objeto Pesquisa
      * @param idObjetivo String que representa unicamente um objeto Objetivo
@@ -239,7 +257,7 @@ public class Conector extends Validacao {
     }
 
     /**
-     * Metodo que permite a exeucacao de uma atividade, atraves do codigo da atividade
+     * Metodo que permite a execucao de uma atividade, atraves do codigo da atividade
      * a ser executada, o item e a duracao do processo.
      *
      * @param codigoAtividade Codigo da atividade
@@ -257,7 +275,7 @@ public class Conector extends Validacao {
     }
 
     /**
-     * Metodo responsavel por salvar os dados de todos os cotrollers do sistema.
+     * Metodo responsavel por salvar os dados de todos os controllers do sistema.
      */
     public void salvarArquivos() {
         this.cPesquisas.salvarArquivos();
@@ -297,12 +315,12 @@ public class Conector extends Validacao {
     }
 
     /**
-     * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a função "estudante", para Aluno, que é subclasse
-     * de Pesquisador, e tem dois atributos a mais que sua superclasse, que são: semestre de ingresso e índice de eficiência acadêmica (IEA).
+     * Especializa um Pesquisador cadastrado no sistema, que deve obrigatoriamente ter a funcao "estudante", para Aluno, que e subclasse
+     * de Pesquisador, e tem dois atributos a mais que sua superclasse, que sao: semestre de ingresso e indice de eficiencia academica (IEA).
      *
      * @param email    email do pesquisador que se quer especializar.
-     * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor não pode ser um número menor ou igual a zero.
-     * @param iea      valor correspondente ao índice de eficiência acadêmica do aluno. Este valor não pode ser menor que zero e nem maior que um.
+     * @param semestre valor inteiro que corresponde ao semestre de ingresso do Aluno. Este valor nao pode ser um numero menor ou igual a zero.
+     * @param iea      valor correspondente ao indice de eficiencia academica do aluno. Este valor nao pode ser menor que zero e nem maior que um.
      */
     public void cadastraEspecialidadeAluno(String email, int semestre, double iea) {
         if (this.cPesquisador.isAssociado(email)) {

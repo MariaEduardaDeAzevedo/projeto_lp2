@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representação de um professor, que é, no sistema Psquiza, uma especialização de Pesquisador, sendo esta sua superclasse.
- * Todo professor, por também ser um pesquisador, possui um nome, uma biografia, um email, uma foto e um status (que diz se o pesquisador é ativo ou não), ainda tendo
- * também uma formação, unidade alocada e data de contratação.
- * Assim como pesquisador, todo professor é identificado unicamente pelo seu email.
+ * Representacao de um professor, que e, no sistema Psquiza, uma especializacao de Pesquisador, sendo esta sua superclasse.
+ * Todo professor, por tambem ser um pesquisador, possui um nome, uma biografia, um email, uma foto e um status (que diz se o pesquisador e ativo ou nao), ainda tendo
+ * tambem uma formacao, unidade alocada e data de contratacao.
+ * Assim como pesquisador, todo professor e identificado unicamente pelo seu email.
  * @author Daniel Fonseca
  *
  */
 public class Professor extends Pesquisador implements Serializable {
 	/**
-	 * Grau de formação do professor.
+	 * Grau de formacao do professor.
 	 */
 	private String formacao;
 	/**
@@ -21,23 +21,23 @@ public class Professor extends Pesquisador implements Serializable {
 	 */
 	private String unidade;
 	/**
-	 * Data de contratação do professor, que deve, obrigatoriamente, seguir o formato "DD/MM/AAAA", em que DD corresponde ao dia (e deve ser um valor entre 1 e 31), MM corresponde ao mês (devendo 
+	 * Data de contratacao do professor, que deve, obrigatoriamente, seguir o formato "DD/MM/AAAA", em que DD corresponde ao dia (e deve ser um valor entre 1 e 31), MM corresponde ao mês (devendo 
 	 * ser um valor entre 1 e 12) e AAAA corresponde ao ano, que não pode ser superior a 2019.
-	 * O dia e o mês devem, obrigatoriamente, ter dois dígitos. Já o ano deve ter sempre quatro dígitos.
+	 * O dia e o mes devem, obrigatoriamente, ter dois digitos. Ja o ano deve ter sempre quatro digitos.
 	 */
 	private String dataContratacao;
 	
 	/**
-	 * Constrói um professor a partir de seu nome, sua função, sua biografia, seu email, a url de sua foto, seu grau de formação, sua unidade alocada
-	 * e sua data de contratação.
+	 * Constroi um professor a partir de seu nome, sua função, sua biografia, seu email, a url de sua foto, seu grau de formação, sua unidade alocada
+	 * e sua data de contratacao.
 	 * @param nome nome do professor.
 	 * @param funcao função do professor, que deve, obrigatoriamente, ser "professor".
-	 * @param biografia biografia do professor, que é uma descrição textual de sua atuação em pesquisa.
+	 * @param biografia biografia do professor, que é uma descricao textual de sua atuacao em pesquisa.
 	 * @param email email do professor.
 	 * @param foto url da foto do professor.
-	 * @param formacao grau de formação do professor.
+	 * @param formacao grau de formacao do professor.
 	 * @param unidade unidade alocada do professor.
-	 * @param dataContratacao data de contratação do professor, que deve, obrigatoriamente, seguir o formato "DD/MM/AAAA".
+	 * @param dataContratacao data de contratacao do professor, que deve, obrigatoriamente, seguir o formato "DD/MM/AAAA".
 	 */
 	public Professor(String nome, String funcao, String biografia, String email, String foto, String formacao, String unidade, String dataContratacao) {
 		super(nome, funcao, biografia, email, foto);
@@ -54,8 +54,8 @@ public class Professor extends Pesquisador implements Serializable {
 	}
 	
 	/**
-	 * Retorna uma String que representa o professor. A representação segue o formato "NOME (FUNÇÃO) - BIOGRAFIA - EMAIL - FOTO - FORMACAO - UNIDADE - DATACONTRATACAO".
-	 * @return representação textual do professor.
+	 * Retorna uma String que representa o professor. A representacao segue o formato "NOME (FUNÇÃO) - BIOGRAFIA - EMAIL - FOTO - FORMACAO - UNIDADE - DATACONTRATACAO".
+	 * @return representacao textual do professor.
 	 */
 	@Override
 	public String toString() {
@@ -63,8 +63,8 @@ public class Professor extends Pesquisador implements Serializable {
 	}
 	
 	/**
-	 * Altera o valor da formação do professor.
-	 * @param novoValor novo valor do grau de formação do professor, que substituirá o antigo valor.
+	 * Altera o valor da formacao do professor.
+	 * @param novoValor novo valor do grau de formacao do professor, que substituira o antigo valor.
 	 */
 	public void setFormacao(String novoValor) {
 		super.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
@@ -73,7 +73,7 @@ public class Professor extends Pesquisador implements Serializable {
 	
 	/**
 	 * Altera o valor da unidade do professor.
-	 * @param novoValor novo valor da unidade alocada do professor, que substituirá o antigo valor.
+	 * @param novoValor novo valor da unidade alocada do professor, que substituira o antigo valor.
 	 */
 	public void setUnidade(String novoValor) {
 		super.validaString(novoValor, "Campo unidade nao pode ser nulo ou vazio.");
@@ -81,8 +81,8 @@ public class Professor extends Pesquisador implements Serializable {
 	}
 	
 	/**
-	 * Altera o valor da data de contratação do professor.
-	 * @param novoValor novo valor da data de contratação do professor, que substituirá o antigo e também deve ter o formato "DD/MM/AAAA".
+	 * Altera o valor da data de contratacao do professor.
+	 * @param novoValor novo valor da data de contratacao do professor, que substituira o antigo e tambem deve ter o formato "DD/MM/AAAA".
 	 */
 	public void setData(String novoValor) {
 		super.validaString(novoValor, "Campo data nao pode ser nulo ou vazio.");
@@ -91,7 +91,7 @@ public class Professor extends Pesquisador implements Serializable {
 	}
 	
 	/**
-	 * Método sobrescrito de Pesquisador que permite a alteração dos atributos de Professor.
+	 * Metodo sobrescrito de Pesquisador que permite a alteracao dos atributos de Professor.
 	 * @param atributo nome do atributo a ser alterado.
 	 * @param novoValor novo valor do atributo.
 	 */

@@ -1,7 +1,11 @@
 /base/
+<<<<<<< HEAD
 /comparators/
 /controller/
 /easyaccept.jar
 /excecoes/
 /facade/
+=======
+/controller/
+>>>>>>> f025c8f60219f02de37f693ed96545d1cc7f24a8
 /validacao/

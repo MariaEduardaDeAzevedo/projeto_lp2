@@ -56,7 +56,7 @@ public class Atividade extends Validacao implements Serializable {
 	private int numeroResultado;
 	
 	/**
-	 * Atividade subsequente que deve ser realizada após esta atividade. Por padrão, quando uma atividade é contruída, esta não
+	 * Atividade subsequente que deve ser realizada apos esta atividade. Por padrao, quando uma atividade é contruida, esta nao
 	 * tem uma atividade subsequente.
 	 */
 	private Atividade proxAtv;
@@ -308,7 +308,7 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Define a atividade subsequente desta atividade.
-	 * @param prox objeto do tipo Atividade que será a atividade subsequente desta.
+	 * @param prox objeto do tipo Atividade que sera a atividade subsequente desta.
 	 */
 	public void defProx(Atividade prox) {
 		super.verificaAtvPrcdnt(isLoop(prox, this), "Criacao de loops negada.");
@@ -331,10 +331,17 @@ public class Atividade extends Validacao implements Serializable {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Retorna um valor booleano que indica se a adiçao de uma atividade como subsequente de outra implica, ou nao, em um loop.
 	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
 	 * @param proxAdd Atividade que se quer adicionar como subsequente.
 	 * @return true, caso a adiçao de uma atividade subsequente em outra atividade resulte na criaçao de um loop, ou false, caso contrario.
+=======
+	 * Retorna um valor booleano que indica se a adicao de uma atividade como subsequente de outra implica, ou nao, em um loop.
+	 * @param precedente Atividade precedente, que se quer adicionar uma subsequente.
+	 * @param proxAdd Atividade que se quer adicionar como subsequente.
+	 * @return true, caso a adicao de uma atividade subsequente em outra atividade resulte na criacao de um loop, ou false, caso contrario.
+>>>>>>> f025c8f60219f02de37f693ed96545d1cc7f24a8
 	 */
 	private boolean isLoop(Atividade proxAdd, Atividade precedente) {
 		if (proxAdd.hasProx()) {
@@ -359,7 +366,11 @@ public class Atividade extends Validacao implements Serializable {
 	
 	/**
 	 * Retorna o id de uma atividade subsequente de indice n, passado como parametro do metodo.
+<<<<<<< HEAD
 	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do e todo o inteiro 3, entao,
+=======
+	 * Por exemplo, se uma atividade tem 5 atividades que a sucedem e e passado como parametro do metodo o inteiro 3, entao,
+>>>>>>> f025c8f60219f02de37f693ed96545d1cc7f24a8
 	 * deve ser retornado o id do terceiro sucessor desta atividade.
 	 * @param index indice da atividade que sucede esta e que se quer retornar o id.
 	 * @return id da n-atividade sucessora desta atividade.
@@ -383,6 +394,10 @@ public class Atividade extends Validacao implements Serializable {
 		return risco;
 	}
 	
+	/**
+	 * Converte o risco de uma atividade para um determinado valor inteiro.
+	 * @return inteiro que representa o risco de uma atividade.
+	 */
 	public int converteRisco() {
 		if (risco.equals("ALTO")) {
 			return 2;

@@ -50,12 +50,22 @@ public class Validacao {
 		}
 	}
 
+	/**
+	 * Valida um valor de aderencia utilizado no sistema Psquiza
+	 * @param valor valor que se quer validar
+	 * @param mensagem mensagem de erro exibida no lancamento de excecoes
+	 */
 	protected void validaValor(int valor, String mensagem) {
 		if (valor > 5 || valor < 1) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
 
+	/**
+	 * Valida o tipo de um objetivo cadastrado no sistema Psquiza.
+	 * @param tipo tipo do objetivo que se quer validar.
+	 * @param mensagem mensagem de erro exibida se a validacao lancar uma excecao.
+	 */
 	protected void validaTipo(String tipo, String mensagem) {
 		if (!tipo.equals("GERAL") && !tipo.equals("ESPECIFICO")) {
 			throw new IllegalArgumentException(mensagem);
@@ -105,6 +115,11 @@ public class Validacao {
 		}
 	}
 
+	/**
+	 * Valida o formato de uma data.
+	 * @param data data que se deseja validar o formato.
+	 * @param mensagem mensagem de erro exibida nas excecoes lancadas por este metodo.
+	 */
 	protected void validaData(String data, String mensagem) {
 		if (data.length() != 10) {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
@@ -118,12 +133,22 @@ public class Validacao {
 		}
 	}
 
+	/**
+	 * Valida o valor do semestre de um aluno cadastrado no sistema Psquiza.
+	 * @param semestre inteiro que corresponde ao semestre de um aluno cadastrado no sistema.
+	 * @param mensagem mensagem de erro exibida nas excecoes lancadas por este metodo.
+	 */
 	protected void validaSemestreAluno(int semestre, String mensagem) {
 		if (semestre <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
 
+	/**
+	 * Valida o valor do indice de eficiencia academico (iea) de um aluno.
+	 * @param iea valor do iea.
+	 * @param mensagem mensagem de erro exibida nas excecoes lancadas por este metodo.
+	 */
 	protected void validaIeaAluno(double iea, String mensagem) {
 		if (iea > 10 || iea < 0) {
 			throw new IllegalArgumentException(mensagem);
@@ -131,28 +156,28 @@ public class Validacao {
 	}
 
 	/**
-	 * Método que avalia uma associação entre duas classes. As situações avaliadas
+	 * Metodo que avalia uma associação entre duas classes. As situacoes avaliadas
 	 * são:
 	 * 
-	 * - 1. Caso o id1 (chave) exista no mapa e a operacão seja de associação (true)
-	 * e o valor apontado por id1 no mapa seja igual a id2, lança-se um
-	 * IllegalArgumentException() que sinaliza a situação de que a associação já foi
+	 * - 1. Caso o id1 (chave) exista no mapa e a operacao seja de associacao (true)
+	 * e o valor apontado por id1 no mapa seja igual a id2, lanca-se um
+	 * IllegalArgumentException() que sinaliza a situacao de que a associacao ja foi
 	 * feita.
 	 * 
-	 * - 2. Se o mapa tem o valor de id2 e a operação é de associação (true),
+	 * - 2. Se o mapa tem o valor de id2 e a operação e de associacao (true),
 	 * lança-se uma AssociationException() que indica que o sistema nao permite que
 	 * mais de um objeto seja associado a outro.
 	 * 
-	 * - 3. Se o mapa nao contém id1 (chave) e a operação é de desassociação
-	 * (false), lança-se um NullPointerException()
+	 * - 3. Se o mapa nao contem id1 (chave) e a operacao e de desassociacao
+	 * (false), lanca-se um NullPointerException()
 	 * 
 	 * 
 	 * @param id1      chave do mapa
 	 * @param id2      valor do mapa
-	 * @param mapa     mapa que guarda as associações
-	 * @param operacao true para associação e false para desassociação
-	 * @param mensagem Mensagem de erro a ser exibida no caso 2. Caso não seja
-	 *                 necessária, coloque uma String vazia.
+	 * @param mapa     mapa que guarda as associacoes
+	 * @param operacao true para associacao e false para desassociacao
+	 * @param mensagem Mensagem de erro a ser exibida no caso 2. Caso nao seja
+	 *                 necessaria, coloque uma String vazia.
 	 */
 	protected void hasAssociado(String id1, String id2, Map<String, String> mapa, boolean operacao, String mensagem) {
 		if (mapa.containsKey(id1) && operacao && mapa.get(id1).equals(id2)) {
@@ -168,6 +193,11 @@ public class Validacao {
 		}
 	}
 
+	/**
+	 * Valida o numero de um determinado resultado.
+	 * @param numero numero do resultado que se deseja validar.
+	 * @param mensagem mensagme de erro exibida quando excecoes sao lancadas por este metodo.
+	 */
 	protected void validaNumeroResultado(int numero, String mensagem) {
 		if (numero < 0) {
 			throw new IllegalArgumentException(mensagem);
@@ -187,6 +217,11 @@ public class Validacao {
 		}
 	}
 
+	/**
+	 * Valida se a determinada atividade do sistema tem uma atividade que a sucede.
+	 * @param valor valor booleano que indica se a atividade tem ou nao outra atividade subsequente
+	 * @param mensagem mensagem de erro exibida pelas excecoes lancadas por este metodo
+	 */
 	protected void verificaAtvPrcdnt(boolean valor, String mensagem) {
 		if (valor) {
 			throw new SequenceException(mensagem);

@@ -66,7 +66,7 @@ public class Pesquisa extends Validacao implements Serializable {
 	private Map<String, Objetivo> objetivos;
 
 	/**
-	 * Mootivo pelo qual a pesquisa foi desativada.
+	 * Motivo pelo qual a pesquisa foi desativada.
 	 */
 	private String motivo;
 
@@ -319,6 +319,10 @@ public class Pesquisa extends Validacao implements Serializable {
 		return atividadesAssociadas.containsKey(codigoAtividade);
 	}
 
+	/**
+	 * Retorna uma colecao de todos os pesquisadores associados a esta pesquisa.
+	 * @return colecao de todos os pesquisadores associados a esta pesquisa
+	 */
 	public Collection<Pesquisador> getPesquisadoresAssociados() {
 		return this.pesquisadoresAssociados.values();
 	}
