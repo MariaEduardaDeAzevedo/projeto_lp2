@@ -22,19 +22,15 @@ public class Validacao {
 	protected void validaString(String valor, String mensagem) {
 
 		if (valor == null) {
-
 			throw new NullPointerException(mensagem);
-
 		} else if (valor.trim().equals("")) {
-
 			throw new IllegalArgumentException(mensagem);
-
 		}
-
 	}
 
 	/**
 	 * Metodo que verifica a validacao do e-mail.
+	 * 
 	 * @param email E-mail do pesquisador
 	 */
 	protected void verificaEmail(String email) {
@@ -45,7 +41,8 @@ public class Validacao {
 
 	/**
 	 * Metodo que verifica a validacao da URL da foto do pesquisador.
-	 * @param url
+	 * 
+	 * @param url String que indica a url a ser avaliada
 	 */
 	protected void verificaURL(String url) {
 		if (url.length() < 8 || (!url.substring(0, 7).equals("http://") && !url.substring(0, 8).equals("https://"))) {
@@ -76,11 +73,8 @@ public class Validacao {
 	protected void validaValoresPermitidos(List valores, String valor, String mensagem) {
 
 		if (!valores.contains(valor)) {
-
 			throw new IllegalArgumentException(mensagem);
-
 		}
-
 	}
 
 	/**
@@ -94,23 +88,23 @@ public class Validacao {
 	protected void hasValor(boolean bool, String mensagem) {
 
 		if (!bool) {
-
 			throw new NullPointerException(mensagem);
-
 		}
-
 	}
 
+	/**
+	 * Avalia se o status de uma classe que pode ser ativada/desativada esta
+	 * desativada e lanca uma ActivationException nesse caso
+	 * 
+	 * @param status boolean com o status a ser avaliado
+	 * @param mensagem String com mensagem de erro
+	 */
 	public void validaStatus(boolean status, String mensagem) {
-		
 		if (!status) {
-			
 			throw new ActivationException(mensagem);
-			
 		}
-		
 	}
-	
+
 	protected void validaData(String data, String mensagem) {
 		if (data.length() != 10) {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
@@ -123,13 +117,13 @@ public class Validacao {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
 		}
 	}
-	
+
 	protected void validaSemestreAluno(int semestre, String mensagem) {
 		if (semestre <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
-	
+
 	protected void validaIeaAluno(double iea, String mensagem) {
 		if (iea > 10 || iea < 0) {
 			throw new IllegalArgumentException(mensagem);
@@ -173,29 +167,30 @@ public class Validacao {
 			throw new NullPointerException();
 		}
 	}
-	
-	protected void validaNumeroResultado(int numero, String mensagem){
+
+	protected void validaNumeroResultado(int numero, String mensagem) {
 		if (numero < 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
-	
+
 	/**
-	 * Metodo de validacao que verifica se um valor inteiro é menor ou igual a zero, 
+	 * Metodo de validacao que verifica se um valor inteiro é menor ou igual a zero,
 	 * lancando uma excecao caso a condicao retorne true.
-	 * @param numero Numero a ser verificado
+	 * 
+	 * @param numero   Numero a ser verificado
 	 * @param mensagem Mensagem de excecao.
 	 */
 	protected void verificaNuloNegativo(int numero, String mensagem) {
-		if(numero <= 0) {
+		if (numero <= 0) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
-	
+
 	protected void verificaAtvPrcdnt(boolean valor, String mensagem) {
 		if (valor) {
 			throw new SequenceException(mensagem);
 		}
 	}
-	
+
 }

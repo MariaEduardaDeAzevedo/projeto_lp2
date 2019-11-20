@@ -134,12 +134,10 @@ public class ControllerAtividades extends Validacao implements Serializable {
      * @return inteiro com quantidade de itens realizados da atividade
      */
     public int contaItensRealizados(String id) {
-
         super.validaString(id, "Campo codigo nao pode ser nulo ou vazio.");
         super.hasValor(this.atividades.containsKey(id), "Atividade nao encontrada");
 
         return this.atividades.get(id).contaItensRealizados();
-
     }
 
     /**
@@ -341,6 +339,4 @@ public class ControllerAtividades extends Validacao implements Serializable {
         this.atividades = (LinkedHashMap<String, Atividade>) arquivo.carregarArquivos("Atividades", "Dados");
         this.proximoId = arquivo.carregarArquivoInt("Proximo ID das Atividades", "Dados");
     }
-
-
 }

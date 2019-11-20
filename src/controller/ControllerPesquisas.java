@@ -397,17 +397,11 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         String lista = "";
 
         if (ordem.equals("PESQUISA")) {
-
             return this.ordenaPesquisa();
-
         } else if (ordem.equals("PROBLEMA")) {
-
             return this.ordenaProblema();
-
         }
-
         return this.ordenaObjetivo();
-
     }
 
     /**
@@ -424,15 +418,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         for (Pesquisa p : this.pesquisas.values()) {
 
             if (p.hasObjetivo() == false) {
-
                 semObjetivo.add(p);
-
             } else {
-
                 comObjetivo.add(p);
-
             }
-
         }
 
         Comparator<Pesquisa> comparadorObjetivo = new OrdenaPesquisaObjetivo();
@@ -441,21 +430,13 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         Collections.sort(semObjetivo, comparadorPesquisa);
 
         String listagem = comObjetivo.get(0).toString();
-
         for (int i = 1; i < comObjetivo.size(); i++) {
-
             listagem += " | " + comObjetivo.get(i);
-
         }
-
         for (int i = 0; i < semObjetivo.size(); i++) {
-
             listagem += " | " + semObjetivo.get(i);
-
         }
-
         return listagem;
-
     }
 
     /**
@@ -472,15 +453,10 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         for (Pesquisa p : this.pesquisas.values()) {
 
             if (p.getProblema() == null) {
-
                 semProblema.add(p);
-
             } else {
-
                 comProblema.add(p);
-
             }
-
         }
 
         Comparator<Pesquisa> comparadorProblema = new OrdenaPesquisaProblema();
@@ -491,19 +467,13 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         String listagem = comProblema.get(0).toString();
 
         for (int i = 1; i < comProblema.size(); i++) {
-
             listagem += " | " + comProblema.get(i);
-
         }
 
         for (int i = 0; i < semProblema.size(); i++) {
-
             listagem += " | " + semProblema.get(i);
-
         }
-
         return listagem;
-
     }
 
     /**
@@ -517,25 +487,18 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         List<Pesquisa> lista = new ArrayList<Pesquisa>();
 
         for (Pesquisa p : this.pesquisas.values()) {
-
             lista.add(p);
-
         }
-
+        
         Comparator<Pesquisa> comparador = new OrdenaPesquisaID();
-
         Collections.sort(lista, comparador);
-
         String listagem = lista.get(0).toString();
-
+       
         for (int i = 1; i < lista.size(); i++) {
-
             listagem += " | " + lista.get(i).toString();
-
         }
 
         return listagem;
-
     }
 
     /**
@@ -580,13 +543,13 @@ public class ControllerPesquisas extends Validacao implements Serializable {
         }
         return false;
     }
-
+    
     public Collection<Pesquisador> getPesquisadoresAssociados(String id) {
 
         return this.pesquisas.get(id).getPesquisadoresAssociados();
 
     }
-
+    
     public Collection<String> getObjetivosAssociados(String id) {
 
         Collection<String> lista = new ArrayList<String>();
@@ -726,7 +689,6 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 			
 		}
 		return null;
-	
 	}
 	
 	/**
@@ -737,8 +699,4 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 	public String getEstrategia() {
 		return estrategia;
 	}
-	
-
-
-
 }
