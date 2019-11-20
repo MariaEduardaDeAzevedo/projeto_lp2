@@ -689,13 +689,5 @@ public class ControllerPesquisas extends Validacao implements Serializable {
 		}
 		return null;
 	}
-	
-	/**
-	 * Retorna a estratégia de sugestão da próxima atividade a ser realizada por uma determianda pesquisa cadastrada no sistema.
-	 * @return String que corresponde à estratégia utilizada para sugestão de uma próxima atividade a ser realizada em determinada
-	 * pesquisa cadastrada no sistema
-	 */
-	public String getEstrategia() {
-		return estrategia;
-	}
+
 }
