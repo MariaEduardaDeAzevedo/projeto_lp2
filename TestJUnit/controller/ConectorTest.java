@@ -681,4 +681,56 @@ class ConectorTest {
     	}
     	assertEquals(true, resultado);	
     }
+    
+    @Test
+    void buscaTermoComum() {
+    	cGeralTeste.busca("computacao");
+    }
+    
+    @Test
+    void buscaTermoNull() {
+    	assertThrows(NullPointerException.class, () -> {
+    		cGeralTeste.busca(null);
+        });
+    }
+    
+    @Test
+    void buscaTermoVazio() {
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		cGeralTeste.busca("");
+        });
+    }
+    
+    @Test
+    void buscaTermoComumComResultado() {
+    	cGeralTeste.busca("psico", 1);
+    }
+    
+    @Test
+    void buscaTermoVazioComResultadoValido() {
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		cGeralTeste.busca("", 1);
+        });
+    }
+    
+    
+    @Test
+    void buscaTermoNullComResultadoValido() {
+    	assertThrows(NullPointerException.class, () -> {
+    		cGeralTeste.busca(null, 1);
+        });
+    }
+    
+    
+    @Test
+    void buscaTermoValidoComResultadoNull() {
+    	assertThrows(IndexOutOfBoundsException.class, () -> {
+    		cGeralTeste.busca("", 0);
+        });
+    }
+    
+    @Test
+    void contaResultadosBusca() {
+    	cGeralTeste.contaResultadosBusca("psico");
+    }
 }
