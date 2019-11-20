@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import controller.ControllerAtividades;
 import excecoes.ActivationException;
+import excecoes.SequenceException;
 
 class ControllerAtividadesTest {
 	
@@ -605,7 +606,9 @@ class ControllerAtividadesTest {
 	
 	@Test
 	void pegaProximo() {
-		controller3.pegaProximo("A1", 3);
+		controller3.defineProximaAtividade("A1", "A2");
+		controller3.defineProximaAtividade("A2", "A3");
+		assertEquals("A3", controller3.pegaProximo("A1", 2));
 	}
 	
 	@Test
@@ -641,6 +644,14 @@ class ControllerAtividadesTest {
 		assertThrows(NullPointerException.class, () -> {
 			controller3.pegaMaiorRiscoAtividades(null);
 		});
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividades() {
+		controller3.defineProximaAtividade("A1", "A2");
+		controller3.defineProximaAtividade("A2", "A3");
+		controller3.tiraProximaAtividade("A2");
+		controller3.pegaMaiorRiscoAtividades("A1");
 	}
 	
 	
