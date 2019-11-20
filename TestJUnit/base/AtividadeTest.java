@@ -208,4 +208,14 @@ class AtividadeTest {
 		atividadeBase2.executaItem(1, 50);
 		assertEquals(50, atividadeBase2.getDuracao());
 	}
+	
+	@Test
+	void buscaTermoDescricaoRisco() {
+		assertEquals("A1: Não há risco de haver nenhum tipo de prejuízo com este experimento", atividadeBase1.buscaTermoDescricaoDoRisco("preju"));
+	}
+	
+	@Test
+	void buscaTermoDescricaoRiscoTermoInexistente() {
+		assertEquals(null, atividadeBase1.buscaTermoDescricaoDoRisco("ziriguidun"));
+	}
 }
