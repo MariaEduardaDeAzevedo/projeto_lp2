@@ -13,7 +13,7 @@ import validacao.Validacao;
  * Classe controller de Problema, que armazena todos os problemas cadastrados no sistema e realiza todos as operacoes relacionadas
  * aos problemas.
  */
-public class ControllerProblemas extends Validacao implements Serializable {
+public class ControllerProblemas extends Validacao {
     /**
      * Mapa que tem como chave uma String, que corresponde a um codigo que identifica unicamente um Problema no sistema, e tem como valor
      * um Problema. Esta colecao armazena todos os problemas cadastrados no sistema.
@@ -52,10 +52,10 @@ public class ControllerProblemas extends Validacao implements Serializable {
 
     /**
      * Retorna a representacao textual de determinado problema cadastrado no sistema.
-     * A representacao textual de um problema e retornada no formato "CÓDIGO DO PROBLEMA - DESCRIÇÃO - VIABILIDADE".
+     * A representacao textual de um problema e retornada no formato "CODIGO DO PROBLEMA - DESCRICAO - VIABILIDADE".
      *
      * @param idProblema codigo que identifica unicamente o problema no sistema
-     * @return String que corresponde a representação textual de determinado problema cadastrado no sistema
+     * @return String que corresponde a representacao textual de determinado problema cadastrado no sistema
      */
     public String exibeProblema(String idProblema) {
         super.validaString(idProblema, "id do problema não pode ser vazio ou nulo");
@@ -64,7 +64,7 @@ public class ControllerProblemas extends Validacao implements Serializable {
     }
 
     /**
-     * Remove um problema cadastrado do sistema atraves de seu codigo de identificação.
+     * Remove um problema cadastrado do sistema atraves de seu codigo de identificacao.
      *
      * @param idProblema codigo que identifica o problema unicamente no sistema.
      */
@@ -76,6 +76,7 @@ public class ControllerProblemas extends Validacao implements Serializable {
 
     /**
      * Retorna um objeto do tipo Problema cadastrado no sistema.
+     *
      * @param id id do problema que se quer retornar.
      * @return objeto do tipo Problema que esta cadastrado no sistema.
      */

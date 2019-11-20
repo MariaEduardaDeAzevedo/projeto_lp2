@@ -56,7 +56,7 @@ public class ControllerBuscas extends Validacao {
         super.validaNumeroResultado(numeroDoResultado, "Numero do resultado nao pode ser negativo");
         List entidades = retornaEntidadesComTermo(pesquisas, pesquisadores, problemas, objetivos,
                 atividades, termo);
-        if (numeroDoResultado - 1 > entidades.size()){
+        if (numeroDoResultado - 1 > entidades.size()) {
             throw new IllegalArgumentException("Entidade nao encontrada.");
         }
         return entidades.get(numeroDoResultado - 1).toString();
@@ -73,7 +73,7 @@ public class ControllerBuscas extends Validacao {
         super.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
         List entidades = retornaEntidadesComTermo(pesquisas, pesquisadores, problemas, objetivos,
                 atividades, termo);
-        if (entidades.size() == 0){
+        if (entidades.size() == 0) {
             throw new IllegalArgumentException("Nenhum resultado encontrado");
         }
         return entidades.size();

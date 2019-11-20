@@ -13,7 +13,7 @@ import base.Arquivo;
  * Classe controller de Objetivo, que armazena todos os objetivos cadastrados no sistema e contem os metodos utilizados pela fachada
  * para realizar operacoes com os objetivos.
  */
-public class ControllerObjetivos extends Validacao implements Serializable {
+public class ControllerObjetivos extends Validacao {
     /**
      * Mapa que armazena todos os objetivos cadastrados no sistema.
      * Neste mapa, a chave e o codigo do objetivo, cujo qual este e identificado unicamente e o valor e um Objetivo.

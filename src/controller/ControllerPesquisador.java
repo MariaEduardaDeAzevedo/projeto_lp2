@@ -12,7 +12,7 @@ import validacao.Validacao;
 /**
  * Representacao do Controller responsavel pelos metodos referentes ao pesquisador.
  */
-public class ControllerPesquisador extends Validacao implements Serializable {
+public class ControllerPesquisador extends Validacao {
 
     /**
      * Representacao do mapa responsavel por armazenar os pesquisadores.
