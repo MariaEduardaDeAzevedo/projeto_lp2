@@ -183,22 +183,16 @@ public class Pesquisa extends Validacao implements Serializable {
 	}
 
 	public void setProblema(Problema problema) {
-
 		this.problema = problema;
-
 	}
 
 	public void addObjetivo(String id, Objetivo objetivo) {
-
 		this.objetivos.put(id, objetivo);
 		this.statusObjetivo = true;
-
 	}
 
 	public Problema getProblema() {
-
 		return this.problema;
-
 	}
 
 	/**
@@ -213,11 +207,9 @@ public class Pesquisa extends Validacao implements Serializable {
 	 */
 	public boolean associaPesquisador(Pesquisador associado) {
 		super.validaStatus(this.ativada, "Pesquisa desativada.");
-
 		if (pesquisadoresAssociados.containsKey(associado.getEmail())) {
 			return false;
 		}
-
 		pesquisadoresAssociados.put(associado.getEmail(), associado);
 		return true;
 	}
@@ -279,7 +271,6 @@ public class Pesquisa extends Validacao implements Serializable {
 	 * @return valor booleano indicando se a associacao foi bem sucedida ou nao.
 	 */
 	public boolean associaAtividade(Atividade atividade) {
-
 		if (atividadesAssociadas.containsKey(atividade.getId())) {
 			return false;
 		}
@@ -290,7 +281,7 @@ public class Pesquisa extends Validacao implements Serializable {
 	/**
 	 * Metodo que permite a desassociacao de uma atividade associada a uma Pesquisa.
 	 * 
-	 * @param atividade Atividade a ser desassociada
+	 * @param codigoAtividade Codigo da atividade a ser desassociada
 	 * @return valor booleano indicando se a desassociacao foi bem sucedida ou nao.
 	 */
 	public boolean desassociaAtividade(String codigoAtividade) {
@@ -317,12 +308,6 @@ public class Pesquisa extends Validacao implements Serializable {
 		return false;
 	}
 
-	public Objetivo getObjetivo(String id) {
-
-		return this.objetivos.get(id);
-
-	}
-
 	/**
 	 * Metodo que verifica se existe determinada atividade associada a alguma
 	 * pesquisa.
@@ -338,10 +323,6 @@ public class Pesquisa extends Validacao implements Serializable {
 		return this.pesquisadoresAssociados.values();
 	}
 
-	public Collection<Atividade> getAtividadesAssociadas() {
-		return this.atividadesAssociadas.values();
-	}
-
 	/**
 	 * Gera e retorna uma String com os resultados da Pesquisa
 	 * 
@@ -349,14 +330,11 @@ public class Pesquisa extends Validacao implements Serializable {
 	 */
 	public String getResultados() {
 		String resultado = "- Pesquisa: " + this.toString();
-
 		resultado += System.lineSeparator() + "	- Resultados:";
 		for (Atividade a : this.atividadesAssociadas.values()) {
 			resultado += a.toStringResultado();
 		}
-
 		return resultado;
-
 	}
 
 	/**
@@ -366,11 +344,9 @@ public class Pesquisa extends Validacao implements Serializable {
 	 */
 	public void removeObjetivo(String idObjetivo) {
 		this.objetivos.remove(idObjetivo);
-
 		if (this.objetivos.size() == 0) {
 			this.statusObjetivo = false;
 		}
-
 	}
 
 	/**
@@ -388,17 +364,11 @@ public class Pesquisa extends Validacao implements Serializable {
 	 * @return String com maior ID de um objetivo associado
 	 */
 	public String getMaiorIDObjetivo() {
-
 		List<String> lista = new ArrayList<String>();
-
 		for (String s : this.objetivos.keySet()) {
-
 			lista.add(s);
-
 		}
-
 		Collections.sort(lista);
-
 		return lista.get(lista.size() - 1);
 	}
 
@@ -408,30 +378,24 @@ public class Pesquisa extends Validacao implements Serializable {
 	 * @return String com resumo do objeto Pesquisa
 	 */
 	public String getResumo() {
-
 		String resumo = "- Pesquisa: " + this.toString();
 		resumo += System.lineSeparator() + "	- Pesquisadores:";
 		for (Pesquisador p : this.pesquisadoresAssociados.values()) {
 			resumo += System.lineSeparator() + "		- " + p.toString();
 		}
-
 		resumo += System.lineSeparator() + "	- Problema:";
 		if (this.problema != null) {
 			resumo += System.lineSeparator() + "		- " + this.problema.getId() + " - " + this.problema.toString();
 		}
-
 		resumo += System.lineSeparator() + "	- Objetivos:";
 		for (Objetivo o : this.objetivos.values()) {
 			resumo += System.lineSeparator() + "		- " + o.toString();
 		}
-
 		resumo += System.lineSeparator() + "	- Atividades:";
 		for (Atividade a : this.atividadesAssociadas.values()) {
 			resumo += a.toStringResumo();
 		}
-
 		return resumo;
-
 	}
 
 	/**
@@ -464,7 +428,6 @@ public class Pesquisa extends Validacao implements Serializable {
 	 * 			nao tem pendencias.
 	 */
 	public String hasItemPendente() {
-		
 		for (Atividade atividade : atividadesAssociadas.values()) {
 			if(atividade.hasItemPendente()) {
 				return atividade.getId();
@@ -506,8 +469,6 @@ public class Pesquisa extends Validacao implements Serializable {
 		List<String> lista2 = new ArrayList<>();
 		List<String> lista3 = new ArrayList<>();
 		List<String> lista4 = new ArrayList<>();
-		
-		
 		for (Atividade atividade : this.atividadesAssociadas.values()) {
 			if(atividade.getRisco().equals("ALTO")) {
 				lista1.add(atividade.getId());				
@@ -517,14 +478,9 @@ public class Pesquisa extends Validacao implements Serializable {
 				lista3.add(atividade.getId());				
 			}
 		}
-		
 		lista4.addAll(lista1);
 		lista4.addAll(lista2);
 		lista4.addAll(lista3);
-		
 		return lista4.get(0);
-		
 	}
-
-
 }
