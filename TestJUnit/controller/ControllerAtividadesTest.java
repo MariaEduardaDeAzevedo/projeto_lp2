@@ -603,5 +603,45 @@ class ControllerAtividadesTest {
 		});
 	}
 	
+	@Test
+	void pegaProximo() {
+		controller3.pegaProximo("A1", 1);
+	}
+	
+	@Test
+	void pegaProximoIdAtividadeNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.pegaProximo(null, 1);
+		});
+	}
+	
+	@Test
+	void pegaProximoIdAtividadeVazio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.pegaProximo("", 1);
+		});
+	}
+	
+	@Test
+	void pegaProximoEnesimaNull() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller3.pegaProximo("A2", 0);
+		});
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividade() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.pegaMaiorRiscoAtividades("A1");
+		});
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividadeNull() {
+		assertThrows(NullPointerException.class, () -> {
+			controller3.pegaMaiorRiscoAtividades(null);
+		});
+	}
+	
 	
 }
