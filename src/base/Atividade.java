@@ -12,8 +12,6 @@ import controller.Validacao;
 /**
  * Classe que representa uma atividade de pesquisa
  * 
- * @author Maria Eduarda Eduarda de Azevedo Silva - 119110210
- *
  */
 public class Atividade extends Validacao implements Serializable {
 
@@ -251,15 +249,6 @@ public class Atividade extends Validacao implements Serializable {
 		this.itens.get(item - 1).realizar(duracao);
 		this.duracao += duracao;
 	}
-
-	/*/**
-	 * Retorna um Item cadastrado na atividade.
-	 * @param item número do item que se deseja retornar.
-	 * @return objeto Item cadastrado na atividade.
-	 *
-	public Item getItem(int item){
-		return this.itens.get(item - 1);
-	}*/
 	
 	/**
 	 * Metodo que permite o acesso a duracao da execucao de um item. 
@@ -468,6 +457,10 @@ public class Atividade extends Validacao implements Serializable {
 		
 	}
 	
+	/**
+	 * Metodo que verifica se existe itens pendentes na atividade.
+	 * @return valor booleano indicando se existe pendencia ou nao.
+	 */
 	public boolean hasItemPendente() {
         if(contaItensPendentes() == 0) {
         	return false;
