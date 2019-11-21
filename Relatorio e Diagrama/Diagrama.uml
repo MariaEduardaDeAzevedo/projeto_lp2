@@ -2,12 +2,134 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement>base.Aluno</OriginalElement>
-  <nodes />
+  <nodes>
+    <node x="1207.0" y="1763.0">comparators.OrdenaAtvdsMaiorDuracao</node>
+    <node x="261.5" y="694.0">base.Pesquisador</node>
+    <node x="3470.5" y="850.0">base.Item</node>
+    <node x="911.0" y="1763.0">excecoes.AssociationException</node>
+    <node x="1853.0" y="1763.0">comparators.OrdenaPesquisaID</node>
+    <node x="5803.5" y="814.0">controller.ControllerObjetivos</node>
+    <node x="664.5" y="478.0">base.Pesquisa</node>
+    <node x="1091.5" y="694.0">controller.ControllerPesquisador</node>
+    <node x="3079.0" y="1763.0">excecoes.SequenceException</node>
+    <node x="6175.5" y="814.5">base.Objetivo</node>
+    <node x="1647.5" y="646.0">controller.ControllerAtividades</node>
+    <node x="3651.5" y="875.0">controller.ControllerBuscas</node>
+    <node x="5096.5" y="838.0">base.Problema</node>
+    <node x="1530.0" y="1763.0">comparators.OrdenaAtvdsMenosPendencias</node>
+    <node x="0.0" y="1495.0">base.Aluno</node>
+    <node x="4792.5" y="814.0">controller.ControllerProblemas</node>
+    <node x="440.0" y="1471.0">base.Professor</node>
+    <node x="3285.5" y="0.0">validacao.Validacao</node>
+    <node x="2040.5" y="658.5">controller.Conector</node>
+    <node x="2792.0" y="1763.0">excecoes.ActivationException</node>
+    <node x="2166.0" y="1763.0">comparators.OrdenaPesquisaProblema</node>
+    <node x="2479.0" y="1763.0">comparators.OrdenaPesquisaObjetivo</node>
+    <node x="544.0" y="1763.0">base.Arquivo</node>
+    <node x="3052.5" y="502.0">controller.ControllerPesquisas</node>
+    <node x="5359.5" y="538.0">base.Atividade</node>
+    <node x="0.0" y="1763.0">facade.Facade</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="396.0" y="280.5" />
+  <edges>
+    <edge source="controller.ControllerBuscas" target="validacao.Validacao">
+      <point x="0.0" y="-74.5" />
+      <point x="4212.0" y="458.0" />
+      <point x="3591.846153846154" y="458.0" />
+      <point x="40.84615384615381" y="194.0" />
+    </edge>
+    <edge source="base.Problema" target="validacao.Validacao">
+      <point x="0.0" y="-111.5" />
+      <point x="5218.0" y="438.0" />
+      <point x="3673.5384615384614" y="438.0" />
+      <point x="122.53846153846143" y="194.0" />
+    </edge>
+    <edge source="controller.ControllerAtividades" target="validacao.Validacao">
+      <point x="0.0" y="-303.5" />
+      <point x="1834.0" y="438.0" />
+      <point x="3428.4615384615386" y="438.0" />
+      <point x="-122.53846153846143" y="194.0" />
+    </edge>
+    <edge source="base.Pesquisa" target="validacao.Validacao">
+      <point x="0.0" y="-471.5" />
+      <point x="868.0" y="418.0" />
+      <point x="3346.769230769231" y="418.0" />
+      <point x="-204.23076923076906" y="194.0" />
+    </edge>
+    <edge source="base.Item" target="validacao.Validacao">
+      <point x="0.0" y="-99.5" />
+      <point x="0.0" y="194.0" />
+    </edge>
+    <edge source="controller.ControllerPesquisas" target="validacao.Validacao">
+      <point x="0.0" y="-447.5" />
+      <point x="3251.5" y="458.0" />
+      <point x="3510.153846153846" y="458.0" />
+      <point x="-40.84615384615381" y="194.0" />
+    </edge>
+    <edge source="controller.ControllerProblemas" target="validacao.Validacao">
+      <point x="0.0" y="-135.5" />
+      <point x="4934.5" y="448.0" />
+      <point x="3632.6923076923076" y="448.0" />
+      <point x="81.69230769230762" y="194.0" />
+    </edge>
+    <edge source="base.Professor" target="base.Pesquisador">
+      <point x="0.0" y="-123.5" />
+      <point x="696.0" y="1446.0" />
+      <point x="548.75" y="1446.0" />
+      <point x="95.75" y="255.5" />
+    </edge>
+    <edge source="base.Pesquisador" target="validacao.Validacao">
+      <point x="0.0" y="-255.5" />
+      <point x="453.0" y="408.0" />
+      <point x="3305.923076923077" y="408.0" />
+      <point x="-245.07692307692287" y="194.0" />
+    </edge>
+    <edge source="controller.ControllerObjetivos" target="validacao.Validacao">
+      <point x="0.0" y="-135.5" />
+      <point x="5979.5" y="418.0" />
+      <point x="3755.2307692307695" y="418.0" />
+      <point x="204.2307692307695" y="194.0" />
+    </edge>
+    <edge source="controller.Conector" target="validacao.Validacao">
+      <point x="0.0" y="-291.0" />
+      <point x="2536.5" y="448.0" />
+      <point x="3469.3076923076924" y="448.0" />
+      <point x="-81.69230769230762" y="194.0" />
+    </edge>
+    <edge source="base.Objetivo" target="validacao.Validacao">
+      <point x="0.0" y="-135.0" />
+      <point x="6331.5" y="408.0" />
+      <point x="3796.0769230769233" y="408.0" />
+      <point x="245.07692307692332" y="194.0" />
+    </edge>
+    <edge source="controller.ControllerPesquisador" target="validacao.Validacao">
+      <point x="0.0" y="-255.5" />
+      <point x="1359.5" y="428.0" />
+      <point x="3387.6153846153848" y="428.0" />
+      <point x="-163.38461538461524" y="194.0" />
+    </edge>
+    <edge source="base.Aluno" target="base.Pesquisador">
+      <point x="0.0" y="-99.5" />
+      <point x="210.0" y="1446.0" />
+      <point x="357.25" y="1446.0" />
+      <point x="-95.75" y="255.5" />
+    </edge>
+    <edge source="base.Atividade" target="validacao.Validacao">
+      <point x="0.0" y="-411.5" />
+      <point x="5571.5" y="428.0" />
+      <point x="3714.3846153846152" y="428.0" />
+      <point x="163.38461538461524" y="194.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="372.0" y="400.5" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
