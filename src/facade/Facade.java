@@ -24,7 +24,6 @@ public class Facade {
         this.conector = new Conector(cPesquisador, cPesquisa, cProblema, cAtividade, cObjetivo, cBuscas);
     }
 
-    //US1
     public String cadastraPesquisa(String descricao, String campoDeInteresse) {
         return this.cPesquisa.cadastraPesquisa(descricao, campoDeInteresse);
     }
@@ -49,7 +48,6 @@ public class Facade {
         return this.cPesquisa.pesquisaEhAtiva(codigo);
     }
 
-    //US2
     public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String fotoURL) {
         this.cPesquisador.cadastraPesquisador(nome, funcao, biografia, email, fotoURL);
     }
@@ -74,7 +72,6 @@ public class Facade {
         return this.cPesquisador.pesquisadorEhAtivo(email);
     }
 
-    //US3
     public void cadastraProblema(String descricao, int viabilidade) {
     	cProblema.cadastraProblema(descricao, viabilidade);
     }
@@ -99,76 +96,50 @@ public class Facade {
     	return cObjetivo.exibeObjetivo(codigo);
     }
 
-    //US4
     public void cadastraAtividade(String descricao, String risco, String descricaoRisco) {
-
         this.cAtividade.cadastrarAtividade(descricao, risco, descricaoRisco);
-
     }
 
     public void apagaAtividade(String id) {
-
         this.cAtividade.apagaAtividade(id);
-
     }
 
     public void cadastraItem(String id, String descricao) {
-
         this.cAtividade.cadastrarItem(id, descricao);
-
     }
 
     public String exibeAtividade(String id) {
-
         return this.cAtividade.exibirAtividade(id);
-
     }
 
     public int contaItensPendentes(String id) {
-
         return this.cAtividade.contaItensPendentes(id);
-
     }
 
     public int contaItensRealizados(String id) {
-
         return this.cAtividade.contaItensRealizados(id);
-
     }
-    
-    //US5 
-   
+
     public boolean associaProblema(String idPesquisa, String idProblema) {
-    	
     	return this.conector.associaProblema(idPesquisa, idProblema);
-    	
     }
     
     public boolean desassociaProblema(String idPesquisa) {
-    	
     	return this.conector.desassociaProblema(idPesquisa);
-    	
     }
     
     public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
-    	
     	return this.conector.associaObjetivo(idPesquisa, idObjetivo);
-    	
     }
     
     public boolean desassociaObjetivo(String idPesquisa, String idProblema) {
-    	
     	return this.conector.desassociaObjetivo(idPesquisa, idProblema);
-    	
     }
     
     public String listaPesquisas(String ordem) {
-    	
     	return this.cPesquisa.listar(ordem);
-    	
     }
     
-    //US6
     public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
     	return conector.associaPesquisador(idPesquisa, emailPesquisador);
     }
@@ -189,7 +160,6 @@ public class Facade {
     	return cPesquisador.listaPesquisadores(tipo);
     }
 
-    //US7
     public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
     	return this.conector.associaAtividade(codigoPesquisa, codigoAtividade);
     }
@@ -216,7 +186,7 @@ public class Facade {
     public int getDuracao(String codigoAtividade) {
     	return this.cAtividade.getDuracao(codigoAtividade);
     }
-    //US8
+
     public String busca(String termo){
         return this.conector.busca(termo);
     }
@@ -226,11 +196,9 @@ public class Facade {
     }
 
     public int contaResultadosBusca(String termo){
-
         return this.conector.contaResultadosBusca(termo);
     }
    
-   //US9
     public void defineProximaAtividade(String idPrecedente, String idSubsquente) {
     	cAtividade.defineProximaAtividade(idPrecedente, idSubsquente);
     }
@@ -250,33 +218,23 @@ public class Facade {
     public String pegaMaiorRiscoAtividades(String idAtividade) {
     	return cAtividade.pegaMaiorRiscoAtividades(idAtividade);
     }
-    
-    //US10
-    
+
 	public void configuraEstrategia(String estrategia) {
     	this.cPesquisa.configuraEstrategia(estrategia);
-
     }
 
     public String proximaAtividade(String codigoPesquisa) {
     	return this.cPesquisa.proximaAtividade(codigoPesquisa);
-
     }
     
-    //US11
     public void gravarResultados(String id) throws IOException {
-    	
     	this.cPesquisa.gravarResultadosPesquisa(id);
-    	
     }
     
     public void gravarResumo(String id) throws IOException {
-    	
     	this.cPesquisa.gravarResumoPesquisa(id);
-    	
     }
 
-    //US12
     public void salvar(){
         this.conector.salvarArquivos();
     }
