@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Conector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Conector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama.ucls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Atividade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/Conector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/controller/ControllerPesquisas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/base/AtividadeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/base/AtividadeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerAtividadesTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/projeto_lp2/controller/ControllerPesquisasTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +55,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573742382785" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Downloads/easyaccept.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Relatorio e Diagrama" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -85,7 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in projeto_lp2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="facade.Main" />
       <module name="projeto_lp2" />
@@ -163,8 +170,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in projeto_lp2" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.PesquisaTest.getResumo" />
         <item itemvalue="JUnit.PesquisaTest.getResultados" />
         <item itemvalue="JUnit.ControllerPesquisasTest" />
@@ -237,7 +244,7 @@
     <SUITE FILE_PATH="coverage/projeto_lp2$PesquisaTest.ic" NAME="PesquisaTest Coverage Results" MODIFIED="1573322892315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>base.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1574264173931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/projeto_lp2$All_in_projeto_lp2.ic" NAME="All in projeto_lp2 Coverage Results" MODIFIED="1574295057827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/projeto_lp2$AtividadeTest.ic" NAME="AtividadeTest Coverage Results" MODIFIED="1573526887192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>base.*</FILTER>
     </SUITE>
