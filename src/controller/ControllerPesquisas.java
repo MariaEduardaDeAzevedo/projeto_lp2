@@ -582,7 +582,7 @@ public class ControllerPesquisas extends Validacao implements Serializable {
      * Metodo que retorna qual a proxima atividade sugerida de acordo com a estrategia a ser utilizada.
      *
      * @param codigoPesquisa Codigo da pesquisa que possui a atividade a ser retornada.
-     * @return
+     * @return String contendo o ID da proxima atividade de acordo com a estrategia de ordenacao.
      */
     public String proximaAtividade(String codigoPesquisa) {
         super.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
