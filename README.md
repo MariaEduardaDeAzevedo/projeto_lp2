@@ -78,14 +78,9 @@
 ## Parte 3
 ### US9
 #### Codificado:
-- Funcionalidades de adicionar e retirar uma atividade subsequente.
-#### Falta:
-- Implementar as funcionalidades de contar próximas atividades, pegar uma próxima atividade e pegar a atividade de maior risco.
-- Documentação do código.
-- Testes de unidade de outra US.
-- Realizar a adequação a todos os testes de aceitação.
+- Todas as funcionalidades da US9
 #### Comentário:
--Todas as funcionalidades até agora implementadas desta US atendem aos testes de aceitação, porém suspeito de erro na linha 30 destes.
+-Todas as funcionalidades até agora implementadas desta US atendem aos testes de aceitação.
 ### US11
 #### Codificado:
 - Métodos da Facade
