@@ -222,9 +222,73 @@ class AtividadeTest {
 	}
 	
 	@Test
-	void pegaProximo() {
-		atividadeBase3.pegaProximo(2);
+	void hasProx() {
+		atividadeBase1.hasProx();
 	}
+	
+	@Test
+	void hasProxTrue() {
+		atividadeBase1.defProx(atividadeBase2);
+		assertTrue(atividadeBase1.hasProx());
+	}
+	
+	@Test
+	void hasProxFalse() {
+		assertFalse(atividadeBase3.hasProx());
+	}
+	
+	@Test
+	void defineProximo() {
+		atividadeBase1.defProx(atividadeBase2);
+	}
+	
+	@Test
+	void defineProximoProxAtvdNull() {
+		assertThrows(NullPointerException.class, () -> {
+			atividadeBase1.defProx(null);
+		});
+	}
+	
+	@Test
+	void retiraProx() {
+		atividadeBase1.retiraProx();
+	}
+	
+	@Test
+	void contaProximos() {
+		atividadeBase1.defProx(atividadeBase2);
+		atividadeBase1.contaProximos();
+	}
+	
+	@Test
+	void pegaProximo() {
+		atividadeBase1.defProx(atividadeBase2);
+		atividadeBase1.pegaProximo(1);
+	}
+	
+	@Test
+	void pegaProximoIndezMaiorUm() {
+		atividadeBase1.defProx(atividadeBase2);
+		atividadeBase2.defProx(atividadeBase3);
+		atividadeBase1.pegaProximo(2);
+	}
+	
+	@Test
+	void converteRiscoAlto() {
+		assertEquals(2, atividadeBase3.converteRisco());
+	}
+	
+	
+	@Test
+	void converteRiscoMedio() {
+		assertEquals(1, atividadeBase2.converteRisco());
+	}
+	
+	@Test
+	void converteRiscoBaixo() {
+		assertEquals(0, atividadeBase1.converteRisco());
+	}
+	
 	
 	@Test
 	void pegaProximoIndexNegativo() {
@@ -232,4 +296,39 @@ class AtividadeTest {
 			atividadeBase1.pegaProximo(-1);
 		});
 	}
+	
+	@Test
+	void pegaMaiorRiscoAtividades() {
+		atividadeBase1.defProx(atividadeBase2);
+		atividadeBase1.pegaMaiorRiscoAtividades(atividadeBase1, atividadeBase2);
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividadePrecedenteNull() {
+		assertThrows(NullPointerException.class, () -> {
+			atividadeBase1.pegaMaiorRiscoAtividades(null, atividadeBase2);
+		
+		});
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividadeComparacaoNull() {
+		assertThrows(NullPointerException.class, () -> {
+			atividadeBase1.pegaMaiorRiscoAtividades(atividadeBase1, null);
+		
+		});
+	}
+	
+	@Test
+	void pegaMaiorRiscoAtividadeParametrosNull() {
+		assertThrows(NullPointerException.class, () -> {
+			atividadeBase1.pegaMaiorRiscoAtividades(null, null);
+		
+		});
+	}
+	
+	
+	
+
+	
 }
