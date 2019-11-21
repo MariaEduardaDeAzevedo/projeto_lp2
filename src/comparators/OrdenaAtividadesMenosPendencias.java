@@ -7,7 +7,7 @@ import base.Atividade;
 /**
  * Classe comparadora para ordenar Atividade em ordem crescente de menos pendencias.
  */
-public class OrdenaAtvdsMenosPendencias implements Comparator<Atividade> {
+public class OrdenaAtividadesMenosPendencias implements Comparator<Atividade> {
 
     /**
      * Compara dois objetos, retornando o valor de 1 se o primeiro objeto for maior que o segundo,

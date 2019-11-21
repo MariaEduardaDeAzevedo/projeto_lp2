@@ -592,11 +592,11 @@ public class ControllerPesquisas extends Validacao implements Serializable {
             case "MAIS_ANTIGA":
                 return this.pesquisas.get(codigoPesquisa).hasItemPendente();
             case "MAIOR_DURACAO":
-                return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMaiorDuracao();
+                return this.pesquisas.get(codigoPesquisa).ordenaAtividadesMaiorDuracao();
             case "MAIOR_RISCO":
                 return this.pesquisas.get(codigoPesquisa).getMaiorRisco();
             case "MENOS_PENDENCIAS":
-                return this.pesquisas.get(codigoPesquisa).ordenaAtvdsMenosPendencias();
+                return this.pesquisas.get(codigoPesquisa).ordenaAtividadesMenosPendencias();
         }
         return null;
     }

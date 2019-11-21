@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import comparators.OrdenaAtvdsMaiorDuracao;
-import comparators.OrdenaAtvdsMenosPendencias;
+import comparators.OrdenaAtividadesMenosPendencias;
+import comparators.OrdenaAtividadesMaiorDuracao;
 import validacao.Validacao;
 
 /**
@@ -458,13 +458,13 @@ public class Pesquisa extends Validacao implements Serializable {
      *
      * @return Id da atividade com menor numero de pendencias.
      */
-    public String ordenaAtvdsMenosPendencias() {
+    public String ordenaAtividadesMenosPendencias() {
         List<Atividade> lista = new ArrayList<Atividade>();
         for (Atividade atividade : this.atividadesAssociadas.values()) {
             if (atividade.hasItemPendente())
                 lista.add(atividade);
         }
-        Collections.sort(lista, new OrdenaAtvdsMenosPendencias());
+        Collections.sort(lista, new OrdenaAtividadesMenosPendencias());
         return lista.get(0).getId();
     }
 
@@ -473,13 +473,13 @@ public class Pesquisa extends Validacao implements Serializable {
      *
      * @return Id da atividade que teve a maior duracao.
      */
-    public String ordenaAtvdsMaiorDuracao() {
+    public String ordenaAtividadesMaiorDuracao() {
         List<Atividade> lista = new ArrayList<Atividade>();
         for (Atividade atividade : this.atividadesAssociadas.values()) {
             if (atividade.hasItemPendente())
                 lista.add(atividade);
         }
-        Collections.sort(lista, new OrdenaAtvdsMaiorDuracao());
+        Collections.sort(lista, new OrdenaAtividadesMaiorDuracao());
         return lista.get(0).getId();
     }
 
