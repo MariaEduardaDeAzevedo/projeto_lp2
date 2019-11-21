@@ -22,118 +22,118 @@ class ControllerPesquisasTest {
 
 	ControllerPesquisas controllerPesquisasTest;
 	private ControllerPesquisador controllerPesquisadorTest;
-	
+
 	@BeforeEach
 	void constroiController() {
 		controllerPesquisasTest = new ControllerPesquisas();
 		controllerPesquisadorTest = new ControllerPesquisador();
 	}
-	
+
 	@Test
 	void cadastraPesquisaValida() {
 		controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "gosto de animais");
 	}
-	
+
 	@Test
 	void cadastraPesquisaDescricaoVazia() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("", "gosto de animais");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaDescricaoNull() {
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa(null, "gosto de animais");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaCampoVazio() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaCampoNull() {
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("pesquisa animais", null);
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisatudoVazio() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("", "");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaTudoNull() {
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa(null, null);
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaCampoMaior255() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaTopicosMaiores4() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "cobra, gato, falcao, obelisco, arthur");
 		});
 	}
-	
+
 	@Test
 	void cadastraPesquisaTopicoMenor3() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.cadastraPesquisa("pesquisa animais", "eu, me, amo");
 		});
 	}
-	
+
 	@Test
 	void ativaPesquisaCodigoInvalido() {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.ativaPesquisa("pes1");
 		});
-	}	
-	
+	}
+
 	@Test
 	void ativaPesquisaAtivada() {
 		controllerPesquisasTest.cadastraPesquisa("pesquisa gravidas", "mulheres gravidas, bebes");
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.ativaPesquisa("mul1");
 		});
-	}	
-	
+	}
+
 	@Test
 	void ativaPesquisaDesativada() {
 		controllerPesquisasTest.cadastraPesquisa("pesquisa gravidas", "mulheres gravidas, bebes");
 		controllerPesquisasTest.encerraPesquisa("MUL1", "no money");
 		controllerPesquisasTest.ativaPesquisa("MUL1");
 		assertTrue(controllerPesquisasTest.pesquisaEhAtiva("MUL1"));
-	}	
-	
-	
+	}
+
+
 	@Test
 	void exibePesquisa() {
 		controllerPesquisasTest.cadastraPesquisa("pesquisa gravidas", "mulheres gravidas, bebes");
 		assertEquals("MUL1 - pesquisa gravidas - mulheres gravidas, bebes", controllerPesquisasTest.exibePesquisa("MUL1"));
 	}
-	
+
 	@Test
 	void alteraPesquisaCodigoValido() {
 		controllerPesquisasTest.cadastraPesquisa("tecnologia", "notebooks caros, dell");
 		controllerPesquisasTest.alteraPesquisa("NOT1", "DESCRICAO", "mts tecnologias");
 		assertEquals("NOT1 - mts tecnologias - notebooks caros, dell", controllerPesquisasTest.exibePesquisa("NOT1"));
 	}
-	 
+
 	@Test
 	void alteraPesquisaCodigoVazio() {
 		controllerPesquisasTest.cadastraPesquisa("tecnologia", "notebooks caros, dell");
@@ -141,7 +141,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.alteraPesquisa("", "DESCRICAO", "mts tecnologias");
 		});
 	}
-	
+
 	@Test
 	void alteraPesquisaCodigoNull() {
 		controllerPesquisasTest.cadastraPesquisa("tecnologia", "notebooks caros, dell");
@@ -150,10 +150,10 @@ class ControllerPesquisasTest {
 		});
 	}
 
-    @Test
-    void associaAtividadeValida() {
+	@Test
+	void associaAtividadeValida() {
 		controllerPesquisasTest.cadastraPesquisa("computacao na neuropsicologia", "computacao, neuropsicologia");
-    	Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
+		Atividade A1 = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo",
 				"BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
 		assertTrue(controllerPesquisasTest.associaAtividade("COM1", A1));
 	}
@@ -226,89 +226,89 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.desassociaAtividade("COM1", "A1");
 		});
 	}
-	
+
 	@Test
 	void associaPesquisadorComum() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		assertEquals(true, controllerPesquisasTest.associaPesquisador("COM1", pesq));
-		
+
 	}
-	
+
 	@Test
 	void associaPesquisadorIDPesquisaNull() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.associaPesquisador(null, pesq);
 		});
-		
+
 	}
-	
+
 	@Test
 	void associaPesquisadorIDPesquisaVazio() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.associaPesquisador("", pesq);
 		});
-		
+
 	}
-	
+
 	@Test
 	void associaPesquisadorNull() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.associaPesquisador("COM1", null);
 		});
-		
+
 	}
-	
+
 	@Test
 	void associaPesquisadorInexistente() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		assertThrows(NullPointerException.class, () -> {
 			Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@professor.com");
 			controllerPesquisasTest.associaPesquisador("COM1", pesq);
 		});
-		
+
 	}
-	
+
 	@Test
 	void associaPesquisadorJaAssociado() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		controllerPesquisasTest.associaPesquisador("COM1", pesq);
 		assertEquals(false, controllerPesquisasTest.associaPesquisador("COM1", pesq));
-		
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorComum() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		controllerPesquisasTest.associaPesquisador("COM1", pesq);
 		assertEquals(true, (controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com")));
-	
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorIDPesquisaNull() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
@@ -316,12 +316,12 @@ class ControllerPesquisasTest {
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.desassociaPesquisador(null, "professor@pesquisador.com");
 		});
-		
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorIDPesquisaVazio() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
@@ -329,12 +329,12 @@ class ControllerPesquisasTest {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.desassociaPesquisador("", "professor@pesquisador.com");
 		});
-		
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorEmailNull() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
@@ -342,12 +342,12 @@ class ControllerPesquisasTest {
 		assertThrows(NullPointerException.class, () -> {
 			controllerPesquisasTest.desassociaPesquisador("COM1", null);
 		});
-		
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorEmailVazio() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
@@ -355,33 +355,33 @@ class ControllerPesquisasTest {
 		assertThrows(IllegalArgumentException.class, () -> {
 			controllerPesquisasTest.desassociaPesquisador("COM1", "");
 		});
-		
+
 	}
-	
+
 	@Test
 	void desassociaPesquisadorInexistente() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		controllerPesquisasTest.associaPesquisador("COM1", pesq);
 		assertEquals(false, controllerPesquisasTest.desassociaPesquisador("COM1", "pesquisador@professor.com"));
-		
-	}	
+
+	}
 
 	@Test
 	void desassociaPesquisadorJaDesassociado() {
-		
+
 		controllerPesquisasTest.cadastraPesquisa("Busca pelo aumento do protagonismo feminino na área de TI", "computação, sociologia");
 		controllerPesquisadorTest.cadastraPesquisador("pesquisador", "professor", "professor pesquisador", "professor@pesquisador.com", "https://pic_pesq_prof");
 		Pesquisador pesq = controllerPesquisadorTest.getPesquisador("professor@pesquisador.com");
 		controllerPesquisasTest.associaPesquisador("COM1", pesq);
 		controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com");
 		assertEquals(false, controllerPesquisasTest.desassociaPesquisador("COM1", "professor@pesquisador.com"));
-		
+
 	}
 
-	
+
 	@Test
 	void associaProblemaValido() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -390,7 +390,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
 		assertEquals(false, controllerPesquisasTest.associaProblema("HUM1", "P1", problema));
 	}
-	
+
 	@Test
 	void associaProblemaIdPesquisaNull() {
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
@@ -398,7 +398,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.associaProblema(null, "P1", problema);
 		});
 	}
-	
+
 	@Test
 	void associaProblemaIdPesquisaVazio() {
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
@@ -406,7 +406,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.associaProblema("", "P1", problema);
 		});
 	}
-	
+
 	@Test
 	void associaProblemaIdProblemaNull() {
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
@@ -414,7 +414,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.associaProblema("HUM1", null, problema);
 		});
 	}
-	
+
 	@Test
 	void associaProblemaIdProblemaVazio() {
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
@@ -422,7 +422,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.associaProblema("HUM1", "", problema);
 		});
 	}
-	
+
 	@Test
 	void associaProblemaPesquisaJaAssociada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -433,7 +433,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.associaProblema("HUM1", "P2", problema2);
 		});
 	}
-	
+
 	@Test
 	void desassociaProblemaValido() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -443,7 +443,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.desassociaProblema("HUM1");
 		assertEquals(false, controllerPesquisasTest.desassociaProblema("HUM1"));
 	}
-	
+
 	@Test
 	void desassociaProblemaIdPesquisaNull() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -453,7 +453,7 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.desassociaProblema(null);
 		});
 	}
-	
+
 	@Test
 	void desassociaProblemaIdPesquisaVazio() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -463,35 +463,35 @@ class ControllerPesquisasTest {
 			controllerPesquisasTest.desassociaProblema("");
 		});
 	}
-	
+
 	@Test
-    void desassociaProblemaPesquisaInexistente() {
-    	assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaProblema("HUM1");
-        });
-    }
-	
+	void desassociaProblemaPesquisaInexistente() {
+		assertThrows(NullPointerException.class, () -> {
+			controllerPesquisasTest.desassociaProblema("HUM1");
+		});
+	}
+
 	@Test
 	void desassociaProblemaPesquisaNaoEncontrada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
 		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaProblema("HUM2");
-        });
+			controllerPesquisasTest.desassociaProblema("HUM2");
+		});
 	}
-	
+
 	@Test
-    void desassociaProblemaPesquisaDesativada() {
+	void desassociaProblemaPesquisaDesativada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Problema problema = new Problema("A interferência americana nos países da América Latina", 4, "P1");
 		controllerPesquisasTest.associaProblema("HUM1", "P1", problema);
 		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos Estados Unidos");
 		assertThrows(ActivationException.class, () -> {
-    		controllerPesquisasTest.desassociaProblema("HUM1");
-        });
+			controllerPesquisasTest.desassociaProblema("HUM1");
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoValido() {
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
@@ -500,7 +500,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertEquals(false, controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo));
 	}
-	
+
 	@Test
 	void associaObjetivoJaAssociado() {
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
@@ -508,73 +508,73 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.cadastraPesquisa("Consequências do colonialismo no século XXI", "historia");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(AssociationException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HIS1", "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HIS1", "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoIdPesquisaNull() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo(null, "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo(null, "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoIdPesquisaVazio() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("", "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("", "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoIdObjetivoNull() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HUM1", null, objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HUM1", null, objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoIdObjetivoVazio() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HUM1", "", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HUM1", "", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoPesquisaNaoEncontrada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HUM2", "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HUM2", "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoPesquisaInexistente() {
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void associaObjetivoPesquisaDesativada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
 		assertThrows(ActivationException.class, () -> {
-    		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
-        });
+			controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoValido() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -584,64 +584,64 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
 		assertEquals(false, controllerPesquisasTest.desassociaObjetivo("HUM1", "O1"));
 	}
-	
+
 	@Test
 	void desassociaObjetivoIdPesquisaNull() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo(null, "O1");
-        });
+			controllerPesquisasTest.desassociaObjetivo(null, "O1");
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoIdPesquisaVazio() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("", "O1");
-        });
+			controllerPesquisasTest.desassociaObjetivo("", "O1");
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoIdObjetivoNull() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("HUM1", null);
-        });
+			controllerPesquisasTest.desassociaObjetivo("HUM1", null);
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoIdObjetivoVazio() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("HUM1", "");
-        });
+			controllerPesquisasTest.desassociaObjetivo("HUM1", "");
+		});
 	}
-	
+
 	@Test
-    void desassociaObjetivoPesquisaNaoEncontrada() {
+	void desassociaObjetivoPesquisaNaoEncontrada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		Objetivo objetivo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("HUM2", "O1");
-        });
+			controllerPesquisasTest.desassociaObjetivo("HUM2", "O1");
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoPesquisaInexistente() {
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
-        });
+			controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
+		});
 	}
-	
+
 	@Test
 	void desassociaObjetivoPesquisaDesativada() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -649,10 +649,10 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("HUM1", "O1", objetivo);
 		controllerPesquisasTest.encerraPesquisa("HUM1", "Pesquisa censurada pelos imperialistas");
 		assertThrows(ActivationException.class, () -> {
-    		controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
-        });
+			controllerPesquisasTest.desassociaObjetivo("HUM1", "O1");
+		});
 	}
-	
+
 	@Test
 	void listarObjetivos() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -670,7 +670,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
 		assertEquals("HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | REA1 - Uma pesquisa bem legal - Real Madrid | HUM3 - O desenvolvimento da mídia e a Guerra do Golfo - humanas, midia", controllerPesquisasTest.listar("OBJETIVOS"));
 	}
-	
+
 	@Test
 	void listarProblemas() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -685,7 +685,7 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaProblema("ESP1", "P3", spfc);
 		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | ESP1 - O último título do São Paulo - esportes | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | HUM2 - Imperialismo na America Latina - humanas", controllerPesquisasTest.listar("PROBLEMA"));
 	}
-	
+
 	@Test
 	void listarPesquisa() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
@@ -713,23 +713,23 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("ESP1", "O5", patoTitular);
 		assertEquals("REA1 - Uma pesquisa bem legal - Real Madrid | HUM2 - Imperialismo na America Latina - humanas | HUM1 - Imperialismo americano no século XXI - humanas, ciencias sociais | ESP1 - O último título do São Paulo - esportes", controllerPesquisasTest.listar("PESQUISA"));
 	}
-	
+
 	@Test
 	void listarPesquisasOrdemInvalida() {
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
-    		controllerPesquisasTest.listar("");
-    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
-        });
+			controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+			controllerPesquisasTest.listar("");
+			controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+		});
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo na America Latina", "humanas");
 		controllerPesquisasTest.cadastraPesquisa("O último título do São Paulo", "esportes");
 		controllerPesquisasTest.cadastraPesquisa("Uma pesquisa bem legal", "Real Madrid");
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
-    		controllerPesquisasTest.listar("");
-    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
-        });
+			controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+			controllerPesquisasTest.listar("");
+			controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+		});
 		Problema imperialismoSec20 = new Problema("O problema do imperialismo no desenvolvimento dos países do sul global", 1, "P1");
 		Problema baleTitular = new Problema("A problemática de Bale ser titular e não acertar nenhum cruzamento", 2, "P2");
 		Problema spfc = new Problema("O problema da diretoria Jim Carrey desse time sem vergonha", 4, "P3");
@@ -737,10 +737,10 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaProblema("REA1", "P2", baleTitular);
 		controllerPesquisasTest.associaProblema("ESP1", "P3", spfc);
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
-    		controllerPesquisasTest.listar("");
-    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
-        });
+			controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+			controllerPesquisasTest.listar("");
+			controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+		});
 		Objetivo objetivoImperialismo = new Objetivo("GERAL", "Alertar para os perigos das intervenções americanas em outros países", 4, 2, "O1");
 		Objetivo consequenciasAmericaLatina = new Objetivo("ESPECIFICO", "Buscar as consequências do imperialismo americano na América Latina", 4, 4, "O2");
 		Objetivo consequenciasOrienteMedio = new Objetivo("ESPECIFICO", "Buscar consequências da Guerra do Golfo", 4, 3, "O3");
@@ -753,49 +753,85 @@ class ControllerPesquisasTest {
 		controllerPesquisasTest.associaObjetivo("HUM2", "O2", consequenciasAmericaLatina);
 		controllerPesquisasTest.associaObjetivo("ESP1", "O5", patoTitular);
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
-    		controllerPesquisasTest.listar("");
-    		controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
-        });
+			controllerPesquisasTest.listar("NOVA ORDEM MUNDIAL");
+			controllerPesquisasTest.listar("");
+			controllerPesquisasTest.listar("ORDEM MUITO LEGAL MESMO ESTOU ADORANDO");
+		});
 	}
-	
+
 	@Test
-	void configuraEstrategiaValido() {
+	void configuraEstrategiaMaisAntiga() {
 		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
-		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
-		controllerPesquisasTest.configuraEstrategia("MENOS_PENDENCIAS");
-		assertEquals("MENOS_PENDENCIAS", controllerPesquisasTest.getEstrategia());
-		controllerPesquisasTest.configuraEstrategia("MAIOR_RISCO");
-		assertEquals("MAIOR_RISCO", controllerPesquisasTest.getEstrategia());
-		controllerPesquisasTest.configuraEstrategia("MAIOR_DURACAO");
-		assertEquals("MAIOR_DURACAO", controllerPesquisasTest.getEstrategia());
-		controllerPesquisasTest.configuraEstrategia("MAIS_ANTIGA");
-		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
-		controllerPesquisasTest.configuraEstrategia("MAIS_ANTIGA");
-		assertEquals("MAIS_ANTIGA", controllerPesquisasTest.getEstrategia());
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		Atividade atividadeTeste2 = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste);
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste2);
+		atividadeTeste.cadastrarItem("Realizar entrevista");
+		atividadeTeste2.cadastrarItem("Realizar entrevista");
+		assertEquals("A1", controllerPesquisasTest.proximaAtividade("HUM1"));
 	}
-	
+
+	@Test
+	void configuraEstrategiaMenosPendecias() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		Atividade atividadeTeste2 = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		atividadeTeste.cadastrarItem("Realizar entrevista");
+		atividadeTeste.cadastrarItem("Recolher pesquisa");
+		atividadeTeste2.cadastrarItem("Realizar entrevista");
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste);
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste2);
+		controllerPesquisasTest.configuraEstrategia("MENOS_PENDENCIAS");
+		assertEquals("A2", controllerPesquisasTest.proximaAtividade("HUM1"));
+	}
+
+	@Test
+	void configuraEstrategiaMaiorRisco() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		Atividade atividadeTeste2 = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		atividadeTeste.cadastrarItem("Realizar entrevista");
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste);
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste2);
+		controllerPesquisasTest.configuraEstrategia("MAIOR_RISCO");
+		assertEquals("A2", controllerPesquisasTest.proximaAtividade("HUM1"));
+	}
+
+	@Test
+	void configuraEstrategiaMaiorDuracao() {
+		controllerPesquisasTest.cadastraPesquisa("Imperialismo americano no século XXI", "humanas, ciencias sociais");
+		Atividade atividadeTeste = new Atividade("Monitoramento de chats dos alunos de computacao do primeiro periodo.", "BAIXO", "Por se tratar de apenas um monitoramento, o risco nao e elevado.", "A1");
+		Atividade atividadeTeste2 = new Atividade("Busca de mensagens que espalham notícias falsas nos chats dos alunos de computação", "MEDIO", "Acusar uma notícia falsa pode constranger o remetente desta.", "A2");
+		atividadeTeste.cadastrarItem("Realizar entrevista");
+		atividadeTeste.cadastrarItem("Realizar entrevista");
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste);
+		controllerPesquisasTest.associaAtividade("HUM1", atividadeTeste2);
+		atividadeTeste.executaItem(1, 50);
+		controllerPesquisasTest.configuraEstrategia("MAIOR_DURACAO");
+		assertEquals("A1", controllerPesquisasTest.proximaAtividade("HUM1"));
+	}
+
 	@Test
 	void configuraEstrategiaNull() {
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.configuraEstrategia(null);
-        });
+			controllerPesquisasTest.configuraEstrategia(null);
+		});
 	}
-	
+
 	@Test
 	void configuraEstrategiaVazia() {
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.configuraEstrategia("");
-        });
+			controllerPesquisasTest.configuraEstrategia("");
+		});
 	}
-	
+
 	@Test
 	void configuraEstrategiaInvalida() {
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.configuraEstrategia("ESTRATEGIA BEM LEGAL ESTOU ADORANDO");
-        });
+			controllerPesquisasTest.configuraEstrategia("ESTRATEGIA BEM LEGAL ESTOU ADORANDO");
+		});
 	}
-	
+
 	@Test
 	void proximaAtividadeValido() {
 		Atividade A1 = new Atividade("Busca de raízes históricas do problema do imperialismo americano", "BAIXO", "Como é apenas um estudo da história dos EUA o risco não é elevado", "A1");
@@ -842,45 +878,45 @@ class ControllerPesquisasTest {
 		A1.executaItem(3, 60);
 		assertEquals("A2", controllerPesquisasTest.proximaAtividade("HUM1"));
 	}
-	
+
 	@Test
 	void proximaAtividadeNull() {
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.proximaAtividade(null);
-        });
+			controllerPesquisasTest.proximaAtividade(null);
+		});
 	}
-	
+
 	@Test
 	void proximaAtividadeVazio() {
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.proximaAtividade("");
-        });
+			controllerPesquisasTest.proximaAtividade("");
+		});
 	}
-	
+
 	@Test
 	void proximaAtividadeNaoExistente() {
 		assertThrows(NullPointerException.class, () -> {
-    		controllerPesquisasTest.proximaAtividade("ABC1");
-        });
+			controllerPesquisasTest.proximaAtividade("ABC1");
+		});
 	}
-	
+
 	@Test
 	void proximaAtividadePesquisaDesativada() {
 		controllerPesquisasTest.cadastraPesquisa("Interpretação do final de 2001", "cinema, artes");
 		controllerPesquisasTest.encerraPesquisa("CIN1", "Ninguém conseguiu entender o final do filme");
 		assertThrows(ActivationException.class, () -> {
-    		controllerPesquisasTest.proximaAtividade("CIN1");
-        });
+			controllerPesquisasTest.proximaAtividade("CIN1");
+		});
 	}
-	
+
 	@Test
 	void proximaAtividadePesquisaSemAtividadesComPendencias() {
 		controllerPesquisasTest.cadastraPesquisa("Interpretação do final de 2001", "cinema, artes");
 		Atividade A1 = new Atividade("Blade Runner 2049 é melhor que o original", "ALTO", "O cinéfilo pode ficar irritado com isso", "A1");
 		controllerPesquisasTest.associaAtividade("CIN1", A1);
 		assertThrows(IllegalArgumentException.class, () -> {
-    		controllerPesquisasTest.proximaAtividade("CIN1");
-        });
+			controllerPesquisasTest.proximaAtividade("CIN1");
+		});
 	}
 
 	@Test

@@ -155,11 +155,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ControllerPesquisasTest" />
       <item itemvalue="JUnit.PesquisaTest.getResultados" />
       <item itemvalue="JUnit.PesquisaTest.getResumo" />
       <item itemvalue="JUnit.All in projeto_lp2" />
-      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
