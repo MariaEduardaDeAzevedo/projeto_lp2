@@ -3,18 +3,68 @@
   <component name="ChangeListManager">
     <list default="true" id="9debaae0-01a7-489f-a5e1-c9531a104d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/comparators/OrdenaAtvdsMaiorDuracao.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/OrdenaAtvdsMaiorDuracao.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/comparators/OrdenaAtvdsMenosPendencias.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/OrdenaAtvdsMenosPendencias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/comparators/class-use/OrdenaAtvdsMaiorDuracao.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/class-use/OrdenaAtvdsMaiorDuracao.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/comparators/class-use/OrdenaAtvdsMenosPendencias.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/class-use/OrdenaAtvdsMenosPendencias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/base/Pesquisa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMaiorDuracao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/comparators/OrdenaAtvdsMenosPendencias.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projeto_lp2/facade/Facade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/Pesquisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/Pesquisa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comparators/OrdenaAtvdsMaiorDuracao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comparators/OrdenaAtividadesMaiorDuracao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comparators/OrdenaAtvdsMenosPendencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comparators/OrdenaAtividadesMenosPendencias.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControllerPesquisas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Aluno.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Aluno.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Arquivo.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Arquivo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Atividade.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Atividade.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Item.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Objetivo.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Objetivo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Pesquisa.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Pesquisa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Pesquisador.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Pesquisador.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Problema.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Problema.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/Professor.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/Professor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/base/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaID.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaID.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaObjetivo.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaObjetivo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaProblema.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/OrdenaPesquisaProblema.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/comparators/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/comparators/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/comparators/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/Conector.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/Conector.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerAtividades.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerAtividades.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerBuscas.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerBuscas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerObjetivos.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerObjetivos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerPesquisador.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerPesquisador.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerPesquisas.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerPesquisas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/ControllerProblemas.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/ControllerProblemas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/controller/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/excecoes/ActivationException.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/excecoes/ActivationException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/excecoes/AssociationException.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/excecoes/AssociationException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/excecoes/SequenceException.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/excecoes/SequenceException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/excecoes/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/excecoes/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/excecoes/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/excecoes/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/facade/Facade.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/facade/Facade.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/facade/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/facade/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/facade/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/facade/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/facade/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/facade/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-list" beforeDir="false" afterPath="$PROJECT_DIR$/doc/package-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/serialized-form.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +265,7 @@
       <workItem from="1574286395308" duration="4912000" />
       <workItem from="1574296108307" duration="383000" />
       <workItem from="1574297661984" duration="730000" />
-      <workItem from="1574336600414" duration="363000" />
+      <workItem from="1574336600414" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="Adiciona diagrama">
       <created>1574296280208</created>
