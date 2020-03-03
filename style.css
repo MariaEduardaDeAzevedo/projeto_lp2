@@ -1,0 +1,136 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Concert One';
+    background-color: rgba(104, 104, 209, 0.911);
+    font-size: 20px;
+}
+
+header {
+    position: fixed;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 1360px;
+    vertical-align: auto;
+}
+
+img.perfil {
+    border-radius: 50%;
+    max-width: 275px;
+    max-height: 275px;
+    margin-top: -50px;
+}
+
+section {
+    border-radius: 20px;
+    background-color: white;
+    margin: auto;
+    margin-top: 100px;
+    padding: 80px;
+    width: 900px;
+    height: 300px;
+    border-color: rgb(245, 194, 26);
+    border-style: solid;
+}
+
+p.perfil {
+    font-size: 20px;
+    margin-top: -250px;
+    margin-left: 300px;
+    text-align: justify;
+}
+
+p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+h1#titulo {
+    color: rgb(245, 194, 26);
+    text-align: center;
+    margin-top: 50px;
+}
+
+span#header {
+    text-decoration: none;
+    color: rgba(104, 104, 209, 0.911);
+    position: relative;
+    top: -20%;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color:  rgb(245, 194, 26);;
+}
+
+img#icon {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+h1#titulo {
+    font-size: 40px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+ul {
+    text-align: justify;
+}
+
+img#img {
+    height: 150px;
+    width: 150px;
+    margin-left: 350px;
+}
+
+@keyframes imagem {
+    from {
+        max-height: 80px;
+        max-width: 80px;
+    } to {
+        max-height: 90px;
+        max-width: 90px;
+    }
+}
+
+#img {
+    animation-name: imagem;    
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 50%;
+    transition: all 0.4s ease-out;
+} 
+
+#img:hover {
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+.center {
+    align-content: center;
+}
+
+table#imagens {
+    margin: auto;
+    margin-top: 100px;
+}
+
+footer {
+    margin-top: 90px;
+    text-align: center;
+    color: white;
+    opacity: 70%;
+}
+
+stop {
+    vertical-align: middle;
+}
